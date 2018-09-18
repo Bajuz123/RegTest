@@ -14,6 +14,7 @@
 		<script>
 				sap.ui.localResources("regtest");
 				var app = new sap.m.App({initialPage:"idMain1"});
+//				var page = sap.ui.view({id:"idRegTestDetail1", viewName:"regtest.VIEW.RegTestDetail", type:sap.ui.core.mvc.ViewType.JS});
 				var page = sap.ui.view({id:"idMain1", viewName:"regtest.VIEW.Main", type:sap.ui.core.mvc.ViewType.JS});
 				app.addPage(page);
 				app.placeAt("content");
