@@ -12,12 +12,19 @@
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
 
 		<script>
-				sap.ui.localResources("regtest");
-				var app = new sap.m.App({initialPage:"idMain1"});
 //				var page = sap.ui.view({id:"idRegTestDetail1", viewName:"regtest.VIEW.RegTestDetail", type:sap.ui.core.mvc.ViewType.JS});
-				var page = sap.ui.view({id:"idMain1", viewName:"regtest.VIEW.Main", type:sap.ui.core.mvc.ViewType.JS});
-				app.addPage(page);
-				app.placeAt("content");
+				sap.ui.localResources("regtest");
+				var oSplitApp = new sap.m.SplitApp("appId", {});
+				
+				var oDetail = sap.ui.view({id:"idMain1", viewName:"regtest.VIEW.Main", type:sap.ui.core.mvc.ViewType.JS});
+				var oMenu = sap.ui.view({id:"idMenu1", viewName:"regtest.VIEW.Menu", type:sap.ui.core.mvc.ViewType.JS});
+				
+				oSplitApp.addDetailPage(oDetail);
+				oSplitApp.addMasterPage(oMenu);
+				
+				oSplitApp.setInitialDetail("idMain1");
+				oSplitApp.setInitialMaster("idMenu1");
+				oSplitApp.placeAt("content");
 		</script>
 
 	</head>
