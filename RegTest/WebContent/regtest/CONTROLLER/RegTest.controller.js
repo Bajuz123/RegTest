@@ -7,9 +7,28 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
  * 
  * @memberOf regtest.RegTest
  */
- onInit: function() {
-
- },
+	onInit : function() {
+		//JSON Data
+/*		var oModel = new sap.ui.model.json.JSONModel();
+		oModel.loadData("regtest/JSON/RegTest_DATA.json");
+		this.getView().setModel(oModel);
+*/
+	
+		//SAP Data
+		  var oModel = new sap.ui.model.odata.ODataModel(this
+		  .getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma", "palipali89"); 
+		  this.getView().setModel(oModel);
+	},
+	
+	getUrl : function(sUrl) {
+		if (sUrl == "")
+			return sUrl;
+		if (window.location.hostname == "localhost") {
+			return "proxy" + sUrl;
+		} else {
+			return sUrl;
+		}
+	},
 /**
  * Similar to onAfterRendering, but this hook is invoked before the controller's
  * View is re-rendered (NOT before the first rendering! onInit() is used for

@@ -19,10 +19,35 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 	 * @memberOf regtest.RegTest
 	 */
 	createContent : function(oController) {
-		return new sap.m.Page({
-			title : "Regressionsteste",
-			content : [
+		var oTable = new sap.ui.table.Table({
+			tableID : "idRegTest",
+			visibleRowCount : 20,
+			selectionMode: sap.ui.table.SelectionMode.Single,
+			editable : true
+		});
+		
+		oTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Name"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
+			visible: true
+		} ))
 
+		oTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "XML"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","XML"),
+			visible: true
+		} ))
+
+		oTable.bindRows("/REG_TEST_SET");
+
+		var panel = sap.m.Panel("idMainPanel", {
+			content : [oTable]
+		});		
+		
+		return new sap.m.Page({
+			title : "Autotest",
+			content : [
+			  panel
 			]
 		});
 	}
