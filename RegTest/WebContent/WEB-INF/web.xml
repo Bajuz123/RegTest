@@ -67,20 +67,22 @@
 		<url-pattern>*.css</url-pattern>
 	</filter-mapping>
 
-
 	<!-- ============================================================== -->
 	<!-- UI5 proxy servlet                                              -->
 	<!-- ============================================================== -->
 
-	<servlet>
-		<servlet-name>SimpleProxyServlet</servlet-name>
-		<servlet-class>com.sap.ui5.proxy.SimpleProxyServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>SimpleProxyServlet</servlet-name>
-		<url-pattern>/proxy/*</url-pattern>
-	</servlet-mapping>
-
+    <servlet>
+        <servlet-name>SimpleProxyServlet</servlet-name>
+        <servlet-class>com.sap.ui5.proxy.SimpleProxyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SimpleProxyServlet</servlet-name>
+        <url-pattern>/proxy/*</url-pattern>
+    </servlet-mapping>
+    <context-param>
+        <param-name>com.sap.ui5.proxy.REMOTE_LOCATION</param-name>
+        <param-value>http://ibssaphd1.ibs.local:8050</param-value>
+    </context-param>
 
 	<!-- ============================================================== -->
 	<!-- Welcome file list                                              -->
