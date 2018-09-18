@@ -1,0 +1,10 @@
+{ 
+  REG_TEST_SET : {
+    "Name" : "RegTest1" 
+    "XML"  : "<xml>" 
+  },
+  {
+    "Name" : "RegTest2" 
+    "XML"  : "<xml>" 
+  }    
+}
