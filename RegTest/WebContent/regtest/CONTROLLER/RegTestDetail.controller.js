@@ -13,10 +13,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 				  this.getView().setModel(oModel);
 	},
 
-	onAddClick: function() {
-//		alert(" Neu Datei xxx");
-		
-		//read view fields
+	onAddClick: function() {	
 		var oName = {};
 		var oArea = {};
 		var oEntry = {};		
