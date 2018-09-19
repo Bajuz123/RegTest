@@ -13,11 +13,22 @@ sap.ui.jsview("regtest.VIEW.Login", {
 	* @memberOf regtest.Login
 	*/ 
 	createContent : function(oController) {
- 		return new sap.m.Page({
-			title: "Title",
-			content: [
-			
-			]
+ 		var fldLoginText = new sap.m.Label("idLoginText", {text: "Name"});
+ 		var fldLoginName = new sap.m.Input("idLoginName");
+ 		var fldPwdText = new sap.m.Label("idPwdText", {text: "Password"});
+		var fldPwd = new sap.ui.commons.PasswordField("idPwdField");
+		
+		var btnLogin = new sap.m.Button("btnLogin", {
+			text : "Login",
+		    press:  oController.onLoginClick   });		
+		
+		var panelLogin = sap.ui.commons.Panel("idLoginPanel", {
+			content : [fldLoginText, fldLoginName, fldPwdText, fldPwd, btnLogin]
+		});		
+		
+		return new sap.m.Page({
+			title: "Login",
+			content: [panelLogin]
 		});
 	}
 

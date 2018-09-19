@@ -9,6 +9,31 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 //
 //	},
 
+    onLoginClick : function() {
+    	const Users = { "test": "test", "new" : "new"};
+    	
+    	oLogin 	= sap.ui.getCore().byId("idLoginName").getValue();
+    	oPwd 	= sap.ui.getCore().byId("idPwdField").getValue();
+    	
+    	debugger;
+    	
+    	const keys = Object.keys(Users);
+    	index = keys.indexOf(oLogin);
+    	if (index != -1 ){
+        	const values = Object.values(Users);
+    		if ( values.indexOf(oPwd) == index ) {
+        		oSplitApp.addMasterPage(oMenu);
+        		oSplitApp.setInitialMaster("idMenu1");        		
+        		oSplitApp.toDetail("idRegTest1");
+        		oSplitApp.setMode(sap.m.SplitAppMode.ShowHideMode)
+    		} else {
+        		sap.m.MessageToast.show("Login failed");    		    			
+    		}    			
+    	} else {
+    		sap.m.MessageToast.show("Login failed");    		
+    	}   		
+    },		
+
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 * (NOT before the first rendering! onInit() is used for that one!).
