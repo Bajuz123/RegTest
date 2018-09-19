@@ -35,7 +35,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		
 		var btnUpdXml = new sap.m.Button("idBtnUpdXML", {
 			text : "Upload XML",
-			icon : "sap-icon://search",
+			icon : "sap-icon://upload",
 		    press:   function(oEvent){oController.onOpenDialog(oEvent) } });	
 
 		var fieldName = new sap.m.Input("fldName");
