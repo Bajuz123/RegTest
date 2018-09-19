@@ -17,23 +17,20 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 //		alert(" Neu Datei xxx");
 		
 		//read view fields
-		var oList = {};
-		var oEntry = {};
-	//	oEntry.Name = document.getElementById("fldName");
-		oList = this.getView().byId("fldName").
-		oEntry.Name = oList.getText().
-	//	oEntry.Name = document.getById("fldName").getText();
-	//	oEntry.XML  = document.getById("areaXML").getText();
-	 // MockUp	
-	//	oEntry.Name = "RegTest1";
-		oEntry.XML = "Xmlxml";
-	//	var oModel = sap.ui.getCore().getModel();
-		//entity - do ktorej idu precitane data zapisane na ui
-		jQuery.sap.require("sap.ui.commons.MessageBox");
-		debugger;
-		var oModel = this.getModel();
+		var oName = {};
+		var oArea = {};
+		var oEntry = {};		
 		
-		oModel.create("/REG_TEST_SET", oEntry);
+//escape the texts first!!! sap.ui functionality
+		oName = this.getView().byId("fldName");
+		oEntry.Name = oName.getText();
+		oArea = this.getView().byId("areaXML");
+		oEntry.XML = oArea.getText();
+//		jQuery.sap.require("sap.ui.commons.MessageBox");
+//		debugger;
+		var oModelRegTest = this.getModel();
+		
+		oModelRegTest.create("/REG_TEST_SET", oEntry);
 	},
 	getUrl : function(sUrl) {
 		if (sUrl == "")
@@ -43,7 +40,21 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		} else {
 			return sUrl;
 		}
-	}
+	},
+	
+    onRunClick : function() {
+//		update/insert
+//    	start web service
+    },		
+
+    onPlaceholderClick : function() {
+    //switch tables	
+    },		
+
+    onCheckSetClick : function() {
+        //switch tables	    	
+    }		
+		
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 * (NOT before the first rendering! onInit() is used for that one!).

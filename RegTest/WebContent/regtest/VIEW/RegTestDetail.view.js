@@ -19,14 +19,75 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			text : "Add Datei",
 			icon : "sap-icon://add",
 		    press:  oController.onAddClick   });		
-		
+
+		var btnRun = sap.m.Button("btnRun", {
+			text : "Run RegTest",
+//			icon : "sap-icon://run",
+		    press:  oController.onRunClick   });		
+
+		var btnPlace = sap.m.Button("btnPlace", {
+			text : "Placeholders",
+//			icon : "sap-icon://run",
+		    press:  oController.onPlaceholderClick   });		
+
+		var btnCheckSet = sap.m.Button("btnPlace", {
+			text : "CheckSets",
+//			icon : "sap-icon://run",
+		    press:  oController.onCheckSetClick   });		
+
 		var fieldName = sap.m.Input("fldName");
 		var areaXML   = sap.m.TextArea("areaXML");
+		
+		var oPlaceTable = new sap.ui.table.Table({
+			tableID : "idPlaceTable",
+			visibleRowCount : 20,
+			selectionMode: sap.ui.table.SelectionMode.Single,
+			editable : true
+		});
+		
+		oPlaceTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Placeholder"}),
+//			template: new sap.ui.commons.TextField().bindProperty("value","Placeholder"),
+			visible: true
+		} ));
+
+		oPlaceTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Replace with"}),
+//			template: new sap.ui.commons.TextField().bindProperty("value","Replace with"),
+			visible: true
+		} ));
+
+		var oCheckTable = new sap.ui.table.Table({
+			tableID : "idCheckTable",
+			visibleRowCount : 20,
+			selectionMode: sap.ui.table.SelectionMode.Single,
+			editable : true
+		});
+		
+		oCheckTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Name"}),
+//			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
+			visible: true
+		} ));
+
+		oCheckTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Implementation Class"}),
+//			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
+			visible: true
+		} ));
+		
+		var panelRegDetail = sap.m.Panel("idPanelRegDetail", {
+			content : [btnAdd, btnRun, btnPlace, btnSet, fieldName, areaXML]
+		});		
+
+		var panelRelated = sap.m.Panel("idListRelated", {
+			content : [oPlaceTable]
+		});		
 		
 		return new sap.m.Page({
 			title: "RegTest Detail",
 			content: [
-			  btnAdd, fieldName, areaXML
+			  panelRegDetail, panelRelated 
 			]
 		});
 	}
