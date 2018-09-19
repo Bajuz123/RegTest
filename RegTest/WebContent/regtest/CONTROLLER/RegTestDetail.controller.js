@@ -46,7 +46,47 @@ debugger;
 
     onCheckSetClick : function() {
         //switch tables	    	
-    }		
+    },
+	 onClick: function () {
+		 var f = new sap.ui.unified.FileUploader({ 
+	          uploadUrl : "",
+	          /* buttonText : "Upload",   */
+	          fileType : "xml",  
+	          maximumFileSize : 1,
+	          /*  buttonOnly : true,*/
+	          /*  icon : "sap-icon://upload",*/
+	          change : function(e){
+	          var file = e.getParameter("files") && e.getParameter("files")[0];
+	           if(file && window.FileReader){  
+	              var reader = new FileReader();  
+	              var that = this;  
+	              reader.onload = function(evn) {  
+	                var strXML= evn.target.result; //string in CSV 
+	                  alert(strXML);
+	                };
+	              reader.readAsText(file);  
+	            }
+	            }
+	        });
+			
+	 },
+	 onOpenDialog : function () {
+         this._getDialog().open();
+      },
+	onCloseDialog : function () {
+        this._getDialog().close();
+     },
+     _getDialog : function () {
+         // create dialog lazily
+         if (!this._oDialog) {
+            // create dialog via fragment factory
+            this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.addDialog", this);
+            // connect dialog to view (models, lifecycle)
+            this.getView().addDependent(this._oDialog);
+         }
+         return this._oDialog;
+      }
+	
 		
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

@@ -31,7 +31,12 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		var btnCheckSet = new sap.m.Button("btnSet", {
 			text : "CheckSets",
 //			icon : "sap-icon://run",
-		    press:  oController.onCheckSetClick   });		
+		    press:  oController.onCheckSetClick   });	
+		
+		var btnUpdXml = new sap.m.Button("idBtnUpdXML", {
+			text : "Upload XML",
+			icon : "sap-icon://search",
+		    press:   function(oEvent){oController.onOpenDialog(oEvent) } });	
 
 		var fieldName = new sap.m.Input("fldName");
 		var areaXML   = new sap.m.TextArea("areaXML");
@@ -76,7 +81,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 */		
 		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
 			content : [
-			           btnAdd, btnRun, fieldName, areaXML, btnRegPlace, btnCheckSet
+			           btnAdd, btnRun, fieldName, areaXML, btnRegPlace, btnCheckSet , btnUpdXml
 			           ]
 		});		
 
