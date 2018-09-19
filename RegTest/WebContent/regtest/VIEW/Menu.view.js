@@ -14,29 +14,22 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 	*/ 
 	createContent : function(oController) {
 		var oList = new sap.m.List({
-			id : "listId",
+			id : "idMenuList",
 			mode : sap.m.ListMode.SingleSelect,
 			select: function(){
-				oController.itemSelected();
+				oController.itemSelected(oList);
 			}
 		});
-		var oItem = new sap.m.ObjectListItem({
-			id: "sList",
+		var oItem1 = new sap.m.ObjectListItem({
+			id: "sItem1",
 			title: "Regresionstest"
 		});
-		oItem.s
-		var oItem1 = new sap.m.ObjectListItem({
-			id: "sList1",
+		var oItem2 = new sap.m.ObjectListItem({
+			id: "sItem2",
 			title: "Prufungsset"
 		});
-/*		var oItem2 = new sap.m.ObjectListItem({
-			id: "sList2",
-			title: "Placeholder"
-		});
-*/		
-		oList.addItem(oItem);
 		oList.addItem(oItem1);
-//		oList.addItem(oItem2);
+		oList.addItem(oItem2);
  		return new sap.m.Page({
 			title: "",
 			content: [ oList

@@ -19,11 +19,13 @@
 
 				var oPageLogin 		= sap.ui.view({id:"idLogin", viewName:"regtest.VIEW.Login", type:sap.ui.core.mvc.ViewType.JS});
         		var oDetailRegTest 	= sap.ui.view({id:"idRegTest1", viewName:"regtest.VIEW.RegTest", type:sap.ui.core.mvc.ViewType.JS});
+        		var oDetailCheckSet	= sap.ui.view({id:"idCheckSet1", viewName:"regtest.VIEW.CheckSet", type:sap.ui.core.mvc.ViewType.JS});
         		var oMenu 			= sap.ui.view({id:"idMenu1", viewName:"regtest.VIEW.Menu", type:sap.ui.core.mvc.ViewType.JS});
 
         		oSplitApp.setMode(sap.m.SplitAppMode.HideMode)
         		oSplitApp.addDetailPage(oPageLogin);
         		oSplitApp.addDetailPage(oDetailRegTest);
+        		oSplitApp.addDetailPage(oDetailCheckSet);
         		
         		oSplitApp.setInitialDetail("idLogin");
         		oSplitApp.placeAt("content");        		

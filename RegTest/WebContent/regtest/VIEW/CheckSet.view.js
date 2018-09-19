@@ -5,7 +5,7 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 	* @memberOf regtest.CheckSet
 	*/ 
 	getControllerName : function() {
-		return "regtest.VIEW.CheckSet";
+		return "regtest.CONTROLLER.CheckSet";
 	},
 
 	/** Is initially called once after the Controller has been instantiated. It is the place where the UI is constructed. 
@@ -34,7 +34,7 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 
 		oTable.bindRows("/REG_CHECK_SET");
 
-		var panel = sap.m.Panel("idMainPanelChck", {
+		var panel = new sap.m.Panel("idMainPanelChck", {
 			content : [oTable]
 		});		
 		

@@ -8,7 +8,15 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 //	onInit: function() {
 //
 //	},
-
+	itemSelected: function(oList) {
+		debugger;
+		var name = oList.getSelectedItem().getId();
+		if (oList.getSelectedItem().getId() == "sItem1") {
+    		oSplitApp.toDetail("idRegTest1");
+		} else {			
+    		oSplitApp.toDetail("idCheckSet1");
+		}
+	}
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 * (NOT before the first rendering! onInit() is used for that one!).
