@@ -14,15 +14,12 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 	},
 
 	onAddClick: function() {	
-		var oName = {};
-		var oArea = {};
 		var oEntry = {};		
 		
 //escape the texts first!!! sap.ui functionality
-		oName = this.getView().byId("fldName");
-		oEntry.Name = oName.getText();
-		oArea = this.getView().byId("areaXML");
-		oEntry.XML = oArea.getText();
+
+		oEntry.Name = sap.ui.getCore().byId("fldName").getValue();
+		oEntry.XML = sap.ui.getCore().byId("areaXML").getValue();
 //		jQuery.sap.require("sap.ui.commons.MessageBox");
 //		debugger;
 		var oModelRegTest = this.getModel();
