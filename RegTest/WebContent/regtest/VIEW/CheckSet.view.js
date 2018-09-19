@@ -41,7 +41,7 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 		return new sap.m.Page({
 			title: "Prufung-Sets",
 			content: [
-			
+			  panel
 			]
 		});
 	}
