@@ -1,3 +1,5 @@
+RegTestDetail.view.js
+
 sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 
 	/** Specifies the Controller belonging to this View. 
@@ -12,16 +14,11 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 	* Since the Controller is given to this method, its event handlers can be attached right away. 
 	* @memberOf regtest.RegTestDetail
 	*/ 
-	createContent : function(oController) {
-//panel 
-//		Input
-//		TextView
-		//Button "Add" press="onAddClick"
-		
+	createContent : function(oController) {	
 		var btnAdd = sap.m.Button("btnAdd", {
-			
-//			press = "onAddClick"
-		});		
+			text : "Add Datei",
+			icon : "sap-icon://add",
+		    press:  oController.onAddClick   });		
 		
 		var fieldName = sap.m.Input("fldName");
 		var areaXML   = sap.m.TextArea("areaXML");
