@@ -5,9 +5,22 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf regtest.CheckSet
 */
-//	onInit: function() {
-//
-//	},
+	onInit: function() {
+		//SAP Data
+		  var oModel = new sap.ui.model.odata.ODataModel(this
+		  .getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma", "palipali89"); 
+		  this.getView().setModel(oModel);
+	},
+	
+	getUrl : function(sUrl) {
+		if (sUrl == "")
+			return sUrl;
+		if (window.location.hostname == "localhost") {
+			return "proxy" + sUrl;
+		} else {
+			return sUrl;
+		}
+	},
 
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

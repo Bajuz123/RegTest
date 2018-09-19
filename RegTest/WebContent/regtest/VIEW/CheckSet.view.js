@@ -13,12 +13,36 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 	* @memberOf regtest.CheckSet
 	*/ 
 	createContent : function(oController) {
- 		return new sap.m.Page({
+		var oTable = new sap.ui.table.Table({
+			tableID : "idCheckSet",
+			visibleRowCount : 20,
+			selectionMode: sap.ui.table.SelectionMode.Single,
+			editable : true
+		});
+		
+		oTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Name"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
+			visible: true
+		} ))
+
+		oTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Implementation class"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","Implementation class"),
+			visible: true
+		} ))
+
+		oTable.bindRows("/REG_CHECK_SET");
+
+		var panel = sap.m.Panel("idMainPanelChck", {
+			content : [oTable]
+		});		
+		
+		return new sap.m.Page({
 			title: "Prufung-Sets",
 			content: [
 			
 			]
 		});
 	}
-
 });
