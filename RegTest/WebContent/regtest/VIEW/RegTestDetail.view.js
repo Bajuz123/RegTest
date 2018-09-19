@@ -1,5 +1,3 @@
-RegTestDetail.view.js
-
 sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 
 	/** Specifies the Controller belonging to this View. 
@@ -15,30 +13,30 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 	* @memberOf regtest.RegTestDetail
 	*/ 
 	createContent : function(oController) {	
-		var btnAdd = sap.m.Button("btnAdd", {
+		var btnAdd = new sap.m.Button("btnAdd", {
 			text : "Add Datei",
-			icon : "sap-icon://add",
+//			icon : "sap-icon://add",
 		    press:  oController.onAddClick   });		
 
-		var btnRun = sap.m.Button("btnRun", {
+		var btnRun = new sap.m.Button("btnRun", {
 			text : "Run RegTest",
 //			icon : "sap-icon://run",
 		    press:  oController.onRunClick   });		
 
-		var btnPlace = sap.m.Button("btnPlace", {
+		var btnRegPlace = new sap.m.Button("btnRegPlace", {
 			text : "Placeholders",
 //			icon : "sap-icon://run",
 		    press:  oController.onPlaceholderClick   });		
 
-		var btnCheckSet = sap.m.Button("btnPlace", {
+		var btnCheckSet = new sap.m.Button("btnSet", {
 			text : "CheckSets",
 //			icon : "sap-icon://run",
 		    press:  oController.onCheckSetClick   });		
 
-		var fieldName = sap.m.Input("fldName");
-		var areaXML   = sap.m.TextArea("areaXML");
+		var fieldName = new sap.m.Input("fldName");
+		var areaXML   = new sap.m.TextArea("areaXML");
 		
-		var oPlaceTable = new sap.ui.table.Table({
+/*		var oPlaceTable = new sap.ui.table.Table({
 			tableID : "idPlaceTable",
 			visibleRowCount : 20,
 			selectionMode: sap.ui.table.SelectionMode.Single,
@@ -75,13 +73,17 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 //			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
 			visible: true
 		} ));
-		
-		var panelRegDetail = sap.m.Panel("idPanelRegDetail", {
-			content : [btnAdd, btnRun, btnPlace, btnSet, fieldName, areaXML]
+*/		
+		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
+			content : [
+			           btnAdd, btnRun, fieldName, areaXML, btnRegPlace, btnCheckSet
+			           ]
 		});		
 
-		var panelRelated = sap.m.Panel("idListRelated", {
-			content : [oPlaceTable]
+		var panelRelated = new sap.m.Panel("idListRelated", {
+			content : [
+			           // oPlaceTable
+			           ]
 		});		
 		
 		return new sap.m.Page({

@@ -9,7 +9,6 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 //
 //	},
 	itemSelected: function(oList) {
-		debugger;
 		var name = oList.getSelectedItem().getId();
 		if (oList.getSelectedItem().getId() == "sItem1") {
     		oSplitApp.toDetail("idRegTest1");

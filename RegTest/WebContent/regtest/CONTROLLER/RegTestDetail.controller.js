@@ -1,5 +1,3 @@
-TegTestDetail.controller.js
-
 sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 
 /**
@@ -8,23 +6,24 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 * @memberOf regtest.RegTestDetail
 */
 	onInit: function() {
-		  var oModel = new sap.ui.model.odata.ODataModel(this
+/*		  var oModel = new sap.ui.model.odata.ODataModel(this
 				  .getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "jbreza", "majka123"); 
 				  this.getView().setModel(oModel);
-	},
+*/	},
 
 	onAddClick: function() {	
 		var oEntry = {};		
 		
 //escape the texts first!!! sap.ui functionality
-
+debugger;
 		oEntry.Name = sap.ui.getCore().byId("fldName").getValue();
 		oEntry.XML = sap.ui.getCore().byId("areaXML").getValue();
-//		jQuery.sap.require("sap.ui.commons.MessageBox");
-//		debugger;
-		var oModelRegTest = this.getModel();
+		var oModelRegTest = sap.ui.getCore().getModel();
+//		var oModelRegTest = this.getModel();
 		
 		oModelRegTest.create("/REG_TEST_SET", oEntry);
+		sap.m.MessageToast.show("Add successfull");
+		oSplitApp.toDetail("idRegTest1");		
 	},
 	getUrl : function(sUrl) {
 		if (sUrl == "")

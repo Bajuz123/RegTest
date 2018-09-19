@@ -36,5 +36,4 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 			]
 		});
 	}
-
 });

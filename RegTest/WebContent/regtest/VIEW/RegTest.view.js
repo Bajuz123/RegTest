@@ -24,6 +24,7 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			visibleRowCount : 20,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			editable : true
+			
 		});
 		
 		oTable.addColumn(new sap.ui.table.Column({
@@ -40,8 +41,20 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 
 		oTable.bindRows("/REG_TEST_SET");
 
+		var btnAddReg = new sap.m.Button("idBtnAddReg", {
+			text : "+",
+		    press:  oController.onAddRegClick   });		
+
+		var btnDelReg = new sap.m.Button("idBtnDelReg", {
+			text : "-",
+		    press:  oController.onDelRegClick   });		
+
+		var btnEditReg = new sap.m.Button("idBtnEditReg", {
+			text : "=>",
+		    press:  oController.onEditRegClick});		
+
 		var panel = sap.m.Panel("idMainPanel", {
-			content : [oTable]
+			content : [btnAddReg, btnDelReg, btnEditReg, oTable]
 		});		
 		
 		return new sap.m.Page({

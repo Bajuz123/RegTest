@@ -11,11 +11,14 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 
     onLoginClick : function() {
     	const Users = { "test": "test", "new" : "new"};
-    	
+
+/*
+    	var oUserModel = new sap.ui.model.json.JSONModel();
+    	oUserModel.loadData("regtest/JSON/Users.json");
+    	var jUser = oUserModel.parseJSON();
+*/    	
     	oLogin 	= sap.ui.getCore().byId("idLoginName").getValue();
     	oPwd 	= sap.ui.getCore().byId("idPwdField").getValue();
-    	
-    	debugger;
     	
     	const keys = Object.keys(Users);
     	index = keys.indexOf(oLogin);

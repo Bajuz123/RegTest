@@ -1,0 +1,8 @@
+{ 
+  "Users" : [
+    {
+      "Login" : "test", 
+      "Pwd"  : "test" 
+    }
+  ]
+}

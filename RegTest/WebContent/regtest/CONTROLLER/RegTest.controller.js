@@ -16,8 +16,9 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	
 		//SAP Data
 		  var oModel = new sap.ui.model.odata.ODataModel(this
-		  .getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma", "palipali89"); 
-		  this.getView().setModel(oModel);
+		  .getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma", "palipali89");
+		  sap.ui.getCore().setModel(oModel);
+	//	  this.getView().setModel(oModel);
 	},
 	
 	getUrl : function(sUrl) {
@@ -29,6 +30,19 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			return sUrl;
 		}
 	},
+	
+	onAddRegClick : function() {
+		oSplitApp.toDetail("idRegTestDetail1");		
+	},		
+
+	onDelRegClick : function() {
+		
+	},		
+
+	onEditRegClick : function(oTable) {
+		
+	}		
+	
 /**
  * Similar to onAfterRendering, but this hook is invoked before the controller's
  * View is re-rendered (NOT before the first rendering! onInit() is used for
