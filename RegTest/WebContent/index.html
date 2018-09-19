@@ -16,13 +16,13 @@
 				sap.ui.localResources("regtest");
 				var oSplitApp = new sap.m.SplitApp("appId", {});
 				
-				var oDetail = sap.ui.view({id:"idMain1", viewName:"regtest.VIEW.Main", type:sap.ui.core.mvc.ViewType.JS});
+				var oDetail = sap.ui.view({id:"idRegTest1", viewName:"regtest.VIEW.RegTest", type:sap.ui.core.mvc.ViewType.JS});
 				var oMenu = sap.ui.view({id:"idMenu1", viewName:"regtest.VIEW.Menu", type:sap.ui.core.mvc.ViewType.JS});
 				
 				oSplitApp.addDetailPage(oDetail);
 				oSplitApp.addMasterPage(oMenu);
 				
-				oSplitApp.setInitialDetail("idMain1");
+				oSplitApp.setInitialDetail("idRegTest1");
 				oSplitApp.setInitialMaster("idMenu1");
 				oSplitApp.placeAt("content");
 		</script>

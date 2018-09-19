@@ -29,16 +29,16 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 			id: "sList1",
 			title: "Prufungsset"
 		});
-		var oItem2 = new sap.m.ObjectListItem({
+/*		var oItem2 = new sap.m.ObjectListItem({
 			id: "sList2",
 			title: "Placeholder"
 		});
-		
+*/		
 		oList.addItem(oItem);
 		oList.addItem(oItem1);
-		oList.addItem(oItem2);
+//		oList.addItem(oItem2);
  		return new sap.m.Page({
-			title: "Menu",
+			title: "",
 			content: [ oList
 			]
 		});
