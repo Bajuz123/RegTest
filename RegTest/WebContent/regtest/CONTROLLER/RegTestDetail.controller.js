@@ -37,29 +37,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
     onCheckSetClick : function() {
         //switch tables	    	
     },
-	 onClick: function () {
-		 var f = new sap.ui.unified.FileUploader({ 
-	          uploadUrl : "",
-	          /* buttonText : "Upload",   */
-	          fileType : "xml",  
-	          maximumFileSize : 1,
-	          /*  buttonOnly : true,*/
-	          /*  icon : "sap-icon://upload",*/
-	          change : function(e){
-	          var file = e.getParameter("files") && e.getParameter("files")[0];
-	           if(file && window.FileReader){  
-	              var reader = new FileReader();  
-	              var that = this;  
-	              reader.onload = function(evn) {  
-	                var strXML= evn.target.result; //string in CSV 
-	                  alert(strXML);
-	                };
-	              reader.readAsText(file);  
-	            }
-	            }
-	        });
-			
-	 },
+	/* FRAGMENT
 	 onOpenDialog : function () {
          this._getDialog().open();
       },
@@ -75,7 +53,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
             this.getView().addDependent(this._oDialog);
          }
          return this._oDialog;
-      }
+      }*/
 	
 		
 /**
