@@ -44,8 +44,21 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		    press:   function(oEvent){oController.onOpenDialog(oEvent) } });	*/
 
 		var fieldIDReg = new sap.m.Input("fldIDReg", {visible: false});
+
+		var regTestNameLabel = new sap.m.Label("idRegTestNamet", {text: "RegTestName"});
 		var fieldName = new sap.m.Input("fldName");
-		var areaXML   = new sap.m.TextArea("areaXML");
+		var panelRegDetailName = new sap.m.Panel("idPanelRegDetailName", {
+			content : [
+			           regTestNameLabel, fieldName           
+			          ]
+		});
+		
+		var regTestXMLLabel = new sap.m.Label("idRegTestXML", {text: "XML"});
+		var areaXML   = new sap.m.TextArea("areaXML", {
+			width: "100%",
+			height: "200px",
+			growing: true
+		});
 		
 		var fileReader = new sap.ui.unified.FileUploader({ 
 	          uploadUrl : "",
@@ -59,14 +72,21 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 	           if(file && window.FileReader){  
 	              var reader = new FileReader();  
 	              var that = this;  
-	              reader.onload = function(evn) {  
-	                var strCSV= evn.target.result; //string in CSV 
-	                  alert(strCSV);
-	                };
+	              reader.onload = function(evn) { 
+	            	  debugger;
+	                var strCSV= evn.target.result; //string in CSV
+	        		sap.ui.getCore().byId("areaXML").setValue(strCSV);
+                  };
 	              reader.readAsText(file);  
 	            }
 	            }
 	        });
+
+		var panelRegDetailXML = new sap.m.Panel("idPanelRegDetailXML", {
+			content : [
+			           regTestXMLLabel, areaXML, fileReader           
+			          ]
+		});
 		
 /*		var oPlaceTable = new sap.ui.table.Table({
 			tableID : "idPlaceTable",
@@ -108,7 +128,10 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 */		
 		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
 			content : [
-			           btnOKReg, btnBackReg, btnRun, fieldIDReg, fieldName, areaXML, fileReader, btnRegPlace, btnCheckSet 
+			           btnOKReg, btnBackReg, btnRun, fieldIDReg, 
+			           panelRegDetailName,
+			           panelRegDetailXML,
+			           btnRegPlace, btnCheckSet 
 			           ]
 		});		
 

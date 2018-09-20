@@ -38,7 +38,6 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 		if (selIndex != -1) {
 			var rows = oRegTable.getRows();
 			var cells = rows[selIndex].getCells();
-			debugger;
 			var idRegTest = cells[0].getValue();
 			var oModelRegTest = sap.ui.getCore().getModel();
 			oModelRegTest.remove("/REG_TEST_SET(id_reg_test='" + idRegTest
@@ -77,7 +76,6 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 
 	reloadModel : function() {
 		// SAP Data
-		debugger;
 		var oModel = new sap.ui.model.odata.ODataModel(this
 				.getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma",
 				"palipali89");
