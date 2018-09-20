@@ -15,7 +15,6 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		var oEntry = {};		
 		
 //escape the texts first!!! sap.ui functionality
-debugger;
 		oEntry.Name = sap.ui.getCore().byId("fldName").getValue();
 		oEntry.XML = sap.ui.getCore().byId("areaXML").getValue();
 		var oModelRegTest = sap.ui.getCore().getModel();
@@ -24,15 +23,6 @@ debugger;
 		oModelRegTest.create("/REG_TEST_SET", oEntry);
 		sap.m.MessageToast.show("Add successfull");
 		oSplitApp.toDetail("idRegTest1");		
-	},
-	getUrl : function(sUrl) {
-		if (sUrl == "")
-			return sUrl;
-		if (window.location.hostname == "localhost") {
-			return "proxy" + sUrl;
-		} else {
-			return sUrl;
-		}
 	},
 	
     onRunClick : function() {
