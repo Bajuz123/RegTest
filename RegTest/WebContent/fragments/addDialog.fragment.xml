@@ -4,19 +4,22 @@
    xmlns:core="sap.ui.core" >
   
    <Dialog
-      title="Load file from Filesystem">
+      title="Placeholders">
       <beginButton>
          <Button
             text="Close"
             press= "onCloseDialog"/>
       </beginButton>
      <!--  <Text text = "Name : "/>-->
-<Input placeholder="path"/>
-
-         <Button
-           icon ="sap-icon://search"
-            text="Find"
-            press= "onClick"/>
+	 <List id="list"
+			        headerText="Placeholders"
+			  	    items="{ path  : '/DATA/GROUPS',
+			  	             sorter: { path     : 'NAME',
+	                        			descending: false }
+	                   }" >
+		    	<StandardListItem title="{NAME}"
+									           />
+	  </List>
 
    </Dialog>
 </core:FragmentDefinition>
