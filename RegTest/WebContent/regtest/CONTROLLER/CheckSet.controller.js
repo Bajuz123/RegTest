@@ -5,7 +5,8 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf regtest.CheckSet
 */
-//	onInit: function() {
+//	onInit : function() {
+//		this.reloadModel();
 //	},
 	
 	onAddSetClick: function() {

@@ -19,7 +19,7 @@ sap.ui.jsview("regtest.VIEW.Main", {
 	 * @memberOf regtest.Main
 	 */
 	createContent : function(oController) {	
-		var oTable = new sap.ui.table.Table({
+/*		var oTable = new sap.ui.table.Table({
 			tableID : "idRegTest",
 			visibleRowCount : 20,
 			selectionMode: sap.ui.table.SelectionMode.Single,
@@ -43,7 +43,7 @@ sap.ui.jsview("regtest.VIEW.Main", {
 		var panel = sap.m.Panel("idMainPanel", {
 			content : [oTable]
 		});		
-		
+*/		
 		return new sap.m.Page({
 			title : "Autotest",
 			content : [

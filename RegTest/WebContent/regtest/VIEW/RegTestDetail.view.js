@@ -121,7 +121,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			editable : true
 		});
-		
+
 		oCheckTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Check Set"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","id_check_set"),

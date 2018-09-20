@@ -8,25 +8,14 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	 * 
 	 * @memberOf regtest.RegTest
 	 */
-	onInit : function() {
-		this.reloadModel();
-	},
+//	onInit : function() {
+//	},
 	onDblClick : function() {
 	     oTable = sap.ui.getCore().byId('idRegTest');
 	    // oTable.setSelectedIndex(window.selectedIndex);
 	     this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.addDialog",this);
 	     this._oDialog.open();
 	// sap.m.MessageToast.show("ondoubleclick");
-	},
-
-	getUrl : function(sUrl) {
-		if (sUrl == "")
-			return sUrl;
-		if (window.location.hostname == "localhost") {
-			return "proxy" + sUrl;
-		} else {
-			return sUrl;
-		}
 	},
 
 	onAddRegClick : function() {
@@ -51,7 +40,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 					sap.m.MessageToast.show("Delete error");
 				}
 			});
-			this.reloadModel();
+			this.reloadModel(oUser);
 			oSplitApp.toDetail("idRegTest1");
 		} else {
 			sap.m.MessageToast.show("Select a row to delete!");
@@ -75,19 +64,6 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 		}
 	},
 
-	reloadModel : function() {
-		// JSON Data
-/*		
-		  var oModel = new sap.ui.model.json.JSONModel();
-		  oModel.loadData("regtest/JSON/RegTest_DATA.json");
-		  sap.ui.getCore().setModel(oModel);
-*/		 
-		// SAP Data
-		var oModel = new sap.ui.model.odata.ODataModel(this
-				.getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma",
-				"palipali89");
-		sap.ui.getCore().setModel(oModel);
-	},
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the
 	 * controller's View is re-rendered (NOT before the first rendering!
@@ -95,9 +71,9 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	 * 
 	 * @memberOf regtest.RegTest
 	 */
-	onBeforeRendering : function() {
-		this.reloadModel();
-	},
+//	onBeforeRendering : function() {
+//		this.reloadModel();
+//	},
 /**
  * Called when the View has been rendered (so its HTML is part of the document).
  * Post-rendering manipulations of the HTML could be done here. This hook is the
