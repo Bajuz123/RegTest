@@ -44,13 +44,18 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			var rows = oRegTable.getRows();
 			var cells = rows[selIndex].getCells();
 			debugger;
-			var idRegTest =  cells[0].getValue();
+			var idRegTest = cells[0].getValue();
 			var oModelRegTest = sap.ui.getCore().getModel();
-			oModelRegTest.remove("/REG_TEST_SET("+ idRegTest +")", {
-			method: "DELETE"	
+			oModelRegTest.remove("/REG_TEST_SET(" + idRegTest + ")", {
+				method : "DELETE",
+				success : function(data) {
+					sap.m.MessageToast.show("Delete successfull");
+				},
+				error : function(e) {
+					sap.m.MessageToast.show("Delete error");
+				}
 			});
-			sap.m.MessageToast.show("Delete successfull");
-    		oSplitApp.toDetail("idRegTest1");
+			oSplitApp.toDetail("idRegTest1");
 		} else {
 			sap.m.MessageToast.show("Select a row to delete!");
 		}
