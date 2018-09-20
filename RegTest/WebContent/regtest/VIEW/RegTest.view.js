@@ -45,7 +45,9 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			template: new sap.ui.commons.TextField().bindProperty("value","XML"),
 			visible: true
 		} ))
-
+		
+		oRegTable.attachBrowserEvent("dblclick", oController.onDblClick);
+		
 		oRegTable.bindRows("/REG_TEST_SET");
 
 		var btnAddReg = new sap.m.Button("idBtnAddReg", {
