@@ -15,12 +15,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 		 * oModel.loadData("regtest/JSON/RegTest_DATA.json");
 		 * this.getView().setModel(oModel);
 		 */
-
-		// SAP Data
-		var oModel = new sap.ui.model.odata.ODataModel(this
-				.getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma",
-				"palipali89");
-		sap.ui.getCore().setModel(oModel);
+		this.reloadModel();
 	},
 
 	getUrl : function(sUrl) {
@@ -46,7 +41,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			debugger;
 			var idRegTest = cells[0].getValue();
 			var oModelRegTest = sap.ui.getCore().getModel();
-			oModelRegTest.remove("/REG_TEST_SET(id_reg_test='" + idRegTest + "')", {
+			oModelRegTest.remove("/REG_TEST_SET(id_reg_test='" + idRegTest
+					+ "')", {
 				method : "DELETE",
 				success : function(data) {
 					sap.m.MessageToast.show("Delete successfull");
@@ -55,6 +51,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 					sap.m.MessageToast.show("Delete error");
 				}
 			});
+			this.reloadModel();
 			oSplitApp.toDetail("idRegTest1");
 		} else {
 			sap.m.MessageToast.show("Select a row to delete!");
@@ -67,27 +64,35 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 		if (selIndex != -1) {
 			var rows = oRegTable.getRows();
 			var cells = rows[selIndex].getCells();
-			
+
 			sap.ui.getCore().byId("fldIDReg").setValue(cells[0].getValue());
 			sap.ui.getCore().byId("fldName").setValue(cells[1].getValue());
-			sap.ui.getCore().byId("areaXML").setValue(cells[2].getValue());		
-			
+			sap.ui.getCore().byId("areaXML").setValue(cells[2].getValue());
+
 			oSplitApp.toDetail("idRegTestDetail1");
 		} else {
 			sap.m.MessageToast.show("Select a row to edit!");
 		}
-	}
+	},
 
-/**
- * Similar to onAfterRendering, but this hook is invoked before the controller's
- * View is re-rendered (NOT before the first rendering! onInit() is used for
- * that one!).
- * 
- * @memberOf regtest.RegTest
- */
-// onBeforeRendering: function() {
-//
-// },
+	reloadModel : function() {
+		// SAP Data
+		debugger;
+		var oModel = new sap.ui.model.odata.ODataModel(this
+				.getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma",
+				"palipali89");
+		sap.ui.getCore().setModel(oModel);
+	},
+	/**
+	 * Similar to onAfterRendering, but this hook is invoked before the
+	 * controller's View is re-rendered (NOT before the first rendering!
+	 * onInit() is used for that one!).
+	 * 
+	 * @memberOf regtest.RegTest
+	 */
+	onBeforeRendering : function() {
+		this.reloadModel();
+	},
 /**
  * Called when the View has been rendered (so its HTML is part of the document).
  * Post-rendering manipulations of the HTML could be done here. This hook is the
