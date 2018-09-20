@@ -21,6 +21,16 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 			return sUrl;
 		}
 	},
+	onAddSetClick: function() {
+		
+	},
+	onDelSetClick: function() {
+		
+	},
+	onEditSetClick: function() {
+		
+	}
+
 
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

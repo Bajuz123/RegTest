@@ -102,7 +102,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 */		
 		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
 			content : [
-			           btnAdd, btnRun, fieldName, areaXML, btnRegPlace, btnCheckSet , fileReader
+			           btnAdd, btnRun, fieldName, areaXML, fileReader, btnRegPlace, btnCheckSet 
 			           ]
 		});		
 

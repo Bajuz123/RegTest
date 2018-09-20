@@ -22,20 +22,35 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 		
 		oTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Name"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
+			template: new sap.ui.commons.TextField().bindProperty("value","name"),
 			visible: true
 		} ))
 
 		oTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Implementation class"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","Implementation class"),
+			template: new sap.ui.commons.TextField().bindProperty("value","implementation_class"),
 			visible: true
 		} ))
 
-		oTable.bindRows("/REG_CHECK_SET");
+		oTable.bindRows("/REG_CHECK_SET_SET");
+		
+	    var btnAddSet = new sap.m.Button("idBtnAddSet", {
+			text : "+",
+		    press:  oController.onAddSetClick   });		
+
+		var btnDelSet = new sap.m.Button("idBtnDelSet", {
+			text : "-",
+		    press:  oController.onDelSetClick   });		
+
+		var btnEditSet = new sap.m.Button("idBtnEditSet", {
+			text : "=>",
+		    press:  oController.onEditSetClick});	
 
 		var panel = new sap.m.Panel("idMainPanelChck", {
-			content : [oTable]
+			content : [
+			           btnAddSet, btnDelSet, btnEditSet, 
+			           oTable
+			           ]
 		});		
 		
 		return new sap.m.Page({
