@@ -12,9 +12,7 @@
 		</script>
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
 
-		<script>
-				
-//				var page = sap.ui.view({id:"idRegTestDetail1", viewName:"regtest.VIEW.RegTestDetail", type:sap.ui.core.mvc.ViewType.JS});
+		<script>				
 				sap.ui.localResources("regtest");
             	var oSplitApp = new sap.m.SplitApp("appId", {});
 
@@ -22,10 +20,12 @@
         		var oRegTest 		= sap.ui.view({id:"idRegTest1", viewName:"regtest.VIEW.RegTest", type:sap.ui.core.mvc.ViewType.JS});
         		var oCheckSet		= sap.ui.view({id:"idCheckSet1", viewName:"regtest.VIEW.CheckSet", type:sap.ui.core.mvc.ViewType.JS});
         		var oRegTestDetail 	= sap.ui.view({id:"idRegTestDetail1", viewName:"regtest.VIEW.RegTestDetail", type:sap.ui.core.mvc.ViewType.JS});
+        		var oPageLogout  	= sap.ui.view({id:"idLogout", viewName:"regtest.VIEW.Logout", type:sap.ui.core.mvc.ViewType.JS});
         		var oMenu 			= sap.ui.view({id:"idMenu1", viewName:"regtest.VIEW.Menu", type:sap.ui.core.mvc.ViewType.JS});
 
         		oSplitApp.setMode(sap.m.SplitAppMode.HideMode)
         		oSplitApp.addDetailPage(oPageLogin);
+        		oSplitApp.addDetailPage(oPageLogout);
         		oSplitApp.addDetailPage(oRegTest);
         		oSplitApp.addDetailPage(oCheckSet);
         		oSplitApp.addDetailPage(oRegTestDetail);

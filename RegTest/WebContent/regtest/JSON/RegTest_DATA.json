@@ -1,23 +1,75 @@
 { 
   "REG_TEST_SET" : [
     {
+      "id_reg_test" : "1",
       "Name" : "RegTest1", 
       "XML"  : "<xml>" 
     },
     {
+      "id_reg_test" : "2",
       "Name" : "RegTest2", 
       "XML"  : "<xml>" 
     }
-  ]
+  ],
 
   "REG_CHECK_SET_SET" : [
     {
-      "Name" : "Check Set 1", 
-      "Implementation_class"  : "ZCL_FIB_STATE" 
+      "id_check_set" : "1",
+      "name" : "Check Set 1", 
+      "implementation_class"  : "ZCL_FIB_STATE" 
     },
     {
-      "Name" : "Check Set 2", 
-      "Implementation_class"  : "ZCL_MDI_STATE" 
+      "id_check_set" : "2",
+      "name" : "Check Set 2", 
+      "implementation_class"  : "ZCL_MDI_STATE" 
+    }
+  ],
+  
+  "REG_PLACE_SET" : [
+    {
+      "id_reg_test" : "1",
+      "placeholder" : "@BUP_ID_1", 
+      "replace_with"  : "1234567890" 
+    },
+    {
+      "id_reg_test" : "1",
+      "placeholder" : "@BUP_ID_2", 
+      "replace_with"  : "01234567890" 
+    }
+  ],
+  
+    "REG_SET" : [
+    {
+      "id_reg_test" : "1",
+      "id_check_set" : "1", 
+      "running_nr"  : "1" 
+    },
+    {
+      "id_reg_test" : "1",
+      "id_check_set" : "2", 
+      "running_nr"  : "2" 
+    }
+  ],
+  
+    "REG_LOG_SET" : [
+    {
+      "id_reg_log" : "1",
+      "run_id" : "1", 
+      "part_id"  : "1",
+      "msg_id"  : "1",
+      "msg_text"  : "Test Text",
+      "id_placeholder"  : "@test",
+      "id_check_set"    : "1" 
+    },
+    {
+      "id_reg_log" : "2",
+      "run_id" : "1", 
+      "part_id"  : "2",
+      "msg_id"  : "2",
+      "msg_text"  : "Test Text 2",
+      "id_placeholder"  : "@BUP_ID_1",
+      "id_check_set"    : "2" 
     }
   ]
+  
 }

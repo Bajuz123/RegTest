@@ -77,17 +77,17 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 
 	reloadModel : function() {
 		// JSON Data
-		
+/*		
 		  var oModel = new sap.ui.model.json.JSONModel();
 		  oModel.loadData("regtest/JSON/RegTest_DATA.json");
 		  sap.ui.getCore().setModel(oModel);
-		 
+*/		 
 		// SAP Data
-/*		var oModel = new sap.ui.model.odata.ODataModel(this
+		var oModel = new sap.ui.model.odata.ODataModel(this
 				.getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma",
 				"palipali89");
 		sap.ui.getCore().setModel(oModel);
-*/	},
+	},
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the
 	 * controller's View is re-rendered (NOT before the first rendering!

@@ -94,7 +94,13 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			editable : true
 		});
-		
+
+		oPlaceTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "ID"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
+			visible: true
+		} ));
+
 		oPlaceTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Placeholder"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","placeholder"),
