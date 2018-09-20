@@ -46,7 +46,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			debugger;
 			var idRegTest = cells[0].getValue();
 			var oModelRegTest = sap.ui.getCore().getModel();
-			oModelRegTest.remove("/REG_TEST_SET(" + idRegTest + ")", {
+			oModelRegTest.remove("/REG_TEST_SET(id_reg_test='" + idRegTest + "')", {
 				method : "DELETE",
 				success : function(data) {
 					sap.m.MessageToast.show("Delete successfull");
