@@ -33,13 +33,34 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 //			icon : "sap-icon://run",
 		    press:  oController.onCheckSetClick   });	
 		
-		var btnUpdXml = new sap.m.Button("idBtnUpdXML", {
+		/*var btnUpdXml = new sap.m.Button("idBtnUpdXML", {
 			text : "Upload XML",
 			icon : "sap-icon://upload",
-		    press:   function(oEvent){oController.onOpenDialog(oEvent) } });	
+		    press:   function(oEvent){oController.onOpenDialog(oEvent) } });	*/
 
 		var fieldName = new sap.m.Input("fldName");
 		var areaXML   = new sap.m.TextArea("areaXML");
+		
+		var fileReader = new sap.ui.unified.FileUploader({ 
+	          uploadUrl : "",
+	          buttonText : "Upload XML",  
+	          fileType : "xml",  
+	          maximumFileSize : 1,
+	          buttonOnly : true,
+	          icon : "sap-icon://upload",
+	          change : function(e){
+	          var file = e.getParameter("files") && e.getParameter("files")[0];
+	           if(file && window.FileReader){  
+	              var reader = new FileReader();  
+	              var that = this;  
+	              reader.onload = function(evn) {  
+	                var strCSV= evn.target.result; //string in CSV 
+	                  alert(strCSV);
+	                };
+	              reader.readAsText(file);  
+	            }
+	            }
+	        });
 		
 /*		var oPlaceTable = new sap.ui.table.Table({
 			tableID : "idPlaceTable",
@@ -81,7 +102,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 */		
 		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
 			content : [
-			           btnAdd, btnRun, fieldName, areaXML, btnRegPlace, btnCheckSet , btnUpdXml
+			           btnAdd, btnRun, fieldName, areaXML, btnRegPlace, btnCheckSet , fileReader
 			           ]
 		});		
 
