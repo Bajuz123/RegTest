@@ -51,7 +51,7 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 
 		var btnEditReg = new sap.m.Button("idBtnEditReg", {
 			text : "=>",
-		    press:  oController.onEditRegClick});		
+		    press:  oController.onEditRegClick});	
 
 		var panel = sap.m.Panel("idMainPanel", {
 			content : [btnAddReg, btnDelReg, btnEditReg, oTable]
