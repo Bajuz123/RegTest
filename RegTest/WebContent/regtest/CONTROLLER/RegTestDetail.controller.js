@@ -6,10 +6,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 * @memberOf regtest.RegTestDetail
 */
 	onInit: function() {
-/*		  var oModel = new sap.ui.model.odata.ODataModel(this
-				  .getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "jbreza", "majka123"); 
-				  this.getView().setModel(oModel);
-*/	},
+	},
 
 	onBackRegClick: function() {
 		oSplitApp.toDetail("idRegTest1");				
@@ -24,13 +21,13 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		oEntry.XML = sap.ui.getCore().byId("areaXML").getValue();
 		var oModelRegTest = sap.ui.getCore().getModel();
 
-		debugger;
 		if ( oEntry.id_reg_test == '' ) { //insert
 			oModelRegTest.create("/REG_TEST_SET", oEntry);
 			sap.m.MessageToast.show("Add successfull");
 			oSplitApp.toDetail("idRegTest1");		
 		} else { //update
-			oModelRegTest.update("/REG_TEST_SET", oEntry, {
+			debugger;			
+			oModelRegTest.update("/REG_TEST_SET(id_reg_test='" + oEntry.id_reg_test + "')", oEntry, {
 				success : function(data) {
 					sap.m.MessageToast.show("Update successfull");
 				},
@@ -38,6 +35,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 					sap.m.MessageToast.show("Update error");
 				}				
 			});
+			oModelRegTest.refresh();
 			oSplitApp.toDetail("idRegTest1");		
 		}
 		sap.ui.getCore().byId("fldIDReg").setValue("");		
@@ -49,11 +47,13 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
     },		
 
     onPlaceholderClick : function() {
-    //switch tables	
+		sap.ui.getCore().byId("idListRelatedCheck").setVisible(false);
+		sap.ui.getCore().byId("idListRelatedPlace").setVisible(true);
     },		
 
     onCheckSetClick : function() {
-        //switch tables	    	
+		sap.ui.getCore().byId("idListRelatedCheck").setVisible(true);
+		sap.ui.getCore().byId("idListRelatedPlace").setVisible(false);
     },
 	/* FRAGMENT
 	 onOpenDialog : function () {

@@ -38,11 +38,6 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 //			icon : "sap-icon://run",
 		    press:  oController.onCheckSetClick   });	
 		
-		/*var btnUpdXml = new sap.m.Button("idBtnUpdXML", {
-			text : "Upload XML",
-			icon : "sap-icon://upload",
-		    press:   function(oEvent){oController.onOpenDialog(oEvent) } });	*/
-
 		var fieldIDReg = new sap.m.Input("fldIDReg", {visible: false});
 
 		var regTestNameLabel = new sap.m.Label("idRegTestNamet", {text: "RegTestName"});
@@ -56,7 +51,6 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		var regTestXMLLabel = new sap.m.Label("idRegTestXML", {text: "XML"});
 		var areaXML   = new sap.m.TextArea("areaXML", {
 			width: "100%",
-			height: "200px",
 			growing: true
 		});
 		
@@ -84,69 +78,88 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 
 		var panelRegDetailXML = new sap.m.Panel("idPanelRegDetailXML", {
 			content : [
-			           regTestXMLLabel, areaXML, fileReader           
+			           regTestXMLLabel, areaXML           
 			          ]
 		});
-		
-/*		var oPlaceTable = new sap.ui.table.Table({
+
+		var panelRegDetailXMLButton = new sap.m.Panel("idPanelRegDetailXMLButton", {
+			content : [
+			           fileReader           
+			          ]
+		});
+
+		var oPlaceTable = new sap.ui.table.Table({
 			tableID : "idPlaceTable",
-			visibleRowCount : 20,
+			visibleRowCount : 5,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			editable : true
 		});
 		
 		oPlaceTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Placeholder"}),
-//			template: new sap.ui.commons.TextField().bindProperty("value","Placeholder"),
+			template: new sap.ui.commons.TextField().bindProperty("value","placeholder"),
 			visible: true
 		} ));
 
 		oPlaceTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Replace with"}),
-//			template: new sap.ui.commons.TextField().bindProperty("value","Replace with"),
+			template: new sap.ui.commons.TextField().bindProperty("value","replace_with"),
 			visible: true
 		} ));
 
+		oPlaceTable.bindRows("/REG_PLACE_SET");
+
 		var oCheckTable = new sap.ui.table.Table({
 			tableID : "idCheckTable",
-			visibleRowCount : 20,
+			visibleRowCount : 5,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			editable : true
 		});
 		
 		oCheckTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Name"}),
-//			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
+			label: new sap.ui.commons.Label({text: "Check Set"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","id_check_set"),
 			visible: true
 		} ));
 
 		oCheckTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Implementation Class"}),
-//			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
+			label: new sap.ui.commons.Label({text: "Running nr"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","running_nr"),
 			visible: true
 		} ));
-*/		
+
+		oCheckTable.bindRows("/REG_SET");
+
 		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
 			content : [
 			           btnOKReg, btnBackReg, btnRun, fieldIDReg, 
 			           panelRegDetailName,
 			           panelRegDetailXML,
+			           panelRegDetailXMLButton,
 			           btnRegPlace, btnCheckSet 
 			           ]
 		});		
 
-		var panelRelated = new sap.m.Panel("idListRelated", {
+		oCheckTable.visible = false;
+		var panelRelatedPlace = new sap.m.Panel("idListRelatedPlace", {
 			content : [
-			           // oPlaceTable
+			           oPlaceTable
 			           ]
 		});		
+
+		var panelRelatedCheck = new sap.m.Panel("idListRelatedCheck", {
+			content : [
+			           oCheckTable
+			           ]
+		});		
+
+		sap.ui.getCore().byId("idListRelatedCheck").setVisible(false);
 		
 		return new sap.m.Page({
 			title: "RegTest Detail",
 			content: [
-			  panelRegDetail, panelRelated 
+			  panelRegDetail, panelRelatedPlace, panelRelatedCheck 
 			]
 		});
 	}
-
 });

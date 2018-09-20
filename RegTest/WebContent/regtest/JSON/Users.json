@@ -2,7 +2,9 @@
   "Users" : [
     {
       "Login" : "test", 
-      "Pwd"  : "test" 
+      "Pwd"  : "test" ,
+      "hd1user": "stoma",
+      "hd1pwd" : "palipali89"
     }
   ]
 }
