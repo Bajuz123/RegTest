@@ -61,8 +61,21 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 		}
 	},
 
-	onEditRegClick : function(oTable) {
+	onEditRegClick : function(oRegTable) {
+		var selIndex = oRegTable.getSelectedIndex();
 
+		if (selIndex != -1) {
+			var rows = oRegTable.getRows();
+			var cells = rows[selIndex].getCells();
+			
+			sap.ui.getCore().byId("fldIDReg").setValue(cells[0].getValue());
+			sap.ui.getCore().byId("fldName").setValue(cells[1].getValue());
+			sap.ui.getCore().byId("areaXML").setValue(cells[2].getValue());		
+			
+			oSplitApp.toDetail("idRegTestDetail1");
+		} else {
+			sap.m.MessageToast.show("Select a row to edit!");
+		}
 	}
 
 /**

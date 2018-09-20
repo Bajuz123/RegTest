@@ -13,10 +13,15 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 	* @memberOf regtest.RegTestDetail
 	*/ 
 	createContent : function(oController) {	
-		var btnAdd = new sap.m.Button("btnAdd", {
-			text : "Add Datei",
+		var btnOKReg = new sap.m.Button("btnOKReg", {
+			text : "OK",
 //			icon : "sap-icon://add",
-		    press:  oController.onAddClick   });		
+		    press:  oController.onOKRegClick   });		
+
+		var btnBackReg = new sap.m.Button("btnBackReg", {
+			text : "Back",
+//			icon : "sap-icon://add",
+		    press:  oController.onBackRegClick   });		
 
 		var btnRun = new sap.m.Button("btnRun", {
 			text : "Run RegTest",
@@ -38,6 +43,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			icon : "sap-icon://upload",
 		    press:   function(oEvent){oController.onOpenDialog(oEvent) } });	*/
 
+		var fieldIDReg = new sap.m.Input("fldIDReg", {visible: false});
 		var fieldName = new sap.m.Input("fldName");
 		var areaXML   = new sap.m.TextArea("areaXML");
 		
@@ -102,7 +108,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 */		
 		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
 			content : [
-			           btnAdd, btnRun, fieldName, areaXML, fileReader, btnRegPlace, btnCheckSet 
+			           btnOKReg, btnBackReg, btnRun, fieldIDReg, fieldName, areaXML, fileReader, btnRegPlace, btnCheckSet 
 			           ]
 		});		
 

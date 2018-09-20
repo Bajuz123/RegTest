@@ -11,18 +11,36 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 				  this.getView().setModel(oModel);
 */	},
 
-	onAddClick: function() {	
+	onBackRegClick: function() {
+		oSplitApp.toDetail("idRegTest1");				
+	},
+	
+	onOKRegClick: function() {
 		var oEntry = {};		
 		
 //escape the texts first!!! sap.ui functionality
+		oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg").getValue();
 		oEntry.Name = sap.ui.getCore().byId("fldName").getValue();
 		oEntry.XML = sap.ui.getCore().byId("areaXML").getValue();
 		var oModelRegTest = sap.ui.getCore().getModel();
-//		var oModelRegTest = this.getModel();
-		
-		oModelRegTest.create("/REG_TEST_SET", oEntry);
-		sap.m.MessageToast.show("Add successfull");
-		oSplitApp.toDetail("idRegTest1");		
+
+		debugger;
+		if ( oEntry.id_reg_test == '' ) { //insert
+			oModelRegTest.create("/REG_TEST_SET", oEntry);
+			sap.m.MessageToast.show("Add successfull");
+			oSplitApp.toDetail("idRegTest1");		
+		} else { //update
+			oModelRegTest.update("/REG_TEST_SET", oEntry, {
+				success : function(data) {
+					sap.m.MessageToast.show("Update successfull");
+				},
+				error : function(e) {
+					sap.m.MessageToast.show("Update error");
+				}				
+			});
+			oSplitApp.toDetail("idRegTest1");		
+		}
+		sap.ui.getCore().byId("fldIDReg").setValue("");		
 	},
 	
     onRunClick : function() {
@@ -79,7 +97,6 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 * @memberOf regtest.RegTestDetail
 */
 //	onExit: function() {
-//
 //	}
 
 });
