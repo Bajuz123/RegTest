@@ -19,7 +19,13 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			editable : true
 		});
-		
+
+		oTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "ID"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","id_check_set"),
+			visible: true
+		} ))
+
 		oTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Name"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","name"),

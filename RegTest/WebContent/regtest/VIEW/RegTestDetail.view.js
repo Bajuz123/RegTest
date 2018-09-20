@@ -130,6 +130,21 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 
 		oCheckTable.bindRows("/REG_SET");
 
+		var btnPlaceAdd = new sap.m.Button("btnPlaceAdd", {
+			text : "+",
+//			icon : "sap-icon://add",
+		    press:  oController.onAddPlaceClick   });		
+
+		var btnPlaceDel = new sap.m.Button("btnPlaceDel", {
+			text : "-",
+//			icon : "sap-icon://add",
+		    press:  oController.onDelPlaceClick   });		
+
+		var btnPlaceEdit = new sap.m.Button("btnPlaceEdit", {
+			text : "=>",
+//			icon : "sap-icon://add",
+		    press:  oController.onEditPlaceClick   });		
+
 		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
 			content : [
 			           btnOKReg, btnBackReg, btnRun, fieldIDReg, 
@@ -143,14 +158,29 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		oCheckTable.visible = false;
 		var panelRelatedPlace = new sap.m.Panel("idListRelatedPlace", {
 			content : [
-			           oPlaceTable
+			           btnPlaceAdd, btnPlaceDel, btnPlaceEdit, oPlaceTable
 			           ]
 		});		
 
+		var btnCheckAdd = new sap.m.Button("btnCheckAdd", {
+			text : "+",
+//			icon : "sap-icon://add",
+		    press:  oController.onAddCheckClick   });		
+
+		var btnCheckDel = new sap.m.Button("btnCheckDel", {
+			text : "-",
+//			icon : "sap-icon://add",
+		    press:  oController.onDelCheckClick   });		
+
+		var btnCheckEdit = new sap.m.Button("btnCheckEdit", {
+			text : "=>",
+//			icon : "sap-icon://add",
+		    press:  oController.onEditCheckClick   });		
+		
 		var panelRelatedCheck = new sap.m.Panel("idListRelatedCheck", {
 			content : [
-			           oCheckTable
-			           ]
+			          btnCheckAdd, btnCheckDel, btnCheckEdit, oCheckTable
+			          ]
 		});		
 
 		sap.ui.getCore().byId("idListRelatedCheck").setVisible(false);

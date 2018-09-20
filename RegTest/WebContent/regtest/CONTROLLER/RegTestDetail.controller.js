@@ -55,6 +55,31 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		sap.ui.getCore().byId("idListRelatedCheck").setVisible(true);
 		sap.ui.getCore().byId("idListRelatedPlace").setVisible(false);
     },
+    
+    onAddCheckClick: function(){
+    	
+    },	
+
+    onDelCheckClick: function() {
+    	
+    },		
+
+    onEditCheckClick: function() {
+    	
+    },		
+
+	onAddPlaceClick: function() {
+		
+	},		
+
+	onDelPlaceClick: function() {
+		
+	},		
+
+	onEditPlaceClick: function() {
+		
+	},		
+
 	/* FRAGMENT
 	 onOpenDialog : function () {
          this._getDialog().open();

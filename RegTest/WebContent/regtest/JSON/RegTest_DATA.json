@@ -9,4 +9,15 @@
       "XML"  : "<xml>" 
     }
   ]
+
+  "REG_CHECK_SET_SET" : [
+    {
+      "Name" : "Check Set 1", 
+      "Implementation_class"  : "ZCL_FIB_STATE" 
+    },
+    {
+      "Name" : "Check Set 2", 
+      "Implementation_class"  : "ZCL_MDI_STATE" 
+    }
+  ]
 }
