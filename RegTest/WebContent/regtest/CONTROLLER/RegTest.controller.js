@@ -1,26 +1,28 @@
 sap.ui.controller("regtest.CONTROLLER.RegTest", {
 
-/**
- * Called when a controller is instantiated and its View controls (if available)
- * are already created. Can be used to modify the View before it is displayed,
- * to bind event handlers and do other one-time initialization.
- * 
- * @memberOf regtest.RegTest
- */
+	/**
+	 * Called when a controller is instantiated and its View controls (if
+	 * available) are already created. Can be used to modify the View before it
+	 * is displayed, to bind event handlers and do other one-time
+	 * initialization.
+	 * 
+	 * @memberOf regtest.RegTest
+	 */
 	onInit : function() {
-		//JSON Data
-/*		var oModel = new sap.ui.model.json.JSONModel();
-		oModel.loadData("regtest/JSON/RegTest_DATA.json");
-		this.getView().setModel(oModel);
-*/
-	
-		//SAP Data
-		  var oModel = new sap.ui.model.odata.ODataModel(this
-		  .getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma", "palipali89");
-		  sap.ui.getCore().setModel(oModel);
-	//	  this.getView().setModel(oModel);
+		// JSON Data
+		/*
+		 * var oModel = new sap.ui.model.json.JSONModel();
+		 * oModel.loadData("regtest/JSON/RegTest_DATA.json");
+		 * this.getView().setModel(oModel);
+		 */
+
+		// SAP Data
+		var oModel = new sap.ui.model.odata.ODataModel(this
+				.getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma",
+				"palipali89");
+		sap.ui.getCore().setModel(oModel);
 	},
-	
+
 	getUrl : function(sUrl) {
 		if (sUrl == "")
 			return sUrl;
@@ -30,19 +32,34 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			return sUrl;
 		}
 	},
-	
-	onAddRegClick : function() {
-		oSplitApp.toDetail("idRegTestDetail1");		
-	},		
 
-	onDelRegClick : function() {
-		
-	},		
+	onAddRegClick : function() {
+		oSplitApp.toDetail("idRegTestDetail1");
+	},
+
+	onDelRegClick : function(oRegTable) {
+		var selIndex = oRegTable.getSelectedIndex();
+
+		if (selIndex != -1) {
+			var rows = oRegTable.getRows();
+			var cells = rows[selIndex].getCells();
+			debugger;
+			var idRegTest =  cells[0].getValue();
+			var oModelRegTest = sap.ui.getCore().getModel();
+			oModelRegTest.remove("/REG_TEST_SET("+ idRegTest +")", {
+			method: "DELETE"	
+			});
+			sap.m.MessageToast.show("Delete successfull");
+    		oSplitApp.toDetail("idRegTest1");
+		} else {
+			sap.m.MessageToast.show("Select a row to delete!");
+		}
+	},
 
 	onEditRegClick : function(oTable) {
-		
-	}		
-	
+
+	}
+
 /**
  * Similar to onAfterRendering, but this hook is invoked before the controller's
  * View is re-rendered (NOT before the first rendering! onInit() is used for

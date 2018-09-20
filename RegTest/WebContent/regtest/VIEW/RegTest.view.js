@@ -19,42 +19,54 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 	 * @memberOf regtest.RegTest
 	 */
 	createContent : function(oController) {
-		var oTable = new sap.ui.table.Table({
+		var oRegTable = new sap.ui.table.Table({
 			tableID : "idRegTest",
 			visibleRowCount : 20,
 			selectionMode: sap.ui.table.SelectionMode.Single,
-			editable : true
+			selectionBehavior: sap.ui.table.SelectionBehavior.Row,
+			editable : false
 			
 		});
 		
-		oTable.addColumn(new sap.ui.table.Column({
+		oRegTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "ID"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
+			visible: true
+		} ))
+
+		oRegTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Name"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
 			visible: true
 		} ))
 
-		oTable.addColumn(new sap.ui.table.Column({
+		oRegTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "XML"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","XML"),
 			visible: true
 		} ))
 
-		oTable.bindRows("/REG_TEST_SET");
+		oRegTable.bindRows("/REG_TEST_SET");
 
 		var btnAddReg = new sap.m.Button("idBtnAddReg", {
 			text : "+",
-		    press:  oController.onAddRegClick   });		
+		    press:  oController.onAddRegClick
+		    });		
 
 		var btnDelReg = new sap.m.Button("idBtnDelReg", {
 			text : "-",
-		    press:  oController.onDelRegClick   });		
+		    press: function(){
+		    	oController.onDelRegClick(oRegTable);
+		    }
+		    });		
 
 		var btnEditReg = new sap.m.Button("idBtnEditReg", {
 			text : "=>",
-		    press:  oController.onEditRegClick});	
+		    press:  oController.onEditRegClick
+		    });	
 
 		var panel = sap.m.Panel("idMainPanel", {
-			content : [btnAddReg, btnDelReg, btnEditReg, oTable]
+			content : [btnAddReg, btnDelReg, btnEditReg, oRegTable]
 		});		
 		
 		return new sap.m.Page({
