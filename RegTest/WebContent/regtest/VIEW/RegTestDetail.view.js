@@ -115,7 +115,8 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		} ));
 		
 		var oCheckTable = new sap.ui.table.Table({
-			tableID : "idCheckTable",
+			id: "idCheckTableToReg",
+			tableID : "idCheckTableToReg",
 			visibleRowCount : 5,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			editable : true

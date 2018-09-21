@@ -12,23 +12,39 @@ sap.ui.jsview("regtest.VIEW.Login", {
 	* Since the Controller is given to this method, its event handlers can be attached right away. 
 	* @memberOf regtest.Login
 	*/ 
-	createContent : function(oController) {
- 		var fldLoginText = new sap.m.Label("idLoginText", {text: "Name"});
- 		var fldLoginName = new sap.m.Input("idLoginName");
- 		var fldPwdText = new sap.m.Label("idPwdText", {text: "Password"});
-		var fldPwd = new sap.ui.commons.PasswordField("idPwdField");
+	createContent : function(oController) {						
+		var vBoxLogin = new sap.m.VBox("vBoxLogin", {
+			justifyContent : sap.m.FlexJustifyContent.Center,
+			alignItems: sap.m.FlexAlignItems.Center,
+			alignContent: sap.m.FlexAlignContent.Center,
+			fitContainer: true
+		});
+
+ 		var fldLoginText = new sap.m.Label("idLoginText", 
+ 				{text: "Use your login and password"});
+ 		var fldLoginName = new sap.m.Input("idLoginName", {
+			 width : "12rem"
+ 		});
+		var fldPwd = new sap.ui.commons.PasswordField("idPwdField", {
+			 width : "12rem"			
+		});
 		
 		var btnLogin = new sap.m.Button("btnLogin", {
 			text : "Login",
+			type : sap.m.ButtonType.Emphasized,
+			width : "12rem",
 		    press:  oController.onLoginClick   });		
 		
-		var panelLogin = sap.ui.commons.Panel("idLoginPanel", {
-			content : [fldLoginText, fldLoginName, fldPwdText, fldPwd, btnLogin]
-		});		
+		vBoxLogin.addItem(fldLoginText);
+		vBoxLogin.addItem(fldLoginName);
+		vBoxLogin.addItem(fldPwd);
+		vBoxLogin.addItem(btnLogin);
 		
 		return new sap.m.Page({
 			title: "Login",
-			content: [panelLogin]
+			content: 
+				//[panelLogin]
+				[vBoxLogin]
 		});
 	}
 

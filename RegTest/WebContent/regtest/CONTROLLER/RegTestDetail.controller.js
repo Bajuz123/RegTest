@@ -129,6 +129,11 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 			var filter = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
 			
 			oPl.bindRows("/REG_PLACE_SET", null, null, filter);			
+
+			var oCheck = sap.ui.getCore().byId("idCheckTableToReg")
+			var filterCheck = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
+			
+			oCheck.bindRows("/REG_SET", null, null, filterCheck);			
 		}	
 	},
 
