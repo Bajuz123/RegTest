@@ -38,14 +38,21 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 //			icon : "sap-icon://run",
 		    press:  oController.onCheckSetClick   });	
 		
-		/*var btnUpdXml = new sap.m.Button("idBtnUpdXML", {
-			text : "Upload XML",
-			icon : "sap-icon://upload",
-		    press:   function(oEvent){oController.onOpenDialog(oEvent) } });	*/
-
 		var fieldIDReg = new sap.m.Input("fldIDReg", {visible: false});
+
+		var regTestNameLabel = new sap.m.Label("idRegTestNamet", {text: "RegTestName"});
 		var fieldName = new sap.m.Input("fldName");
-		var areaXML   = new sap.m.TextArea("areaXML");
+		var panelRegDetailName = new sap.m.Panel("idPanelRegDetailName", {
+			content : [
+			           regTestNameLabel, fieldName           
+			          ]
+		});
+		
+		var regTestXMLLabel = new sap.m.Label("idRegTestXML", {text: "XML"});
+		var areaXML   = new sap.m.TextArea("areaXML", {
+			width: "100%",
+			growing: true
+		});
 		
 		var fileReader = new sap.ui.unified.FileUploader({ 
 	          uploadUrl : "",
@@ -59,71 +66,136 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 	           if(file && window.FileReader){  
 	              var reader = new FileReader();  
 	              var that = this;  
-	              reader.onload = function(evn) {  
-	                var strCSV= evn.target.result; //string in CSV 
-	                  alert(strCSV);
-	                };
+	              reader.onload = function(evn) { 
+	            	  debugger;
+	                var strCSV= evn.target.result; //string in CSV
+	        		sap.ui.getCore().byId("areaXML").setValue(strCSV);
+                  };
 	              reader.readAsText(file);  
 	            }
 	            }
 	        });
-		
-/*		var oPlaceTable = new sap.ui.table.Table({
+
+		var panelRegDetailXML = new sap.m.Panel("idPanelRegDetailXML", {
+			content : [
+			           regTestXMLLabel, areaXML           
+			          ]
+		});
+
+		var panelRegDetailXMLButton = new sap.m.Panel("idPanelRegDetailXMLButton", {
+			content : [
+			           fileReader           
+			          ]
+		});
+
+		var oPlaceTable = new sap.ui.table.Table({
 			tableID : "idPlaceTable",
-			visibleRowCount : 20,
+			visibleRowCount : 5,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			editable : true
 		});
-		
+
+		oPlaceTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "ID"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
+			visible: true
+		} ));
+
 		oPlaceTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Placeholder"}),
-//			template: new sap.ui.commons.TextField().bindProperty("value","Placeholder"),
+			template: new sap.ui.commons.TextField().bindProperty("value","placeholder"),
 			visible: true
 		} ));
 
 		oPlaceTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Replace with"}),
-//			template: new sap.ui.commons.TextField().bindProperty("value","Replace with"),
+			template: new sap.ui.commons.TextField().bindProperty("value","replace_with"),
 			visible: true
 		} ));
+
+		oPlaceTable.bindRows("/REG_PLACE_SET");
 
 		var oCheckTable = new sap.ui.table.Table({
 			tableID : "idCheckTable",
-			visibleRowCount : 20,
+			visibleRowCount : 5,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			editable : true
 		});
-		
+
 		oCheckTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Name"}),
-//			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
+			label: new sap.ui.commons.Label({text: "Check Set"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","id_check_set"),
 			visible: true
 		} ));
 
 		oCheckTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Implementation Class"}),
-//			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
+			label: new sap.ui.commons.Label({text: "Running nr"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","running_nr"),
 			visible: true
 		} ));
-*/		
+
+		oCheckTable.bindRows("/REG_SET");
+
+		var btnPlaceAdd = new sap.m.Button("btnPlaceAdd", {
+			text : "+",
+//			icon : "sap-icon://add",
+		    press:  oController.onAddPlaceClick   });		
+
+		var btnPlaceDel = new sap.m.Button("btnPlaceDel", {
+			text : "-",
+//			icon : "sap-icon://add",
+		    press:  oController.onDelPlaceClick   });		
+
+		var btnPlaceEdit = new sap.m.Button("btnPlaceEdit", {
+			text : "=>",
+//			icon : "sap-icon://add",
+		    press:  oController.onEditPlaceClick   });		
+
 		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
 			content : [
-			           btnOKReg, btnBackReg, btnRun, fieldIDReg, fieldName, areaXML, fileReader, btnRegPlace, btnCheckSet 
+			           btnOKReg, btnBackReg, btnRun, fieldIDReg, 
+			           panelRegDetailName,
+			           panelRegDetailXML,
+			           panelRegDetailXMLButton,
+			           btnRegPlace, btnCheckSet 
 			           ]
 		});		
 
-		var panelRelated = new sap.m.Panel("idListRelated", {
+		oCheckTable.visible = false;
+		var panelRelatedPlace = new sap.m.Panel("idListRelatedPlace", {
 			content : [
-			           // oPlaceTable
+			           btnPlaceAdd, btnPlaceDel, btnPlaceEdit, oPlaceTable
 			           ]
 		});		
+
+		var btnCheckAdd = new sap.m.Button("btnCheckAdd", {
+			text : "+",
+//			icon : "sap-icon://add",
+		    press:  oController.onAddCheckClick   });		
+
+		var btnCheckDel = new sap.m.Button("btnCheckDel", {
+			text : "-",
+//			icon : "sap-icon://add",
+		    press:  oController.onDelCheckClick   });		
+
+		var btnCheckEdit = new sap.m.Button("btnCheckEdit", {
+			text : "=>",
+//			icon : "sap-icon://add",
+		    press:  oController.onEditCheckClick   });		
+		
+		var panelRelatedCheck = new sap.m.Panel("idListRelatedCheck", {
+			content : [
+			          btnCheckAdd, btnCheckDel, btnCheckEdit, oCheckTable
+			          ]
+		});		
+
+		sap.ui.getCore().byId("idListRelatedCheck").setVisible(false);
 		
 		return new sap.m.Page({
 			title: "RegTest Detail",
 			content: [
-			  panelRegDetail, panelRelated 
+			  panelRegDetail, panelRelatedPlace, panelRelatedCheck 
 			]
 		});
 	}
-
 });

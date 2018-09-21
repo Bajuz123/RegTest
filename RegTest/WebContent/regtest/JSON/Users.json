@@ -1,8 +1,15 @@
-{ 
-  "Users" : [
+var Users = 
+[
     {
-      "Login" : "test", 
-      "Pwd"  : "test" 
+      "Login"  : "test", 
+      "Pwd"    : "test" ,
+      "hd1user": "stoma",
+      "hd1pwd" : "palipali89"
+    }, 
+    {
+      "Login"  : "quest", 
+      "Pwd"    : "quest" ,
+      "hd1user": "jbreza",
+      "hd1pwd" : "majka123"
     }
-  ]
-}
+ ]

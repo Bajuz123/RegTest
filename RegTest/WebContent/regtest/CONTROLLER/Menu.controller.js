@@ -10,10 +10,25 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 //	},
 	itemSelected: function(oList) {
 		var name = oList.getSelectedItem().getId();
-		if (oList.getSelectedItem().getId() == "sItem1") {
-    		oSplitApp.toDetail("idRegTest1");
-		} else {			
-    		oSplitApp.toDetail("idCheckSet1");
+		switch (oList.getSelectedItem().getId()) {
+		  case "sItem1":
+			  oSplitApp.toDetail("idRegTest1");
+			  break;
+		  case "sItem2":
+			  oSplitApp.toDetail("idCheckSet1");
+			  break;
+		  case "sItem3":
+//			  oSplitApp.toDetail("idRegLog1");		  
+			  break;
+		  case "sItem4":
+			  oSplitApp.toDetail("idLogout");
+			  oSplitApp.removeMasterPage("idMenu1");
+       		  oSplitApp.setMode(sap.m.SplitAppMode.HideMode);
+			  oSplitApp.toMaster("");
+			  break;
+		  default: 
+			  oSplitApp.toDetail("idRegTest1");
+			  break;	  
 		}
 	}
 /**
