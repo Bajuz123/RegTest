@@ -8,8 +8,9 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 //	onInit: function() {
 
 	//},
+//	console.log("");
 	onFiltRunID: function() {
-//		console.log("");
+
 	},
     onFiltRegTest: function() {
 		
