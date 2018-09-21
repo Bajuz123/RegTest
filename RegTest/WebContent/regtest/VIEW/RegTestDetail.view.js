@@ -15,27 +15,27 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 	createContent : function(oController) {	
 		var btnOKReg = new sap.m.Button("btnOKReg", {
 			text : "OK",
-//			icon : "sap-icon://add",
+			icon : "sap-icon://save",
 		    press:  oController.onOKRegClick   });		
 
 		var btnBackReg = new sap.m.Button("btnBackReg", {
 			text : "Back",
-//			icon : "sap-icon://add",
+			icon : "sap-icon://undo",
 		    press:  oController.onBackRegClick   });		
 
 		var btnRun = new sap.m.Button("btnRun", {
 			text : "Run RegTest",
-//			icon : "sap-icon://run",
+			icon : "sap-icon://process",
 		    press:  oController.onRunClick   });		
 
 		var btnRegPlace = new sap.m.Button("btnRegPlace", {
 			text : "Placeholders",
-//			icon : "sap-icon://run",
+			icon : "sap-icon://x-ray",
 		    press:  oController.onPlaceholderClick   });		
 
 		var btnCheckSet = new sap.m.Button("btnSet", {
 			text : "CheckSets",
-//			icon : "sap-icon://run",
+			icon : "sap-icon://stethoscope",
 		    press:  oController.onCheckSetClick   });	
 		
 		var fieldIDReg = new sap.m.Input("fldIDReg", {visible: false});
@@ -112,9 +112,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			template: new sap.ui.commons.TextField().bindProperty("value","replace_with"),
 			visible: true
 		} ));
-
-		oPlaceTable.bindRows("/REG_PLACE_SET");
-
+		
 		var oCheckTable = new sap.ui.table.Table({
 			tableID : "idCheckTable",
 			visibleRowCount : 5,
@@ -134,21 +132,22 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			visible: true
 		} ));
 
+		oPlaceTable.bindRows("/REG_PLACE_SET");			
 		oCheckTable.bindRows("/REG_SET");
 
 		var btnPlaceAdd = new sap.m.Button("btnPlaceAdd", {
-			text : "+",
-//			icon : "sap-icon://add",
+			text : "Add",
+			icon : "sap-icon://add",
 		    press:  oController.onAddPlaceClick   });		
 
 		var btnPlaceDel = new sap.m.Button("btnPlaceDel", {
-			text : "-",
-//			icon : "sap-icon://add",
+			text : "Delete",
+			icon : "sap-icon://delete",
 		    press:  oController.onDelPlaceClick   });		
 
 		var btnPlaceEdit = new sap.m.Button("btnPlaceEdit", {
-			text : "=>",
-//			icon : "sap-icon://add",
+			text : "Edit",
+			icon : "sap-icon://edit",
 		    press:  oController.onEditPlaceClick   });		
 
 		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {

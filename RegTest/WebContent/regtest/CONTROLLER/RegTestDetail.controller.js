@@ -105,9 +105,15 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 * (NOT before the first rendering! onInit() is used for that one!).
 * @memberOf regtest.RegTestDetail
 */
-//	onBeforeRendering: function() {
-//
-//	},
+	onBeforeRendering: function() {
+		debugger;
+		var id_reg_test = sap.ui.getCore().byId("fldIDReg").getValue();
+		if (id_reg_test != '') {
+			reloadModel(oUser);			
+			var oPlaceTable = sap.ui.getCore().byId("idPlaceTable");
+//			oPlaceTable.bindRows("/REG_PLACE_SET(id_reg_test='" + sap.ui.getCore().byId("fldIDReg").getValue() + "')");			
+		}	
+	},
 
 /**
 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.

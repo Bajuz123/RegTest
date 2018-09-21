@@ -46,24 +46,27 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			visible: true
 		} ))
 		
-		oRegTable.attachBrowserEvent("dblclick", oController.onDblClick);
+		//oRegTable.attachBrowserEvent("dblclick", oController.onDblClick);
 		
 		oRegTable.bindRows("/REG_TEST_SET");
 
 		var btnAddReg = new sap.m.Button("idBtnAddReg", {
-			text : "+",
+			text : "Add",
+			icon : "sap-icon://add",
 		    press:  oController.onAddRegClick
 		    });		
 
 		var btnDelReg = new sap.m.Button("idBtnDelReg", {
-			text : "-",
+			text : "Delete",
+			icon : "sap-icon://delete",
 		    press: function(){
 		    	oController.onDelRegClick(oRegTable);
 		    }
 		    });		
 
 		var btnEditReg = new sap.m.Button("idBtnEditReg", {
-			text : "=>",
+			text : "Edit",
+			icon : "sap-icon://edit",
 		    press: function(){
 		    	oController.onEditRegClick(oRegTable);
 		    }
