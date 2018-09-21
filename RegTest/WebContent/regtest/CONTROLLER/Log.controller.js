@@ -8,22 +8,6 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 //	onInit: function() {
 
 	//},
-	onInit: function() {
-		//SAP Data
-		  var oModel = new sap.ui.model.odata.ODataModel(this
-		  .getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, "stoma", "palipali89"); 
-		  this.getView().setModel(oModel);
-	},
-	
-	getUrl : function(sUrl) {
-		if (sUrl == "")
-			return sUrl;
-		if (window.location.hostname == "localhost") {
-			return "proxy" + sUrl;
-		} else {
-			return sUrl;
-		}
-	},
 	onFiltRunID: function() {
 //		console.log("");
 	},

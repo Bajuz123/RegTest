@@ -23,8 +23,8 @@ sap.ui.jsview("regtest.VIEW.Log", {
 					});
 		
 		oLogTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Name"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","run_id"),
+			label: new sap.ui.commons.Label({text: "Msg Text"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","msg_text"),
 			visible: true
 		} ))
 		
