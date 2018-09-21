@@ -57,8 +57,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		sap.ui.getCore().byId("idListRelatedPlace").setVisible(false);
     },
     
-    onAddCheckClick: function(){
-    	
+    onAddCheckClick: function(){   	
+	   
     },	
 
     onDelCheckClick: function() {
@@ -70,16 +70,33 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
     },		
 
 	onAddPlaceClick: function() {
-		
+		this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.addDialog",this);
+	     this._oDialog.open(); 
+		// this._getDialog().open();
 	},		
 
 	onDelPlaceClick: function() {
-		
+		this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.delDialog",this);
+	     this._oDialog.open(); 
 	},		
 
 	onEditPlaceClick: function() {
-		
+		this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.updDialog",this);
+	     this._oDialog.open(); 
 	},		
+	onCloseDialog : function () {
+        this._getDialog().close();
+     },
+	 _getDialog : function () {
+         // create dialog lazily
+         if (!this._oDialog) {
+            // create dialog via fragment factory
+            this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.addDialog", this);
+            // connect dialog to view (models, lifecycle)
+            this.getView().addDependent(this._oDialog);
+         }
+         return this._oDialog;
+      },
 
 	/* FRAGMENT
 	 onOpenDialog : function () {
