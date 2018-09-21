@@ -40,7 +40,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 					sap.m.MessageToast.show("Delete error");
 				}
 			});
-			this.reloadModel(oUser);
+			reloadModel(oUser);
 			oSplitApp.toDetail("idRegTest1");
 		} else {
 			sap.m.MessageToast.show("Select a row to delete!");
@@ -71,9 +71,9 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	 * 
 	 * @memberOf regtest.RegTest
 	 */
-//	onBeforeRendering : function() {
-//		this.reloadModel();
-//	},
+	onBeforeRendering : function() {
+		reloadModel(oUser);
+	},
 /**
  * Called when the View has been rendered (so its HTML is part of the document).
  * Post-rendering manipulations of the HTML could be done here. This hook is the

@@ -10,6 +10,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 
 	onBackRegClick: function() {
 		oSplitApp.toDetail("idRegTest1");				
+		sap.ui.getCore().byId("fldIDReg").setValue("");		
 	},
 	
 	onOKRegClick: function() {

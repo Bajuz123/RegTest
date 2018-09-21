@@ -20,7 +20,7 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 			if (oLogin == Users[j].Login) {
 				if (oPwd == Users[j].Pwd) {
 					found = true;
-					var oUser = Users[j];
+					oUser = Users[j];
 				}
 			}
 		}
