@@ -122,7 +122,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 * (NOT before the first rendering! onInit() is used for that one!).
 * @memberOf regtest.RegTestDetail
 */
-  	onBeforeRendering: function() {
+
+	onBeforeRendering: function() {
 		debugger;
 		var id_reg_test = sap.ui.getCore().byId("fldIDReg").getValue();
 		if (id_reg_test != '') {
