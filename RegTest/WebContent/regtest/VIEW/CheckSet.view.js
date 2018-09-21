@@ -41,15 +41,18 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 		oTable.bindRows("/REG_CHECK_SET_SET");
 		
 	    var btnAddSet = new sap.m.Button("idBtnAddSet", {
-			text : "+",
+			text : "Add",
+			icon : "sap-icon://add",
 		    press:  oController.onAddSetClick   });		
 
 		var btnDelSet = new sap.m.Button("idBtnDelSet", {
-			text : "-",
+			text : "Delete",
+			icon : "sap-icon://delete",
 		    press:  oController.onDelSetClick   });		
 
 		var btnEditSet = new sap.m.Button("idBtnEditSet", {
-			text : "=>",
+			text : "Edit",
+			icon : "sap-icon://edit",
 		    press:  oController.onEditSetClick});	
 
 		var panel = new sap.m.Panel("idMainPanelChck", {
