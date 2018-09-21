@@ -106,12 +106,12 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 * @memberOf regtest.RegTestDetail
 */
 	onBeforeRendering: function() {
-		debugger;
-		var id_reg_test = sap.ui.getCore().byId("fldIDReg").getValue();
-		if (id_reg_test != '') {
-			reloadModel(oUser);			
-			var oPlaceTable = sap.ui.getCore().byId("idPlaceTable");
-//			oPlaceTable.bindRows("/REG_PLACE_SET(id_reg_test='" + sap.ui.getCore().byId("fldIDReg").getValue() + "')");			
+		var idRegTest = sap.ui.getCore().byId("fldIDReg").getValue();
+		if (idRegTest != '') {
+			var oPl = sap.ui.getCore().byId("idPlaceTableToReg")
+			var filter = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
+			
+			oPl.bindRows("/REG_PLACE_SET", null, null, filter);			
 		}	
 	},
 
