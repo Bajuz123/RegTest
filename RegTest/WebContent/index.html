@@ -18,20 +18,22 @@
 				sap.ui.localResources("regtest");
             	var oSplitApp = new sap.m.SplitApp("appId", {});
 
-				var oPageLogin 		= sap.ui.view({id:"idLogin", viewName:"regtest.VIEW.Login", type:sap.ui.core.mvc.ViewType.JS});
-        		var oRegTest 		= sap.ui.view({id:"idRegTest1", viewName:"regtest.VIEW.RegTest", type:sap.ui.core.mvc.ViewType.JS});
-        		var oCheckSet		= sap.ui.view({id:"idCheckSet1", viewName:"regtest.VIEW.CheckSet", type:sap.ui.core.mvc.ViewType.JS});
-        		var oRegTestDetail 	= sap.ui.view({id:"idRegTestDetail1", viewName:"regtest.VIEW.RegTestDetail", type:sap.ui.core.mvc.ViewType.JS});
-        		var oMenu 			= sap.ui.view({id:"idMenu1", viewName:"regtest.VIEW.Menu", type:sap.ui.core.mvc.ViewType.JS});
-
+				var oPageLogin 			= sap.ui.view({id:"idLogin", viewName:"regtest.VIEW.Login", type:sap.ui.core.mvc.ViewType.JS});
+        		var oRegTest 			= sap.ui.view({id:"idRegTest1", viewName:"regtest.VIEW.RegTest", type:sap.ui.core.mvc.ViewType.JS});
+        		var oCheckSet			= sap.ui.view({id:"idCheckSet1", viewName:"regtest.VIEW.CheckSet", type:sap.ui.core.mvc.ViewType.JS});
+        		var oRegTestDetail 		= sap.ui.view({id:"idRegTestDetail1", viewName:"regtest.VIEW.RegTestDetail", type:sap.ui.core.mvc.ViewType.JS});
+        		var oMenu 				= sap.ui.view({id:"idMenu1", viewName:"regtest.VIEW.Menu", type:sap.ui.core.mvc.ViewType.JS});
+        		
+        		
         		oSplitApp.setMode(sap.m.SplitAppMode.HideMode)
         		oSplitApp.addDetailPage(oPageLogin);
         		oSplitApp.addDetailPage(oRegTest);
         		oSplitApp.addDetailPage(oCheckSet);
         		oSplitApp.addDetailPage(oRegTestDetail);
         		
+        		
         		oSplitApp.setInitialDetail("idLogin");
-        		oSplitApp.placeAt("content");        		
+        		oSplitApp.placeAt("content");      		
 		</script>
 
 	</head>
