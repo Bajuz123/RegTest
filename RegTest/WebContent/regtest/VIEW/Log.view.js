@@ -68,6 +68,7 @@ sap.ui.jsview("regtest.VIEW.Log", {
 		
 		var btnFiltRunID = new sap.m.Button("idBtnFiltRunID", {
 			text : "Filter run ID",
+			icon : "sap-icon://filter",
 		    press:  function() {
 		    	oController.onFiltRunID();
 		    }
@@ -82,6 +83,7 @@ sap.ui.jsview("regtest.VIEW.Log", {
 
 		var btnRefresh = new sap.m.Button("idBtnRefresh", {
 			text : "Refresh",
+			icon : "sap-icon://refresh",
 		    press: function(){
 		    	oController.onRefresh();
 		    }

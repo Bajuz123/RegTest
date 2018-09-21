@@ -10,13 +10,13 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	 */
 //	onInit : function() {
 //	},
-	onDblClick : function() {
+	/*onDblClick : function() {
 	     oTable = sap.ui.getCore().byId('idRegTest');
 	    // oTable.setSelectedIndex(window.selectedIndex);
 	     this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.addDialog",this);
 	     this._oDialog.open();
 	// sap.m.MessageToast.show("ondoubleclick");
-	},
+	},*/
 
 	onAddRegClick : function() {
 		oSplitApp.toDetail("idRegTestDetail1");
