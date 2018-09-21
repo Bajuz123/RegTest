@@ -30,12 +30,12 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 
 		var btnRegPlace = new sap.m.Button("btnRegPlace", {
 			text : "Placeholders",
-//			icon : "sap-icon://run",
+			icon : "sap-icon://x-ray",
 		    press:  oController.onPlaceholderClick   });		
 
 		var btnCheckSet = new sap.m.Button("btnSet", {
 			text : "CheckSets",
-//			icon : "sap-icon://run",
+			icon : "sap-icon://stethoscope",
 		    press:  oController.onCheckSetClick   });	
 		
 		var fieldIDReg = new sap.m.Input("fldIDReg", {visible: false});
@@ -112,9 +112,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			template: new sap.ui.commons.TextField().bindProperty("value","replace_with"),
 			visible: true
 		} ));
-		debugger;
-		oPlaceTable.bindRows("/REG_PLACE_SET(id_reg_test='" + sap.ui.getCore().byId("fldIDReg").getValue() + "')");
-
+		
 		var oCheckTable = new sap.ui.table.Table({
 			tableID : "idCheckTable",
 			visibleRowCount : 5,
@@ -134,6 +132,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			visible: true
 		} ));
 
+		oPlaceTable.bindRows("/REG_PLACE_SET");			
 		oCheckTable.bindRows("/REG_SET");
 
 		var btnPlaceAdd = new sap.m.Button("btnPlaceAdd", {
