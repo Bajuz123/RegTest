@@ -112,8 +112,8 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			template: new sap.ui.commons.TextField().bindProperty("value","replace_with"),
 			visible: true
 		} ));
-
-		oPlaceTable.bindRows("/REG_PLACE_SET");
+		debugger;
+		oPlaceTable.bindRows("/REG_PLACE_SET(id_reg_test='" + sap.ui.getCore().byId("fldIDReg").getValue() + "')");
 
 		var oCheckTable = new sap.ui.table.Table({
 			tableID : "idCheckTable",
