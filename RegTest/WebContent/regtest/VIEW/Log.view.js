@@ -29,37 +29,37 @@ sap.ui.jsview("regtest.VIEW.Log", {
 		} ))
 		
 		oLogTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "ID Regresionstest"}),
+			label: new sap.ui.commons.Label({text: "Regresionstest ID"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
 			visible: true
 		} ))
 		
 		oLogTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "ID Part"}),
+			label: new sap.ui.commons.Label({text: "Part ID"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","id_part"),
 			visible: true
 		} ))
 		
 		oLogTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Msg ID"}),
+			label: new sap.ui.commons.Label({text: "Message ID"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","msg_id"),
 			visible: true
 		} ))
 		
 		oLogTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Msg Text"}),
+			label: new sap.ui.commons.Label({text: "Message Text"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","msg_text"),
 			visible: true
 		} ))
 		
 		oLogTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "ID Placeholder"}),
+			label: new sap.ui.commons.Label({text: "Platzhalter ID"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","id_placeholder"),
 			visible: true
 		} ))
 		
 		oLogTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "ID Prufungsset"}),
+			label: new sap.ui.commons.Label({text: "Prufungsset ID"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","id_check_set"),
 			visible: true
 		} ))
