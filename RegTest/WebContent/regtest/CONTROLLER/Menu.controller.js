@@ -18,7 +18,7 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 			  oSplitApp.toDetail("idCheckSet1");
 			  break;
 		  case "sItem3":
-//			  oSplitApp.toDetail("idRegLog1");		  
+			  oSplitApp.toDetail("idLog1");		  
 			  break;
 		  case "sItem4":
 			  oSplitApp.toDetail("idLogout");
