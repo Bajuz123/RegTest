@@ -12,7 +12,7 @@ sap.ui.jsview("regtest.VIEW.Login", {
 	* Since the Controller is given to this method, its event handlers can be attached right away. 
 	* @memberOf regtest.Login
 	*/ 
-	createContent : function(oController) {						
+	createContent : function(oController) {				
 		var vBoxLogin = new sap.m.VBox("vBoxLogin", {
 			justifyContent : sap.m.FlexJustifyContent.Center,
 			alignItems: sap.m.FlexAlignItems.Center,

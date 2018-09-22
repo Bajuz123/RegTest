@@ -72,7 +72,14 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	 * @memberOf regtest.RegTest
 	 */
 	onBeforeRendering : function() {
-		reloadModel(oUser);
+		try {
+			debugger;
+			  reloadModel(oUser);			
+		} catch (err) {
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("Login");
+			sap.m.MessageToast.show("You have to login first!");					
+		}
 	},
 /**
  * Called when the View has been rendered (so its HTML is part of the document).

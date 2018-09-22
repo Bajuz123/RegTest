@@ -19,8 +19,9 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 	 * @memberOf regtest.RegTest
 	 */
 	createContent : function(oController) {
+		debugger;
 		var oRegTable = new sap.ui.table.Table({
-			tableID : "idRegTest",
+			tableID : "idRegTestTable",
 			visibleRowCount : 20,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			selectionBehavior: sap.ui.table.SelectionBehavior.Row,

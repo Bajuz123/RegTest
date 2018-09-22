@@ -2,6 +2,25 @@
  * 
  */
 
+function registerRouter(oRouter) {
+	oGlobalRouter = oRouter;
+}
+
+function validateUser(oLogin, oPwd) {
+	var found = false;
+	for (var j = 0; j < Users.length; j++) {
+		if (oLogin == Users[j].Login) {
+			if (oPwd == Users[j].Pwd) {
+				found = true;
+				oUser = Users[j];
+			}
+		}
+	}
+
+	return found;
+}
+
+
 function reloadModel(oUser) {
 	// SAP Data
 /*		var oUser = {};
@@ -11,6 +30,7 @@ function reloadModel(oUser) {
 		sap.ui.getCore().setModel(oModel);
 */	
 	    // JSON Data
+	debugger;
 		var oModel = new sap.ui.model.json.JSONModel();
 		oModel.loadData("regtest/JSON/RegTest_DATA.json");
 		sap.ui.getCore().setModel(oModel);
