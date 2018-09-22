@@ -59,6 +59,22 @@ var myroutes = [
 	   		  },
 	   		  {
 	   				pattern: "Split/{value}",
+	   				name:"RegTestDetail",
+	   				view:"regtest.VIEW.RegTestDetail",
+	   		        viewType: sap.ui.core.mvc.ViewType.JS,
+	   		        targetControl: "idSplitAppControl",
+			   		targetAggregation: "detailPages",
+	   		  },
+	   		  {
+	   				pattern: "Split/{value}",
+	   				name:"CheckSetDetail",
+	   				view:"regtest.VIEW.CheckSetDetail",
+	   		        viewType: sap.ui.core.mvc.ViewType.JS,
+	   		        targetControl: "idSplitAppControl",
+			   		targetAggregation: "detailPages",
+	   		  },	   		  
+	   		  {
+	   				pattern: "Split/{value}",
 	   				name:"DetailCheck",
 	   				view:"regtest.VIEW.CheckSet",
 	   		        viewType: sap.ui.core.mvc.ViewType.JS,
