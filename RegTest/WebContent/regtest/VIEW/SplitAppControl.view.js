@@ -13,7 +13,6 @@ sap.ui.jsview("regtest.VIEW.SplitAppControl", {
 	* @memberOf regtest.splittApp
 	*/ 
 	createContent : function(oController) {
-		debugger;
 		var oSplitApp = new sap.m.SplitApp("idSplitAppControl", {});
 	
 /*		var oMenu 			= sap.ui.view({id:"idMenu", viewName:"regtest.VIEW.Menu", type:sap.ui.core.mvc.ViewType.JS});

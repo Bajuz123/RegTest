@@ -17,7 +17,6 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 
 		var found = validateUser(oLogin, oPwd);
 		if (found) {
-			debugger;
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 			oRouter.navTo("Split", {value:1});
 			

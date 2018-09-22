@@ -13,7 +13,6 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 	* @memberOf regtest.VIEW.Menu
 	*/ 
 	createContent : function(oController) {
-		debugger;
 		var oList = new sap.m.List({
 			id : "idMenuList",
 			mode : sap.m.ListMode.SingleSelect,

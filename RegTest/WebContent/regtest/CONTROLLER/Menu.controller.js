@@ -16,12 +16,10 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 			  oRouter.navTo("RegTest", {value:1});
 			  break;
 		  case "sItem2":
-			  debugger;
 			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 			  oRouter.navTo("DetailCheck", {value:2});
 			  break;
 		  case "sItem3":
-			  debugger;
 			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 			  oRouter.navTo("DetailLog", {value:3});
 			  break;
