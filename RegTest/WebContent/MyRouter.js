@@ -35,12 +35,12 @@ var myroutes = [
     	view:"regtest.VIEW.SplitAppControl",
         viewType: sap.ui.core.mvc.ViewType.JS,
    		targetControl: "appId",
-//   		targetAggregation: "pages",
+   	//	targetAggregation: "pages",
     	callback: function(){
      		  myCallback(this);
         },  
     	clearTarget: false,
- 		subroutes:[{
+		subroutes:[{
   				pattern: "Split/{value}",
    				name:"Menu",
    				view:"regtest.VIEW.Menu",
@@ -50,44 +50,59 @@ var myroutes = [
    		
 	   		subroutes:[
 	   		  {
-	   				pattern: "Split/{value}",
+	   				pattern: "RegTest",
 	   				name:"RegTest",
 	   				view:"regtest.VIEW.RegTest",
 	   		        viewType: sap.ui.core.mvc.ViewType.JS,
 	   		        targetControl: "idSplitAppControl",
-			   		targetAggregation: "detailPages",
+//			   		targetAggregation: "detailPages",
+			    	callback: function(){
+			     		  myMDCallback(this);
+			          }  
 	   		  },
 	   		  {
-	   				pattern: "Split/{value}",
+	   				pattern: "RegTestDetail",
 	   				name:"RegTestDetail",
 	   				view:"regtest.VIEW.RegTestDetail",
 	   		        viewType: sap.ui.core.mvc.ViewType.JS,
 	   		        targetControl: "idSplitAppControl",
-			   		targetAggregation: "detailPages",
+//			   		targetAggregation: "detailPages",
+			    	callback: function(){
+			     		  myMDCallback(this);
+			          }  
 	   		  },
 	   		  {
-	   				pattern: "Split/{value}",
+	   				pattern: "CheckSetDetail",
 	   				name:"CheckSetDetail",
 	   				view:"regtest.VIEW.CheckSetDetail",
 	   		        viewType: sap.ui.core.mvc.ViewType.JS,
 	   		        targetControl: "idSplitAppControl",
-			   		targetAggregation: "detailPages",
+//			   		targetAggregation: "detailPages",
+			    	callback: function(){
+			     		  myMDCallback(this);
+			          }  
 	   		  },	   		  
 	   		  {
-	   				pattern: "Split/{value}",
+	   				pattern: "DetailCheck",
 	   				name:"DetailCheck",
 	   				view:"regtest.VIEW.CheckSet",
 	   		        viewType: sap.ui.core.mvc.ViewType.JS,
 	   		        targetControl: "idSplitAppControl",
-			   		targetAggregation: "detailPages",
+//			   		targetAggregation: "detailPages",
+			    	callback: function(){
+			     		  myMDCallback(this);
+			          }  
 	   		  },	   	
 	   		  {
-	   				pattern: "Split/{value}",
+	   				pattern: "DetailLog",
 	   				name:"DetailLog",
 	   				view:"regtest.VIEW.Log",
 	   		        viewType: sap.ui.core.mvc.ViewType.JS,
 	   		        targetControl: "idSplitAppControl",
-			   		targetAggregation: "detailPages",	   		
+//			   		targetAggregation: "detailPages",	   		
+			    	callback: function(){
+			     		  myMDCallback(this);
+			          }  
 	   		  }
 	   		]
     	}]    	
@@ -95,7 +110,6 @@ var myroutes = [
 ];
 
 var myCallback = function($this) {
-	debugger;
 	var viewId = "id" + $this.name;
 	var view = sap.ui.getCore().byId(viewId);
 	if (view==undefined) {
@@ -106,31 +120,24 @@ var myCallback = function($this) {
 		});
 		app.addPage(view);
 	}
-	app.to(viewId);
+	
+    app.to(viewId);
 }; 
 
 var myMDCallback = function($this) {
-/*	debugger;
-	var viewId = "idSplitAppControl";
+	var viewId = "id" + $this.name; 
 	var view = sap.ui.getCore().byId(viewId);
+	var oSplitApp = sap.ui.getCore().byId("idSplitAppControl");
+		
 	if (view==undefined) {
 		view = sap.ui.view({
 			id:viewId, 
 			viewName:$this.view,
 			type:sap.ui.core.mvc.ViewType.JS
 		});
-		app.addPage(view);
+		oSplitApp.addDetailPage(view);
 	}
-
-	var splitApp = sap.ui.getCore().byId(viewId);
-	splitApp.setInitialMaster("idMenu");
-	splitApp.setInitialDetail("idRegTest");
-	splitApp.toMaster("idMenu");
-	splitApp.toDetail("idRegTest");
-	
-	debugger;
-	app.to("idLogout");
-*/
+	oSplitApp.toDetail(viewId);	
 }
 
 var router = new sap.ui.core.routing.Router(myroutes);

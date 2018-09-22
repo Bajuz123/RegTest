@@ -10,7 +10,8 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 //	},
 	
 	onAddSetClick: function() {
-		oSplitApp.toDetail("idCheckSetDetail1");
+		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+		oRouter.navTo("DetailCheck");
 	},
 	onDelSetClick: function() {
 		
@@ -26,11 +27,11 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 			sap.ui.getCore().byId("fldName").setValue(cells[1].getValue());
 			sap.ui.getCore().byId("fldImplClass").setValue(cells[2].getValue());
 
-			oSplitApp.toDetail("idCheckSetDetail1");
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("DetailCheck");
 		} else {
 			sap.m.MessageToast.show("Select a row to edit!");
-		}
-		
+		}		
 	},
 
 	/*

@@ -19,7 +19,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	},*/
 
 	onAddRegClick : function() {
-		oSplitApp.toDetail("idRegTestDetail1");
+		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+		oRouter.navTo("RegTestDetail");
 	},
 
 	onDelRegClick : function(oRegTable) {
@@ -41,7 +42,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 				}
 			});
 			reloadModel(oUser);
-			oSplitApp.toDetail("idRegTest1");
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("RegTestDetail");
 		} else {
 			sap.m.MessageToast.show("Select a row to delete!");
 		}
@@ -58,7 +60,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			sap.ui.getCore().byId("fldName").setValue(cells[1].getValue());
 			sap.ui.getCore().byId("areaXML").setValue(cells[2].getValue());
 
-			oSplitApp.toDetail("idRegTestDetail1");
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("RegTestDetail");
 		} else {
 			sap.m.MessageToast.show("Select a row to edit!");
 		}
@@ -73,7 +76,6 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	 */
 	onBeforeRendering : function() {
 		try {
-			debugger;
 			  reloadModel(oUser);			
 		} catch (err) {
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");

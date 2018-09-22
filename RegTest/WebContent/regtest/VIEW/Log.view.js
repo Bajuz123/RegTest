@@ -15,7 +15,8 @@ sap.ui.jsview("regtest.VIEW.Log", {
 		
 	createContent : function(oController) {
 		var oLogTable = new sap.ui.table.Table({
-			tableID : "idLog",
+			id: "idLogTable",
+			tableID : "idLogTable",
 			visibleRowCount : 20,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			selectionBehavior: sap.ui.table.SelectionBehavior.Row,
@@ -63,23 +64,20 @@ sap.ui.jsview("regtest.VIEW.Log", {
 			template: new sap.ui.commons.TextField().bindProperty("value","id_check_set"),
 			visible: true
 		} ))
-		
-		oLogTable.bindRows("/REG_LOG_SET");
-		
-		var btnFiltRunID = new sap.m.Button("idBtnFiltRunID", {
-			text : "Filter run ID",
-			icon : "sap-icon://filter",
-		    press:  function() {
-		    	oController.onFiltRunID();
-		    }
-		    });		
 
-		var btnFiltRegTest = new sap.m.Button("idBtnFiltRegTest", {
-			text : "Filter Reg. Test",
-		    press: function(){
-		    	oController.onFiltRegTest();
-		    }
-		    });		
+		var runIdText = new sap.m.Label("idRunIdText", {text: "Run ID"});
+		var runIdValue = new sap.m.Input("idRunIdValue");
+		var panelRunId = new sap.m.Panel("idLogPanelRunId", {
+			content : [runIdText, runIdValue]
+		});
+
+		var runIdRegTest = new sap.m.Label("idRegTestId", {text: "Reg Test ID"});
+		var runIdRegTestValue = new sap.m.Input("idRegTestValue");
+		var panelRegTestID = new sap.m.Panel("idRegTestIDPanel", {
+			content : [runIdRegTest, runIdRegTestValue]
+		});
+
+		oLogTable.bindRows("/REG_LOG_SET");
 
 		var btnRefresh = new sap.m.Button("idBtnRefresh", {
 			text : "Refresh",
@@ -90,7 +88,7 @@ sap.ui.jsview("regtest.VIEW.Log", {
 		    });	
 
 		var panel = new sap.m.Panel("idLogPanel", {
-			content : [btnFiltRunID, btnFiltRegTest, btnRefresh, oLogTable]
+			content : [panelRunId, panelRegTestID, btnRefresh, oLogTable]
 		});
 						
 		return new sap.m.Page({

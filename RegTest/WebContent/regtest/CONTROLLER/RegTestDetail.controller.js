@@ -9,8 +9,9 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 	},
 
 	onBackRegClick: function() {
-		oSplitApp.toDetail("idRegTest1");				
 		sap.ui.getCore().byId("fldIDReg").setValue("");		
+		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+		oRouter.navTo("RegTest");
 	},
 	
 	onOKRegClick: function() {
@@ -25,7 +26,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		if ( oEntry.id_reg_test == '' ) { //insert
 			oModelRegTest.create("/REG_TEST_SET", oEntry);
 			sap.m.MessageToast.show("Add successfull");
-			oSplitApp.toDetail("idRegTest1");		
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("RegTest");
 		} else { //update
 			debugger;			
 			oModelRegTest.update("/REG_TEST_SET(id_reg_test='" + oEntry.id_reg_test + "')", oEntry, {
@@ -37,7 +39,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 				}				
 			});
 			oModelRegTest.refresh();
-			oSplitApp.toDetail("idRegTest1");		
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("RegTest");
 		}
 		sap.ui.getCore().byId("fldIDReg").setValue("");		
 	},

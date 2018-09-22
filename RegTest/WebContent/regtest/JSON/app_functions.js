@@ -30,7 +30,6 @@ function reloadModel(oUser) {
 		sap.ui.getCore().setModel(oModel);
 */	
 	    // JSON Data
-	debugger;
 		var oModel = new sap.ui.model.json.JSONModel();
 		oModel.loadData("regtest/JSON/RegTest_DATA.json");
 		sap.ui.getCore().setModel(oModel);
