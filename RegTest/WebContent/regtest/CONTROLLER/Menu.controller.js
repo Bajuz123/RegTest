@@ -12,13 +12,18 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 		var name = oList.getSelectedItem().getId();
 		switch (oList.getSelectedItem().getId()) {
 		  case "sItem1":
-			  oSplitApp.toDetail("idRegTest1");
+			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			  oRouter.navTo("RegTest", {value:1});
 			  break;
 		  case "sItem2":
-			  oSplitApp.toDetail("idCheckSet1");
+			  debugger;
+			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			  oRouter.navTo("DetailCheck", {value:2});
 			  break;
 		  case "sItem3":
-			  oSplitApp.toDetail("idLog1");		  
+			  debugger;
+			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			  oRouter.navTo("DetailLog", {value:3});
 			  break;
 		  case "sItem4":
 	 		  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");

@@ -19,9 +19,7 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 		if (found) {
 			debugger;
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-//			oRouter.navTo("Intro");
-			oRouter.navTo("Split");
-			oRouter.navTo("RegTest");
+			oRouter.navTo("Split", {value:1});
 			
 /*			oSplitApp.addMasterPage(oMenu);
 			oSplitApp.setInitialMaster("idMenu1");

@@ -24,9 +24,7 @@ sap.ui.jsview("regtest.VIEW.SplitAppControl", {
 		oSplitApp.setInitialDetail("idRegTest");
 		oSplitApp.setInitialMaster("idMenu");
 */
-		return [
-   	      oSplitApp
-		];
+		return [ oSplitApp];
 
 /*		var oCheckSet		= sap.ui.view({id:"idCheckSet1", viewName:"regtest.VIEW.CheckSet", type:sap.ui.core.mvc.ViewType.JS});
 		var oRegTestDetail 	= sap.ui.view({id:"idRegTestDetail1", viewName:"regtest.VIEW.RegTestDetail", type:sap.ui.core.mvc.ViewType.JS});

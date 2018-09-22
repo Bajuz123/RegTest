@@ -30,14 +30,18 @@ var myroutes = [
         }  
     },
     {
-    	pattern:"SplitAppControl",
+    	pattern:"Split/{value}",
     	name:"Split",
     	view:"regtest.VIEW.SplitAppControl",
         viewType: sap.ui.core.mvc.ViewType.JS,
    		targetControl: "appId",
-   		targetAggregation: "pages",
+//   		targetAggregation: "pages",
+    	callback: function(){
+     		  myCallback(this);
+        },  
+    	clearTarget: false,
  		subroutes:[{
-  				pattern: "SplitAppControl/",
+  				pattern: "Split/{value}",
    				name:"Menu",
    				view:"regtest.VIEW.Menu",
      		    viewType: sap.ui.core.mvc.ViewType.JS,
@@ -46,7 +50,7 @@ var myroutes = [
    		
 	   		subroutes:[
 	   		  {
-	   				pattern: "SplitAppControl/",
+	   				pattern: "Split/{value}",
 	   				name:"RegTest",
 	   				view:"regtest.VIEW.RegTest",
 	   		        viewType: sap.ui.core.mvc.ViewType.JS,
@@ -54,7 +58,7 @@ var myroutes = [
 			   		targetAggregation: "detailPages",
 	   		  },
 	   		  {
-	   				pattern: "SplitAppControl/",
+	   				pattern: "Split/{value}",
 	   				name:"DetailCheck",
 	   				view:"regtest.VIEW.CheckSet",
 	   		        viewType: sap.ui.core.mvc.ViewType.JS,
@@ -62,7 +66,7 @@ var myroutes = [
 			   		targetAggregation: "detailPages",
 	   		  },	   	
 	   		  {
-	   				pattern: "SplitAppControl/",
+	   				pattern: "Split/{value}",
 	   				name:"DetailLog",
 	   				view:"regtest.VIEW.Log",
 	   		        viewType: sap.ui.core.mvc.ViewType.JS,
