@@ -15,7 +15,7 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 	createContent : function(oController) {
 		var oList = new sap.m.List({
 			id : "idMenuList",
-			mode : sap.m.ListMode.SingleSelect,
+			mode : sap.m.ListMode.SingleSelectMaster,
 			select: function(){
 				oController.itemSelected(oList);
 			}
