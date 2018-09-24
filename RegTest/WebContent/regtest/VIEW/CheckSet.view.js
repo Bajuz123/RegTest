@@ -48,13 +48,20 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 		var btnDelSet = new sap.m.Button("idBtnDelSet", {
 			text : "Delete",
 			icon : "sap-icon://delete",
-		    press:  oController.onDelSetClick   });		
+		    press: function(){  
+		    	oController.onDelSetClick(oTable) 
+		    }	
+		    });		
 
 		var btnEditSet = new sap.m.Button("idBtnEditSet", {
 			text : "Edit",
 			icon : "sap-icon://edit",
-		    press:  oController.onEditSetClick});	
-
+		    press: function(){
+		    	oController.onEditSetClick
+		    	}
+			//press: oController.onEditSetClick
+		});
+		       		    	
 		var panel = new sap.m.Panel("idMainPanelChck", {
 			content : [
 			           btnAddSet, btnDelSet, btnEditSet, 
