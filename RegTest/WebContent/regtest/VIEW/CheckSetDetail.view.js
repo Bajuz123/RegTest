@@ -37,9 +37,9 @@ sap.ui.jsview("regtest.VIEW.CheckSetDetail", {
 			text : "CheckSets",
 			icon : "sap-icon://stethoscope",
 		    press:  oController.onCheckSetClick   }); 	
-
-		var fieldIDCheck = new sap.m.Input("fldIDCheck", {visible: false}); 
 */
+		var fieldIDCheck = new sap.m.Input("fldIDCheck", {visible: false}); 
+
 		var checkSetNameLabel = new sap.m.Label("idcheckSetName", {text: "CheckSetName"});
 		var fieldName = new sap.m.Input("fldName");
 		var panelcheckDetailName = new sap.m.Panel("idPanelCheckDetailName", {
