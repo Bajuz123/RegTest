@@ -170,18 +170,18 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		});		
 
 		var btnCheckAdd = new sap.m.Button("btnCheckAdd", {
-			text : "+",
-//			icon : "sap-icon://add",
+			text : "Add",
+			icon : "sap-icon://add",
 		    press:  oController.onAddCheckClick   });		
 
 		var btnCheckDel = new sap.m.Button("btnCheckDel", {
-			text : "-",
-//			icon : "sap-icon://add",
+			text : "Delete",
+			icon : "sap-icon://delete",
 		    press:  oController.onDelCheckClick   });		
 
 		var btnCheckEdit = new sap.m.Button("btnCheckEdit", {
-			text : "=>",
-//			icon : "sap-icon://add",
+			text : "Edit",
+			icon : "sap-icon://edit",
 		    press:  oController.onEditCheckClick   });		
 		
 		var panelRelatedCheck = new sap.m.Panel("idListRelatedCheck", {
