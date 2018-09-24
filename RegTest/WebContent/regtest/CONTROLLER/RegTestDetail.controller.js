@@ -46,7 +46,10 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 	},
 	
     onRunClick : function() {
-//		update/insert
+		var regTestID = sap.ui.getCore().byId("fldIDReg").getValue();		
+//		new sap.ui.model.json.JSONModel();
+//		oModel.loadData("sap/bc/srt/wsdl/flv_10002P111AD1/sdef_url/ZREG_FM_START?sap-client=100");
+	
 //    	start web service
     },		
 

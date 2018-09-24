@@ -11,10 +11,6 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 	
 	onAddSetClick: function() {
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/Bajuz123/RegTest.git
 		oRouter.navTo("CheckSetDetail");
 	},
 	onDelSetClick: function(oSetTable) {
@@ -36,8 +32,6 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 				}
 			});
 			reloadModel(oUser);
-			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			oRouter.navTo("CheckSetDetail");
 		} else {
 			sap.m.MessageToast.show("Select a row to delete!");
 		}
@@ -55,7 +49,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 			sap.ui.getCore().byId("fldImplClass").setValue(cells[2].getValue());
 
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			oRouter.navTo("DetailCheck");
+			oRouter.navTo("CheckSetDetail");
 		} else {
 			sap.m.MessageToast.show("Select a row to edit!");
 		}		
@@ -69,8 +63,14 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 * (NOT before the first rendering! onInit() is used for that one!).
 * @memberOf regtest.CheckSet
 */
-	onBeforeRendering: function() {
-		reloadModel(oUser);
+	onBeforeRendering : function() {
+		try {
+			  reloadModel(oUser);			
+		} catch (err) {
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("Login");
+			sap.m.MessageToast.show("You have to login first!");					
+		}
 	},
 	
 /**

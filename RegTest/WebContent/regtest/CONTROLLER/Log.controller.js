@@ -16,7 +16,7 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 		var oRegTest = sap.ui.getCore().byId("idRegTestValue").getValue();
 		var oRunID = sap.ui.getCore().byId("idRunIdValue").getValue();
 
-		/* ToDo only one can be set*/
+		/* ToDo only one can be set */
 		if ((oRegTest != '') || (oRunID != '')) {
 			var filterCheck = new sap.ui.model.Filter({
 				filters : [ new sap.ui.model.Filter({
@@ -35,7 +35,7 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 		} else {
 			oLogTable.bindRows("/REG_LOG_SET");						
 		}
-	}
+	},
 /**
  * Similar to onAfterRendering, but this hook is invoked before the controller's
  * View is re-rendered (NOT before the first rendering! onInit() is used for
@@ -43,9 +43,15 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
  * 
  * @memberOf regtest.VIEW.Log
  */
-// onBeforeRendering: function() {
-//
-// },
+onBeforeRendering : function() {
+	try {
+		  reloadModel(oUser);			
+	} catch (err) {
+		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+		oRouter.navTo("Login");
+		sap.m.MessageToast.show("You have to login first!");					
+	}
+},
 /**
  * Called when the View has been rendered (so its HTML is part of the document).
  * Post-rendering manipulations of the HTML could be done here. This hook is the
