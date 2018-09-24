@@ -89,7 +89,8 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		});
 
 		var oPlaceTable = new sap.ui.table.Table({
-			tableID : "idPlaceTable",
+			id: "idPlaceTableToReg",
+			tableID : "idPlaceTableToReg",
 			visibleRowCount : 5,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			editable : true
@@ -114,7 +115,8 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		} ));
 		
 		var oCheckTable = new sap.ui.table.Table({
-			tableID : "idCheckTable",
+			id: "idCheckTableToReg",
+			tableID : "idCheckTableToReg",
 			visibleRowCount : 5,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			editable : true

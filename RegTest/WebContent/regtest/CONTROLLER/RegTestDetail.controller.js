@@ -9,8 +9,9 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 	},
 
 	onBackRegClick: function() {
-		oSplitApp.toDetail("idRegTest1");				
 		sap.ui.getCore().byId("fldIDReg").setValue("");		
+		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+		oRouter.navTo("RegTest");
 	},
 	
 	onOKRegClick: function() {
@@ -25,7 +26,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		if ( oEntry.id_reg_test == '' ) { //insert
 			oModelRegTest.create("/REG_TEST_SET", oEntry);
 			sap.m.MessageToast.show("Add successfull");
-			oSplitApp.toDetail("idRegTest1");		
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("RegTest");
 		} else { //update
 			debugger;			
 			oModelRegTest.update("/REG_TEST_SET(id_reg_test='" + oEntry.id_reg_test + "')", oEntry, {
@@ -37,7 +39,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 				}				
 			});
 			oModelRegTest.refresh();
-			oSplitApp.toDetail("idRegTest1");		
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("RegTest");
 		}
 		sap.ui.getCore().byId("fldIDReg").setValue("");		
 	},
@@ -57,8 +60,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		sap.ui.getCore().byId("idListRelatedPlace").setVisible(false);
     },
     
-    onAddCheckClick: function(){
-    	
+    onAddCheckClick: function(){   	
+	   
     },	
 
     onDelCheckClick: function() {
@@ -70,16 +73,33 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
     },		
 
 	onAddPlaceClick: function() {
-		
+		this._oDialog = sap.ui.xmlfragment("regtest.fragments.addDialog",this);
+	     this._oDialog.open(); 
+		// this._getDialog().open();
 	},		
 
 	onDelPlaceClick: function() {
-		
+		this._oDialog = sap.ui.xmlfragment("regtest.fragments.delDialog",this);
+	     this._oDialog.open(); 
 	},		
 
 	onEditPlaceClick: function() {
-		
+		this._oDialog = sap.ui.xmlfragment("regtest.fragments.updDialog",this);
+	     this._oDialog.open(); 
 	},		
+	onCloseDialog : function () {
+        this._getDialog().close();
+     },
+	 _getDialog : function () {
+         // create dialog lazily
+         if (!this._oDialog) {
+            // create dialog via fragment factory
+            this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.addDialog", this);
+            // connect dialog to view (models, lifecycle)
+            this.getView().addDependent(this._oDialog);
+         }
+         return this._oDialog;
+      },
 
 	/* FRAGMENT
 	 onOpenDialog : function () {
@@ -106,12 +126,17 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 * @memberOf regtest.RegTestDetail
 */
 	onBeforeRendering: function() {
-		debugger;
-		var id_reg_test = sap.ui.getCore().byId("fldIDReg").getValue();
-		if (id_reg_test != '') {
-			reloadModel(oUser);			
-			var oPlaceTable = sap.ui.getCore().byId("idPlaceTable");
-//			oPlaceTable.bindRows("/REG_PLACE_SET(id_reg_test='" + sap.ui.getCore().byId("fldIDReg").getValue() + "')");			
+		var idRegTest = sap.ui.getCore().byId("fldIDReg").getValue();
+		if (idRegTest != '') {
+			var oPl = sap.ui.getCore().byId("idPlaceTableToReg")
+			var filter = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
+			
+			oPl.bindRows("/REG_PLACE_SET", null, null, filter);			
+
+			var oCheck = sap.ui.getCore().byId("idCheckTableToReg")
+			var filterCheck = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
+			
+			oCheck.bindRows("/REG_SET", null, null, filterCheck);			
 		}	
 	},
 

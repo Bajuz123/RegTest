@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+  
+   <Dialog
+      title="Delete Placeholders ">
+
+      <beginButton>
+           <Button
+            text="Yes"
+            icon="sap-icon://accept"
+            press= "onSave"/>
+      </beginButton>
+      <endButton>
+          <Button
+            text="Cancel"
+            icon="sap-icon://cancel"
+            press= "onCloseDialog"/>
+      </endButton>
+      
+     <!--  <Text text = "Name : "/>-->
+<content>
+<VBox>
+<Label text="Delete Placeholder from DB ?"/>
+</VBox>
+</content>
+
+   </Dialog>
+</core:FragmentDefinition>
