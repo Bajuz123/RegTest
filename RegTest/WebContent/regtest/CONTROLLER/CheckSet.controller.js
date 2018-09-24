@@ -11,6 +11,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 	
 	onAddSetClick: function() {
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+
 		oRouter.navTo("CheckSetDetail");
 	},
 	onDelSetClick: function(oSetTable) {

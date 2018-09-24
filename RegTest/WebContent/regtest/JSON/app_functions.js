@@ -29,10 +29,13 @@ function reloadModel(oUser) {
 		sap.ui.getCore().setModel(oModel);
 
 	    // JSON Data
-//		var oModel = new sap.ui.model.json.JSONModel();
-//		oModel.loadData("regtest/JSON/RegTest_DATA.json");
-//		sap.ui.getCore().setModel(oModel);
-//		sap.m.MessageToast.show("Working offline with mockup!");
+/*
+		var oModel = new sap.ui.model.json.JSONModel();
+		oModel.loadData("regtest/JSON/RegTest_DATA.json");
+		sap.ui.getCore().setModel(oModel);
+		sap.m.MessageToast.show("Working offline with mockup!");
+		*/
+
 }
 
 function getUrl(sUrl) {
