@@ -18,11 +18,11 @@ sap.ui.jsview("regtest.VIEW.CheckSetDetail", {
 			icon : "sap-icon://save",
 		    press:  oController.onOKCheckClick   });		
 
-/*		var btnBackReg = new sap.m.Button("btnBackReg", {
+     	var btnBackCkeck = new sap.m.Button("btnBackCheck", {
 			text : "Back",
 			icon : "sap-icon://undo",
-		    press:  oController.onBackRegClick   });		
-
+		    press:  oController.onBackCheckClick   });		
+/*
 		var btnRun = new sap.m.Button("btnRun", {
 			text : "Run RegTest",
 			icon : "sap-icon://process",
@@ -37,14 +37,21 @@ sap.ui.jsview("regtest.VIEW.CheckSetDetail", {
 			text : "CheckSets",
 			icon : "sap-icon://stethoscope",
 		    press:  oController.onCheckSetClick   }); 	
-	
-		var fieldIDCheck = new sap.m.Input("fldIDCheck", {visible: false}); 
 
-		var checkTestNameLabel = new sap.m.Label("idcheckTestName", {text: "CheckSetName"});
+		var fieldIDCheck = new sap.m.Input("fldIDCheck", {visible: false}); 
+*/
+		var checkSetNameLabel = new sap.m.Label("idcheckSetName", {text: "CheckSetName"});
 		var fieldName = new sap.m.Input("fldName");
 		var panelcheckDetailName = new sap.m.Panel("idPanelCheckDetailName", {
 			content : [
-			           checkTestNameLabel, fieldName           
+				checkSetNameLabel, fieldName           
+			          ]
+		});
+		var checkSetClasNameLabel = new sap.m.Label("idcheckSetClasName", {text: "CheckSetClasName"});
+		var fieldClasName = new sap.m.Input("fldImplClass");
+		var panelcheckDetailClasName = new sap.m.Panel("idPanelCheckDetailClasName", {
+			content : [
+				checkSetClasNameLabel, fieldClasName           
 			          ]
 		});
 		/*
@@ -191,8 +198,8 @@ sap.ui.jsview("regtest.VIEW.CheckSetDetail", {
 		sap.ui.getCore().byId("idListRelatedCheck").setVisible(false);
 	*/	
 		return new sap.m.Page({
-			title: "RegTest Detail",
-			content: [ btnOKCheck
+			title: "Prufung-Sets Detail",
+			content: [ btnOKCheck, btnBackCkeck, panelcheckDetailName, panelcheckDetailClasName
 		//	  panelRegDetail, panelRelatedPlace, panelRelatedCheck 
 			]
 		});
