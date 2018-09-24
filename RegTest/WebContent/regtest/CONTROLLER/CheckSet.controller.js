@@ -10,6 +10,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 //	},
 	
 	onAddSetClick: function() {
+		sap.ui.getCore().byId("idCheckIdField").setValue("");		
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 		oRouter.navTo("CheckSetDetail");
 	},
@@ -44,7 +45,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 			var rows = oSetTable.getRows();
 			var cells = rows[selIndex].getCells();
 
-			sap.ui.getCore().byId("fldIDCheck").setValue(cells[0].getValue());
+			sap.ui.getCore().byId("idCheckIdField").setValue(cells[0].getValue());
 			sap.ui.getCore().byId("fldName").setValue(cells[1].getValue());
 			sap.ui.getCore().byId("fldImplClass").setValue(cells[2].getValue());
 
