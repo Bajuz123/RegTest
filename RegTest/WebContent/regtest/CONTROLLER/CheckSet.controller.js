@@ -11,12 +11,34 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 	
 	onAddSetClick: function() {
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-//		oRouter.navTo("DetailCheck");
 		oRouter.navTo("CheckSetDetail");
 	},
-	onDelSetClick: function() {
+	onDelSetClick: function(oSetTable) {
+		var selIndex = oSetTable.getSelectedIndex();
 		
+		if (selIndex != -1) {
+			var rows = oSetTable.getRows();
+			var cells = rows[selIndex].getCells();
+			var idCheckSet = cells[0].getValue();
+			var oModelCheckSet = sap.ui.getCore().getModel();
+			oModelCheckSet.remove("/REG_TEST_SET(id_reg_test='" + idCheckSet
+					+ "')", {
+				method : "DELETE",
+				success : function(data) {
+					sap.m.MessageToast.show("Delete successfull");
+				},
+				error : function(e) {
+					sap.m.MessageToast.show("Delete error");
+				}
+			});
+			reloadModel(oUser);
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("CheckSetDetail");
+		} else {
+			sap.m.MessageToast.show("Select a row to delete!");
+		}
 	},
+		
 	onEditSetClick: function(oSetTable) {
 		var selIndex = oSetTable.getSelectedIndex();
 
