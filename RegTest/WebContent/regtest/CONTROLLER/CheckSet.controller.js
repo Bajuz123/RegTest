@@ -11,10 +11,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 	
 	onAddSetClick: function() {
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/Bajuz123/RegTest.git
 		oRouter.navTo("CheckSetDetail");
 	},
 	onDelSetClick: function(oSetTable) {
