@@ -73,18 +73,18 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
     },		
 
 	onAddPlaceClick: function() {
-		this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.addDialog",this);
+		this._oDialog = sap.ui.xmlfragment("regtest.fragments.addDialog",this);
 	     this._oDialog.open(); 
 		// this._getDialog().open();
 	},		
 
 	onDelPlaceClick: function() {
-		this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.delDialog",this);
+		this._oDialog = sap.ui.xmlfragment("regtest.fragments.delDialog",this);
 	     this._oDialog.open(); 
 	},		
 
 	onEditPlaceClick: function() {
-		this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.updDialog",this);
+		this._oDialog = sap.ui.xmlfragment("regtest.fragments.updDialog",this);
 	     this._oDialog.open(); 
 	},		
 	onCloseDialog : function () {
