@@ -7,29 +7,29 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 */
 	onInit: function() {
 	},
-/*
-	onBackRegClick: function() {
-		oSplitApp.toDetail("idRegTest1");				
-		sap.ui.getCore().byId("fldIDReg").setValue("");		
-	}, */
+
+	onBackCheckClick: function() {
+		oSplitApp.toDetail("idCkeckTest1");				
+		sap.ui.getCore().byId("fldIdCheck").setValue("");		
+	}, 
 	
 	onOKCheckClick: function() {
 		var oEntry = {};		
 		
 //escape the texts first!!! sap.ui functionality
 //		oEntry.id_check_set = sap.ui.getCore().byId("fldIDCheck").getValue();
-//		oEntry.Name = sap.ui.getCore().byId("fldName").getValue();
-//		oEntry.Implementation_class = sap.ui.getCore().byId("fldImplClass").getValue(); 
+		oEntry.Name = sap.ui.getCore().byId("fldName").getValue();
+		oEntry.Implementation_Class = sap.ui.getCore().byId("fldImplClass").getValue(); 
 	}
 	});
-		/*
-		var oModelRegTest = sap.ui.getCore().getModel();
+		
+		var oModelCheckSet = sap.ui.getCore().getModel();
 
-		if ( oEntry.id_reg_test == '' ) { //insert
-			oModelRegTest.create("/REG_TEST_SET", oEntry);
+		if ( oEntry.id_check_set == '' ) { //insert
+			oModelCheckSet.create("/CHECK_TEST_SET", oEntry);
 			sap.m.MessageToast.show("Add successfull");
-			oSplitApp.toDetail("idRegTest1");		
-		} else { //update
+			oSplitApp.toDetail("idCheckTest1");		
+		} /*else { //update
 			debugger;			
 			oModelRegTest.update("/REG_TEST_SET(id_reg_test='" + oEntry.id_reg_test + "')", oEntry, {
 				success : function(data) {
