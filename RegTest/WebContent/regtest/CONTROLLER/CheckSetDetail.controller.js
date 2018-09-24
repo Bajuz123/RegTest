@@ -25,7 +25,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 		//if ( oEntry.id_check_set == '' ) { //insert
 			oModelCheckSet.create("/REG_CHECK_SET_SET", oEntry);
 			sap.m.MessageToast.show("Add successfull");
-			oSplitApp.toDetail("idCheckSett1");		
+			//oSplitApp.toDetail("idCheckSett1");		
 	/*	}  else { //update
 			debugger;			
 			oModelRegTest.update("/REG_TEST_SET(id_reg_test='" + oEntry.id_reg_test + "')", oEntry, {
