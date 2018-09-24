@@ -34,6 +34,7 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 		});
 		var oItem4 = new sap.m.StandardListItem({
 			id: "sItem4",
+			icon: "sap-icon://log",
 			title: "Logout"
 		});
 		oList.addItem(oItem1);
