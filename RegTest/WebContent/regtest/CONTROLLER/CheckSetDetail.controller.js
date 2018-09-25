@@ -28,7 +28,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 			sap.m.MessageToast.show("Add successfull"); //ToDo according to result
 			oRouter.navTo("RegCheckSet");
 		}  else { //update
-/*			oModelRegTest.update("/REG_TEST_SET(id_reg_test='" + oEntry.id_reg_test + "')", oEntry, {
+			oModelCheckSet.update("/CHCK_SET(id_check_set='" + oEntry.id_check_set + "')", oEntry, {
 				success : function(data) {
 					sap.m.MessageToast.show("Update successfull");
 				},
@@ -36,10 +36,10 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 					sap.m.MessageToast.show("Update error");
 				}				
 			});
-	*/		oModelCheckSet.refresh();
+			oModelCheckSet.refresh();
 			oRouter.navTo("RegCheckSet");
 		}
-		sap.ui.getCore().byId("fldIDReg").setValue("");		
+		sap.ui.getCore().byId("fldIDCheck").setValue("");		
 	},
 	
 /**

@@ -44,13 +44,16 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 		if (selIndex != -1) {
 			var rows = oSetTable.getRows();
 			var cells = rows[selIndex].getCells();
-
+			
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("CheckSetDetail");
+			
 			sap.ui.getCore().byId("idCheckIdField").setValue(cells[0].getValue());
 			sap.ui.getCore().byId("fldName").setValue(cells[1].getValue());
 			sap.ui.getCore().byId("fldImplClass").setValue(cells[2].getValue());
 
-			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			oRouter.navTo("CheckSetDetail");
+		//	var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+		//	oRouter.navTo("CheckSetDetail");
 		} else {
 			sap.m.MessageToast.show("Select a row to edit!");
 		}		
