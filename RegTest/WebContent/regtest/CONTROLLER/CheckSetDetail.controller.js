@@ -39,7 +39,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 			oModelCheckSet.refresh();
 			oRouter.navTo("RegCheckSet");
 		}
-		sap.ui.getCore().byId("fldIDCheck").setValue("");		
+//		sap.ui.getCore().byId("fldIDCheck").setValue("");		
 	},
 	
 /**
