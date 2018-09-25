@@ -56,7 +56,7 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 			text : "Edit",
 			icon : "sap-icon://edit",
 		    press: function(){
-		    	oController.onEditSetClick
+		    	oController.onEditSetClick(oTable) 
 		    	}
 			//press: oController.onEditSetClick
 		});
