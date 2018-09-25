@@ -38,8 +38,11 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			icon : "sap-icon://stethoscope",
 		    press:  oController.onCheckSetClick   });	
 		
-		var fieldIDReg = new sap.m.Input("fldIDReg", {visible: false});
-
+		var fieldIDReg = new sap.m.Input(
+		  "fldIDReg", 
+		  {visible: false}
+		);
+	
 		var regTestNameLabel = new sap.m.Label("idRegTestNamet", {text: "RegTestName"});
 		var fieldName = new sap.m.Input("fldName");
 		var panelRegDetailName = new sap.m.Panel("idPanelRegDetailName", {

@@ -8,9 +8,9 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 	 * 
 	 * @memberOf regtest.Login
 	 */
-	// onInit: function() {
-	//
-	// },
+	 onInit: function() {
+	   var OUser;
+	 },
 	onLoginClick : function() {
 		oLogin = sap.ui.getCore().byId("idLoginName").getValue();
 		oPwd = sap.ui.getCore().byId("idPwdField").getValue();
@@ -18,15 +18,8 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 		var found = validateUser(oLogin, oPwd);
 		if (found) {
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			oRouter.navTo("Split", {value:1});
-			oRouter.navTo("RegTest", {value:1});
-			
-/*			oSplitApp.addMasterPage(oMenu);
-			oSplitApp.setInitialMaster("idMenu1");
-			oSplitApp.toDetail("idRegTest1");
-			reloadModel(oUser);
-			oSplitApp.setMode(sap.m.SplitAppMode.ShowHideMode)
-*/
+			oRouter.navTo("SplitAppControl");
+			oRouter.navTo("RegTest");			
 		} else {
 			sap.m.MessageToast.show("Login failed");
 		}	

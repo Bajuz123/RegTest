@@ -8,6 +8,22 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 	onInit: function() {
 	},
 
+	refreshRelatedTables: function() {
+		debugger;
+		var idRegTest = sap.ui.getCore().byId("fldIDReg").getValue();
+		if (idRegTest != '') {
+			var oPl = sap.ui.getCore().byId("idPlaceTableToReg")
+			var filter = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
+			
+			oPl.bindRows("/REG_PLACE_SET", null, null, filter);			
+
+			var oCheck = sap.ui.getCore().byId("idCheckTableToReg")
+			var filterCheck = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
+			
+			oCheck.bindRows("/REG_SET", null, null, filterCheck);			
+		}			
+	},	
+
 	onBackRegClick: function() {
 		sap.ui.getCore().byId("fldIDReg").setValue("");		
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
@@ -137,20 +153,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 * (NOT before the first rendering! onInit() is used for that one!).
 * @memberOf regtest.RegTestDetail
 */
-	onBeforeRendering: function() {
-		var idRegTest = sap.ui.getCore().byId("fldIDReg").getValue();
-		if (idRegTest != '') {
-			var oPl = sap.ui.getCore().byId("idPlaceTableToReg")
-			var filter = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
-			
-			oPl.bindRows("/REG_PLACE_SET", null, null, filter);			
-
-			var oCheck = sap.ui.getCore().byId("idCheckTableToReg")
-			var filterCheck = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
-			
-			oCheck.bindRows("/REG_SET", null, null, filterCheck);			
-		}	
-	},
+//	onBeforeRendering: function() {
+//	},
 
 /**
 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
