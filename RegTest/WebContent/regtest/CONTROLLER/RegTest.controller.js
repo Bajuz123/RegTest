@@ -79,7 +79,6 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	 */
 	onBeforeRendering : function() {
 		try {
-			debugger;
 			  reloadModel(oUser);			
 		} catch (err) {
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");

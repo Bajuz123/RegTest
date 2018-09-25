@@ -54,7 +54,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		var regTestXMLLabel = new sap.m.Label("idRegTestXML", {text: "XML"});
 		var areaXML   = new sap.m.TextArea("areaXML", {
 			width: "100%",
-			growing: true
+//			growing: true
 		});
 		
 		var fileReader = new sap.ui.unified.FileUploader({ 
@@ -96,7 +96,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			tableID : "idPlaceTableToReg",
 			visibleRowCount : 5,
 			selectionMode: sap.ui.table.SelectionMode.Single,
-			editable : true
+			editable : false
 		});
 
 		oPlaceTable.addColumn(new sap.ui.table.Column({
@@ -122,7 +122,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			tableID : "idCheckTableToReg",
 			visibleRowCount : 5,
 			selectionMode: sap.ui.table.SelectionMode.Single,
-			editable : true
+			editable : false
 		});
 
 		oCheckTable.addColumn(new sap.ui.table.Column({
@@ -165,7 +165,8 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			           ]
 		});		
 
-		oCheckTable.visible = false;
+		oPlaceTable.visible = true;
+		oCheckTable.visible = true;
 		var panelRelatedPlace = new sap.m.Panel("idListRelatedPlace", {
 			content : [
 			           btnPlaceAdd, btnPlaceDel, btnPlaceEdit, oPlaceTable
@@ -192,8 +193,9 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			          btnCheckAdd, btnCheckDel, btnCheckEdit, oCheckTable
 			          ]
 		});		
-
+		debugger;
 		sap.ui.getCore().byId("idListRelatedCheck").setVisible(false);
+		sap.ui.getCore().byId("idListRelatedPlace").setVisible(false);
 		
 		return new sap.m.Page({
 			title: "RegTest Detail",

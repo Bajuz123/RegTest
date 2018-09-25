@@ -125,18 +125,15 @@ var myCallback = function($this) {
 };
 
 var myMDCallback = function($this) {
-	debugger;
 	var viewName = "regtest.VIEW." + $this.name;
 	var viewId = "id" + viewName;
 	var view = sap.ui.getCore().byId(viewId);
 	var oSplitApp = sap.ui.getCore().byId("idSplitAppControl");
 
 	if (view != undefined) {
-		oSplitApp.removeDetailPage(view);		
-		//view.destroy();		
-	} else {
-	    view = createView(viewId, viewName);
+		view.destroy();		
 	}
+    view = createView(viewId, viewName);
 	oSplitApp.addDetailPage(view);
 	oSplitApp.toDetail(viewId);
 }

@@ -72,7 +72,7 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 		    }
 		    });	
 
-		var panel = sap.m.Panel("idMainPanel", {
+		var panel = new sap.m.Panel("idMainPanel", {
 			content : [btnAddReg, btnDelReg, btnEditReg, oRegTable]
 		});		
 		
