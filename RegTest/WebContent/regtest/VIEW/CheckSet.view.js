@@ -37,8 +37,7 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 			template: new sap.ui.commons.TextField().bindProperty("value","implementation_class"),
 			visible: true
 		} ))
-
-		oTable.bindRows("/REG_CHECK_SET_SET");
+		oTable.bindRows("/CHCK_SET");
 		
 	    var btnAddSet = new sap.m.Button("idBtnAddSet", {
 			text : "Add",

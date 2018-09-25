@@ -24,7 +24,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 		var oModelCheckSet = sap.ui.getCore().getModel();
 		if (oEntry.id_check_set == '') {
-			oModelCheckSet.create("/REG_CHECK_SET_SET", oEntry);
+			oModelCheckSet.create("/CHCK_SET", oEntry);
 			sap.m.MessageToast.show("Add successfull"); //ToDo according to result
 			oRouter.navTo("RegCheckSet");
 		}  else { //update

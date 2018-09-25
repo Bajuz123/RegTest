@@ -22,7 +22,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 			var cells = rows[selIndex].getCells();
 			var idCheckSet = cells[0].getValue();
 			var oModelCheckSet = sap.ui.getCore().getModel();
-			oModelCheckSet.remove("/REG_TEST_SET(id_reg_test='" + idCheckSet
+			oModelCheckSet.remove("/CHCK_SET(id_check_set='" + idCheckSet
 					+ "')", {
 				method : "DELETE",
 				success : function(data) {
