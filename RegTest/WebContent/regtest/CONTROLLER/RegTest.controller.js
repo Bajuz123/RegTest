@@ -21,6 +21,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	onAddRegClick : function() {
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 		oRouter.navTo("RegTestDetail");
+		sap.ui.getCore().byId("fldIDReg").setValue("");
 	},
 
 	onDelRegClick : function(oRegTable) {
@@ -51,17 +52,19 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 
 	onEditRegClick : function(oRegTable) {
 		var selIndex = oRegTable.getSelectedIndex();
-
 		if (selIndex != -1) {
 			var rows = oRegTable.getRows();
 			var cells = rows[selIndex].getCells();
 
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("RegTestDetail");
+
 			sap.ui.getCore().byId("fldIDReg").setValue(cells[0].getValue());
 			sap.ui.getCore().byId("fldName").setValue(cells[1].getValue());
 			sap.ui.getCore().byId("areaXML").setValue(cells[2].getValue());
-
-			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			oRouter.navTo("RegTestDetail");
+			
+			var oRegDetailView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
+			oRegDetailView.getController().refreshRelatedTables();
 		} else {
 			sap.m.MessageToast.show("Select a row to edit!");
 		}

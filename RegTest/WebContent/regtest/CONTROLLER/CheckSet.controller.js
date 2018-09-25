@@ -11,24 +11,51 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 	
 	onAddSetClick: function() {
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-		oRouter.navTo("DetailCheck");
+		oRouter.navTo("CheckSetDetail");
+		sap.ui.getCore().byId("idCheckIdField").setValue("");		
 	},
-	onDelSetClick: function() {
+	onDelSetClick: function(oSetTable) {
+		var selIndex = oSetTable.getSelectedIndex();
 		
+		if (selIndex != -1) {
+			var rows = oSetTable.getRows();
+			var cells = rows[selIndex].getCells();
+			var idCheckSet = cells[0].getValue();
+			var oModelCheckSet = sap.ui.getCore().getModel();
+
+			oModelCheckSet.remove("/CHCK_SET(id_check_set='" + idCheckSet
+
+					+ "')", {
+				method : "DELETE",
+				success : function(data) {
+					sap.m.MessageToast.show("Delete successfull");
+				},
+				error : function(e) {
+					sap.m.MessageToast.show("Delete error");
+				}
+			});
+			reloadModel(oUser);
+		} else {
+			sap.m.MessageToast.show("Select a row to delete!");
+		}
 	},
+		
 	onEditSetClick: function(oSetTable) {
 		var selIndex = oSetTable.getSelectedIndex();
 
 		if (selIndex != -1) {
 			var rows = oSetTable.getRows();
 			var cells = rows[selIndex].getCells();
-
-			sap.ui.getCore().byId("fldIDCheck").setValue(cells[0].getValue());
+			
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("CheckSetDetail");
+			
+			sap.ui.getCore().byId("idCheckIdField").setValue(cells[0].getValue());
 			sap.ui.getCore().byId("fldName").setValue(cells[1].getValue());
 			sap.ui.getCore().byId("fldImplClass").setValue(cells[2].getValue());
 
-			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			oRouter.navTo("DetailCheck");
+		//	var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+		//	oRouter.navTo("CheckSetDetail");
 		} else {
 			sap.m.MessageToast.show("Select a row to edit!");
 		}		
@@ -42,8 +69,14 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 * (NOT before the first rendering! onInit() is used for that one!).
 * @memberOf regtest.CheckSet
 */
-	onBeforeRendering: function() {
-		reloadModel(oUser);
+	onBeforeRendering : function() {
+		try {
+			  reloadModel(oUser);			
+		} catch (err) {
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("Login");
+			sap.m.MessageToast.show("You have to login first!");					
+		}
 	},
 	
 /**

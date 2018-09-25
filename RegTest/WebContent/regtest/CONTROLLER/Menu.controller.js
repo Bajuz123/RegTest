@@ -13,15 +13,15 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 		switch (oList.getSelectedItem().getId()) {
 		  case "sItem1":
 			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			  oRouter.navTo("RegTest", {value:1});
+			  oRouter.navTo("RegTest");
 			  break;
 		  case "sItem2":
 			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			  oRouter.navTo("DetailCheck", {value:2});
+			  oRouter.navTo("CheckSet");
 			  break;
 		  case "sItem3":
 			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			  oRouter.navTo("DetailLog", {value:3});
+			  oRouter.navTo("Log");
 			  break;
 		  case "sItem4":
 	 		  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");

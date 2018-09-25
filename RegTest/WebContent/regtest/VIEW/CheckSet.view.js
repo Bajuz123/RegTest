@@ -37,8 +37,7 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 			template: new sap.ui.commons.TextField().bindProperty("value","implementation_class"),
 			visible: true
 		} ))
-
-		oTable.bindRows("/REG_CHECK_SET_SET");
+		oTable.bindRows("/CHCK_SET");
 		
 	    var btnAddSet = new sap.m.Button("idBtnAddSet", {
 			text : "Add",
@@ -48,13 +47,20 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 		var btnDelSet = new sap.m.Button("idBtnDelSet", {
 			text : "Delete",
 			icon : "sap-icon://delete",
-		    press:  oController.onDelSetClick   });		
+		    press: function(){  
+		    	oController.onDelSetClick(oTable) 
+		    }	
+		    });		
 
 		var btnEditSet = new sap.m.Button("idBtnEditSet", {
 			text : "Edit",
 			icon : "sap-icon://edit",
-		    press:  oController.onEditSetClick});	
-
+		    press: function(){
+		    	oController.onEditSetClick(oTable) 
+		    	}
+			//press: oController.onEditSetClick
+		});
+		       		    	
 		var panel = new sap.m.Panel("idMainPanelChck", {
 			content : [
 			           btnAddSet, btnDelSet, btnEditSet, 
