@@ -10,9 +10,10 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 //	},
 	
 	onAddSetClick: function() {
-		sap.ui.getCore().byId("idCheckIdField").setValue("");		
+		
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 		oRouter.navTo("CheckSetDetail");
+		sap.ui.getCore().byId("idCheckIdField").setValue("");		
 	},
 	onDelSetClick: function(oSetTable) {
 		var selIndex = oSetTable.getSelectedIndex();
