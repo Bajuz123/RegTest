@@ -193,7 +193,6 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			          btnCheckAdd, btnCheckDel, btnCheckEdit, oCheckTable
 			          ]
 		});		
-		debugger;
 		sap.ui.getCore().byId("idListRelatedCheck").setVisible(false);
 		sap.ui.getCore().byId("idListRelatedPlace").setVisible(false);
 		
