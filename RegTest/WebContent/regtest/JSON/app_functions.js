@@ -22,7 +22,6 @@ function validateUser(oLogin, oPwd) {
 
 function reloadModel(oUser) {
 	// SAP Data
-		var oUser = {};
 		var oModel = new sap.ui.model.odata.ODataModel(this
 				.getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true,
 				oUser.hd1user, oUser.hd1pwd);

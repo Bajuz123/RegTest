@@ -8,6 +8,22 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 	onInit: function() {
 	},
 
+	refreshRelatedTables: function() {
+		var idRegTest = sap.ui.getCore().byId("fldIDReg").getValue();
+		if (idRegTest != '') {
+			var oPl = sap.ui.getCore().byId("idPlaceTableToReg")
+			var filter = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
+			
+			oPl.bindRows("/REG_PLACE_SET", null, null, filter);			
+
+			var oCheck = sap.ui.getCore().byId("idCheckTableToReg")
+			var filterCheck = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
+			
+			oCheck.bindRows("/REG_SET", null, null, filterCheck);				
+			this.onPlaceholderClick();			
+		}			
+	},	
+
 	onBackRegClick: function() {
 		sap.ui.getCore().byId("fldIDReg").setValue("");		
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
@@ -29,7 +45,6 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 			oRouter.navTo("RegTest");
 		} else { //update
-			debugger;			
 			oModelRegTest.update("/REG_TEST_SET(id_reg_test='" + oEntry.id_reg_test + "')", oEntry, {
 				success : function(data) {
 					sap.m.MessageToast.show("Update successfull");
@@ -47,9 +62,9 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 	
     onRunClick : function() {
 		var regTestID = sap.ui.getCore().byId("fldIDReg").getValue();		
-
+		if (regTestID != '') {
+		
 		var oDataModel = sap.ui.getCore().getModel();
-		debugger;
 		oDataModel.callFunction("START_CREDIT", // function import name
                 "GET", // http method
                 {"id_reg_test" : regTestID  }, // function import parameters
@@ -59,7 +74,10 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
                 }, // callback function for success
                 function(oError){
 					sap.m.MessageToast.show("Credit start failed");
-                } ); // callback function for error		
+                } ); // callback function for error
+		} else {
+			sap.m.MessageToast.show("Save the Reg test before RUN");			
+		}
     },		
 
     onPlaceholderClick : function() {
@@ -149,20 +167,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 * (NOT before the first rendering! onInit() is used for that one!).
 * @memberOf regtest.RegTestDetail
 */
-	onBeforeRendering: function() {
-		var idRegTest = sap.ui.getCore().byId("fldIDReg").getValue();
-		if (idRegTest != '') {
-			var oPl = sap.ui.getCore().byId("idPlaceTableToReg")
-			var filter = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
-			
-			oPl.bindRows("/REG_PLACE_SET", null, null, filter);			
-
-			var oCheck = sap.ui.getCore().byId("idCheckTableToReg")
-			var filterCheck = new sap.ui.model.Filter("id_reg_test", sap.ui.model.FilterOperator.EQ, idRegTest);
-			
-			oCheck.bindRows("/REG_SET", null, null, filterCheck);			
-		}	
-	},
+//	onBeforeRendering: function() {
+//	},
 
 /**
 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
@@ -170,14 +176,13 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 * @memberOf regtest.RegTestDetail
 */
 //	onAfterRendering: function() {
-//
 //	},
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
 * @memberOf regtest.RegTestDetail
 */
-//	onExit: function() {
-//	}
+	onExit: function() {
+	}
 
 });
