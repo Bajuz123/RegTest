@@ -13,9 +13,17 @@ var Users =
       "hd1pwd" : "majka123"
     },
     {
+
+      "Login"  : "osa", 
+      "Pwd"    : "osa" ,
+      "hd1user": "osarisky",
+      "hd1pwd" : "Lengwarty"
+      },
+      {
       "Login"  : "pep", 
       "Pwd"    : "pep" ,
       "hd1user": "pkoniarik",
       "hd1pwd" : "Klucka963"
+
     }
  ]

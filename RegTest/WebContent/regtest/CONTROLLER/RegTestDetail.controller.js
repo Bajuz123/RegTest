@@ -6,6 +6,9 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 * @memberOf regtest.RegTestDetail
 */
 	onInit: function() {
+		var fragAddPH = {};
+		var fragDelPH = {};
+		var fragUpdPH = {};
 	},
 
 	refreshRelatedTables: function() {
@@ -103,33 +106,58 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
     },		
 
 	onAddPlaceClick: function() {
-		this._oDialog = sap.ui.xmlfragment("regtest.fragments.addDialog",this);
-	     this._oDialog.open(); 
-		// this._getDialog().open();
+	     //if(!fragAddPH){
+		var oView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
+	     fragAddPH = sap.ui.xmlfragment("regtest.fragments.addDialog",oView.getController());
+	    // }
+	     fragAddPH.open();
 	},		
 
 	onDelPlaceClick: function() {
-		this._oDialog = sap.ui.xmlfragment("regtest.fragments.delDialog",this);
-	     this._oDialog.open(); 
-	},		
-
+		 // if(!fragDelPH){
+		 var oView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
+			  fragDelPH = sap.ui.xmlfragment("regtest.fragments.delDialog",oView.getController());
+		 // }
+		  fragDelPH.open(); 
+	},	
+	dialogAftercloseAddPH: function(oEvent) {
+		fragAddPH.destroy();
+	},
+	dialogAftercloseDelPH: function(oEvent) {
+		fragDelPH.destroy();
+	},
+	dialogAftercloseUpdPH: function(oEvent) {
+		fragUpdPH.destroy();
+	},
 	onEditPlaceClick: function() {
-		this._oDialog = sap.ui.xmlfragment("regtest.fragments.updDialog",this);
-	     this._oDialog.open(); 
+		  //if(!fragUpdPH){
+		var oView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
+			  fragUpdPH = sap.ui.xmlfragment("regtest.fragments.updDialog",oView.getController());
+		 // }
+		
+		  fragUpdPH.open(); 
 	},		
-	onCloseDialog : function () {
-        this._getDialog().close();
+	onSaveAddPH: function(oEvent) {
+		//TODO Save
+		fragAddPH.close();
+	},
+	onCloseDialogAddPH : function () {
+		fragAddPH.close();
      },
-	 _getDialog : function () {
-         // create dialog lazily
-         if (!this._oDialog) {
-            // create dialog via fragment factory
-            this._oDialog = sap.ui.xmlfragment("com.tutorial.fragments.addDialog", this);
-            // connect dialog to view (models, lifecycle)
-            this.getView().addDependent(this._oDialog);
-         }
-         return this._oDialog;
+     onSaveDelPH: function(oEvent) {
+ 		//TODO Save
+ 		fragDelPH.close();
+ 	},
+ 	onCloseDialogDelPH : function () {
+ 		fragDelPH.close();
       },
+    onSaveUpdPH: function(oEvent) {
+  		//TODO Save
+  		fragUpdPH.close();
+  	},
+  	onCloseDialogUpdPH : function () {
+  		fragUpdPH.close();
+       },
 
 	/* FRAGMENT
 	 onOpenDialog : function () {
