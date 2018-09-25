@@ -44,7 +44,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			});
 			reloadModel(oUser);
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			oRouter.navTo("RegTestDetail");
+			oRouter.navTo("RegTest");
 		} else {
 			sap.m.MessageToast.show("Select a row to delete!");
 		}

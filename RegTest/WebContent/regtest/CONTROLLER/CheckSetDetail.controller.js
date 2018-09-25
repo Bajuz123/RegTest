@@ -9,16 +9,15 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 	},
 
 	onBackCheckClick: function() {
-		sap.ui.getCore().byId("idCheckIdField").setValue("");		
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-		oRouter.navTo("RegCheckSet");
+		oRouter.navTo("CheckSet");
 	}, 
 	
 	onOKCheckClick: function() {
 		var oEntry = {};		
 		
 //escape the texts first!!! sap.ui functionality
-		oEntry.id_check_set = sap.ui.getCore().byId("idCheckIdField").getValue();
+		oEntry.id_check_set = sap.ui.getCore().byId("idCheckSetIdField").getValue();
 		oEntry.name = sap.ui.getCore().byId("fldName").getValue();
 		oEntry.implementation_class = sap.ui.getCore().byId("fldImplClass").getValue(); 
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
@@ -26,7 +25,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 		if (oEntry.id_check_set == '') {
 			oModelCheckSet.create("/CHCK_SET", oEntry);
 			sap.m.MessageToast.show("Add successfull"); //ToDo according to result
-			oRouter.navTo("RegCheckSet");
+			oRouter.navTo("CheckSet");
 		}  else { //update
 			oModelCheckSet.update("/CHCK_SET(id_check_set='" + oEntry.id_check_set + "')", oEntry, {
 				success : function(data) {
@@ -37,9 +36,8 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 				}				
 			});
 			oModelCheckSet.refresh();
-			oRouter.navTo("RegCheckSet");
+			oRouter.navTo("CheckSet");
 		}
-	//	sap.ui.getCore().byId("fldIDCheck").setValue("");		
 	},
 	
 /**

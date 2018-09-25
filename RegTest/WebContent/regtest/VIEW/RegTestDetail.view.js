@@ -54,6 +54,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		var regTestXMLLabel = new sap.m.Label("idRegTestXML", {text: "XML"});
 		var areaXML   = new sap.m.TextArea("areaXML", {
 			width: "100%",
+			height: "12rem"
 //			growing: true
 		});
 		
@@ -70,7 +71,6 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 	              var reader = new FileReader();  
 	              var that = this;  
 	              reader.onload = function(evn) { 
-	            	  debugger;
 	                var strCSV= evn.target.result; //string in CSV
 	        		sap.ui.getCore().byId("areaXML").setValue(strCSV);
                   };

@@ -23,13 +23,12 @@ sap.ui.jsview("regtest.VIEW.CheckSetDetail", {
 			icon : "sap-icon://undo",
 		    press:  oController.onBackCheckClick   });		
 
-     	var fieldIDCheck = new sap.m.Input("idCheckIdField", {visible: false}); 
-
+     	var fieldIDCheck = new sap.m.Input("idCheckSetIdField", {visible: false}); 
 		var checkSetNameLabel = new sap.m.Label("idcheckSetName", {text: "CheckSetName"});
 		var fieldName = new sap.m.Input("fldName");
 		var panelcheckDetailName = new sap.m.Panel("idPanelCheckDetailName", {
 			content : [
-				checkSetNameLabel, fieldName           
+				fieldIDCheck, checkSetNameLabel, fieldName           
 			          ]
 		});
 		var checkSetClasNameLabel = new sap.m.Label("idcheckSetClasName", {text: "CheckSetClasName"});
