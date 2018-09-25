@@ -85,22 +85,34 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
     },		
 
 	onAddPlaceClick: function() {
-		this._oDialog = sap.ui.xmlfragment("regtest.fragments.addDialog",this);
-	     this._oDialog.open(); 
-		// this._getDialog().open();
+	     if(!this._oDialog){
+	     this._oDialog = sap.ui.xmlfragment("regtest.VIEW.RegTestDetail","regtest.fragments.addDialog", this);
+	     }
+         this._oDialog.open();
 	},		
 
 	onDelPlaceClick: function() {
+		  if(!this._oDialog){
 		this._oDialog = sap.ui.xmlfragment("regtest.fragments.delDialog",this);
+		  }
 	     this._oDialog.open(); 
-	},		
+	},	
+	dialogAfterclose: function(oEvent) {
+	    this._oDialog.destroy();
+	},
 
 	onEditPlaceClick: function() {
+		  if(!this._oDialog){
 		this._oDialog = sap.ui.xmlfragment("regtest.fragments.updDialog",this);
+		  }
+		
 	     this._oDialog.open(); 
 	},		
+	onSave: function(oEvent) {
+		this._oDialog.close();
+	},
 	onCloseDialog : function () {
-        this._getDialog().close();
+       this._getDialog().close();
      },
 	 _getDialog : function () {
          // create dialog lazily
