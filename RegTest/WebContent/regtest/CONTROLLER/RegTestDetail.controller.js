@@ -46,8 +46,20 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 	},
 	
     onRunClick : function() {
-//		update/insert
-//    	start web service
+		var regTestID = sap.ui.getCore().byId("fldIDReg").getValue();		
+
+		var oDataModel = sap.ui.getCore().getModel();
+		debugger;
+		oDataModel.callFunction("START_CREDIT", // function import name
+                "GET", // http method
+                {"id_reg_test" : regTestID  }, // function import parameters
+                null,        
+                function(oData, response) { 
+					sap.m.MessageToast.show("Credit start successfull");                	
+                }, // callback function for success
+                function(oError){
+					sap.m.MessageToast.show("Credit start failed");
+                } ); // callback function for error		
     },		
 
     onPlaceholderClick : function() {

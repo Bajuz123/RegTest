@@ -17,7 +17,7 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 			  break;
 		  case "sItem2":
 			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			  oRouter.navTo("DetailCheck", {value:2});
+			  oRouter.navTo("RegCheckSet", {value:2});
 			  break;
 		  case "sItem3":
 			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");

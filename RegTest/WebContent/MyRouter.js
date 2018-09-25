@@ -83,8 +83,8 @@ var myroutes = [
 			          }  
 	   		  },	   		  
 	   		  {
-	   				pattern: "DetailCheck",
-	   				name:"DetailCheck",
+	   				pattern: "RegCheckSet",
+	   				name:"RegCheckSet",
 	   				view:"regtest.VIEW.CheckSet",
 	   		        viewType: sap.ui.core.mvc.ViewType.JS,
 	   		        targetControl: "idSplitAppControl",
