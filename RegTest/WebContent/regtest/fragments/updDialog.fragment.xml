@@ -5,19 +5,20 @@
   
    <Dialog
       title="Update Placeholders"
-      afterClose="dialogAfterclose">
+      afterClose="dialogAftercloseUpdPH"
+      >
 
       <beginButton>
            <Button
             text="Save"
             icon="sap-icon://save"
-            press= "onSave"/>
+            press= "onSaveUpdPH"/>
       </beginButton>
       <endButton>
           <Button
             text="Cancel"
             icon="sap-icon://cancel"
-            press= "onCloseDialog"/>
+            press= "onCloseDialogUpdPH"/>
       </endButton>
       
      <!--  <Text text = "Name : "/>-->

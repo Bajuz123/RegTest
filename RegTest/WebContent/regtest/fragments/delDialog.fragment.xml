@@ -4,19 +4,20 @@
    xmlns:core="sap.ui.core" >
   
    <Dialog
-      title="Delete Placeholders ">
+      title="Delete Placeholders " 
+      afterClose="dialogAftercloseDelPH">
 
       <beginButton>
            <Button
             text="Yes"
             icon="sap-icon://accept"
-            press= "onSave"/>
+            press= "onSaveDelPH"/>
       </beginButton>
       <endButton>
           <Button
             text="Cancel"
             icon="sap-icon://cancel"
-            press= "onCloseDialog"/>
+            press= "onCloseDialogDelPH"/>
       </endButton>
       
      <!--  <Text text = "Name : "/>-->
