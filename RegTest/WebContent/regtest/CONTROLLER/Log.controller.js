@@ -16,22 +16,31 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 		var oRegTest = sap.ui.getCore().byId("idRegTestValue").getValue();
 		var oRunID = sap.ui.getCore().byId("idRunIdValue").getValue();
 
-		/* ToDo only one can be set */
-		if ((oRegTest != '') || (oRunID != '')) {
-			var filterCheck = new sap.ui.model.Filter({
-				filters : [ new sap.ui.model.Filter({
-					path : 'id_reg_test',
-					operator : sap.ui.model.FilterOperator.EQ,
-					value1 : oRegTest
-				}), new sap.ui.model.Filter({
-					path : 'run_id',
-					operator : sap.ui.model.FilterOperator.EQ,
-					value1 : oRunID
-				}) ],
-				and : true
+		var	filtersReg = [];
+		
+		if (oRegTest != '') {
+			var oRegIDFilter = new sap.ui.model.Filter({
+				path : 'id_reg_test',
+				operator : sap.ui.model.FilterOperator.EQ,
+				value1 : oRegTest
 			});
-			debugger;
-			oLogTable.bindRows("/REG_LOG_SET", null, null, filterCheck);
+			filtersReg.push(oRegIDFilter);
+		}
+
+		if ((oRunID != '')) {
+			var oRunIDFilter = new sap.ui.model.Filter({
+				path : 'run_id',
+				operator : sap.ui.model.FilterOperator.EQ,
+				value1 : oRunID})
+			filtersReg.push(oRunIDFilter);
+		}
+		
+		if ((oRegTest != '') || (oRunID != '')) {
+			var combinedFilter = new sap.ui.model.Filter(filtersReg);
+			oLogTable.bindRows({
+			  path:	"/REG_LOG_SET", 
+			  filters: combinedFilter
+			});
 		} else {
 			oLogTable.bindRows("/REG_LOG_SET");
 		}
@@ -44,6 +53,7 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 	 * @memberOf regtest.VIEW.Log
 	 */
 	onBeforeRendering : function() {
+debugger;
 		try {
 			reloadModel(oUser);
 		} catch (err) {
