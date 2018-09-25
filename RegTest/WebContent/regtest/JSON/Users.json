@@ -11,5 +11,11 @@ var Users =
       "Pwd"    : "quest" ,
       "hd1user": "jbreza",
       "hd1pwd" : "majka123"
+    },
+    {
+      "Login"  : "pep", 
+      "Pwd"    : "pep" ,
+      "hd1user": "pkoniarik",
+      "hd1pwd" : "Klucka963"
     }
  ]
