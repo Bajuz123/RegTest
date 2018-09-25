@@ -24,11 +24,11 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 		var oModelCheckSet = sap.ui.getCore().getModel();
 		if (oEntry.id_check_set == '') {
-			oModelCheckSet.create("/REG_CHECK_SET_SET", oEntry);
+			oModelCheckSet.create("/CHCK_SET", oEntry);
 			sap.m.MessageToast.show("Add successfull"); //ToDo according to result
 			oRouter.navTo("RegCheckSet");
 		}  else { //update
-/*			oModelRegTest.update("/REG_TEST_SET(id_reg_test='" + oEntry.id_reg_test + "')", oEntry, {
+			oModelCheckSet.update("/CHCK_SET(id_check_set='" + oEntry.id_check_set + "')", oEntry, {
 				success : function(data) {
 					sap.m.MessageToast.show("Update successfull");
 				},
@@ -36,10 +36,10 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 					sap.m.MessageToast.show("Update error");
 				}				
 			});
-	*/		oModelCheckSet.refresh();
+			oModelCheckSet.refresh();
 			oRouter.navTo("RegCheckSet");
 		}
-		sap.ui.getCore().byId("fldIDReg").setValue("");		
+	//	sap.ui.getCore().byId("fldIDCheck").setValue("");		
 	},
 	
 /**
@@ -47,11 +47,11 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 * (NOT before the first rendering! onInit() is used for that one!).
 * @memberOf regtest.RegTestDetail
 */
-/*
-	onBeforeRendering: function() {
-		debugger;
-		var id_reg_test = sap.ui.getCore().byId("fldIDReg").getValue();
-		if (id_reg_test != '') {
+
+/*	onBeforeRendering: function() {
+		//debugger;
+		var id_check_set = sap.ui.getCore().byId("fldIDCheck").getValue();
+		if (id_check_set  != '') {
 			reloadModel(oUser);			
 			var oPlaceTable = sap.ui.getCore().byId("idPlaceTable");
 //			oPlaceTable.bindRows("/REG_PLACE_SET(id_reg_test='" + sap.ui.getCore().byId("fldIDReg").getValue() + "')");			
