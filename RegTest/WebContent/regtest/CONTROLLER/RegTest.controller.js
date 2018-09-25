@@ -63,8 +63,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			sap.ui.getCore().byId("fldName").setValue(cells[1].getValue());
 			sap.ui.getCore().byId("areaXML").setValue(cells[2].getValue());
 			
-			debugger;
-			var oRegDetailView = sap.ui.getCore().byId("idRegTestDetail");
+			var oRegDetailView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
 			oRegDetailView.getController().refreshRelatedTables();
 		} else {
 			sap.m.MessageToast.show("Select a row to edit!");
@@ -80,6 +79,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	 */
 	onBeforeRendering : function() {
 		try {
+			debugger;
 			  reloadModel(oUser);			
 		} catch (err) {
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
