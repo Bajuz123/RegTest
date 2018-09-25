@@ -44,7 +44,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		);
 	
 		var regTestNameLabel = new sap.m.Label("idRegTestNamet", {text: "RegTestName"});
-		var fieldName = new sap.m.Input("fldName");
+		var fieldName = new sap.m.Input("fldRegName");
 		var panelRegDetailName = new sap.m.Panel("idPanelRegDetailName", {
 			content : [
 			           regTestNameLabel, fieldName           

@@ -38,7 +38,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		
 //escape the texts first!!! sap.ui functionality
 		oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg").getValue();
-		oEntry.Name = sap.ui.getCore().byId("fldName").getValue();
+		oEntry.Name = sap.ui.getCore().byId("fldRegName").getValue();
 		oEntry.XML = sap.ui.getCore().byId("areaXML").getValue();
 		var oModelRegTest = sap.ui.getCore().getModel();
 

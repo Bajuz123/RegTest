@@ -60,7 +60,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			oRouter.navTo("RegTestDetail");
 
 			sap.ui.getCore().byId("fldIDReg").setValue(cells[0].getValue());
-			sap.ui.getCore().byId("fldName").setValue(cells[1].getValue());
+			sap.ui.getCore().byId("fldRegName").setValue(cells[1].getValue());
 			sap.ui.getCore().byId("areaXML").setValue(cells[2].getValue());
 			
 			var oRegDetailView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
