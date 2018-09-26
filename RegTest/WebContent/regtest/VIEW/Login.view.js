@@ -44,7 +44,8 @@ sap.ui.jsview("regtest.VIEW.Login", {
 			press : oController.onLoginClick
 		});
 
-		var fldPwd = new sap.ui.commons.PasswordField("idPwdField", {
+		var fldPwd = new sap.m.Input("idPwdField", {
+			type: sap.m.InputType.Password,
 			width : "12rem"
 		});
 
