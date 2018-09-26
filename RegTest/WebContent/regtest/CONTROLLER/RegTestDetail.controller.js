@@ -119,7 +119,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		fragAddPH.open();
 	},
 
-<<<<<<< HEAD
+
 	onDelPlaceClick: function(oPlaceTable) {
 			 var selIndex = oPlaceTable.getSelectedIndex();
 		if (selIndex != -1) {
@@ -131,17 +131,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		}
 	},	
 	dialogAftercloseAddPH: function(oEvent) {
-=======
-	onDelPlaceClick : function() {
-		// if(!fragDelPH){
-		var oView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
-		fragDelPH = sap.ui.xmlfragment("regtest.fragments.delDialog", oView
-				.getController());
-		// }
-		fragDelPH.open();
-	},
-	dialogAftercloseAddPH : function(oEvent) {
->>>>>>> branch 'master' of https://github.com/Bajuz123/RegTest
+
 		fragAddPH.destroy();
 	},
 	dialogAftercloseDelPH : function(oEvent) {
@@ -150,7 +140,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 	dialogAftercloseUpdPH : function(oEvent) {
 		fragUpdPH.destroy();
 	},
-<<<<<<< HEAD
+
 	onEditPlaceClick: function() {
 		 var oPlaceTable = sap.ui.getCore().byId("idPlaceTableToReg");
     	 var selIndex = oPlaceTable.getSelectedIndex();
@@ -159,12 +149,9 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		 var placeholder = cells[1].getValue();
 		 var replaceWith = cells[2].getValue();
     	 if (selIndex != -1) {
-=======
-	onEditPlaceClick : function() {
-		// if(!fragUpdPH){
->>>>>>> branch 'master' of https://github.com/Bajuz123/RegTest
+
 		var oView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
-<<<<<<< HEAD
+
 			  fragUpdPH = sap.ui.xmlfragment("regtest.fragments.updDialog",oView.getController());
 			  sap.ui.getCore().byId("updPlaceholder").setValue(placeholder);
 			  sap.ui.getCore().byId("updReplace").setValue(replaceWith);
@@ -189,21 +176,11 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 			sap.m.MessageToast.show("Insert 'Placeholders' and 'Replace with'");
 		}
 		
-=======
-		fragUpdPH = sap.ui.xmlfragment("regtest.fragments.updDialog", oView
-				.getController());
-		// }
 
-		fragUpdPH.open();
-	},
-	onSaveAddPH : function(oEvent) {
-		// TODO Save
-		fragAddPH.close();
->>>>>>> branch 'master' of https://github.com/Bajuz123/RegTest
 	},
 	onCloseDialogAddPH : function() {
 		fragAddPH.close();
-<<<<<<< HEAD
+
      },
      onSaveDelPH: function(oEvent) {
     	 var oPlaceTable = sap.ui.getCore().byId("idPlaceTableToReg");
@@ -230,7 +207,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
  		fragDelPH.close();
       },
     onSaveUpdPH: function(oEvent) {
-  		//TODO Save
+
     	var oEntry = {};
 		oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg").getValue();
 		oEntry.placeholder = sap.ui.getCore().byId("updPlaceholder").getValue();
@@ -251,23 +228,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
   	onCloseDialogUpdPH : function () {
   		fragUpdPH.close();
        },
-=======
-	},
-	onSaveDelPH : function(oEvent) {
-		// TODO Save
-		fragDelPH.close();
-	},
-	onCloseDialogDelPH : function() {
-		fragDelPH.close();
-	},
-	onSaveUpdPH : function(oEvent) {
-		// TODO Save
-		fragUpdPH.close();
-	},
-	onCloseDialogUpdPH : function() {
-		fragUpdPH.close();
-	},
->>>>>>> branch 'master' of https://github.com/Bajuz123/RegTest
+
 
 	/*
 	 * FRAGMENT onOpenDialog : function () { this._getDialog().open(); },
