@@ -42,7 +42,7 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 		oRegTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "XML"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","XML"),
-			visible: true
+			visible: true			
 		} ))
 		
 		//oRegTable.attachBrowserEvent("dblclick", oController.onDblClick);

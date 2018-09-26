@@ -3,9 +3,9 @@
  */
 function getTableSelectedObject(oTable, oSelIndex) {
 	var bind = oTable.getBinding("rows");
-	var context = oTable.getContextByIndex(oSelIndex);		
+	var context = oTable.getContextByIndex(oSelIndex);
 	var boundObject = context.getProperty(context.getPath());
-	return boundObject;	
+	return boundObject;
 }
 
 function registerRouter(oRouter) {
@@ -28,19 +28,21 @@ function validateUser(oLogin, oPwd) {
 
 function reloadModel(oUser) {
 	// SAP Data
-		var oModel = new sap.ui.model.odata.ODataModel(this
-				.getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true,
-				oUser.hd1user, oUser.hd1pwd);
-		sap.ui.getCore().setModel(oModel);
 
-	    // JSON Data
-/*
-		var oModel = new sap.ui.model.json.JSONModel();
-		oModel.loadData("regtest/JSON/RegTest_DATA.json");
-		sap.ui.getCore().setModel(oModel);
-		sap.m.MessageToast.show("Working offline with mockup!");
-		*/
+	var oModel = new sap.ui.model.odata.ODataModel(this
+			.getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, oUser.hd1user,
+			oUser.hd1pwd);
 
+	debugger;
+	var data = oModel.read('REG_TEST_SET', {
+		error : function(oError) {
+			oModel = new sap.ui.model.json.JSONModel();
+			oModel.loadData("regtest/JSON/RegTest_DATA.json");
+			sap.ui.getCore().setModel(oModel);
+			sap.m.MessageToast.show("Working offline with mockup!");
+		}
+	});
+	sap.ui.getCore().setModel(oModel);
 }
 
 function getUrl(sUrl) {
