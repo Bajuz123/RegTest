@@ -67,12 +67,20 @@ sap.ui.jsview("regtest.VIEW.Log", {
 
 		var runIdText = new sap.m.Label("idRunIdText", {text: "Run ID"});
 		var runIdValue = new sap.m.Input("idRunIdValue");
+		runIdValue.onsapenter = (function(oEvent) {
+			oController.onRefresh();
+		});
+
 		var panelRunId = new sap.m.Panel("idLogPanelRunId", {
 			content : [runIdText, runIdValue]
 		});
 
 		var runIdRegTest = new sap.m.Label("idRegTestId", {text: "Reg Test ID"});
 		var runIdRegTestValue = new sap.m.Input("idRegTestValue");
+		runIdRegTestValue.onsapenter = (function(oEvent) {
+			oController.onRefresh();
+		});
+
 		var panelRegTestID = new sap.m.Panel("idRegTestIDPanel", {
 			content : [runIdRegTest, runIdRegTestValue]
 		});
@@ -84,8 +92,8 @@ sap.ui.jsview("regtest.VIEW.Log", {
 			icon : "sap-icon://refresh",
 		    press: function(){
 		    	oController.onRefresh();
-		    }
-		    });	
+		    }	
+		});	
 
 		var panel = new sap.m.Panel("idLogPanel", {
 			content : [panelRunId, panelRegTestID, btnRefresh, oLogTable]
