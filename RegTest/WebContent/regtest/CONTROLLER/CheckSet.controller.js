@@ -18,11 +18,9 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 		var selIndex = oSetTable.getSelectedIndex();
 		
 		if (selIndex != -1) {
-			var rows = oSetTable.getRows();
-			var cells = rows[selIndex].getCells();
-			var idCheckSet = cells[0].getValue();
+			var boundObject = getTableSelectedObject(oSetTable ,selIndex);
+			var idCheckSet = boundObject.id_check_set;	
 			var oModelCheckSet = sap.ui.getCore().getModel();
-
 			oModelCheckSet.remove("/CHCK_SET(id_check_set='" + idCheckSet
 
 					+ "')", {
@@ -44,19 +42,13 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 		var selIndex = oSetTable.getSelectedIndex();
 
 		if (selIndex != -1) {
-			var rows = oSetTable.getRows();
-			var cells = rows[selIndex].getCells();
-
-			var id = cells[0].getValue();
-			var name = cells[1].getValue();
-			var implClass = cells[2].getValue();
-			
+			var boundObject = getTableSelectedObject(oSetTable ,selIndex);		
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 			oRouter.navTo("CheckSetDetail");
 			
-			sap.ui.getCore().byId("idCheckSetIdField").setValue(id);
-			sap.ui.getCore().byId("fldName").setValue(name);
-			sap.ui.getCore().byId("fldImplClass").setValue(implClass);
+			sap.ui.getCore().byId("idCheckSetIdField").setValue(boundObject.id_check_set);
+			sap.ui.getCore().byId("fldName").setValue(boundObject.name);
+			sap.ui.getCore().byId("fldImplClass").setValue(boundObject.implementation_class);
 		} else {
 			sap.m.MessageToast.show("Select a row to edit!");
 		}		
