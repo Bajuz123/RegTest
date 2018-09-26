@@ -170,12 +170,12 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		if ( oEntry.placeholder != '' ) { //insert
 			oModelRegTest.create("/REG_PLACE_SET", oEntry);
 			sap.m.MessageToast.show("Add successfull");
-			reloadModel(oUser);
-			fragAddPH.close();
+		
 		}else{
 			sap.m.MessageToast.show("Insert 'Placeholders' and 'Replace with'");
 		}
-		
+		reloadModel(oUser);
+		fragAddPH.close();
 
 	},
 	onCloseDialogAddPH : function() {
