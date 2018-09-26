@@ -6,7 +6,10 @@
    <Dialog
       id="addPHDialog"
       title="New Placeholders"
-      afterClose="dialogAftercloseAddPH">
+      afterClose="dialogAftercloseAddPH"
+      items="{
+            path: 'list>/'
+        }">
 
       <beginButton>
            <Button
@@ -21,13 +24,17 @@
             press="onCloseDialogAddPH"/>
       </endButton>
       
-     <!--  <Text text = "Name : "/>-->
+     <!--  <Text text = "Name : "/>
+      noDataText="No Products Found" 
+     search="handleSearch"
+                confirm="handleClose"
+                close="handleClose"-->
 <content>
 <VBox>
-<Label text="Placeholder"/>
-<Input  id="input1" value="{/recipient/name}" valueLiveUpdate="true" width="60%"/>
+<Label text="Placeholders"/>
+<Input   id="inputPlaceholder" value="{/REG_PLACE_SET>placeholder}" valueLiveUpdate="true" width="60%"/>
 <Label text="Replace with"/>
-<Input   id="input2" value="{/recipient/name}" valueLiveUpdate="true" width="60%"/>
+<Input   id="inputReplace" value="{/REG_PLACE_SET>replace_with}" valueLiveUpdate="true" width="60%"/>
 </VBox>
 </content>
 

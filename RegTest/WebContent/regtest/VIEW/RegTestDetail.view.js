@@ -149,12 +149,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		var btnPlaceDel = new sap.m.Button("btnPlaceDel", {
 			text : "Delete",
 			icon : "sap-icon://delete",
-		    press:  oController.onDelPlaceClick   });		
-
-	//	var btnPlaceEdit = new sap.m.Button("btnPlaceEdit", {
-		//	text : "Edit",
-		//	icon : "sap-icon://edit",
-		//    press:  oController.onEditPlaceClick   });		
+		    press:  function(){oController.onDelPlaceClick(oPlaceTable)}   });			
 
 		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
 			content : [

@@ -113,12 +113,15 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 	     fragAddPH.open();
 	},		
 
-	onDelPlaceClick: function() {
-		 // if(!fragDelPH){
+	onDelPlaceClick: function(oPlaceTable) {
+			 var selIndex = oPlaceTable.getSelectedIndex();
+		if (selIndex != -1) {
 		 var oView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
 			  fragDelPH = sap.ui.xmlfragment("regtest.fragments.delDialog",oView.getController());
-		 // }
 		  fragDelPH.open(); 
+		}else {
+			sap.m.MessageToast.show("Select a row to delete!");
+		}
 	},	
 	dialogAftercloseAddPH: function(oEvent) {
 		fragAddPH.destroy();
@@ -130,22 +133,61 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
 		fragUpdPH.destroy();
 	},
 	onEditPlaceClick: function() {
-		  //if(!fragUpdPH){
+		 var oPlaceTable = sap.ui.getCore().byId("idPlaceTableToReg");
+    	 var selIndex = oPlaceTable.getSelectedIndex();
+    	 var rows =  oPlaceTable.getRows();
+		 var cells = rows[selIndex].getCells();
+		 var placeholder = cells[1].getValue();
+		 var replaceWith = cells[2].getValue();
+    	 if (selIndex != -1) {
 		var oView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
 			  fragUpdPH = sap.ui.xmlfragment("regtest.fragments.updDialog",oView.getController());
-		 // }
-		
+			  sap.ui.getCore().byId("updPlaceholder").setValue(placeholder);
+			  sap.ui.getCore().byId("updReplace").setValue(replaceWith);
 		  fragUpdPH.open(); 
+    	 }else {
+ 			sap.m.MessageToast.show("Select a row to edit!");
+ 		}
 	},		
 	onSaveAddPH: function(oEvent) {
-		//TODO Save
-		fragAddPH.close();
+		var oEntry = {};
+		oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg").getValue();
+		oEntry.placeholder = sap.ui.getCore().byId("inputPlaceholder").getValue();
+		oEntry.replace_with = sap.ui.getCore().byId("inputReplace").getValue();
+		var oModelRegTest = sap.ui.getCore().getModel();
+
+		if ( oEntry.placeholder != '' ) { //insert
+			oModelRegTest.create("/REG_PLACE_SET", oEntry);
+			sap.m.MessageToast.show("Add successfull");
+			reloadModel(oUser);
+			fragAddPH.close();
+		}else{
+			sap.m.MessageToast.show("Insert 'Placeholders' and 'Replace with'");
+		}
+		
 	},
 	onCloseDialogAddPH : function () {
 		fragAddPH.close();
      },
      onSaveDelPH: function(oEvent) {
- 		//TODO Save
+    	 var oPlaceTable = sap.ui.getCore().byId("idPlaceTableToReg");
+    	 var selIndex = oPlaceTable.getSelectedIndex();
+    	 var rows =  oPlaceTable.getRows();
+		 var cells = rows[selIndex].getCells();
+		 var idRegTest = cells[0].getValue();
+		 var placeholders = cells[1].getValue();
+		 var oModelPlaceSet = sap.ui.getCore().getModel();
+			oModelPlaceSet.remove("/REG_PLACE_SET(id_reg_test='" + idRegTest
+					+ "',placeholder='" + placeholders + "')", {
+				method : "DELETE",
+				success : function(data) {
+					sap.m.MessageToast.show("Delete successfull");
+				},
+				error : function(e) {
+					sap.m.MessageToast.show("Delete error");
+				}
+			});
+			reloadModel(oUser);
  		fragDelPH.close();
  	},
  	onCloseDialogDelPH : function () {
@@ -153,6 +195,21 @@ sap.ui.controller("regtest.CONTROLLER.RegTestDetail", {
       },
     onSaveUpdPH: function(oEvent) {
   		//TODO Save
+    	var oEntry = {};
+		oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg").getValue();
+		oEntry.placeholder = sap.ui.getCore().byId("updPlaceholder").getValue();
+		oEntry.replace_with = sap.ui.getCore().byId("updReplace").getValue();
+		 var oModelPlaceSet = sap.ui.getCore().getModel();
+    	oModelPlaceSet.update("/REG_PLACE_SET(id_reg_test='" + oEntry.id_reg_test 
+		+ "',placeholder='" + oEntry.placeholder + "')", oEntry, {
+			success : function(data) {
+				sap.m.MessageToast.show("Update successfull");
+			},
+			error : function(e) {
+				sap.m.MessageToast.show("Update error");
+			}	
+    	})
+    	reloadModel(oUser);
   		fragUpdPH.close();
   	},
   	onCloseDialogUpdPH : function () {

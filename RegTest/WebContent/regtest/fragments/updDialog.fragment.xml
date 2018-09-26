@@ -24,10 +24,10 @@
      <!--  <Text text = "Name : "/>-->
 <content>
 <VBox>
-<Label text="Placeholder"/>
-<Input  id="upd1" value="{/recipient/name}" valueLiveUpdate="true" width="60%"/>
+<Label text="Placeholders"/>
+<Input   id="updPlaceholder" value="{/REG_PLACE_SET>placeholder}" valueLiveUpdate="true" width="60%"/>
 <Label text="Replace with"/>
-<Input   id="upd2" value="{/recipient/name}" valueLiveUpdate="true" width="60%"/>
+<Input   id="updReplace" value="{/REG_PLACE_SET>replace_with}" valueLiveUpdate="true" width="60%"/>
 </VBox>
 </content>
 
