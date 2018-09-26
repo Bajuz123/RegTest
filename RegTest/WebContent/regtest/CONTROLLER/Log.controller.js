@@ -53,7 +53,6 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 	 * @memberOf regtest.VIEW.Log
 	 */
 	onBeforeRendering : function() {
-debugger;
 		try {
 			reloadModel(oUser);
 		} catch (err) {

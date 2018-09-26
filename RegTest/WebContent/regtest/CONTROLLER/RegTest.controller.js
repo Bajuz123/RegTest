@@ -22,6 +22,8 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 		oRouter.navTo("RegTestDetail");
 		sap.ui.getCore().byId("fldIDReg").setValue("");
+		var oRegDetailView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
+		oRegDetailView.getController().refreshRelatedTables();
 	},
 
 	onDelRegClick : function(oRegTable) {
