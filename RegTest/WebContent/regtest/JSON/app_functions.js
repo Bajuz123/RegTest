@@ -33,7 +33,6 @@ function reloadModel(oUser) {
 			.getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, oUser.hd1user,
 			oUser.hd1pwd);
 
-	debugger;
 	var data = oModel.read('REG_TEST_SET', {
 		error : function(oError) {
 			oModel = new sap.ui.model.json.JSONModel();
