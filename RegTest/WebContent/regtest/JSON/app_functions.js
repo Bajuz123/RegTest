@@ -1,6 +1,13 @@
 /**
  * 
  */
+
+function init() {
+var i18nModel = new sap.ui.model.resources.ResourceModel({
+	bundleUrl: "i18n/messageBundle.properties"
+});	
+}
+
 function getTableSelectedObject(oTable, oSelIndex) {
 	var bind = oTable.getBinding("rows");
 	var context = oTable.getContextByIndex(oSelIndex);
