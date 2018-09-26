@@ -1,6 +1,12 @@
 /**
  * 
  */
+function getTableSelectedObject(oTable, oSelIndex) {
+	var bind = oTable.getBinding("rows");
+	var context = oTable.getContextByIndex(oSelIndex);		
+	var boundObject = context.getProperty(context.getPath());
+	return boundObject;	
+}
 
 function registerRouter(oRouter) {
 	oGlobalRouter = oRouter;

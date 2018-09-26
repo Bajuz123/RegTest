@@ -24,14 +24,13 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			visibleRowCount : 20,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			selectionBehavior: sap.ui.table.SelectionBehavior.Row,
-			editable : false
-			
+			editable : false			
 		});
 		
 		oRegTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "ID"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
-			visible: true
+			visible: false
 		} ))
 
 		oRegTable.addColumn(new sap.ui.table.Column({
@@ -49,7 +48,6 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 		//oRegTable.attachBrowserEvent("dblclick", oController.onDblClick);
 		
 		oRegTable.bindRows("/REG_TEST_SET");
-
 		var btnAddReg = new sap.m.Button("idBtnAddReg", {
 			text : "Add",
 			icon : "sap-icon://add",
