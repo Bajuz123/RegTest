@@ -116,6 +116,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			template: new sap.ui.commons.TextField().bindProperty("value","replace_with"),
 			visible: true
 		} ));
+		oPlaceTable.attachBrowserEvent("dblclick", oController.onEditPlaceClick);
 		
 		var oCheckTable = new sap.ui.table.Table({
 			id: "idCheckTableToReg",
@@ -150,10 +151,10 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			icon : "sap-icon://delete",
 		    press:  oController.onDelPlaceClick   });		
 
-		var btnPlaceEdit = new sap.m.Button("btnPlaceEdit", {
-			text : "Edit",
-			icon : "sap-icon://edit",
-		    press:  oController.onEditPlaceClick   });		
+	//	var btnPlaceEdit = new sap.m.Button("btnPlaceEdit", {
+		//	text : "Edit",
+		//	icon : "sap-icon://edit",
+		//    press:  oController.onEditPlaceClick   });		
 
 		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
 			content : [
@@ -169,7 +170,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		oCheckTable.visible = true;
 		var panelRelatedPlace = new sap.m.Panel("idListRelatedPlace", {
 			content : [
-			           btnPlaceAdd, btnPlaceDel, btnPlaceEdit, oPlaceTable
+			           btnPlaceAdd, btnPlaceDel, oPlaceTable
 			           ]
 		});		
 
