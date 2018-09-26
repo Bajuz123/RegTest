@@ -22,15 +22,16 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 		oRouter.navTo("RegTestDetail");
 		sap.ui.getCore().byId("fldIDReg").setValue("");
+		var oRegDetailView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
+		oRegDetailView.getController().refreshRelatedTables();
 	},
 
 	onDelRegClick : function(oRegTable) {
 		var selIndex = oRegTable.getSelectedIndex();
 
 		if (selIndex != -1) {
-			var rows = oRegTable.getRows();
-			var cells = rows[selIndex].getCells();
-			var idRegTest = cells[0].getValue();
+			var boundObject = getTableSelectedObject(oRegTable ,selIndex);
+			var idRegTest = boundObject.id_reg_test;
 			var oModelRegTest = sap.ui.getCore().getModel();
 			oModelRegTest.remove("/REG_TEST_SET(id_reg_test='" + idRegTest
 					+ "')", {
@@ -53,15 +54,14 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	onEditRegClick : function(oRegTable) {
 		var selIndex = oRegTable.getSelectedIndex();
 		if (selIndex != -1) {
-			var rows = oRegTable.getRows();
-			var cells = rows[selIndex].getCells();
-
+			var boundObject = getTableSelectedObject(oRegTable ,selIndex);
+			
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 			oRouter.navTo("RegTestDetail");
 
-			sap.ui.getCore().byId("fldIDReg").setValue(cells[0].getValue());
-			sap.ui.getCore().byId("fldRegName").setValue(cells[1].getValue());
-			sap.ui.getCore().byId("areaXML").setValue(cells[2].getValue());
+			sap.ui.getCore().byId("fldIDReg").setValue(boundObject.id_reg_test);
+			sap.ui.getCore().byId("fldRegName").setValue(boundObject.Name);
+			sap.ui.getCore().byId("areaXML").setValue(boundObject.XML);
 			
 			var oRegDetailView = sap.ui.getCore().byId("idregtest.VIEW.RegTestDetail");
 			oRegDetailView.getController().refreshRelatedTables();
