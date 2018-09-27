@@ -2,10 +2,10 @@
  * 
  */
 
-function init() {
-var i18nModel = new sap.ui.model.resources.ResourceModel({
-	bundleUrl: "i18n/messageBundle.properties"
-});	
+function initLanguageLocale() {
+	i18nModel = new sap.ui.model.resource.ResourceModel({
+        bundleName: "regtest.i18n.i18n"
+    });
 }
 
 function getTableSelectedObject(oTable, oSelIndex) {

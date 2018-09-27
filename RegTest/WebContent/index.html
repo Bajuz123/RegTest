@@ -6,6 +6,7 @@
 
 		<script type="text/javascript" src="regtest/JSON/Users.json"></script>
 		<script type="text/javascript" src="regtest/JSON/app_functions.js"></script>
+		<script type="text/javascript" src="regtest/JSON/Variables.js"></script>
 		<script src="resources/sap-ui-core.js"
 				id="sap-ui-bootstrap"
 				data-sap-ui-libs="sap.m, sap.ui.table, sap.ui.commons"
@@ -15,7 +16,11 @@
 				}'>
 		</script>
 		<script>				
-				sap.ui.localResources("regtest");				
+				sap.ui.localResources("regtest");	
+				sap.ui.getCore().getConfiguration().setLanguage(navigator.language || navigator.userLanguage);
+				initLanguageLocale();
+				sap.ui.getCore().setModel(i18nModel, "i18n");
+				
 				var app = new sap.m.App("appId"); //,{initialPage: "idLogin"}					
 				app.placeAt("content");
 		</script>

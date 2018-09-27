@@ -18,7 +18,7 @@ sap.ui.jsview("regtest.VIEW.Login", {
 	 * 
 	 * @memberOf regtest.Login
 	 */
-	createContent : function(oController) {
+	createContent : function(oController) {		
 		var vBoxLogin = new sap.m.VBox("vBoxLogin", {
 			justifyContent : sap.m.FlexJustifyContent.Center,
 			alignItems : sap.m.FlexAlignItems.Center,
@@ -27,7 +27,7 @@ sap.ui.jsview("regtest.VIEW.Login", {
 		});
 
 		var fldLoginText = new sap.m.Label("idLoginText", {
-			text : "Use your login and password"
+			text : "{i18n>LoginInfo}"
 		});
 		var fldLoginName = new sap.m.Input("idLoginName", {
 			width : "12rem"
@@ -38,7 +38,7 @@ sap.ui.jsview("regtest.VIEW.Login", {
 		});
 
 		var btnLogin = new sap.m.Button("btnLogin", {
-			text : "Login",
+			text : "{i18n>Login}",
 			type : sap.m.ButtonType.Emphasized,
 			width : "12rem",
 			press : oController.onLoginClick
