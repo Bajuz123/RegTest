@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+  
+   <Dialog
+      id="addCHDialog"
+      title="New Checkset"
+      afterClose="dialogAftercloseAddCH"
+      items="{
+            path: 'list>/'
+        }">
+
+      <beginButton>
+           <Button
+            text="Save"
+            icon="sap-icon://save"
+            press="onSaveAddCH"/>
+      </beginButton>
+      <endButton>
+          <Button
+            text="Cancel"
+            icon="sap-icon://cancel"
+            press="onCloseDialogAddCH"/>
+      </endButton>
+      
+
+<content>
+<VBox>
+<Label text="CheckSet"/>
+<Input   id="inputCheckset"  valueLiveUpdate="true" width="60%"/>
+<Label text="Running number"/>
+<Input   id="inputRunNumber" valueLiveUpdate="true" width="60%"/>
+</VBox>
+</content>
+
+   </Dialog>
+</core:FragmentDefinition>

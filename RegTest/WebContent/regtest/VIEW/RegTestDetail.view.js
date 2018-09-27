@@ -137,6 +137,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			template: new sap.ui.commons.TextField().bindProperty("value","running_nr"),
 			visible: true
 		} ));
+		oCheckTable.attachBrowserEvent("dblclick", oController.onEditCheckClick);
 
 		oPlaceTable.bindRows("/REG_PLACE_SET");			
 		oCheckTable.bindRows("/REG_SET");
@@ -177,16 +178,16 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		var btnCheckDel = new sap.m.Button("btnCheckDel", {
 			text : "Delete",
 			icon : "sap-icon://delete",
-		    press:  oController.onDelCheckClick   });		
+		    press:  function(){ oController.onDelCheckClick (oCheckTable)} });		
 
-		var btnCheckEdit = new sap.m.Button("btnCheckEdit", {
-			text : "Edit",
-			icon : "sap-icon://edit",
-		    press:  oController.onEditCheckClick   });		
+	//	var btnCheckEdit = new sap.m.Button("btnCheckEdit", {
+			//text : "Edit",
+			//icon : "sap-icon://edit",
+		   // press:  oController.onEditCheckClick   });		
 		
 		var panelRelatedCheck = new sap.m.Panel("idListRelatedCheck", {
 			content : [
-			          btnCheckAdd, btnCheckDel, btnCheckEdit, oCheckTable
+			          btnCheckAdd, btnCheckDel, oCheckTable
 			          ]
 		});		
 		sap.ui.getCore().byId("idListRelatedCheck").setVisible(false);

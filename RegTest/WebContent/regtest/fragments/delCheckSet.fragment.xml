@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+  
+   <Dialog
+      title="Delete Checkset " 
+      afterClose="dialogAftercloseDelCH">
+
+      <beginButton>
+           <Button
+            text="Yes"
+            icon="sap-icon://accept"
+            press= "onSaveDelCH"/>
+      </beginButton>
+      <endButton>
+          <Button
+            text="Cancel"
+            icon="sap-icon://cancel"
+            press= "onCloseDialogDelCH"/>
+      </endButton>
+      
+     <!--  <Text text = "Name : "/>-->
+<content>
+<VBox>
+<Label text="Delete Checkset from DB ?"/>
+</VBox>
+</content>
+
+   </Dialog>
+</core:FragmentDefinition>

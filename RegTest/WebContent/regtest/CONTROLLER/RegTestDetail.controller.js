@@ -15,6 +15,9 @@ sap.ui
 						var fragAddPH = {};
 						var fragDelPH = {};
 						var fragUpdPH = {};
+						var fragAddCH = {};
+						var fragDelCH = {};
+						var fragUpdCH = {};
 					},
 
 					refreshRelatedTables : function() {
@@ -138,17 +141,146 @@ sap.ui
 					},
 
 					onAddCheckClick : function() {
+						var oView = sap.ui.getCore().byId(
+								"idregtest.VIEW.RegTestDetail");
+						fragAddCH = sap.ui.xmlfragment(
+								"regtest.fragments.addCheckSet", oView
+										.getController());
+						// }
+						fragAddCH.open();
+							},
 
+					onDelCheckClick : function(oCheckTable) {
+						var selIndex = oCheckTable.getSelectedIndex();
+						if (selIndex != -1) {
+							var oView = sap.ui.getCore().byId(
+									"idregtest.VIEW.RegTestDetail");
+							fragDelCH = sap.ui.xmlfragment(
+									"regtest.fragments.delCheckSet", oView
+											.getController());
+							fragDelCH.open();
+						} else {
+							sap.m.MessageToast.show("Select a row to delete!");
+						}
 					},
+					dialogAftercloseAddCH : function(oEvent) {
 
-					onDelCheckClick : function() {
-
+						fragAddCH.destroy();
+					},
+					dialogAftercloseDelCH : function(oEvent) {
+						fragDelCH.destroy();
+					},
+					dialogAftercloseUpdCH : function(oEvent) {
+						fragUpdCH.destroy();
 					},
 
 					onEditCheckClick : function() {
+						var oCheckTable = sap.ui.getCore().byId(
+						"idCheckTableToReg");
+				var selIndex = oCheckTable.getSelectedIndex();
+				var rows = oCheckTable.getRows();
+				var cells = rows[selIndex].getCells();
+				var checkset = cells[0].getValue();
+				var runNumber = cells[1].getValue();
+				if (selIndex != -1) {
+
+					var oView = sap.ui.getCore().byId(
+							"idregtest.VIEW.RegTestDetail");
+
+					fragUpdCH = sap.ui.xmlfragment(
+							"regtest.fragments.updCheckSet", oView
+									.getController());
+					sap.ui.getCore().byId("updateCheckset").setValue(
+							checkset);
+					sap.ui.getCore().byId("updateRunNumber").setValue(
+							runNumber);
+					fragUpdCH.open();
+				} else {
+					sap.m.MessageToast.show("Select a row to edit!");
+				}
+					},
+					onSaveAddCH : function(oEvent) {
+						var oEntry = {};
+						oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg")
+								.getValue();
+						oEntry.id_check_set = sap.ui.getCore().byId(
+								"inputCheckset").getValue();
+						oEntry.running_nr = sap.ui.getCore().byId(
+								"inputRunNumber").getValue();
+						var oModelCheckSet = sap.ui.getCore().getModel();
+
+						if (oEntry.id_check_set != '') { // insert
+							oModelCheckSet.create("/REG_SET", oEntry);
+							sap.m.MessageToast.show("Add successfull");
+
+						} else {
+							sap.m.MessageToast
+									.show("Insert 'Checkset' and 'Running number'");
+						}
+						reloadModel(oUser);
+						fragAddCH.close();
 
 					},
+					onCloseDialogAddCH : function() {
+						fragAddCH.close();
 
+					},
+					onSaveDelCH : function(oEvent) {
+						var oCheckTable = sap.ui.getCore().byId(
+								"idCheckTableToReg");
+						var id_reg_test = sap.ui.getCore().byId("fldIDReg")
+						.getValue();
+						var selIndex = oCheckTable.getSelectedIndex();
+						var rows = oCheckTable.getRows();
+						var cells = rows[selIndex].getCells();
+						var checkset = cells[0].getValue();
+						var runNumber = cells[1].getValue();
+						var oModelCheckSet = sap.ui.getCore().getModel();
+						oModelCheckSet.remove("/REG_SET(id_reg_test='"
+								+ id_reg_test + "',id_check_set='" + checkset
+								+ "',running_nr='" + runNumber + "')", {
+							method : "DELETE",
+							success : function(data) {
+								sap.m.MessageToast.show("Delete successfull");
+							},
+							error : function(e) {
+								sap.m.MessageToast.show("Delete error");
+							}
+						});
+						reloadModel(oUser);
+						fragDelCH.close();
+					},
+					onCloseDialogDelCH : function() {
+						fragDelCH.close();
+					},
+					onSaveUpdCH : function(oEvent) {
+
+						var oEntry = {};
+						oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg")
+								.getValue();
+						oEntry.id_check_set = sap.ui.getCore().byId(
+						"updateCheckset").getValue();
+						oEntry.running_nr = sap.ui.getCore().byId(
+						"updateRunNumber").getValue();
+						var oModelPlaceSet = sap.ui.getCore().getModel();
+						oModelPlaceSet.update("/REG_SET(id_reg_test='"
+								+ oEntry.id_reg_test + "',id_check_set='"
+								+ oEntry.id_check_set + "',running_nr='" + oEntry.running_nr + "')", oEntry, {
+							success : function(data) {
+								sap.m.MessageToast.show("Update successfull");
+							},
+							error : function(e) {
+								sap.m.MessageToast.show("Update error");
+							}
+						})
+						reloadModel(oUser);
+						fragUpdCH.close();
+					},
+					onCloseDialogUpdCH : function() {
+						fragUpdCH.close();
+					},
+
+// Placehodlers Fragments
 					onAddPlaceClick : function() {
 						// if(!fragAddPH){
 						var oView = sap.ui.getCore().byId(
