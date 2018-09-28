@@ -102,7 +102,7 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		oPlaceTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "ID"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
-			visible: true
+			visible: false
 		} ));
 
 		oPlaceTable.addColumn(new sap.ui.table.Column({
@@ -127,8 +127,20 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		});
 
 		oCheckTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Reg Test ID"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
+			visible: false
+		} ));
+
+		oCheckTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Check Set"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","id_check_set"),
+			visible: false
+		} ));
+
+		oCheckTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Check Set Name"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","check_set_name"),
 			visible: true
 		} ));
 

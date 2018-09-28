@@ -32,9 +32,15 @@ sap.ui.jsview("regtest.VIEW.Log", {
 		oLogTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Regresionstest ID"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
+			visible: false
+		} ))
+
+		oLogTable.addColumn(new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Regresionstest"}),
+			template: new sap.ui.commons.TextField().bindProperty("value","reg_test_name"),
 			visible: true
 		} ))
-		
+
 		oLogTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Part ID"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","id_part"),

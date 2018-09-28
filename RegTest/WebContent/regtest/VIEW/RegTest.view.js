@@ -31,19 +31,19 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			label: new sap.ui.commons.Label({text: "ID"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
 			visible: false
-		} ))
+		} ));
 
 		oRegTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Name"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
 			visible: true
-		} ))
+		} ));
 
 		oRegTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "XML"}),
 			template: new sap.ui.commons.TextField().bindProperty("value","XML"),
 			visible: true			
-		} ))
+		} ));
 		
 		//oRegTable.attachBrowserEvent("dblclick", oController.onDblClick);
 		
