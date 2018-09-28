@@ -13,7 +13,10 @@ sap.ui.jsview("regtest.VIEW.Logout", {
 	* @memberOf regtest.Logout
 	*/ 
 	createContent : function(oController) {
- 		return new sap.m.Page({
+		localStorage.setItem("oUser", null);
+		sap.ui.getCore().setModel(null);
+		
+		return new sap.m.Page({
 			title: "Bye",
 			content: [
 			
