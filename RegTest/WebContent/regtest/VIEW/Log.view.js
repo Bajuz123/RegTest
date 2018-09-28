@@ -81,14 +81,14 @@ sap.ui.jsview("regtest.VIEW.Log", {
 			content : [runIdText, runIdValue]
 		});
 
-		var runIdRegTest = new sap.m.Label("idRegTestId", {text: "Reg Test ID"});
-		var runIdRegTestValue = new sap.m.Input("idRegTestValue");
-		runIdRegTestValue.onsapenter = (function(oEvent) {
+		var runIdRegTest = new sap.m.Label("idRegTestId", {text: "Reg Test Name"});
+		var runIdRegTestNameValue = new sap.m.Input("idRegTestNameValue");
+		runIdRegTestNameValue.onsapenter = (function(oEvent) {
 			oController.onRefresh();
 		});
 
 		var panelRegTestID = new sap.m.Panel("idRegTestIDPanel", {
-			content : [runIdRegTest, runIdRegTestValue]
+			content : [runIdRegTest, runIdRegTestNameValue]
 		});
 
 		oLogTable.bindRows("/REG_LOG_SET");

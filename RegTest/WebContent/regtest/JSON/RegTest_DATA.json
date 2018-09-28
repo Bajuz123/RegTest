@@ -54,6 +54,7 @@
     "REG_LOG_SET" : [
     {
       "id_reg_test" : "1",
+      "reg_test_name" : "RegTest1", 
       "run_id" : "1", 
       "id_part"  : "1",
       "msg_id"  : "1",
@@ -63,6 +64,7 @@
     },
     {
       "id_reg_test" : "2",
+      "reg_test_name" : "RegTest2", 
       "run_id" : "1", 
       "id_part"  : "2",
       "msg_id"  : "2",

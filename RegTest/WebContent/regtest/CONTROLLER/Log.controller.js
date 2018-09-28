@@ -23,18 +23,18 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 		// Refresh Bind
 		debugger;
 		var oLogTable = sap.ui.getCore().byId("idLogTable");
-		var oRegTest = sap.ui.getCore().byId("idRegTestValue").getValue();
+		var oRegTestName = sap.ui.getCore().byId("idRegTestNameValue").getValue();
 		var oRunID = sap.ui.getCore().byId("idRunIdValue").getValue();
 
-		if (oRegTest != '') {
+		if (oRegTestName != '') {
 			var oRegIDFilter = new sap.ui.model.Filter({
-				path : 'id_reg_test',
+				path : 'reg_test_name',
 				operator : sap.ui.model.FilterOperator.EQ,
-				value1 : oRegTest
+				value1 : oRegTestName
 			});
 		} else {
 			var oRegIDFilter = new sap.ui.model.Filter({
-				path : 'id_reg_test',
+				path : 'reg_test_name',
 				operator : sap.ui.model.FilterOperator.Contains,
 				value1 : ''
 			});
