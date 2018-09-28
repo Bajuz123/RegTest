@@ -18,6 +18,15 @@ sap.ui
 						var fragAddCH = {};
 						var fragDelCH = {};
 						var fragUpdCH = {};
+						
+						try {
+							oUser = localStorage.getItem("oUser");			
+							reloadModel(oUser);			
+						} catch (err) {
+							var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+							oRouter.navTo("Login");
+							sap.m.MessageToast.show("You have to login first!");					
+						}
 					},
 
 					refreshRelatedTables : function() {

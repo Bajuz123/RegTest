@@ -20,7 +20,6 @@ function registerRouter(oRouter) {
 }
 
 function validateUser(oLogin, oPwd) {
-	debugger;
 	var found = false;
 	for (var j = 0; j < Users.length; j++) {
 		if (oLogin == Users[j].Login) {

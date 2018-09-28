@@ -8,15 +8,24 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 	 * 
 	 * @memberOf regtest.VIEW.Log
 	 */
-	// onInit: function() {
-	// },
+	onInit : function() {
+		try {
+			oUser = localStorage.getItem("oUser");
+			reloadModel(oUser);
+		} catch (err) {
+			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+			oRouter.navTo("Login");
+			sap.m.MessageToast.show("You have to login first!");
+		}
+
+	},
 	onRefresh : function() {
 		// Refresh Bind
 		debugger;
 		var oLogTable = sap.ui.getCore().byId("idLogTable");
 		var oRegTest = sap.ui.getCore().byId("idRegTestValue").getValue();
 		var oRunID = sap.ui.getCore().byId("idRunIdValue").getValue();
-	
+
 		if (oRegTest != '') {
 			var oRegIDFilter = new sap.ui.model.Filter({
 				path : 'id_reg_test',
@@ -35,25 +44,29 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 			var oRunIDFilter = new sap.ui.model.Filter({
 				path : 'run_id',
 				operator : sap.ui.model.FilterOperator.EQ,
-				value1 : oRunID})
+				value1 : oRunID
+			})
 		} else {
 			var oRunIDFilter = new sap.ui.model.Filter({
 				path : 'run_id',
 				operator : sap.ui.model.FilterOperator.Contains,
-				value1 : ''})
+				value1 : ''
+			})
 		}
 
 		var oPartIDFilter = new sap.ui.model.Filter({
 			path : 'id_part',
 			operator : sap.ui.model.FilterOperator.Contains,
-			value1 : ''})
+			value1 : ''
+		})
 
-		var	filtersReg = new sap.ui.model.Filter({
-				filters: [oRegIDFilter,oRunIDFilter,oPartIDFilter],
-				and: true
+		var filtersReg = new sap.ui.model.Filter({
+			filters : [ oRegIDFilter, oRunIDFilter, oPartIDFilter ],
+			and : true
 		});
 
-		oLogTable.getBinding("rows").filter(filtersReg, sap.ui.model.FilterType.Application); 
+		oLogTable.getBinding("rows").filter(filtersReg,
+				sap.ui.model.FilterType.Application);
 	},
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the
