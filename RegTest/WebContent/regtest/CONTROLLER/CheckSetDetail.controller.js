@@ -25,9 +25,9 @@ sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
 		var oEntry = {};		
 		
 //escape the texts first!!! sap.ui functionality
-		oEntry.id_check_set = sap.ui.getCore().byId("idCheckSetIdField").getValue();
-		oEntry.name = sap.ui.getCore().byId("fldName").getValue();
-		oEntry.implementation_class = sap.ui.getCore().byId("fldImplClass").getValue(); 
+		oEntry.id_check_set = escapeText(sap.ui.getCore().byId("idCheckSetIdField").getValue());
+		oEntry.name = escapeText(sap.ui.getCore().byId("fldName").getValue());
+		oEntry.implementation_class = escapeText(sap.ui.getCore().byId("fldImplClass").getValue()); 
 		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 		var oModelCheckSet = sap.ui.getCore().getModel();
 		if (oEntry.id_check_set == '') {

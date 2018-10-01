@@ -18,18 +18,20 @@ sap.ui.jsview("regtest.VIEW.Login", {
 	 * 
 	 * @memberOf regtest.Login
 	 */
-	createContent : function(oController) {		
-		var vBoxLogin = new sap.m.VBox("vBoxLogin", {
+
+	createBoxLogin : function(oController) {
+		var vBoxLogin = new sap.m.VBox(idBoxLogin, {
 			justifyContent : sap.m.FlexJustifyContent.Center,
 			alignItems : sap.m.FlexAlignItems.Center,
 			alignContent : sap.m.FlexAlignContent.Center,
 			fitContainer : true
 		});
 
-		var fldLoginText = new sap.m.Label("idLoginText", {
+		var fldLoginText = new sap.m.Label(idLoginText, {
 			text : "{i18n>LoginInfo}"
 		});
-		var fldLoginName = new sap.m.Input("idLoginName", {
+
+		var fldLoginName = new sap.m.Input(idLoginName, {
 			width : "12rem"
 		});
 
@@ -37,15 +39,15 @@ sap.ui.jsview("regtest.VIEW.Login", {
 			oController.onLoginClick();
 		});
 
-		var btnLogin = new sap.m.Button("btnLogin", {
+		var btnLogin = new sap.m.Button(idBtnLogin, {
 			text : "{i18n>Login}",
 			type : sap.m.ButtonType.Emphasized,
 			width : "12rem",
 			press : oController.onLoginClick
 		});
 
-		var fldPwd = new sap.m.Input("idPwdField", {
-			type: sap.m.InputType.Password,
+		var fldPwd = new sap.m.Input(idPwdField, {
+			type : sap.m.InputType.Password,
 			width : "12rem"
 		});
 
@@ -59,12 +61,15 @@ sap.ui.jsview("regtest.VIEW.Login", {
 		vBoxLogin.addItem(fldLoginName);
 		vBoxLogin.addItem(fldPwd);
 		vBoxLogin.addItem(btnLogin);
+		return vBoxLogin;
+	},
+
+	createContent : function(oController) {
+		var vBoxLogin = this.createBoxLogin(oController);
 
 		return new sap.m.Page({
-			title : "Login",
-			content :
-			// [panelLogin]
-			[ vBoxLogin ]
+			title : "{i18n>LoginTitle}",
+			content : [ vBoxLogin ]
 		});
 	}
 

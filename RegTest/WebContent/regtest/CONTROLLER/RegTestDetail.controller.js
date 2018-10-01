@@ -18,14 +18,15 @@ sap.ui
 						var fragAddCH = {};
 						var fragDelCH = {};
 						var fragUpdCH = {};
-						
+
 						try {
-							oUser = localStorage.getItem("oUser");			
-							reloadModel(oUser);			
+							oUser = localStorage.getItem("oUser");
+							reloadModel(oUser);
 						} catch (err) {
-							var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+							var oRouter = sap.ui.core.routing.Router
+									.getRouter("appRouter");
 							oRouter.navTo("Login");
-							sap.m.MessageToast.show("You have to login first!");					
+							sap.m.MessageToast.show("{i18n>LoginFirst}");
 						}
 					},
 
@@ -57,13 +58,12 @@ sap.ui
 					onOKRegClick : function() {
 						var oEntry = {};
 
-						// escape the texts first!!! sap.ui functionality
-						oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg")
-								.getValue();
-						oEntry.Name = sap.ui.getCore().byId("fldRegName")
-								.getValue();
-						oEntry.XML = sap.ui.getCore().byId("areaXML")
-								.getValue();
+						oEntry.id_reg_test = escapeText(sap.ui.getCore().byId(
+								"fldIDReg").getValue());
+						oEntry.Name = escapeText(sap.ui.getCore().byId(
+								"fldRegName").getValue());
+						oEntry.XML = escapeText(sap.ui.getCore()
+								.byId("areaXML").getValue());
 						var oModelRegTest = sap.ui.getCore().getModel();
 
 						if (oEntry.id_reg_test == '') { // insert
@@ -104,9 +104,9 @@ sap.ui
 										title : 'Running'
 									});
 							busy.open();
-//							setTimeout(function() {
-//								busy.close();
-//							}, 25000);
+							// setTimeout(function() {
+							// busy.close();
+							// }, 25000);
 
 							oDataModel
 									.callFunction(
@@ -118,13 +118,17 @@ sap.ui
 											}, // function import parameters
 											null,
 											function(oData, response) {
-												var busyDialog = sap.ui.getCore().byId("busyDialog")
+												var busyDialog = sap.ui
+														.getCore().byId(
+																"busyDialog")
 												busyDialog.close();
 												sap.m.MessageToast
 														.show("Credit process finished successfully");
 											}, // callback function for success
 											function(oError) {
-												var busyDialog = sap.ui.getCore().byId("busyDialog")
+												var busyDialog = sap.ui
+														.getCore().byId(
+																"busyDialog")
 												busyDialog.close();
 												sap.m.MessageToast
 														.show("Credit process finished - failed");
@@ -157,7 +161,7 @@ sap.ui
 										.getController());
 						// }
 						fragAddCH.open();
-							},
+					},
 
 					onDelCheckClick : function(oCheckTable) {
 						var selIndex = oCheckTable.getSelectedIndex();
@@ -185,28 +189,33 @@ sap.ui
 
 					onEditCheckClick : function() {
 						var oCheckTable = sap.ui.getCore().byId(
-						"idCheckTableToReg");
-				var selIndex = oCheckTable.getSelectedIndex();
-				var rows = oCheckTable.getRows();
-				var cells = rows[selIndex].getCells();
-				var checkset = cells[0].getValue();
-				var runNumber = cells[1].getValue();
-				if (selIndex != -1) {
+								"idCheckTableToReg");
+						var selIndex = oCheckTable.getSelectedIndex();
+						var rows = oCheckTable.getRows();
+						var cells = rows[selIndex].getCells();
+						var checkset = cells[0].getValue();
 
-					var oView = sap.ui.getCore().byId(
-							"idregtest.VIEW.RegTestDetail");
+//						var boundObject = getTableSelectedObject(oSetTable ,selIndex);
+//						var idCheckSet = boundObject.id_check_set;	
 
-					fragUpdCH = sap.ui.xmlfragment(
-							"regtest.fragments.updCheckSet", oView
-									.getController());
-					sap.ui.getCore().byId("updateCheckset").setValue(
-							checkset);
-					sap.ui.getCore().byId("updateRunNumber").setValue(
-							runNumber);
-					fragUpdCH.open();
-				} else {
-					sap.m.MessageToast.show("Select a row to edit!");
-				}
+						
+						var runNumber = cells[1].getValue();
+						if (selIndex != -1) {
+
+							var oView = sap.ui.getCore().byId(
+									"idregtest.VIEW.RegTestDetail");
+
+							fragUpdCH = sap.ui.xmlfragment(
+									"regtest.fragments.updCheckSet", oView
+											.getController());
+							sap.ui.getCore().byId("updateCheckset").setValue(
+									checkset);
+							sap.ui.getCore().byId("updateRunNumber").setValue(
+									runNumber);
+							fragUpdCH.open();
+						} else {
+							sap.m.MessageToast.show("Select a row to edit!");
+						}
 					},
 					onSaveAddCH : function(oEvent) {
 						var oEntry = {};
@@ -238,7 +247,7 @@ sap.ui
 						var oCheckTable = sap.ui.getCore().byId(
 								"idCheckTableToReg");
 						var id_reg_test = sap.ui.getCore().byId("fldIDReg")
-						.getValue();
+								.getValue();
 						var selIndex = oCheckTable.getSelectedIndex();
 						var rows = oCheckTable.getRows();
 						var cells = rows[selIndex].getCells();
@@ -268,13 +277,14 @@ sap.ui
 						oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg")
 								.getValue();
 						oEntry.id_check_set = sap.ui.getCore().byId(
-						"updateCheckset").getValue();
+								"updateCheckset").getValue();
 						oEntry.running_nr = sap.ui.getCore().byId(
-						"updateRunNumber").getValue();
+								"updateRunNumber").getValue();
 						var oModelPlaceSet = sap.ui.getCore().getModel();
 						oModelPlaceSet.update("/REG_SET(id_reg_test='"
 								+ oEntry.id_reg_test + "',id_check_set='"
-								+ oEntry.id_check_set + "',running_nr='" + oEntry.running_nr + "')", oEntry, {
+								+ oEntry.id_check_set + "',running_nr='"
+								+ oEntry.running_nr + "')", oEntry, {
 							success : function(data) {
 								sap.m.MessageToast.show("Update successfull");
 							},
@@ -289,7 +299,7 @@ sap.ui
 						fragUpdCH.close();
 					},
 
-// Placehodlers Fragments
+					// Placehodlers Fragments
 					onAddPlaceClick : function() {
 						// if(!fragAddPH){
 						var oView = sap.ui.getCore().byId(

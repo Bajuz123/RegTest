@@ -8,21 +8,25 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 	 * 
 	 * @memberOf regtest.Login
 	 */
-	 onInit: function() {
-	   var OUser;
-	 },
+	onInit : function() {
+		var OUser;
+		initLanguageLocale();
+		sap.ui.getCore().setModel(i18nModel, "i18n");
+	},
+
 	onLoginClick : function() {
-		oLogin = sap.ui.getCore().byId("idLoginName").getValue();
-		oPwd = sap.ui.getCore().byId("idPwdField").getValue();
+		oLogin = sap.ui.getCore().byId(idLoginName).getValue();
+		oPwd = sap.ui.getCore().byId(idPwdField).getValue();
 
 		var found = validateUser(oLogin, oPwd);
 		if (found) {
-			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			oRouter.navTo("SplitAppControl");
-			oRouter.navTo("RegTest");			
+			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
+			oRouter.navTo(routeSplit);
+			oRouter.navTo(routeRegTestList);
 		} else {
-			sap.m.MessageToast.show("Login failed");
-		}	
+			var text = resourceModel.getProperty("LoginFailed");
+			sap.m.MessageToast.show(text);
+		}
 	},
 
 /**

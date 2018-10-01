@@ -2,10 +2,18 @@
  * 
  */
 
+function escapeText(text) {
+	text = text.replace("<","_");
+	text = text.replace(">","_");
+	
+	return text;
+}
+
 function initLanguageLocale() {
 	i18nModel = new sap.ui.model.resource.ResourceModel({
-		bundleName : "regtest.i18n.i18n"
+		bundleName : bundlePath
 	});
+	resourceModel = sap.ui.getCore().getModel("i18n");
 }
 
 function getTableSelectedObject(oTable, oSelIndex) {
@@ -39,21 +47,21 @@ function reloadModel(oUser) {
 	// SAP Data
 
 	var oModel = new sap.ui.model.odata.ODataModel(this
-			.getUrl("/sap/opu/odata/sap/Z_REG_TEST_SRV"), true, oUser.hd1user,
+			.getUrl(dataServiceName), true, oUser.hd1user,
 			oUser.hd1pwd);
 
 	if (oUser != "null") {
-		var data = oModel.read('REG_TEST_SET', {
+		var data = oModel.read(entityRegTestSetName, {
 			error : function(oError) {
 				oModel = new sap.ui.model.json.JSONModel();
-				oModel.loadData("regtest/JSON/RegTest_DATA.json");
+				oModel.loadData(jSONDataName);
 				sap.ui.getCore().setModel(oModel);
-				sap.m.MessageToast.show("Working offline with mockup!");
+				throw "";
 			}
 		});
 		sap.ui.getCore().setModel(oModel);
 	} else {
-		throw "Login first";
+		throw "";
 	}		
 }
 

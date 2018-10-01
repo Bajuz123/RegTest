@@ -29,19 +29,19 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 		
 		oRegTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "ID"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
+			template: new sap.ui.commons.TextField().bindProperty(columnDefaultValue,"id_reg_test"),
 			visible: false
 		} ));
 
 		oRegTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Name"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","Name"),
+			template: new sap.ui.commons.TextField().bindProperty(columnDefaultValue,"Name"),
 			visible: true
 		} ));
 
 		oRegTable.addColumn(new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "XML"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","XML"),
+			template: new sap.ui.commons.TextField().bindProperty(columnDefaultValue,"XML"),
 			visible: true			
 		} ));
 		
@@ -49,22 +49,19 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 		
 		oRegTable.bindRows("/REG_TEST_SET");
 		var btnAddReg = new sap.m.Button("idBtnAddReg", {
-			text : "Add",
-			icon : "sap-icon://add",
+			icon : iconAdd,
 		    press:  oController.onAddRegClick
 		    });		
 
 		var btnDelReg = new sap.m.Button("idBtnDelReg", {
-			text : "Delete",
-			icon : "sap-icon://delete",
+			icon : iconDel,
 		    press: function(){
 		    	oController.onDelRegClick(oRegTable);
 		    }
 		    });		
 
 		var btnEditReg = new sap.m.Button("idBtnEditReg", {
-			text : "Edit",
-			icon : "sap-icon://edit",
+			icon : iconEdit,
 		    press: function(){
 		    	oController.onEditRegClick(oRegTable);
 		    }
@@ -75,7 +72,7 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 		});		
 		
 		return new sap.m.Page({
-			title : "Autotest",
+			title : "{i18n>Autotest}",
 			content : [
 			  panel
 			]

@@ -12,7 +12,7 @@
     }
   ],
 
-  "REG_CHECK_SET_SET" : [
+  "CHCK_SET" : [
     {
       "id_check_set" : "1",
       "name" : "Check Set 1", 
