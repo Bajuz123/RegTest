@@ -17,7 +17,7 @@ sap.ui.jsview("regtest.VIEW.Log", {
 		var oLogTable = new sap.ui.table.Table({
 			id: "idLogTable",
 			tableID : "idLogTable",
-			visibleRowCount : 20,
+			visibleRowCount : 16,
 			selectionMode: sap.ui.table.SelectionMode.Single,
 			selectionBehavior: sap.ui.table.SelectionBehavior.Row,
 			editable : false
@@ -76,6 +76,7 @@ sap.ui.jsview("regtest.VIEW.Log", {
 		runIdValue.onsapenter = (function(oEvent) {
 			oController.onRefresh();
 		});
+		runIdValue.setValue('max');
 
 		var panelRunId = new sap.m.Panel("idLogPanelRunId", {
 			content : [runIdText, runIdValue]

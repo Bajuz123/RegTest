@@ -21,7 +21,6 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 	},
 	onRefresh : function() {
 		// Refresh Bind
-		debugger;
 		var oLogTable = sap.ui.getCore().byId("idLogTable");
 		var oRegTestName = sap.ui.getCore().byId("idRegTestNameValue").getValue();
 		var oRunID = sap.ui.getCore().byId("idRunIdValue").getValue();
@@ -29,7 +28,7 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 		if (oRegTestName != '') {
 			var oRegIDFilter = new sap.ui.model.Filter({
 				path : 'reg_test_name',
-				operator : sap.ui.model.FilterOperator.EQ,
+				operator : sap.ui.model.FilterOperator.Contains,
 				value1 : oRegTestName
 			});
 		} else {
@@ -78,6 +77,7 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 	onBeforeRendering : function() {
 		try {
 			reloadModel(oUser);
+			this.onRefresh();
 		} catch (err) {
 			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
 			oRouter.navTo("Login");
