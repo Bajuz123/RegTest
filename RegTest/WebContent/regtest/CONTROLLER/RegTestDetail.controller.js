@@ -218,11 +218,11 @@ sap.ui
 						}
 					},
 					onSaveAddCH : function(oEvent) {
+						debugger;
 						var oEntry = {};
 						oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg")
-								.getValue();
-						oEntry.id_check_set = sap.ui.getCore().byId(
-								"inputCheckset").getValue();
+								.getValue();											
+						oEntry.id_check_set = sap.ui.getCore().byId("ComboCheckSetValue").getSelectedKey();												
 						oEntry.running_nr = sap.ui.getCore().byId(
 								"inputRunNumber").getValue();
 						var oModelCheckSet = sap.ui.getCore().getModel();
@@ -249,13 +249,12 @@ sap.ui
 						var id_reg_test = sap.ui.getCore().byId("fldIDReg")
 								.getValue();
 						var selIndex = oCheckTable.getSelectedIndex();
-						var rows = oCheckTable.getRows();
-						var cells = rows[selIndex].getCells();
-						var checkset = cells[0].getValue();
-						var runNumber = cells[1].getValue();
+						var boundObject = getTableSelectedObject(oCheckTable, selIndex);
+						var idCheckSet = boundObject.id_check_set;
+						var runNumber = boundObject.running_nr;						
 						var oModelCheckSet = sap.ui.getCore().getModel();
 						oModelCheckSet.remove("/REG_SET(id_reg_test='"
-								+ id_reg_test + "',id_check_set='" + checkset
+								+ id_reg_test + "',id_check_set='" + idCheckSet
 								+ "',running_nr='" + runNumber + "')", {
 							method : "DELETE",
 							success : function(data) {
@@ -390,13 +389,19 @@ sap.ui
 						var oPlaceTable = sap.ui.getCore().byId(
 								"idPlaceTableToReg");
 						var selIndex = oPlaceTable.getSelectedIndex();
-						var rows = oPlaceTable.getRows();
-						var cells = rows[selIndex].getCells();
-						var idRegTest = cells[0].getValue();
-						var placeholders = cells[1].getValue();
+
+						debugger;
+						var boundObject = getTableSelectedObject(oPlaceTable, selIndex);
+						var idRegTest = boundObject.id_reg_test;
+						var placeholder = boundObject.placeholder;						
+						
+//						var rows = oPlaceTable.getRows();
+//						var cells = rows[selIndex].getCells();
+//						var idRegTest = cells[0].getValue();
+//						var placeholders = cells[1].getValue();
 						var oModelPlaceSet = sap.ui.getCore().getModel();
 						oModelPlaceSet.remove("/REG_PLACE_SET(id_reg_test='"
-								+ idRegTest + "',placeholder='" + placeholders
+								+ idRegTest + "',placeholder='" + placeholder
 								+ "')", {
 							method : "DELETE",
 							success : function(data) {

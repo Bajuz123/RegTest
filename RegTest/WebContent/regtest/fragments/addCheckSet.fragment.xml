@@ -28,7 +28,17 @@
 <content>
 <VBox>
 <Label text="CheckSet"/>
-<Input   id="inputCheckset"  valueLiveUpdate="true" width="60%"/>
+
+<!-- 
+entityCheckSetSetName
+<Input   id="inputCheckset"  valueLiveUpdate="true" width="60%"/> -->
+  <ComboBox id="ComboCheckSetValue"
+  			items="{/CHCK_SET}">
+  <items>
+  <core:Item key="{id_check_set}" text="{name}"/>
+  </items>
+  </ComboBox>
+  
 <Label text="Running number"/>
 <Input   id="inputRunNumber" valueLiveUpdate="true" width="60%"/>
 </VBox>
