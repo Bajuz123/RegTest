@@ -73,20 +73,14 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 	 */
 	onBeforeRendering : function() {
 		try {
-			oUser = localStorage.getItem("oUser");			
+			oUser = localStorage.getItem("oUser");
 			validateUser(oUser);
+			reloadModel(oUser);
 		} catch (err) {
 			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 			oRouter.navTo(routeLogin);
 			var loginFirstText = resourceModel.getProperty("LoginFirst");
 			sap.m.MessageToast.show(loginFirstText);
-		}
-
-		try {
-			reloadModel(oUser);
-		} catch (err) {
-			var offlineText = resourceModel.getProperty("OfflineTxt");
-			sap.m.MessageToast.show(offlineText);
 		}
 	},
 

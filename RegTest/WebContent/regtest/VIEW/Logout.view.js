@@ -17,7 +17,7 @@ sap.ui.jsview("regtest.VIEW.Logout", {
 		sap.ui.getCore().setModel(null);
 		
 		return new sap.m.Page({
-			title: "Bye",
+			title: "{i18n>Bye}",
 			content: [
 			
 			]

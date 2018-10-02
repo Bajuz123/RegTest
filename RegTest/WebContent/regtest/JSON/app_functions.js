@@ -53,15 +53,16 @@ function reloadModel(oUser) {
 	if (oUser != "null") {
 		var data = oModel.read(entityRegTestSetName, {
 			error : function(oError) {
+				debugger;
 				oModel = new sap.ui.model.json.JSONModel();
 				oModel.loadData(jSONDataName);
 				sap.ui.getCore().setModel(oModel);
-				throw "";
+				sap.m.MessageToast.show("Working with Mockup");
 			}
 		});
 		sap.ui.getCore().setModel(oModel);
 	} else {
-		throw "";
+		throw "user_invalid";
 	}		
 }
 

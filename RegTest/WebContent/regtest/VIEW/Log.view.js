@@ -48,13 +48,13 @@ sap.ui.jsview("regtest.VIEW.Log", {
 		var idRegTestName = new sap.m.Label(idRegTestName, {
 			text : "{i18n>RegTestName}"
 		});
-		var idRegTestNameValue = new sap.m.Input(idRegTestNameValue);
+		var idRegTestNameValueFld = new sap.m.Input(idRegTestNameValue);
 		idRegTestNameValue.onsapenter = (function(oEvent) {
 			oController.onRefresh();
 		});
 
 		var panelRegTestID = new sap.m.Panel(idRegTestIDPanel, {
-			content : [ idRegTestName, idRegTestNameValue ]
+			content : [ idRegTestName, idRegTestNameValueFld ]
 		});
 		var btnRefresh = new sap.m.Button(idBtnRefresh, {
 			text : "{i18n>Refresh}",
