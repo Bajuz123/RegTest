@@ -256,7 +256,7 @@ sap.ui
 						var idCheckSet = boundObject.id_check_set;
 						var runNumber = boundObject.running_nr;						
 						var oModelCheckSet = sap.ui.getCore().getModel();
-						oModelCheckSet.remove("/REG_SET(id_reg_test='"
+						oModelCheckSet.remove("/REG_SET(id_reg_test='" //
 								+ id_reg_test + "',id_check_set='" + idCheckSet
 								+ "',running_nr='" + runNumber + "')", {
 							method : "DELETE",
