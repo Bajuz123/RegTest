@@ -340,8 +340,8 @@ sap.ui
 						var selIndex = oPlaceTable.getSelectedIndex();
 						var rows = oPlaceTable.getRows();
 						var cells = rows[selIndex].getCells();
-						var placeholder = cells[1].getValue();
-						var replaceWith = cells[2].getValue();
+						var placeholder = cells[0].getValue();
+						var replaceWith = cells[1].getValue();
 						if (selIndex != -1) {
 
 							var oView = sap.ui.getCore().byId(
