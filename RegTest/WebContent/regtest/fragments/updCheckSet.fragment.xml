@@ -24,8 +24,15 @@
      <!--  <Text text = "Name : "/>-->
 <content>
 <VBox>
-<Label text="CheckSet"/>
-<Input   id="updateCheckset"  valueLiveUpdate="true" width="60%"/>
+
+  <Label text="CheckSet"/>
+  <ComboBox id="updateCheckset"
+  			items="{/CHCK_SET}">
+  <items>
+  <core:Item key="{id_check_set}" text="{name}"/>
+  </items>
+  </ComboBox>
+
 <Label text="Running number"/>
 <Input   id="updateRunNumber" valueLiveUpdate="true" width="60%"/>
 </VBox>

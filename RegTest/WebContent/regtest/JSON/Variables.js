@@ -5,6 +5,7 @@ var dataServiceName = "/sap/opu/odata/sap/Z_REG_TEST_SRV";
 var jSONDataName = "regtest/JSON/RegTest_DATA.json";
 var bundlePath = "regtest.i18n.i18n";
 var columnDefaultValue = "value";
+var selectedObject = {id_reg_test:"", id_check_set:"",running_nr:""};
 //EntityNames
 var entityRegTestSetName = "/REG_TEST_SET";
 var entityCheckSetSetName = "/CHCK_SET";
