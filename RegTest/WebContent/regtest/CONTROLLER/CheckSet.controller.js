@@ -73,7 +73,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 	 */
 	onBeforeRendering : function() {
 		try {
-			debugger;
+			oUser = localStorage.getItem("oUser");			
 			validateUser(oUser);
 		} catch (err) {
 			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);

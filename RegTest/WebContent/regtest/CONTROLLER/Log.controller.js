@@ -8,7 +8,7 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 	 * 
 	 * @memberOf regtest.VIEW.Log
 	 */
-	onInit : function() {
+/*	onInit : function() {
 		try {
 			oUser = localStorage.getItem("oUser");
 			reloadModel(oUser);
@@ -18,7 +18,7 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 			sap.m.MessageToast.show("You have to login first!");
 		}
 
-	},
+	},*/
 	onRefresh : function() {
 		// Refresh Bind
 		var oLogTable = sap.ui.getCore().byId("idLogTable");
@@ -76,12 +76,20 @@ sap.ui.controller("regtest.CONTROLLER.Log", {
 	 */
 	onBeforeRendering : function() {
 		try {
-			reloadModel(oUser);
-			this.onRefresh();
+			oUser = localStorage.getItem("oUser");			
+			validateUser(oUser);
 		} catch (err) {
-			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			oRouter.navTo("Login");
-			sap.m.MessageToast.show("You have to login first!");
+			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
+			oRouter.navTo(routeLogin);
+			var loginFirstText = resourceModel.getProperty("LoginFirst");
+			sap.m.MessageToast.show(loginFirstText);
+		}
+
+		try {
+			reloadModel(oUser);
+		} catch (err) {
+			var offlineText = resourceModel.getProperty("OfflineTxt");
+			sap.m.MessageToast.show(offlineText);
 		}
 	},
 /**

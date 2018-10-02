@@ -18,6 +18,7 @@ var entityRegSetSetName = "/REG_SET_SET";
 var iconAdd = "sap-icon://add";
 var iconDel = "sap-icon://delete";
 var iconEdit = "sap-icon://edit";
+var iconRefresh = "sap-icon://refresh";
 
 //Routes
 var routeRegTestList = "RegTest";
@@ -48,10 +49,31 @@ var idCheckSetIDField = "idCheckSetIdField";
 var idCheckSetName = "fldName";
 var idCheckSetClass = "fldImplClass";
 
-// SAP Entity
+// Log View
+var idLogPanel = "idLogPanel";
+var idRunIdText = "idRunIdText";
+var idRunIdValue = "idRunIdValue";
+var maxValue = "max";
+var idLogPanelRunId = "idLogPanelRunId";
+var idRegTestName = "idRegTestName";
+var idRegTestNameValue = "idRegTestNameValue";
+var idRegTestIDPanel = "idRegTestIDPanel";
+var idBtnRefresh = "idBtnRefresh";
+var idLogTable = "idLogTable";
+
+// SAP Entity CheckSet
 var sapCheckSetId = "id_check_set";
 var sapCheckSetName = "name";
 var sapCheckSetClass = "implementation_class";
+
+//SAP Entity CheckSet
+var sapRunId = "run_id";
+var sapRegTestId = "id_reg_test";
+var sapRegTestName = "reg_test_name";
+var sapPartId = "id_part";
+var sapMsgId = "msg_id";
+var sapMsgText = "msg_text";
+var sapIdPlaceholder = "id_placeholder";
 
 //Operations
 var methodDelete = "DELETE";
