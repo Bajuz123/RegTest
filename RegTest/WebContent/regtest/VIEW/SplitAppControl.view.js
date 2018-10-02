@@ -13,34 +13,7 @@ sap.ui.jsview("regtest.VIEW.SplitAppControl", {
 	* @memberOf regtest.splittApp
 	*/ 
 	createContent : function(oController) {
-		var oSplitApp = new sap.m.SplitApp("idSplitAppControl", {});
-	
-/*		var oMenu 			= sap.ui.view({id:"idMenu", viewName:"regtest.VIEW.Menu", type:sap.ui.core.mvc.ViewType.JS});
-		var oRegTest 		= sap.ui.view({id:"idRegTest", viewName:"regtest.VIEW.RegTest", type:sap.ui.core.mvc.ViewType.JS});
-		oSplitApp.addMasterPage(oMenu);
-		oSplitApp.addDetailPage(oRegTest);
-		
-		oSplitApp.setInitialDetail("idRegTest");
-		oSplitApp.setInitialMaster("idMenu");
-*/
+		var oSplitApp = new sap.m.SplitApp(idSplitAppControl, {});
 		return [ oSplitApp];
-
-/*		var oCheckSet		= sap.ui.view({id:"idCheckSet1", viewName:"regtest.VIEW.CheckSet", type:sap.ui.core.mvc.ViewType.JS});
-		var oRegTestDetail 	= sap.ui.view({id:"idRegTestDetail1", viewName:"regtest.VIEW.RegTestDetail", type:sap.ui.core.mvc.ViewType.JS});
-		var oPageLogout  	= sap.ui.view({id:"idLogout", viewName:"regtest.VIEW.Logout", type:sap.ui.core.mvc.ViewType.JS});
-		var oMenu 			= sap.ui.view({id:"idMenu1", viewName:"regtest.VIEW.Menu", type:sap.ui.core.mvc.ViewType.JS});
-		    var oLog  			= sap.ui.view({id:"idLog1", viewName:"regtest.VIEW.Log", type:sap.ui.core.mvc.ViewType.JS});
-		var oCheckSetDetail = sap.ui.view({id:"idCheckSetDetail1", viewName:"regtest.VIEW.CheckSetDetail", type:sap.ui.core.mvc.ViewType.JS});
-		oSplitApp.setMode(sap.m.SplitAppMode.HideMode)
-		oSplitApp.addDetailPage(oPageLogin);
-		oSplitApp.addDetailPage(oPageLogout);
-		oSplitApp.addDetailPage(oRegTest);
-		oSplitApp.addDetailPage(oCheckSet);
-		oSplitApp.addDetailPage(oRegTestDetail);
-		oSplitApp.addDetailPage(oLog);
-  	oSplitApp.addDetailPage(oCheckSetDetail);	       		
-		oSplitApp.setInitialDetail("idLogin");
-*/
 	}
-
 });

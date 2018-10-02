@@ -62,6 +62,9 @@ var idRegTestIDPanel = "idRegTestIDPanel";
 var idBtnRefresh = "idBtnRefresh";
 var idLogTable = "idLogTable";
 
+//Split View
+var idSplitAppControl = "idSplitAppControl";
+
 // SAP Entity CheckSet
 var sapCheckSetId = "id_check_set";
 var sapCheckSetName = "name";
