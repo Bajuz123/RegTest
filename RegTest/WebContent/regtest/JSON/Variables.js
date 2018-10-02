@@ -6,6 +6,8 @@ var jSONDataName = "regtest/JSON/RegTest_DATA.json";
 var bundlePath = "regtest.i18n.i18n";
 var columnDefaultValue = "value";
 var selectedObject = {id_reg_test:"", id_check_set:"",running_nr:""};
+var selectedPlObject = {idRegTest:"", placeholder:""};
+
 //EntityNames
 var entityRegTestSetName = "/REG_TEST_SET";
 var entityCheckSetSetName = "/CHCK_SET";
@@ -13,9 +15,9 @@ var entityLogSetName = "/REG_LOG_SET";
 var entityPlaceSetName = "/REG_PLACE_SET";
 var entityRegSetSetName = "/REG_SET_SET";
 //Icons
-var iconAdd = "sap-icon://add"
-var iconDel = "sap-icon://delete"
-var iconEdit = "sap-icon://edit"
+var iconAdd = "sap-icon://add";
+var iconDel = "sap-icon://delete";
+var iconEdit = "sap-icon://edit";
 
 //Routes
 var routeRegTestList = "RegTest";

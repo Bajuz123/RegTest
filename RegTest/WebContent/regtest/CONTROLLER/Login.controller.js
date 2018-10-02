@@ -15,6 +15,7 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 	},
 
 	onLoginClick : function() {
+		debugger;
 		oLogin = sap.ui.getCore().byId(idLoginName).getValue();
 		oPwd = sap.ui.getCore().byId(idPwdField).getValue();
 

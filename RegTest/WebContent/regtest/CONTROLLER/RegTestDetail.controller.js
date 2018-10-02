@@ -2,7 +2,6 @@ sap.ui
 		.controller(
 				"regtest.CONTROLLER.RegTestDetail",
 				{
-
 					/**
 					 * Called when a controller is instantiated and its View
 					 * controls (if available) are already created. Can be used
@@ -193,9 +192,10 @@ sap.ui
 						var selIndex = oCheckTable.getSelectedIndex();
 
 						if (selIndex != -1) {
-							var boundObject = getTableSelectedObject(oCheckTable, selIndex);
+							var boundObject = getTableSelectedObject(
+									oCheckTable, selIndex);
 							var idCheckSet = boundObject.id_check_set;
-							var runNumber = boundObject.running_nr;																	
+							var runNumber = boundObject.running_nr;
 
 							var oView = sap.ui.getCore().byId(
 									"idregtest.VIEW.RegTestDetail");
@@ -203,19 +203,21 @@ sap.ui
 							fragUpdCH = sap.ui.xmlfragment(
 									"regtest.fragments.updCheckSet", oView
 											.getController());
-						
-							sap.ui.getCore().byId("updateCheckset").setSelectedKey(idCheckSet);
-//							sap.ui.getCore().byId("updateCheckset").setValue(
-//									idCheckSet);
+
+							sap.ui.getCore().byId("updateCheckset")
+									.setSelectedKey(idCheckSet);
+							// sap.ui.getCore().byId("updateCheckset").setValue(
+							// idCheckSet);
 							sap.ui.getCore().byId("updateRunNumber").setValue(
 									runNumber);
 
 							debugger;
-							selectedObject.id_reg_test 	= boundObject.id_reg_test;
+							selectedObject.id_reg_test = boundObject.id_reg_test;
 							selectedObject.id_check_set = boundObject.id_check_set;
-							selectedObject.running_nr 	= boundObject.running_nr;
-							
-							localStorage.setItem("selectedCheckSet", selectedObject);							
+							selectedObject.running_nr = boundObject.running_nr;
+
+							localStorage.setItem("selectedCheckSet",
+									selectedObject);
 							fragUpdCH.open();
 						} else {
 							sap.m.MessageToast.show("Select a row to edit!");
@@ -224,8 +226,9 @@ sap.ui
 					onSaveAddCH : function(oEvent) {
 						var oEntry = {};
 						oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg")
-								.getValue();											
-						oEntry.id_check_set = sap.ui.getCore().byId("ComboCheckSetValue").getSelectedKey();												
+								.getValue();
+						oEntry.id_check_set = sap.ui.getCore().byId(
+								"ComboCheckSetValue").getSelectedKey();
 						oEntry.running_nr = sap.ui.getCore().byId(
 								"inputRunNumber").getValue();
 						var oModelCheckSet = sap.ui.getCore().getModel();
@@ -252,9 +255,10 @@ sap.ui
 						var id_reg_test = sap.ui.getCore().byId("fldIDReg")
 								.getValue();
 						var selIndex = oCheckTable.getSelectedIndex();
-						var boundObject = getTableSelectedObject(oCheckTable, selIndex);
+						var boundObject = getTableSelectedObject(oCheckTable,
+								selIndex);
 						var idCheckSet = boundObject.id_check_set;
-						var runNumber = boundObject.running_nr;						
+						var runNumber = boundObject.running_nr;
 						var oModelCheckSet = sap.ui.getCore().getModel();
 						oModelCheckSet.remove("/REG_SET(id_reg_test='" //
 								+ id_reg_test + "',id_check_set='" + idCheckSet
@@ -276,19 +280,23 @@ sap.ui
 					onSaveUpdCH : function(oEvent) {
 						var oEntry = {};
 						oEntry.id_reg_test = sap.ui.getCore().byId("fldIDReg")
-								.getValue();					
-						oEntry.id_check_set = sap.ui.getCore().byId("updateCheckset").getSelectedKey();												
+								.getValue();
+						oEntry.id_check_set = sap.ui.getCore().byId(
+								"updateCheckset").getSelectedKey();
 						oEntry.running_nr = sap.ui.getCore().byId(
 								"updateRunNumber").getValue();
 						var oModelPlaceSet = sap.ui.getCore().getModel();
 
 						debugger;
-						localStorage.getItem("selectedCheckSet", selectedObject);							
-												
+						localStorage
+								.getItem("selectedCheckSet", selectedObject);
+
 						oModelPlaceSet.update("/REG_SET(id_reg_test='"
-								+ selectedObject.id_reg_test + "',id_check_set='"
-								+ selectedObject.id_check_set + "',running_nr='"
-								+ selectedObject.running_nr + "')", oEntry, {
+								+ selectedObject.id_reg_test
+								+ "',id_check_set='"
+								+ selectedObject.id_check_set
+								+ "',running_nr='" + selectedObject.running_nr
+								+ "')", oEntry, {
 							success : function(data) {
 								sap.m.MessageToast.show("Update successfull");
 							},
@@ -298,7 +306,7 @@ sap.ui
 						})
 						reloadModel(oUser);
 						fragUpdCH.close();
-						localStorage.setItem("selectedCheckSet", null);							
+						localStorage.setItem("selectedCheckSet", null);
 					},
 					onCloseDialogUpdCH : function() {
 						fragUpdCH.close();
@@ -345,14 +353,20 @@ sap.ui
 								"idPlaceTableToReg");
 						var selIndex = oPlaceTable.getSelectedIndex();
 						if (selIndex != -1) {
-							var boundObject = getTableSelectedObject(oPlaceTable, selIndex);
+							var boundObject = getTableSelectedObject(
+									oPlaceTable, selIndex);
 							var idRegTest = boundObject.id_reg_test;
-							var placeholder = boundObject.placeholder;												
+							var placeholder = boundObject.placeholder;
 							var replaceWith = boundObject.replace_with;
 
 							var oView = sap.ui.getCore().byId(
 									"idregtest.VIEW.RegTestDetail");
 
+							debugger;
+							selectedPlObject.idRegTest   = boundObject.id_reg_test;
+							selectedPlObject.placeholder = boundObject.placeholder;
+							localStorage.setItem("selectedPlObject", selectedPlObject);
+							
 							fragUpdPH = sap.ui.xmlfragment(
 									"regtest.fragments.updDialog", oView
 											.getController());
@@ -395,9 +409,10 @@ sap.ui
 						var oPlaceTable = sap.ui.getCore().byId(
 								"idPlaceTableToReg");
 						var selIndex = oPlaceTable.getSelectedIndex();
-						var boundObject = getTableSelectedObject(oPlaceTable, selIndex);
+						var boundObject = getTableSelectedObject(oPlaceTable,
+								selIndex);
 						var idRegTest = boundObject.id_reg_test;
-						var placeholder = boundObject.placeholder;												
+						var placeholder = boundObject.placeholder;
 						var oModelPlaceSet = sap.ui.getCore().getModel();
 						oModelPlaceSet.remove("/REG_PLACE_SET(id_reg_test='"
 								+ idRegTest + "',placeholder='" + placeholder
@@ -425,10 +440,13 @@ sap.ui
 								"updPlaceholder").getValue();
 						oEntry.replace_with = sap.ui.getCore().byId(
 								"updReplace").getValue();
+						debugger;
+						localStorage.getItem("selectedPlObject", selectedPlObject);
+
 						var oModelPlaceSet = sap.ui.getCore().getModel();
 						oModelPlaceSet.update("/REG_PLACE_SET(id_reg_test='"
-								+ oEntry.id_reg_test + "',placeholder='"
-								+ oEntry.placeholder + "')", oEntry, {
+								+ selectedPlObject.idRegTest + "',placeholder='"
+								+ selectedPlObject.placeholder + "')", oEntry, {
 							success : function(data) {
 								sap.m.MessageToast.show("Update successfull");
 							},
