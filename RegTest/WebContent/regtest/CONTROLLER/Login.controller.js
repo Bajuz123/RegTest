@@ -9,7 +9,6 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 	 * @memberOf regtest.Login
 	 */
 	onInit : function() {
-		var OUser;
 		initLanguageLocale();
 		sap.ui.getCore().setModel(i18nModel, "i18n");
 	},

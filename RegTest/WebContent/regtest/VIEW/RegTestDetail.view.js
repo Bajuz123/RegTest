@@ -1,215 +1,271 @@
 sap.ui.jsview("regtest.VIEW.RegTestDetail", {
-
-	/** Specifies the Controller belonging to this View. 
-	* In the case that it is not implemented, or that "null" is returned, this View does not have a Controller.
-	* @memberOf regtest.RegTestDetail
-	*/ 
 	getControllerName : function() {
 		return "regtest.CONTROLLER.RegTestDetail";
 	},
 
-	/** Is initially called once after the Controller has been instantiated. It is the place where the UI is constructed. 
-	* Since the Controller is given to this method, its event handlers can be attached right away. 
-	* @memberOf regtest.RegTestDetail
-	*/ 
-	createContent : function(oController) {	
-		var btnOKReg = new sap.m.Button("btnOKReg", {
-			text : "OK",
-			icon : "sap-icon://save",
-		    press:  oController.onOKRegClick   });		
-
-		var btnBackReg = new sap.m.Button("btnBackReg", {
-			text : "Back",
-			icon : "sap-icon://undo",
-		    press:  oController.onBackRegClick   });		
-
-		var btnRun = new sap.m.Button("btnRun", {
-			text : "Run RegTest",
-			icon : "sap-icon://process",
-		    press:  oController.onRunClick   });		
-
-		var btnRegPlace = new sap.m.Button("btnRegPlace", {
-			text : "Placeholders",
-			icon : "sap-icon://x-ray",
-		    press:  oController.onPlaceholderClick   });		
-
-		var btnCheckSet = new sap.m.Button("btnSet", {
-			text : "CheckSets",
-			icon : "sap-icon://stethoscope",
-		    press:  oController.onCheckSetClick   });	
-		
-		var fieldIDReg = new sap.m.Input(
-		  "fldIDReg", 
-		  {visible: false}
-		);
-	
-		var regTestNameLabel = new sap.m.Label("idRegTestNamet", {text: "RegTestName"});
-		var fieldName = new sap.m.Input("fldRegName");
-		var panelRegDetailName = new sap.m.Panel("idPanelRegDetailName", {
-			content : [
-			           regTestNameLabel, fieldName           
-			          ]
-		});
-		
-		var regTestXMLLabel = new sap.m.Label("idRegTestXML", {text: "XML"});
-		var areaXML   = new sap.m.TextArea("areaXML", {
-			width: "100%",
-			height: "12rem"
-//			growing: true
-		});
-		
-		var fileReader = new sap.ui.unified.FileUploader({ 
-	          uploadUrl : "",
-	          buttonText : "Upload XML",  
-	          fileType : "xml",  
-	          maximumFileSize : 1,
-	          buttonOnly : true,
-	          icon : "sap-icon://upload",
-	          change : function(e){
-	          var file = e.getParameter("files") && e.getParameter("files")[0];
-	           if(file && window.FileReader){  
-	              var reader = new FileReader();  
-	              var that = this;  
-	              reader.onload = function(evn) { 
-	                var strCSV= evn.target.result; //string in CSV
-	        		sap.ui.getCore().byId("areaXML").setValue(strCSV);
-                  };
-	              reader.readAsText(file);  
-	            }
-	            }
-	        });
-
-		var panelRegDetailXML = new sap.m.Panel("idPanelRegDetailXML", {
-			content : [
-			           regTestXMLLabel, areaXML           
-			          ]
+	createContent : function(oController) {
+		oPage = new sap.m.Page({
+			title : "{i18n>TitleRegTestDetail}",
 		});
 
-		var panelRegDetailXMLButton = new sap.m.Panel("idPanelRegDetailXMLButton", {
-			content : [
-			           fileReader           
-			          ]
-		});
+		this.createRegTestDetail(oController, oPage);
+		this.createPanelRegRelatedButtons(oController, oPage);
+		this.createRelatedPlaceholders(oController, oPage);
+		this.createRelatedCheckSets(oController, oPage);
+		return oPage;
+	},
 
+	createRegTestDetail : function(oController, oPage) {
+		var panelDetailButtons = this.createButtonsForDetail(oController);
+		oPage.addContent(panelDetailButtons);
+
+		var panelRegDetailName = this.createPanelRegDetailName(oController);
+		oPage.addContent(panelRegDetailName);
+
+		var panelRegDetailXML = this.createPanelRegDetailXML(oController);
+		oPage.addContent(panelRegDetailXML);
+
+		var panelRegDetailXMLButton = this
+				.createPanelRegDetailXMLButton(oController);
+		oPage.addContent(panelRegDetailXMLButton);
+	},
+	createRelatedPlaceholders : function(oController, oPage) {
 		var oPlaceTable = new sap.ui.table.Table({
-			id: "idPlaceTableToReg",
-			tableID : "idPlaceTableToReg",
+			id : idPlaceTableToReg,
+			tableID : idPlaceTableToReg,
 			visibleRowCount : 5,
-			selectionMode: sap.ui.table.SelectionMode.Single,
+			selectionMode : sap.ui.table.SelectionMode.Single,
 			editable : false
 		});
 
 		oPlaceTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "ID"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
-			visible: false
-		} ));
+			label : new sap.ui.commons.Label({
+				text : "{i18n>Id}"
+			}),
+			template : new sap.ui.commons.TextField().bindProperty(
+					columnDefaultValue, sapRegTestId),
+			visible : false
+		}));
 
 		oPlaceTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Placeholder"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","placeholder"),
-			visible: true
-		} ));
+			label : new sap.ui.commons.Label({
+				text : "{i18n>Placeholders}"
+			}),
+			template : new sap.ui.commons.TextField().bindProperty(
+					columnDefaultValue, sapPlaceholder),
+			visible : true
+		}));
 
 		oPlaceTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Replace with"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","replace_with"),
-			visible: true
-		} ));
-		oPlaceTable.attachBrowserEvent("dblclick", oController.onEditPlaceClick);
-		
-		var oCheckTable = new sap.ui.table.Table({
-			id: "idCheckTableToReg",
-			tableID : "idCheckTableToReg",
-			visibleRowCount : 5,
-			selectionMode: sap.ui.table.SelectionMode.Single,
-			editable : false
+			label : new sap.ui.commons.Label({
+				text : "{i18n>ReplaceWith}"
+			}),
+			template : new sap.ui.commons.TextField().bindProperty(
+					columnDefaultValue, sapReplaceWith),
+			visible : true
+		}));
+
+		var btnPlaceAdd = new sap.m.Button(btnPlaceAdd, {
+			// text : "Add",
+			icon : iconAdd,
+			press : oController.onAddPlaceClick
 		});
 
-		oCheckTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Reg Test ID"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","id_reg_test"),
-			visible: false
-		} ));
+		var btnPlaceDel = new sap.m.Button(btnPlaceDel, {
+			// text : "Delete",
+			icon : iconDel,
+			press : function() {
+				oController.onDelPlaceClick(oPlaceTable)
+			}
+		});
 
-		oCheckTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Check Set"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","id_check_set"),
-			visible: false
-		} ));
+		oPlaceTable.attachBrowserEvent(dblclickEvent,
+				oController.onEditPlaceClick);
 
-		oCheckTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Check Set Name"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","check_set_name"),
-			visible: true
-		} ));
-
-		oCheckTable.addColumn(new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Running nr"}),
-			template: new sap.ui.commons.TextField().bindProperty("value","running_nr"),
-			visible: true
-		} ));
-		oCheckTable.attachBrowserEvent("dblclick", oController.onEditCheckClick);
-
-		oPlaceTable.bindRows("/REG_PLACE_SET");			
-		oCheckTable.bindRows("/REG_SET");
-
-		var btnPlaceAdd = new sap.m.Button("btnPlaceAdd", {
-			text : "Add",
-			icon : "sap-icon://add",
-		    press:  oController.onAddPlaceClick   });		
-
-		var btnPlaceDel = new sap.m.Button("btnPlaceDel", {
-			text : "Delete",
-			icon : "sap-icon://delete",
-		    press:  function(){oController.onDelPlaceClick(oPlaceTable)}   });			
-
-		var panelRegDetail = new sap.m.Panel("idPanelRegDetail", {
-			content : [
-			           btnOKReg, btnBackReg, btnRun, fieldIDReg, 
-			           panelRegDetailName,
-			           panelRegDetailXML,
-			           panelRegDetailXMLButton,
-			           btnRegPlace, btnCheckSet 
-			           ]
-		});		
+		oPlaceTable.bindRows(entityPlaceSetName);
+		var panelRelatedPlace = new sap.m.Panel(idListRelatedPlace, {
+			content : [ btnPlaceAdd, btnPlaceDel, oPlaceTable ]
+		});
 
 		oPlaceTable.visible = true;
+		oPage.addContent(panelRelatedPlace);
+	},
+	createRelatedCheckSets : function(oController, oPage) {
+		var oCheckTable = new sap.ui.table.Table({
+			id : idCheckTableToReg,
+			tableID : idCheckTableToReg,
+			visibleRowCount : 5,
+			selectionMode : sap.ui.table.SelectionMode.Single,
+			editable : false
+		});
+
+		oCheckTable.addColumn(new sap.ui.table.Column({
+			label : new sap.ui.commons.Label({
+				text : "{i18n>Id}"
+			}),
+			template : new sap.ui.commons.TextField().bindProperty(
+					columnDefaultValue, sapRegTestId),
+			visible : false
+		}));
+
+		oCheckTable.addColumn(new sap.ui.table.Column({
+			label : new sap.ui.commons.Label({
+				text : "{i18n>Id}"
+			}),
+			template : new sap.ui.commons.TextField().bindProperty(
+					columnDefaultValue, sapCheckSetId),
+			visible : false
+		}));
+
+		oCheckTable.addColumn(new sap.ui.table.Column({
+			label : new sap.ui.commons.Label({
+				text : "{i18n>CheckSetNameTable}"
+			}),
+			template : new sap.ui.commons.TextField().bindProperty(
+					columnDefaultValue, sapCheckSetName),
+			visible : true
+		}));
+
+		oCheckTable.addColumn(new sap.ui.table.Column({
+			label : new sap.ui.commons.Label({
+				text : "{i18n>RunningNr}"
+			}),
+			template : new sap.ui.commons.TextField().bindProperty(
+					columnDefaultValue, sapRunningNr),
+			visible : true
+		}));
+
+		var btnCheckAdd = new sap.m.Button(btnCheckAdd, {
+			// text : "Add",
+			icon : iconAdd,
+			press : oController.onAddCheckClick
+		});
+
+		var btnCheckDel = new sap.m.Button(btnCheckDel, {
+			// text : "Delete",
+			icon : iconDel,
+			press : function() {
+				oController.onDelCheckClick(oCheckTable)
+			}
+		});
+
+		oCheckTable.attachBrowserEvent(dblclickEvent,
+				oController.onEditCheckClick);
+		oCheckTable.bindRows(entityRegSetName);
+		var panelRelatedCheck = new sap.m.Panel(idListRelatedCheck, {
+			content : [ btnCheckAdd, btnCheckDel, oCheckTable ]
+		});
+		sap.ui.getCore().byId(idListRelatedCheck).setVisible(false);
+		sap.ui.getCore().byId(idListRelatedPlace).setVisible(false);
 		oCheckTable.visible = true;
-		var panelRelatedPlace = new sap.m.Panel("idListRelatedPlace", {
-			content : [
-			           btnPlaceAdd, btnPlaceDel, oPlaceTable
-			           ]
-		});		
+		oPage.addContent(panelRelatedCheck);
+	},
 
-		var btnCheckAdd = new sap.m.Button("btnCheckAdd", {
-			text : "Add",
-			icon : "sap-icon://add",
-		    press:  oController.onAddCheckClick   });		
+	createPanelRegDetailName : function(oController) {
+		var fieldIDReg = new sap.m.Input(idfldIDReg, {
+			visible : false
+		});
 
-		var btnCheckDel = new sap.m.Button("btnCheckDel", {
-			text : "Delete",
-			icon : "sap-icon://delete",
-		    press:  function(){ oController.onDelCheckClick (oCheckTable)} });		
+		var regTestNameLabel = new sap.m.Label(idRegTestNameLabel, {
+			text : "{i18n>RegTestName}"
+		});
+		var regTestNameValue = new sap.m.Input(idFldRegNameValue);
+		return new sap.m.Panel(idPanelRegDetailName, {
+			content : [ regTestNameLabel, regTestNameValue ]
+		});
+	},
+	createPanelRegDetailXML : function(oController) {
+		var regTestXMLLabel = new sap.m.Label(idRegTestXMLLabel, {
+			text : "{i18n>XML}"
+		});
+		var areaXML = new sap.m.TextArea(idAreaXML, {
+			width : "100%",
+			height : "14rem"
+		});
 
-	//	var btnCheckEdit = new sap.m.Button("btnCheckEdit", {
-			//text : "Edit",
-			//icon : "sap-icon://edit",
-		   // press:  oController.onEditCheckClick   });		
+		var fileReader = new sap.ui.unified.FileUploader({
+			id : idFileReaderComponent,
+			uploadUrl : "",
+			buttonText : "{i18n>UploadXML}",
+			fileType : xmlType,
+			maximumFileSize : 1,
+			buttonOnly : true,
+			icon : iconUpload,
+			change : function(e) {
+				var file = e.getParameter(filesType)
+						&& e.getParameter(filesType)[0];
+				if (file && window.FileReader) {
+					var reader = new FileReader();
+					var that = this;
+					reader.onload = function(evn) {
+						var strCSV = evn.target.result; // string
+						// in
+						// CSV
+						sap.ui.getCore().byId(idAreaXML).setValue(strCSV);
+					};
+					reader.readAsText(file);
+				}
+			}
+		});
+
+		return new sap.m.Panel(idPanelRegDetailXML, {
+			content : [ regTestXMLLabel, areaXML ]
+		});
+		// , fileReader
+	},
+	createButtonsForDetail : function(oController) {
+		var btnOKReg = new sap.m.Button(idBtnOKReg, {
+			text : "{i18n>OK}",
+			icon : iconSave,
+			press : oController.onOKRegClick
+		});
+
+		var btnBackReg = new sap.m.Button(idBtnBackReg, {
+			text : "{i18n>Cancel}",
+			icon : iconUndo,
+			press : oController.onBackRegClick
+		});
+
+		var btnRun = new sap.m.Button(idBtnRun, {
+			text : "{i18n>RegRun}",
+			icon : iconProcess,
+			press : oController.onRunClick
+		});
+
+		return new sap.m.Panel(idPanelDetailButtons, {
+			content : [ btnOKReg, btnBackReg, btnRun ]
+		});
+	},
+
+	createPanelRegRelatedButtons : function(oController) {
+		var btnRegPlace = new sap.m.Button(idBtnRegPlace, {
+			text : "{i18n>Placeholders}",
+			icon : iconPlaceholders,
+			press : oController.onPlaceholderClick
+		});
+
+		var btnCheckSet = new sap.m.Button(idBtnSet, {
+			text : "{i18n>CheckSets}",
+			icon : iconCheckSets,
+			press : oController.onCheckSetClick
+		});
+
+		var panelRegRelatedButtons = new sap.m.Panel(idRegRelatedDetailButtons,
+				{
+					content : [ btnRegPlace, btnCheckSet ]
+				});
+		oPage.addContent(panelRegRelatedButtons);
+	},
+
+	createPanelRegDetailXMLButton : function(oController) {
+		var btnXMLButton = new sap.m.Button(idBtnXMLUpload, {
+			text : "{i18n>UploadXML}",
+			icon : iconUpload,
+		//	press : oController.onUploadClick
+		});
 		
-		var panelRelatedCheck = new sap.m.Panel("idListRelatedCheck", {
-			content : [
-			          btnCheckAdd, btnCheckDel, oCheckTable
-			          ]
-		});		
-		sap.ui.getCore().byId("idListRelatedCheck").setVisible(false);
-		sap.ui.getCore().byId("idListRelatedPlace").setVisible(false);
-		
-		return new sap.m.Page({
-			title: "RegTest Detail",
-			content: [
-			  panelRegDetail, panelRelatedPlace, panelRelatedCheck 
-			]
+		return new sap.m.Panel(idPanelRegDetailXMLButton, {
+			content : [ btnXMLButton ]
 		});
 	}
 });

@@ -6,22 +6,52 @@ var jSONDataName = "regtest/JSON/RegTest_DATA.json";
 var bundlePath = "regtest.i18n.i18n";
 var columnDefaultValue = "value";
 var rowDefaultValue = "rows";
-var selectedObject = {id_reg_test:"", id_check_set:"",running_nr:""};
-var selectedPlObject = {idRegTest:"", placeholder:""};
+var xmlType = "xml";
+var filesType = "files";
+var dblclickEvent = "dblclick";
+var httpGet = "GET";
 
-//EntityNames
+var oUser = {
+	Login : "",
+	Pwd : "",
+	hd1user : "",
+	hd1pwd : ""
+};
+var selectedObject = {
+	id_reg_test : "",
+	id_check_set : "",
+	running_nr : ""
+};
+var selectedPlObject = {
+	idRegTest : "",
+	placeholder : ""
+};
+var choosenCheckSet = {
+	idCheckSet : "",
+	name : "",
+	implementationClass : ""
+};
+
+// EntityNames
 var entityRegTestSetName = "/REG_TEST_SET";
 var entityCheckSetSetName = "/CHCK_SET";
 var entityLogSetName = "/REG_LOG_SET";
 var entityPlaceSetName = "/REG_PLACE_SET";
 var entityRegSetSetName = "/REG_SET_SET";
-//Icons
+var entityRegSetName = "/REG_SET";
+// Icons
 var iconAdd = "sap-icon://add";
 var iconDel = "sap-icon://delete";
 var iconEdit = "sap-icon://edit";
 var iconRefresh = "sap-icon://refresh";
+var iconSave = "sap-icon://save";
+var iconUndo = "sap-icon://undo";
+var iconProcess = "sap-icon://process";
+var iconPlaceholders = "sap-icon://x-ray";
+var iconCheckSets = "sap-icon://stethoscope";
+var iconUpload = "sap-icon://upload";
 
-//Routes
+// Routes
 var routeRegTestList = "RegTest";
 var routeRegTestDetail = "RegTestDetail";
 var routeCheckSetList = "CheckSet";
@@ -33,6 +63,9 @@ var routeMenu = "Menu";
 var routeSplit = "SplitAppControl";
 var routerName = "appRouter";
 
+//Views
+var viewRegTestDetail = "idregtest.VIEW.RegTestDetail";
+
 // Login View
 var idBoxLogin = "idvBoxLogin";
 var idLoginText = "idLoginText";
@@ -40,15 +73,60 @@ var idLoginName = "idLoginName";
 var idBtnLogin = "idBtnLogin";
 var idPwdField = "idPwdField";
 
+// RegTest View
+var idRegTestTable = "idRegTestTable";
+var idBtnAddReg = "idBtnAddReg";
+var idBtnDelReg = "idBtnDelReg";
+var idBtnEditReg = "idBtnEditReg";
+var idMainPanel = "idMainPanel";
+
 // CheckSet View
 var idTableCheckSet = "idTableCheckSet";
 var idBtnAddCheckSet = "idBtnAddSet";
 var idBtnDelCheckSet = "idBtnDelSet";
 var idBtnEditCheckSet = "idBtnEditSet";
 var idMainPanelChck = "idMainPanelChck";
-var idCheckSetIDField = "idCheckSetIdField";
+
+//CheckSetDetail View
+var idCheckSetIdInput = "idCheckSetIdInput";
 var idCheckSetName = "fldName";
 var idCheckSetClass = "fldImplClass";
+var idCheckSetBtnOKCheck = "idCheckSetBtnOKCheck";
+var idCheckSetBtnBackCheck = "idchecksetBtnBackCheck";
+var idcheckSetNameLabel = "idcheckSetNameLabel";
+var idPanelCheckDetailName = "idPanelCheckDetailName";
+var idCheckSetClassNameLabel = "idCheckSetClassNameLabel";
+var idPanelCheckDetailClassName = "idPanelCheckDetailClassName";
+
+//RegTestDetail View
+var idBtnOKReg = "idBtnOKReg";
+var idBtnBackReg = "idBtnBackReg";
+var idBtnRun = "idBtnRun";
+var idBtnRegPlace = "idBtnRegPlace";
+var idBtnSet = "idBtnSet";
+var idBtnXMLUpload = "idBtnXMLUpload";
+var idfldIDReg = "idfldIDReg";
+var idRegTestNameLabel = "idRegTestNameLabel";
+var idFldRegNameValue = "idFldRegNameValue";
+var idFileReaderComponent = "idFileReaderComponent";
+var idPanelRegDetailName = "idPanelRegDetailName";
+var idRegTestXMLLabel = "idRegTestXMLLabel";
+var idAreaXML = "idAreaXML";
+var idPanelDetailButtons = "idPanelDetailButtons";
+var idPanelRegDetailXML = "idPanelRegDetailXML";
+var idPanelRegDetailXMLButton = "idPanelRegDetailXMLButton";
+var idRegRelatedDetailButtons = "idRegRelatedDetailButtons";
+var btnPlaceAdd = "btnPlaceAdd";
+var btnPlaceDel = "btnPlaceDel";
+var idListRelatedCheck = "idListRelatedCheck";
+var btnCheckAdd = "btnCheckAdd";
+var btnCheckDel = "btnCheckDel";
+
+var idPlaceTableToReg = "idPlaceTableToReg";
+var idListRelatedPlace = "idListRelatedPlace";
+
+var idCheckTableToReg = "idCheckTableToReg";
+var idBusyDialog = "idBusyDialog";
 
 // Log View
 var idLogPanel = "idLogPanel";
@@ -62,22 +140,45 @@ var idRegTestIDPanel = "idRegTestIDPanel";
 var idBtnRefresh = "idBtnRefresh";
 var idLogTable = "idLogTable";
 
-//Split View
+// Split View
 var idSplitAppControl = "idSplitAppControl";
+
+//Fragments
+var fragAddCheckSet = "regtest.fragments.addCheckSet";
+var fragDelCheckSet = "regtest.fragments.delCheckSet";
+var fragUpdCheckSet = "regtest.fragments.updCheckSet";
+
+var fragAddDialog = "regtest.fragments.addDialog";
+
+var updateCheckset = "updateCheckset";
+var updateRunNumber = "updateRunNumber";
+var comboCheckSetValue = "ComboCheckSetValue";
+var inputRunNumber = "inputRunNumber";
 
 // SAP Entity CheckSet
 var sapCheckSetId = "id_check_set";
 var sapCheckSetName = "name";
 var sapCheckSetClass = "implementation_class";
 
-//SAP Entity CheckSet
+// SAP Entity CheckSet
 var sapRunId = "run_id";
 var sapRegTestId = "id_reg_test";
+var sapCheckSetId = "id_check_set";
 var sapRegTestName = "reg_test_name";
 var sapPartId = "id_part";
 var sapMsgId = "msg_id";
 var sapMsgText = "msg_text";
+var sapPlaceholder = "placeholder";
 var sapIdPlaceholder = "id_placeholder";
+var sapRegTestName = "Name";
+var sapRegTestXML = "XML";
+var sapCheckSetName = "check_set_name";
+var sapRunningNr = "running_nr";
+var sapReplaceWith = "replace_with";
+var sapName = "name";
 
-//Operations
+// Operations
 var methodDelete = "DELETE";
+
+//Function Import
+var fiStartCredit = "START_CREDIT";

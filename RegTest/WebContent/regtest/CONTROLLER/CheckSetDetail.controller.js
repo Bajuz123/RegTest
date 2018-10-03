@@ -1,83 +1,56 @@
 sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
-
-/**
-* Called when a controller is instantiated and its View controls (if available) are already created.
-* Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-* @memberOf regtest.RegTestDetail
-*/
-	onInit: function() {
-		try {
-			oUser = localStorage.getItem("oUser");			
-			reloadModel(oUser);			
-		} catch (err) {
-			var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			oRouter.navTo("Login");
-			sap.m.MessageToast.show("You have to login first!");					
-		}
-	},
-
 	onBackCheckClick: function() {
-		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-		oRouter.navTo("CheckSet");
+		var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
+		oRouter.navTo(routeCheckSetList);
 	}, 
 	
 	onOKCheckClick: function() {
 		var oEntry = {};		
-		
-//escape the texts first!!! sap.ui functionality
-		oEntry.id_check_set = escapeText(sap.ui.getCore().byId("idCheckSetIdField").getValue());
-		oEntry.name = escapeText(sap.ui.getCore().byId("fldName").getValue());
-		oEntry.implementation_class = escapeText(sap.ui.getCore().byId("fldImplClass").getValue()); 
-		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+		debugger;
+		oEntry.id_check_set = escapeText(sap.ui.getCore().byId(idCheckSetIdInput).getValue());
+		oEntry.name = escapeText(sap.ui.getCore().byId(idCheckSetName).getValue());
+		oEntry.implementation_class = escapeText(sap.ui.getCore().byId(idCheckSetClass).getValue()); 
+		var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 		var oModelCheckSet = sap.ui.getCore().getModel();
 		if (oEntry.id_check_set == '') {
-			oModelCheckSet.create("/CHCK_SET", oEntry);
-			sap.m.MessageToast.show("Add successfull"); //ToDo according to result
-			oRouter.navTo("CheckSet");
-		}  else { //update
-			oModelCheckSet.update("/CHCK_SET(id_check_set='" + oEntry.id_check_set + "')", oEntry, {
+			oModelCheckSet.create(entityCheckSetSetName, oEntry);
+			var addOKTxt = resourceModel.getProperty("AddOK")
+			sap.m.MessageToast.show(addOKTxt); //ToDo according to result
+			oRouter.navTo(routeCheckSetList);
+		}  else { //update		
+			var editOKTxt = resourceModel.getProperty("EditOK")
+			var editFailTxt = resourceModel.getProperty("EditFail")
+			oModelCheckSet.update(entityCheckSetSetName + "(" + sapCheckSetId + "='" + oEntry.id_check_set + "')", oEntry, {
 				success : function(data) {
-					sap.m.MessageToast.show("Update successfull");
+					sap.m.MessageToast.show(editOKTxt);
 				},
 				error : function(e) {
-					sap.m.MessageToast.show("Update error");
+					sap.m.MessageToast.show(editFailTxt);
 				}				
 			});
 			oModelCheckSet.refresh();
-			oRouter.navTo("CheckSet");
+			oRouter.navTo(routeCheckSetList);
 		}
 	},
-	
-/**
-* Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
-* (NOT before the first rendering! onInit() is used for that one!).
-* @memberOf regtest.RegTestDetail
-*/
 
-/*	onBeforeRendering: function() {
-		//debugger;
-		var id_check_set = sap.ui.getCore().byId("fldIDCheck").getValue();
-		if (id_check_set  != '') {
-			reloadModel(oUser);			
-			var oPlaceTable = sap.ui.getCore().byId("idPlaceTable");
-//			oPlaceTable.bindRows("/REG_PLACE_SET(id_reg_test='" + sap.ui.getCore().byId("fldIDReg").getValue() + "')");			
-		}	
-	},
-*/
-/**
-* Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
-* This hook is the same one that SAPUI5 controls get after being rendered.
-* @memberOf regtest.RegTestDetail
-*/
-//	onAfterRendering: function() {
-//
-//	},
+	onBeforeRendering : function() {
+		try {
+			oUser.Login = localStorage.getItem("oUser_Login");
+			oUser.Pwd = localStorage.getItem("oUser_Pwd");
+			oUser.hd1user = localStorage.getItem("oUser_hd1user");
+			oUser.hd1pwd = localStorage.getItem("oUser_hd1pwd");
+			validateUser(oUser);
+			reloadModel(oUser);
 
-/**
-* Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-* @memberOf regtest.RegTestDetail
-*/
-//	onExit: function() {
-//	}
-
+			debugger;
+			sap.ui.getCore().byId(idCheckSetIdInput).setValue(localStorage.getItem("choosenCheckSet_idCheckSet"));
+			sap.ui.getCore().byId(idCheckSetName).setValue(localStorage.getItem("choosenCheckSet_name"));
+			sap.ui.getCore().byId(idCheckSetClass).setValue(localStorage.getItem("choosenCheckSet_implementationClass"));
+		} catch (err) {
+			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
+			oRouter.navTo(routeLogin);
+			var loginFirstText = resourceModel.getProperty("LoginFirst");
+			sap.m.MessageToast.show(loginFirstText);
+		}
+	}
 });

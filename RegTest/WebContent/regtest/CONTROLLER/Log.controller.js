@@ -58,7 +58,10 @@ sap.ui.controller("regtest.CONTROLLER.Log",
 			},
 			onBeforeRendering : function() {
 				try {
-					oUser = localStorage.getItem("oUser");
+					oUser.Login = localStorage.getItem("oUser_Login");
+					oUser.Pwd = localStorage.getItem("oUser_Pwd");
+					oUser.hd1user = localStorage.getItem("oUser_hd1user");
+					oUser.hd1pwd = localStorage.getItem("oUser_hd1pwd");
 					validateUser(oUser);
 					reloadModel(oUser);
 				} catch (err) {

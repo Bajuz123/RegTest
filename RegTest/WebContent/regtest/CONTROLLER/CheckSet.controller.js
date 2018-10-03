@@ -12,9 +12,12 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 	// this.reloadModel();
 	// },
 	onAddSetClick : function() {
+		localStorage.setItem("choosenCheckSet_idCheckSet", "");
+		localStorage.setItem("choosenCheckSet_name", "");
+		localStorage.setItem("choosenCheckSet_implementationClass", "");
+
 		var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 		oRouter.navTo(routeCheckSetDetail);
-		sap.ui.getCore().byId(idCheckSetIDField).setValue("");
 	},
 
 	onDelSetClick : function(oSetTable) {
@@ -51,29 +54,24 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 		if (selIndex != -1) {
 			var boundObject = getTableSelectedObject(oSetTable, selIndex);
 			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
-			oRouter.navTo(routeCheckSetDetail);
-
-			sap.ui.getCore().byId(idCheckSetIDField).setValue(
+			localStorage.setItem("choosenCheckSet_idCheckSet",
 					boundObject.id_check_set);
-			sap.ui.getCore().byId(idCheckSetName).setValue(boundObject.name);
-			sap.ui.getCore().byId(idCheckSetClass).setValue(
+			localStorage.setItem("choosenCheckSet_name", boundObject.name);
+			localStorage.setItem("choosenCheckSet_implementationClass",
 					boundObject.implementation_class);
+			oRouter.navTo(routeCheckSetDetail);
 		} else {
 			var editText = resourceModel.getProperty("EditSelect");
 			sap.m.MessageToast.show(editText);
 		}
 	},
 
-	/*
-	 * var oModelRegTest = sap.ui.getCore().getModel();
-	 * 
-	 * /** Similar to onAfterRendering, but this hook is invoked before the
-	 * controller's View is re-rendered (NOT before the first rendering!
-	 * onInit() is used for that one!). @memberOf regtest.CheckSet
-	 */
 	onBeforeRendering : function() {
 		try {
-			oUser = localStorage.getItem("oUser");
+			oUser.Login = localStorage.getItem("oUser_Login");
+			oUser.Pwd = localStorage.getItem("oUser_Pwd");
+			oUser.hd1user = localStorage.getItem("oUser_hd1user");
+			oUser.hd1pwd = localStorage.getItem("oUser_hd1pwd");
 			validateUser(oUser);
 			reloadModel(oUser);
 		} catch (err) {
@@ -83,24 +81,4 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 			sap.m.MessageToast.show(loginFirstText);
 		}
 	},
-
-/**
- * Called when the View has been rendered (so its HTML is part of the document).
- * Post-rendering manipulations of the HTML could be done here. This hook is the
- * same one that SAPUI5 controls get after being rendered.
- * 
- * @memberOf regtest.CheckSet
- */
-// onAfterRendering: function() {
-//
-// },
-/**
- * Called when the Controller is destroyed. Use this one to free resources and
- * finalize activities.
- * 
- * @memberOf regtest.CheckSet
- */
-// onExit: function() {
-//
-// }
 });

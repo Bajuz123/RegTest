@@ -34,7 +34,10 @@ function validateUser(oLogin, oPwd) {
 			if (oPwd == Users[j].Pwd) {
 				found = true;
 				oUser = Users[j];
-				localStorage.setItem("oUser", oUser);
+				localStorage.setItem("oUser_Login", oUser.Login);
+				localStorage.setItem("oUser_Pwd", oUser.Pwd);
+				localStorage.setItem("oUser_hd1user", oUser.hd1user);
+				localStorage.setItem("oUser_hd1pwd", oUser.hd1pwd);
 				break;
 			}
 		}
@@ -45,7 +48,7 @@ function validateUser(oLogin, oPwd) {
 
 function reloadModel(oUser) {
 	// SAP Data
-
+	initLanguageLocale();
 	var oModel = new sap.ui.model.odata.ODataModel(this
 			.getUrl(dataServiceName), true, oUser.hd1user,
 			oUser.hd1pwd);

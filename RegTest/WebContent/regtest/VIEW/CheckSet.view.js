@@ -33,7 +33,7 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 				text : "{i18n>Name}"
 			}),
 			template : new sap.ui.commons.TextField().bindProperty(
-					columnDefaultValue, sapCheckSetName),
+					columnDefaultValue, sapName),
 			visible : true
 		}))
 
