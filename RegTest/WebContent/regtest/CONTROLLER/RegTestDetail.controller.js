@@ -252,17 +252,14 @@ sap.ui
 					},
 					onSaveDelCH : function(oEvent) {
 						var oCheckTable = sap.ui.getCore().byId(idCheckTableToReg);
-						var id_reg_test = sap.ui.getCore().byId(idfldIDReg)
-								.getValue();
 						var selIndex = oCheckTable.getSelectedIndex();
 						var boundObject = getTableSelectedObject(oCheckTable,
 								selIndex);
-						var idCheckSet = boundObject.id_check_set;
-						var runNumber = boundObject.running_nr;
 						var oModelCheckSet = sap.ui.getCore().getModel();
 						oModelCheckSet.remove(entityRegSetName + "(id_reg_test='" //
-								+ id_reg_test + "',id_check_set='" + idCheckSet
-								+ "',running_nr='" + runNumber + "')", {
+								+ sap.ui.getCore().byId(idfldIDReg)
+								.getValue() + "',id_check_set='" + boundObject.id_check_set
+								+ "',running_nr='" + boundObject.running_nr + "')", {
 							method : methodDelete,
 							success : function(data) {
 								sap.m.MessageToast.show("Delete successfull");
@@ -282,12 +279,12 @@ sap.ui
 						oEntry.id_reg_test = sap.ui.getCore().byId(idfldIDReg)
 								.getValue();
 						oEntry.id_check_set = sap.ui.getCore().byId(
-								"updateCheckset").getSelectedKey();
+								updateCheckset).getSelectedKey();
 						oEntry.running_nr = sap.ui.getCore().byId(
-								"updateRunNumber").getValue();
+								updateRunNumber).getValue();
 						var oModelPlaceSet = sap.ui.getCore().getModel();
 
-						oModelPlaceSet.update("/REG_SET(id_reg_test='"
+						oModelPlaceSet.update(entityRegSetName + "(id_reg_test='"
 								+ localStorage
 										.getItem("selectedCheckSet_idRegTest")
 								+ "',id_check_set='"
@@ -329,7 +326,7 @@ sap.ui
 							var oView = sap.ui.getCore().byId(
 									viewRegTestDetail);
 							fragDelPH = sap.ui.xmlfragment(
-									"regtest.fragments.delDialog", oView
+									fragDelDialog, oView
 											.getController());
 							fragDelPH.open();
 						} else {
@@ -406,7 +403,7 @@ sap.ui
 						oModelPlaceSet.remove(entityPlaceSetName + "(id_reg_test='"
 								+ idRegTest + "',placeholder='" + placeholder
 								+ "')", {
-							method : "DELETE",
+							method : methodDelete,
 							success : function(data) {
 								sap.m.MessageToast.show("Delete successfull");
 							},
@@ -426,9 +423,9 @@ sap.ui
 						oEntry.id_reg_test = sap.ui.getCore().byId(idfldIDReg)
 								.getValue();
 						oEntry.placeholder = sap.ui.getCore().byId(
-								"updPlaceholder").getValue();
+								updPlaceholder).getValue();
 						oEntry.replace_with = sap.ui.getCore().byId(
-								"updReplace").getValue();
+								updReplace).getValue();
 
 						var oModelPlaceSet = sap.ui.getCore().getModel();
 						oModelPlaceSet

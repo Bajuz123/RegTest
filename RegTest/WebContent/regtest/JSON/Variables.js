@@ -63,7 +63,7 @@ var routeMenu = "Menu";
 var routeSplit = "SplitAppControl";
 var routerName = "appRouter";
 
-//Views
+// Views
 var viewRegTestDetail = "idregtest.VIEW.RegTestDetail";
 
 // Login View
@@ -149,11 +149,14 @@ var fragDelCheckSet = "regtest.fragments.delCheckSet";
 var fragUpdCheckSet = "regtest.fragments.updCheckSet";
 
 var fragAddDialog = "regtest.fragments.addDialog";
+var fragDelDialog = "regtest.fragments.delDialog";
 
 var updateCheckset = "updateCheckset";
 var updateRunNumber = "updateRunNumber";
 var comboCheckSetValue = "ComboCheckSetValue";
 var inputRunNumber = "inputRunNumber";
+var updPlaceholder = "updPlaceholder";
+var updReplace = "updReplace";
 
 // SAP Entity CheckSet
 var sapCheckSetId = "id_check_set";
