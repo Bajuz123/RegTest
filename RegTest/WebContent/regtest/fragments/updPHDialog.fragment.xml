@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<Dialog title="Update Placeholders" afterClose="dialogAftercloseUpdPH">
+
+		<beginButton>
+			<Button text="{i18n>Save}" icon="sap-icon://save" press="onSaveUpdPH" />
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>Cancel}" icon="sap-icon://cancel" press="onCloseDialogUpdPH" />
+		</endButton>
+
+		<!-- <Text text = "Name : "/> -->
+		<content>
+			<VBox>
+				<Label text="{i18n>Placeholders}" />
+				<Input id="updPlaceholder" 
+					valueLiveUpdate="true" width="60%" />
+				<Label text="{i18n>ReplaceWith}" />
+				<Input id="updReplace" 
+					valueLiveUpdate="true" width="60%" />
+			</VBox>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

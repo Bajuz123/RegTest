@@ -348,7 +348,7 @@ sap.ui
 					onAddPlaceClick : function() {
 						// if(!fragAddPH){
 						var oView = sap.ui.getCore().byId(viewRegTestDetail);
-						fragAddPH = sap.ui.xmlfragment(fragAddDialog, oView
+						fragAddPH = sap.ui.xmlfragment(fragAddPHDialog, oView
 								.getController());
 						// }
 						fragAddPH.open();
@@ -359,7 +359,7 @@ sap.ui
 						if (selIndex != -1) {
 							var oView = sap.ui.getCore()
 									.byId(viewRegTestDetail);
-							fragDelPH = sap.ui.xmlfragment(fragDelDialog, oView
+							fragDelPH = sap.ui.xmlfragment(fragDelPHDialog, oView
 									.getController());
 							fragDelPH.open();
 						} else {
@@ -387,13 +387,21 @@ sap.ui
 							var boundObject = getTableSelectedObject(
 									oPlaceTable, selIndex);
 
-							localStorage.setItem(selectedPlObject_id_reg_test,
+/*							localStorage.setItem(selectedPlObject_id_reg_test,
 									boundObject.id_reg_test);
 							localStorage.setItem(selectedPlObject_placeholder,
 									boundObject.placeholder);
 							localStorage.setItem(selectedPlObject_replace_with,
 									boundObject.replace_with);
-
+*/
+							debugger;
+							//???????
+							oModel = sap.ui.getCore().getModel();
+							var oEntity = oModel.read("/REG_PLACE_SET(id_reg_test='" + boundObject.id_reg_test + "',placeholder='" + boundObject.placeholder + "')");
+							////
+							var oView = sap.ui.getCore().byId(viewRegTestDetail);
+							fragUpdPH = sap.ui.xmlfragment(fragUpdPHDialog, oView
+									.getController());
 							fragUpdPH.open();
 						} else {
 							var editText = resourceModel

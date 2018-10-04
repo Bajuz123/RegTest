@@ -2,19 +2,19 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
 
-	<Dialog title="Delete Checkset " afterClose="dialogAftercloseDelCH">
+	<Dialog title="{i18n>TitleDelPlaceholders}" afterClose="dialogAftercloseDelPH">
 
 		<beginButton>
-			<Button text="Yes" icon="sap-icon://accept" press="onSaveDelCH" />
+			<Button text="{i18n>Yes}" icon="sap-icon://accept" press="onSaveDelPH" />
 		</beginButton>
 		<endButton>
-			<Button text="Cancel" icon="sap-icon://cancel" press="onCloseDialogDelCH" />
+			<Button text="{i18n>Cancel}" icon="sap-icon://cancel" press="onCloseDialogDelPH" />
 		</endButton>
 
 		<!-- <Text text = "Name : "/> -->
 		<content>
 			<VBox>
-				<Label text="Delete Checkset from DB ?" />
+				<Label text="{i18n>DeleteConfirm}" />
 			</VBox>
 		</content>
 

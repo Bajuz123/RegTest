@@ -33,14 +33,6 @@ var choosenCheckSet = {
 };
 
 // LocalStorage
-var selectedCheckSet_idRegTest  = "selectedCheckSet_idRegTest";
-var selectedCheckSet_idCheckSet = "selectedCheckSet_idCheckSet";
-var selectedCheckSet_runningNr = "selectedCheckSet_runningNr";
-
-var selectedPlObject_id_reg_test = "selectedPlObject_id_reg_test";
-var selectedPlObject_placeholder = "selectedPlObject_placeholder";
-var selectedPlObject_replace_with = "selectedPlObject_replace_with";
-
 var choosenRegTest_idRegTest = "choosenRegTest_idRegTest";
 var choosenRegTest_name = "choosenRegTest_name";
 var choosenRegTest_XML = "choosenRegTest_XML";
@@ -161,8 +153,9 @@ var fragAddCheckSet = "regtest.fragments.addCheckSet";
 var fragDelCheckSet = "regtest.fragments.delCheckSet";
 var fragUpdCheckSet = "regtest.fragments.updCheckSet";
 
-var fragAddDialog = "regtest.fragments.addDialog";
-var fragDelDialog = "regtest.fragments.delDialog";
+var fragAddPHDialog = "regtest.fragments.addPHDialog";
+var fragDelPHDialog = "regtest.fragments.delPHDialog";
+var fragUpdPHDialog = "regtest.fragments.updPHDialog";
 
 var updateCheckset = "updateCheckset";
 var updateRunNumber = "updateRunNumber";

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<Dialog id="addPHDialog" title="New Placeholders" afterClose="dialogAftercloseAddPH"
+		items="{
+            path: 'list>/'
+        }">
+
+		<beginButton>
+			<Button text="{i18n>Save}" icon="sap-icon://save" press="onSaveAddPH" />
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>Cancel}" icon="sap-icon://cancel" press="onCloseDialogAddPH" />
+		</endButton>
+
+		<!-- <Text text = "Name : "/> noDataText="No Products Found" search="handleSearch" 
+			confirm="handleClose" close="handleClose" -->
+		<content>
+			<VBox>
+				<Label text="{i18n>Placeholders}" />
+				<Input id="inputPlaceholder" value="{/REG_PLACE_SET>placeholder}"
+					valueLiveUpdate="true" width="60%" />
+				<Label text="{i18n>ReplaceWith}" />
+				<Input id="inputReplace" value="{/REG_PLACE_SET>replace_with}"
+					valueLiveUpdate="true" width="60%" />
+			</VBox>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

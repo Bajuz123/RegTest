@@ -53,7 +53,8 @@ sap.ui.controller("regtest.CONTROLLER.Log",
 					and : true
 				});
 
-				oLogTable.getBinding(rowDefaultValue).filter(filtersReg,
+				debugger;
+				oLogTable.getBinding("rows").filter(filtersReg,
 						sap.ui.model.FilterType.Application);
 			},
 			onBeforeRendering : function() {
