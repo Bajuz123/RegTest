@@ -78,7 +78,7 @@ var routerName = "appRouter";
 
 // Views
 var viewRegTestDetail = "idregtest.VIEW.RegTestDetail";
-var controlUpdatePHFrag = "regtest.fragments.updCheckSetFrag";
+var controlUpdatePHFrag = "regtest.CONTROLLER.updCheckSetFrag";
 
 
 // Login View

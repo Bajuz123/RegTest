@@ -1,4 +1,4 @@
-sap.ui.controller("regtest.fragments.updCheckSetFrag", {
+sap.ui.controller("regtest.CONTROLLER.updCheckSetFrag", {
 	onInit : function() {
 		sap.ui.getCore().byId(updateCheckset).setSelectedKey(
 				localStorage.getItem(selectedCheckSet_idCheckSet));
@@ -40,7 +40,6 @@ sap.ui.controller("regtest.fragments.updCheckSetFrag", {
 	},
 
 	onCloseDialogUpdCH : function() {
-		debugger;
 		fragUpdCH.close();
 	}
 });
