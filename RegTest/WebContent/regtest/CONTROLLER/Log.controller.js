@@ -22,7 +22,7 @@ sap.ui.controller("regtest.CONTROLLER.Log",
 					});
 				} else {
 					var oRegIDFilter = new sap.ui.model.Filter({
-						path : sapRegTestName,
+						path : sapLogRegTestName,
 						operator : sap.ui.model.FilterOperator.Contains,
 						value1 : ''
 					});
@@ -54,7 +54,7 @@ sap.ui.controller("regtest.CONTROLLER.Log",
 				});
 
 				debugger;
-				oLogTable.getBinding("rows").filter(filtersReg,
+				oLogTable.getBinding(rowDefaultValue).filter(filtersReg,
 						sap.ui.model.FilterType.Application);
 			},
 			onBeforeRendering : function() {
@@ -65,6 +65,8 @@ sap.ui.controller("regtest.CONTROLLER.Log",
 					oUser.hd1pwd = localStorage.getItem("oUser_hd1pwd");
 					validateUser(oUser);
 					reloadModel(oUser);
+					debugger;
+					this.onRefresh();
 				} catch (err) {
 					var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 					oRouter.navTo(routeLogin);

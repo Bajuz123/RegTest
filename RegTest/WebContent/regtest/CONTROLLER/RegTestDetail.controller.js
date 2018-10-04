@@ -121,11 +121,12 @@ sap.ui
 							var creditFinishedFail = resourceModel
 									.getProperty("creditFinishedFail");
 
+							debugger;
 							oDataModel.callFunction(fiStartCredit, httpGet, {
-								sapRegTestId : regTestID
+								"flg_synchron" : '',
+								"id_reg_test" : regTestID 
 							}, null, function(oData, response) {
-								var busyDialog = sap.ui.getCore().byId(
-										idBusyDialog)
+								var busyDialog = sap.ui.getCore().byId(idBusyDialog)
 								busyDialog.close();
 								sap.m.MessageToast.show(creditFinishedOK);
 							}, // callback function for success
@@ -387,18 +388,13 @@ sap.ui
 							var boundObject = getTableSelectedObject(
 									oPlaceTable, selIndex);
 
-/*							localStorage.setItem(selectedPlObject_id_reg_test,
+							localStorage.setItem(selectedPlObject_id_reg_test,
 									boundObject.id_reg_test);
 							localStorage.setItem(selectedPlObject_placeholder,
 									boundObject.placeholder);
 							localStorage.setItem(selectedPlObject_replace_with,
 									boundObject.replace_with);
-*/
-							debugger;
-							//???????
-							oModel = sap.ui.getCore().getModel();
-							var oEntity = oModel.read("/REG_PLACE_SET(id_reg_test='" + boundObject.id_reg_test + "',placeholder='" + boundObject.placeholder + "')");
-							////
+
 							var oView = sap.ui.getCore().byId(viewRegTestDetail);
 							fragUpdPH = sap.ui.xmlfragment(fragUpdPHDialog, oView
 									.getController());

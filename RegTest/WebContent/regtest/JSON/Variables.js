@@ -37,6 +37,14 @@ var choosenRegTest_idRegTest = "choosenRegTest_idRegTest";
 var choosenRegTest_name = "choosenRegTest_name";
 var choosenRegTest_XML = "choosenRegTest_XML";
 
+var selectedPlObject_id_reg_test = "selectedPlObject_id_reg_test";
+var selectedPlObject_placeholder = "selectedPlObject_placeholder";
+var selectedPlObject_replace_with = "selectedPlObject_replace_with";
+
+var selectedCheckSet_idRegTest = "selectedCheckSet_idRegTest";
+var selectedCheckSet_idCheckSet = "selectedCheckSet_idCheckSet";
+var selectedCheckSet_runningNr = "selectedCheckSet_runningNr";
+
 // EntityNames
 var entityRegTestSetName = "/REG_TEST_SET";
 var entityCheckSetSetName = "/CHCK_SET";
@@ -177,7 +185,7 @@ var sapCheckSetClass = "implementation_class";
 var sapRunId = "run_id";
 var sapRegTestId = "id_reg_test";
 var sapCheckSetId = "id_check_set";
-var sapRegTestName = "reg_test_name";
+var sapLogRegTestName = "reg_test_name";
 var sapPartId = "id_part";
 var sapMsgId = "msg_id";
 var sapMsgText = "msg_text";
@@ -189,7 +197,7 @@ var sapCheckSetName = "check_set_name";
 var sapRunningNr = "running_nr";
 var sapReplaceWith = "replace_with";
 var sapName = "name";
-
+var sapSynchron = "flg_synchron"
 // Operations
 var methodDelete = "DELETE";
 
