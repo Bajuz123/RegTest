@@ -5,16 +5,14 @@
 	<Dialog title="Update Checkset" afterClose="dialogAftercloseUpdCH">
 
 		<beginButton>
-			<Button text="Save" icon="sap-icon://save" press="onSaveUpdCH" />
+			<Button text="{i18n>Save}" icon="sap-icon://save" press="onSaveUpdCH" />
 		</beginButton>
 		<endButton>
-			<Button text="Cancel" icon="sap-icon://cancel" press="onCloseDialogUpdCH" />
+			<Button text="{i18n>Cancel}" icon="sap-icon://cancel" press="onCloseDialogUpdCH" />
 		</endButton>
 
-		<!-- <Text text = "Name : "/> -->
 		<content>
 			<VBox>
-
 				<Label text="CheckSet" />
 				<ComboBox id="updateCheckset" items="{/CHCK_SET}">
 					<items>

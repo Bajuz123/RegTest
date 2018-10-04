@@ -2,10 +2,8 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
 
-	<Dialog id="addCHDialog" title="New Checkset" afterClose="dialogAftercloseAddCH"
-		items="{
-            path: 'list>/'
-        }">
+	<Dialog id="addCHDialog" title="{i18n>NewCheckset}" afterClose="dialogAftercloseAddCH"
+		items="{ path: 'list>/' }">
 
 		<beginButton>
 			<Button text="{i18n>Save}" icon="sap-icon://save" press="onSaveAddCH" />
@@ -14,10 +12,9 @@
 			<Button text="{i18n>Cancel}" icon="sap-icon://cancel" press="onCloseDialogAddCH" />
 		</endButton>
 
-
 		<content>
 			<VBox>
-				<Label text="CheckSet" />
+				<Label text="{i18n>CheckSet}" />
 
 				<!-- entityCheckSetSetName <Input id="inputCheckset" valueLiveUpdate="true" 
 					width="60%"/> -->
@@ -27,10 +24,9 @@
 					</items>
 				</ComboBox>
 
-				<Label text="Running number" />
+				<Label text="{i18n>RunningNr}" />
 				<Input id="inputRunNumber" valueLiveUpdate="true" width="60%" />
 			</VBox>
 		</content>
-
 	</Dialog>
 </core:FragmentDefinition>

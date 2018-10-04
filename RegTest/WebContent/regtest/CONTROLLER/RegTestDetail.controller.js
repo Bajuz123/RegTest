@@ -116,10 +116,10 @@ sap.ui
 							// busy.close();
 							// }, 25000);
 
-							var creditFinishedOK = resourceModel
-									.getProperty("creditFinishedOK");
-							var creditFinishedFail = resourceModel
-									.getProperty("creditFinishedFail");
+							var creditStartedOK = resourceModel
+									.getProperty("creditStartedOK");
+							var creditStartedFail = resourceModel
+									.getProperty("creditStartedFail");
 
 							debugger;
 							oDataModel.callFunction(fiStartCredit, httpGet, {
@@ -128,13 +128,13 @@ sap.ui
 							}, null, function(oData, response) {
 								var busyDialog = sap.ui.getCore().byId(idBusyDialog)
 								busyDialog.close();
-								sap.m.MessageToast.show(creditFinishedOK);
+								sap.m.MessageToast.show(creditStartedOK);
 							}, // callback function for success
 							function(oError) {
 								var busyDialog = sap.ui.getCore().byId(
 										idBusyDialog)
 								busyDialog.close();
-								sap.m.MessageToast.show(creditFinishedFail);
+								sap.m.MessageToast.show(creditStartedFail);
 							}); // callback function for error
 						} else {
 							var saveBeforeRun = resourceModel
@@ -394,10 +394,13 @@ sap.ui
 									boundObject.placeholder);
 							localStorage.setItem(selectedPlObject_replace_with,
 									boundObject.replace_with);
-
+						
 							var oView = sap.ui.getCore().byId(viewRegTestDetail);
 							fragUpdPH = sap.ui.xmlfragment(fragUpdPHDialog, oView
 									.getController());
+							sap.ui.getCore().byId(updPlaceholder).setValue(boundObject.placeholder);
+							sap.ui.getCore().byId(updReplace).setValue(boundObject.replace_with);
+
 							fragUpdPH.open();
 						} else {
 							var editText = resourceModel

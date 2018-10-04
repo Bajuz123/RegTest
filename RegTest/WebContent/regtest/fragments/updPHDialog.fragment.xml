@@ -15,11 +15,9 @@
 		<content>
 			<VBox>
 				<Label text="{i18n>Placeholders}" />
-				<Input id="updPlaceholder" 
-					valueLiveUpdate="true" width="60%" />
+				<Input id="updPlaceholder" valueLiveUpdate="true" width="60%" />
 				<Label text="{i18n>ReplaceWith}" />
-				<Input id="updReplace" 
-					valueLiveUpdate="true" width="60%" />
+				<Input id="updReplace" valueLiveUpdate="true" width="60%" />
 			</VBox>
 		</content>
 	</Dialog>
