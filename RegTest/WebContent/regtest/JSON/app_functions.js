@@ -53,7 +53,7 @@ function reloadModel(oUser) {
 			.getUrl(dataServiceName), true, oUser.hd1user,
 			oUser.hd1pwd);
 
-	if (oUser != "null") {
+	if ((oUser != "null")&&(oUser.hd1user!="null")) {
 		var data = oModel.read(entityRegTestSetName, {
 			error : function(oError) {
 				oModel = new sap.ui.model.json.JSONModel();

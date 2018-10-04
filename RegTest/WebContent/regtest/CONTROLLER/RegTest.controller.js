@@ -64,6 +64,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			oUser.Pwd = localStorage.getItem("oUser_Pwd");
 			oUser.hd1user = localStorage.getItem("oUser_hd1user");
 			oUser.hd1pwd = localStorage.getItem("oUser_hd1pwd");
+			debugger;
 			validateUser(oUser);
 			reloadModel(oUser);
 		} catch (err) {
