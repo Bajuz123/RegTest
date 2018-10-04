@@ -197,9 +197,6 @@ sap.ui
 					dialogAftercloseDelCH : function(oEvent) {
 						fragDelCH.destroy();
 					},
-					dialogAftercloseUpdCH : function(oEvent) {
-						fragUpdCH.destroy();
-					},
 
 					onEditCheckClick : function() {
 						var oCheckTable = sap.ui.getCore().byId(
@@ -212,17 +209,21 @@ sap.ui
 							var idCheckSet = boundObject.id_check_set;
 							var runNumber = boundObject.running_nr;
 
-							var oView = sap.ui.getCore().byId(viewRegTestDetail);
-//							var oController = sap.ui.getCore().byId(controlUpdatePHFrag);							
-//							fragUpdCH = sap.ui.xmlfragment(fragUpdCheckSet,
-//									oView.getController());
-							oCtrl = new sap.ui.controller(controlUpdatePHFrag);
-							fragUpdCH = sap.ui.xmlfragment(fragUpdCheckSet,oCtrl);
+							// var oView =
+							// sap.ui.getCore().byId(viewRegTestDetail);
+							// var oController =
+							// sap.ui.getCore().byId(controlUpdatePHFrag);
+							// fragUpdCH = sap.ui.xmlfragment(fragUpdCheckSet,
+							// oView.getController());
+							oCtrl = new sap.ui.controller(
+									controlUpdateCheckSetFrag);
+							fragUpdCH = sap.ui.xmlfragment(fragUpdCheckSet,
+									oCtrl);
 							oCtrl.onInit();
-//							sap.ui.getCore().byId(updateCheckset)
-//									.setSelectedKey(idCheckSet);
-//							sap.ui.getCore().byId(updateRunNumber).setValue(
-//									runNumber);
+							// sap.ui.getCore().byId(updateCheckset)
+							// .setSelectedKey(idCheckSet);
+							// sap.ui.getCore().byId(updateRunNumber).setValue(
+							// runNumber);
 
 							localStorage.setItem(selectedCheckSet_idRegTest,
 									boundObject.id_reg_test);
@@ -230,7 +231,7 @@ sap.ui
 									boundObject.id_check_set);
 							localStorage.setItem(selectedCheckSet_runningNr,
 									boundObject.running_nr);
-							fragUpdCH.open();						
+							fragUpdCH.open();
 						} else {
 							var editSelectText = resourceModel
 									.getProperty("EditSelect");
@@ -333,10 +334,6 @@ sap.ui
 					dialogAftercloseDelPH : function(oEvent) {
 						fragDelPH.destroy();
 					},
-					dialogAftercloseUpdPH : function(oEvent) {
-						fragUpdPH.destroy();
-					},
-
 					onEditPlaceClick : function() {
 						var oPlaceTable = sap.ui.getCore().byId(
 								idPlaceTableToReg);
@@ -352,16 +349,21 @@ sap.ui
 							localStorage.setItem(selectedPlObject_replace_with,
 									boundObject.replace_with);
 
-							var oView = sap.ui.getCore()
-									.byId(viewRegTestDetail);
-
+							oCtrl = new sap.ui.controller(controlUpdatePHFrag);
 							fragUpdPH = sap.ui.xmlfragment(fragUpdPHDialog,
-									oView.getController());
-							
-							sap.ui.getCore().byId(updPlaceholder).setValue(
-									boundObject.placeholder);
-							sap.ui.getCore().byId(updReplace).setValue(
-									boundObject.replace_with);
+									oCtrl);
+							oCtrl.onInit();
+
+							// var oView = sap.ui.getCore()
+							// .byId(viewRegTestDetail);
+
+							// fragUpdPH = sap.ui.xmlfragment(fragUpdPHDialog,
+							// oView.getController());
+
+							// sap.ui.getCore().byId(updPlaceholder).setValue(
+							// boundObject.placeholder);
+							// sap.ui.getCore().byId(updReplace).setValue(
+							// boundObject.replace_with);
 
 							fragUpdPH.open();
 						} else {
@@ -382,7 +384,10 @@ sap.ui
 
 						if (oEntry.placeholder != '') { // insert
 							oModelRegTest.create(entityPlaceSetName, oEntry);
-							sap.m.MessageToast.show("Add successfull");
+							var addOKTxt = resourceModel.getProperty("AddOK")
+							sap.m.MessageToast.show(addOKTxt); // ToDo
+																// according to
+																// result
 						} else {
 							var insertPlaceText = resourceModel
 									.getProperty("InsertPlace");
@@ -426,46 +431,7 @@ sap.ui
 					onCloseDialogDelPH : function() {
 						fragDelPH.close();
 					},
-					onSaveUpdPH : function(oEvent) {
 
-						var oEntry = {};
-						oEntry.id_reg_test = sap.ui.getCore().byId(idfldIDReg)
-								.getValue();
-						oEntry.placeholder = sap.ui.getCore().byId(
-								updPlaceholder).getValue();
-						oEntry.replace_with = sap.ui.getCore().byId(updReplace)
-								.getValue();
-
-						var oModelPlaceSet = sap.ui.getCore().getModel();
-
-						var editOKTxt = resourceModel.getProperty("EditOK")
-						var editFailTxt = resourceModel.getProperty("EditFail")
-
-						oModelPlaceSet.update(entityPlaceSetName
-								+ "("
-								+ sapRegTestId
-								+ "='"
-								+ localStorage
-										.getItem(selectedPlObject_id_reg_test)
-								+ "',"
-								+ sapPlaceholder
-								+ "='"
-								+ localStorage
-										.getItem(selectedPlObject_placeholder)
-								+ "')", oEntry, {
-							success : function(data) {
-								sap.m.MessageToast.show(editOKTxt);
-							},
-							error : function(e) {
-								sap.m.MessageToast.show(editFailTxt);
-							}
-						})
-						reloadModel(oUser);
-						fragUpdPH.close();
-					},
-					onCloseDialogUpdPH : function() {
-						fragUpdPH.close();
-					},
 					onBeforeRendering : function() {
 						try {
 							oUser.Login = localStorage.getItem("oUser_Login");

@@ -53,7 +53,8 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			}),
 			template : new sap.ui.commons.TextField().bindProperty(
 					columnDefaultValue, sapPlaceholder),
-			visible : true
+			visible : true,
+			editable: false
 		}));
 
 		oPlaceTable.addColumn(new sap.ui.table.Column({

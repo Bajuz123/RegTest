@@ -41,5 +41,9 @@ sap.ui.controller("regtest.CONTROLLER.updCheckSetFrag", {
 
 	onCloseDialogUpdCH : function() {
 		fragUpdCH.close();
-	}
+	},
+	dialogAftercloseUpdCH : function(oEvent) {
+		fragUpdCH.destroy();
+	},	
+
 });
