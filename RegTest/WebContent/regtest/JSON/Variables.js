@@ -32,6 +32,19 @@ var choosenCheckSet = {
 	implementationClass : ""
 };
 
+// LocalStorage
+var selectedCheckSet_idRegTest  = "selectedCheckSet_idRegTest";
+var selectedCheckSet_idCheckSet = "selectedCheckSet_idCheckSet";
+var selectedCheckSet_runningNr = "selectedCheckSet_runningNr";
+
+var selectedPlObject_id_reg_test = "selectedPlObject_id_reg_test";
+var selectedPlObject_placeholder = "selectedPlObject_placeholder";
+var selectedPlObject_replace_with = "selectedPlObject_replace_with";
+
+var choosenRegTest_idRegTest = "choosenRegTest_idRegTest";
+var choosenRegTest_name = "choosenRegTest_name";
+var choosenRegTest_XML = "choosenRegTest_XML";
+
 // EntityNames
 var entityRegTestSetName = "/REG_TEST_SET";
 var entityCheckSetSetName = "/CHCK_SET";
@@ -157,6 +170,10 @@ var comboCheckSetValue = "ComboCheckSetValue";
 var inputRunNumber = "inputRunNumber";
 var updPlaceholder = "updPlaceholder";
 var updReplace = "updReplace";
+var inputPlaceholder = "inputPlaceholder";
+var inputReplace = "inputReplace";
+
+var addCHDialog = "addCHDialog";
 
 // SAP Entity CheckSet
 var sapCheckSetId = "id_check_set";
