@@ -2,7 +2,7 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
 
-	<Dialog title="Update Placeholders" afterClose="dialogAftercloseUpdPH">
+	<Dialog title="{i18n>EditPlaceholder}" afterClose="dialogAftercloseUpdPH">
 
 		<beginButton>
 			<Button text="{i18n>Save}" icon="sap-icon://save" press="onSaveUpdPH" />

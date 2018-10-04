@@ -2,7 +2,7 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
 
-	<Dialog title="Update Checkset" afterClose="dialogAftercloseUpdCH">
+	<Dialog title="{i18n>EditCheckset}" afterClose="dialogAftercloseUpdCH">
 
 		<beginButton>
 			<Button text="{i18n>Save}" icon="sap-icon://save" press="onSaveUpdCH" />
@@ -10,20 +10,18 @@
 		<endButton>
 			<Button text="{i18n>Cancel}" icon="sap-icon://cancel" press="onCloseDialogUpdCH" />
 		</endButton>
-
 		<content>
 			<VBox>
-				<Label text="CheckSet" />
+				<Label text="{i18n>CheckSet}" />
 				<ComboBox id="updateCheckset" items="{/CHCK_SET}">
 					<items>
 						<core:Item key="{id_check_set}" text="{name}" />
 					</items>
 				</ComboBox>
 
-				<Label text="Running number" />
+				<Label text="{i18n>RunningNr}" />
 				<Input id="updateRunNumber" valueLiveUpdate="true" width="60%" />
 			</VBox>
 		</content>
-
 	</Dialog>
 </core:FragmentDefinition>

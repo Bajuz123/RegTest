@@ -124,9 +124,10 @@ sap.ui
 							debugger;
 							oDataModel.callFunction(fiStartCredit, httpGet, {
 								"flg_synchron" : '',
-								"id_reg_test" : regTestID 
+								"id_reg_test" : regTestID
 							}, null, function(oData, response) {
-								var busyDialog = sap.ui.getCore().byId(idBusyDialog)
+								var busyDialog = sap.ui.getCore().byId(
+										idBusyDialog)
 								busyDialog.close();
 								sap.m.MessageToast.show(creditStartedOK);
 							}, // callback function for success
@@ -211,18 +212,17 @@ sap.ui
 							var idCheckSet = boundObject.id_check_set;
 							var runNumber = boundObject.running_nr;
 
-							var oView = sap.ui.getCore()
-									.byId(viewRegTestDetail);
-
-							fragUpdCH = sap.ui.xmlfragment(fragUpdCheckSet,
-									oView.getController());
-
-							sap.ui.getCore().byId(updateCheckset)
-									.setSelectedKey(idCheckSet);
-							// sap.ui.getCore().byId("updateCheckset").setValue(
-							// idCheckSet);
-							sap.ui.getCore().byId(updateRunNumber).setValue(
-									runNumber);
+							var oView = sap.ui.getCore().byId(viewRegTestDetail);
+//							var oController = sap.ui.getCore().byId(controlUpdatePHFrag);							
+//							fragUpdCH = sap.ui.xmlfragment(fragUpdCheckSet,
+//									oView.getController());
+							oCtrl = new sap.ui.controller(controlUpdatePHFrag);
+							fragUpdCH = sap.ui.xmlfragment(fragUpdCheckSet,oCtrl);
+							oCtrl.onInit();
+//							sap.ui.getCore().byId(updateCheckset)
+//									.setSelectedKey(idCheckSet);
+//							sap.ui.getCore().byId(updateRunNumber).setValue(
+//									runNumber);
 
 							localStorage.setItem(selectedCheckSet_idRegTest,
 									boundObject.id_reg_test);
@@ -230,7 +230,7 @@ sap.ui
 									boundObject.id_check_set);
 							localStorage.setItem(selectedCheckSet_runningNr,
 									boundObject.running_nr);
-							fragUpdCH.open();
+							fragUpdCH.open();						
 						} else {
 							var editSelectText = resourceModel
 									.getProperty("EditSelect");
@@ -301,49 +301,6 @@ sap.ui
 					onCloseDialogDelCH : function() {
 						fragDelCH.close();
 					},
-					onSaveUpdCH : function(oEvent) {
-						var oEntry = {};
-						oEntry.id_reg_test = sap.ui.getCore().byId(idfldIDReg)
-								.getValue();
-						oEntry.id_check_set = sap.ui.getCore().byId(
-								updateCheckset).getSelectedKey();
-						oEntry.running_nr = sap.ui.getCore().byId(
-								updateRunNumber).getValue();
-						var oModelPlaceSet = sap.ui.getCore().getModel();
-
-						var editOKTxt = resourceModel.getProperty("EditOK")
-						var editFailTxt = resourceModel.getProperty("EditFail")
-
-						oModelPlaceSet.update(entityRegSetName
-								+ "("
-								+ sapRegTestId
-								+ "='"
-								+ localStorage
-										.getItem(selectedCheckSet_idRegTest)
-								+ "',"
-								+ sapCheckSetId
-								+ "='"
-								+ localStorage
-										.getItem(selectedCheckSet_idCheckSet)
-								+ "',"
-								+ sapRunningNr
-								+ "='"
-								+ localStorage
-										.getItem(selectedCheckSet_runningNr)
-								+ "')", oEntry, {
-							success : function(data) {
-								sap.m.MessageToast.show(editOKTxt);
-							},
-							error : function(e) {
-								sap.m.MessageToast.show(editFailTxt);
-							}
-						})
-						reloadModel(oUser);
-						fragUpdCH.close();
-					},
-					onCloseDialogUpdCH : function() {
-						fragUpdCH.close();
-					},
 
 					// Placehodlers Fragments
 					onAddPlaceClick : function() {
@@ -360,8 +317,8 @@ sap.ui
 						if (selIndex != -1) {
 							var oView = sap.ui.getCore()
 									.byId(viewRegTestDetail);
-							fragDelPH = sap.ui.xmlfragment(fragDelPHDialog, oView
-									.getController());
+							fragDelPH = sap.ui.xmlfragment(fragDelPHDialog,
+									oView.getController());
 							fragDelPH.open();
 						} else {
 							var deleteSelectText = resourceModel
@@ -394,12 +351,17 @@ sap.ui
 									boundObject.placeholder);
 							localStorage.setItem(selectedPlObject_replace_with,
 									boundObject.replace_with);
-						
-							var oView = sap.ui.getCore().byId(viewRegTestDetail);
-							fragUpdPH = sap.ui.xmlfragment(fragUpdPHDialog, oView
-									.getController());
-							sap.ui.getCore().byId(updPlaceholder).setValue(boundObject.placeholder);
-							sap.ui.getCore().byId(updReplace).setValue(boundObject.replace_with);
+
+							var oView = sap.ui.getCore()
+									.byId(viewRegTestDetail);
+
+							fragUpdPH = sap.ui.xmlfragment(fragUpdPHDialog,
+									oView.getController());
+							
+							sap.ui.getCore().byId(updPlaceholder).setValue(
+									boundObject.placeholder);
+							sap.ui.getCore().byId(updReplace).setValue(
+									boundObject.replace_with);
 
 							fragUpdPH.open();
 						} else {
