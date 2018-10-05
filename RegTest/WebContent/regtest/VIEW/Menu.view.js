@@ -22,20 +22,20 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 		});
 		var oItem1 = new sap.m.StandardListItem({
 			id: "sItem1",
-			title: "Regresionstest"
+			title: "{i18n>MenuRegTest}"
 		});
 		var oItem2 = new sap.m.StandardListItem({
 			id: "sItem2",
-			title: "Prufungsset"
+			title: "{i18n>MenuCheckSet}"
 		});
 		var oItem3 = new sap.m.StandardListItem({
 			id: "sItem3",
-			title: "Logs"
+			title: "{i18n>MenuLog}"
 		});
 		var oItem4 = new sap.m.StandardListItem({
 			id: "sItem4",
-			icon: "sap-icon://log",
-			title: "Logout"
+			icon: iconLog,
+			title: "{i18n>MenuLogout}"
 		});
 		oList.addItem(oItem1);
 		oList.addItem(oItem2);

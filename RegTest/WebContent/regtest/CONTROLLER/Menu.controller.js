@@ -10,22 +10,19 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 //	},
 	itemSelected: function(oList) {
 		var name = oList.getSelectedItem().getId();
+		var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 		switch (oList.getSelectedItem().getId()) {
 		  case "sItem1":
-			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			  oRouter.navTo("RegTest");
+			  oRouter.navTo(routeRegTestList);
 			  break;
 		  case "sItem2":
-			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			  oRouter.navTo("CheckSet");
+			  oRouter.navTo(routeCheckSetList);
 			  break;
 		  case "sItem3":
-			  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-			  oRouter.navTo("Log");
+			  oRouter.navTo(routeLogList);
 			  break;
 		  case "sItem4":
-	 		  var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-  			  oRouter.navTo("Logout");
+  			  oRouter.navTo(routeLogout);
  
 /*			  oSplitApp.toDetail("idLogout");
 			  oSplitApp.removeMasterPage("idMenu1");

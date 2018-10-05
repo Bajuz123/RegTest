@@ -63,6 +63,7 @@ var iconProcess = "sap-icon://process";
 var iconPlaceholders = "sap-icon://x-ray";
 var iconCheckSets = "sap-icon://stethoscope";
 var iconUpload = "sap-icon://upload";
+var iconLog = "sap-icon://log";
 
 // Routes
 var routeRegTestList = "RegTest";
