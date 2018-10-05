@@ -47,7 +47,7 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			),
 			label : new sap.ui.commons.CheckBox({
 				change: oController.changeAll,
-				checked:true
+				checked:true //bind sel_row
 			})
 		}));
 
