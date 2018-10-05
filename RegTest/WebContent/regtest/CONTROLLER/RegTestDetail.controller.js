@@ -63,6 +63,8 @@ sap.ui
 								idFldRegNameValue).getValue());
 						oEntry.XML = escapeText(sap.ui.getCore()
 								.byId(idAreaXML).getValue());
+						oEntry.active = sap.ui.getCore().byId(idRegActiveCheck).getChecked();
+
 						var oModelRegTest = sap.ui.getCore().getModel();
 						var oRouter = sap.ui.core.routing.Router
 								.getRouter(routerName);
@@ -121,10 +123,10 @@ sap.ui
 							var creditStartedFail = resourceModel
 									.getProperty("creditStartedFail");
 
-							debugger;
+							var tabRegTest = [regTestID];
 							oDataModel.callFunction(fiStartCredit, httpGet, {
 								"flg_synchron" : '',
-								"id_reg_test" : regTestID
+								"tab_reg_test_id" : tabRegTest
 							}, null, function(oData, response) {
 								var busyDialog = sap.ui.getCore().byId(
 										idBusyDialog)
@@ -449,6 +451,7 @@ sap.ui
 									localStorage.getItem(choosenRegTest_name));
 							sap.ui.getCore().byId(idAreaXML).setValue(
 									localStorage.getItem(choosenRegTest_XML));
+							sap.ui.getCore().byId(idRegActiveCheck).setChecked(localStorage.getItem(choosenRegTest_active)=="true");
 							this.refreshRelatedTables();
 						} catch (err) {
 							var oRouter = sap.ui.core.routing.Router

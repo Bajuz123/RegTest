@@ -15,14 +15,25 @@
 				  "regtest":"./regtest"
 				}'>
 		</script>
-		<script>				
-				sap.ui.localResources("regtest");	
-				sap.ui.getCore().getConfiguration().setLanguage(navigator.language || navigator.userLanguage);
-				initLanguageLocale();
-				sap.ui.getCore().setModel(i18nModel, "i18n");
+	    <style type="text/css">
+       		.green {
+           		background-color: #66FF33;
+       		}
+       		.red {
+           		background-color: #FF3300;
+       		}
+       		.yellow {
+          		background-color: #FFFF66;
+       		}
+   		</style>
+		<script>
+			sap.ui.localResources("regtest");	
+			sap.ui.getCore().getConfiguration().setLanguage(navigator.language || navigator.userLanguage);
+			initLanguageLocale();
+			sap.ui.getCore().setModel(i18nModel, "i18n");
 				
-				var app = new sap.m.App("appId"); //,{initialPage: "idLogin"}					
-				app.placeAt("content");
+			var app = new sap.m.App("appId"); //,{initialPage: "idLogin"}					
+			app.placeAt("content");
 		</script>
 		<script type="text/javascript" src="MyRouter.js"></script>
 	</head>

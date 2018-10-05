@@ -13,6 +13,23 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 	* @memberOf regtest.VIEW.Menu
 	*/ 
 	createContent : function(oController) {
+		var oBox = new sap.m.HBox({
+		  items: [
+			new sap.m.Button({
+				icon : "regtest/img/ger.jpg",
+				press : function() {
+					oController.onLangClick("de");
+				}
+			}),
+			new sap.m.Button({
+				icon : "regtest/img/svk.jpg",
+				press : function() {
+					oController.onLangClick("sk");
+				}
+			})			
+		  ]		
+		});
+				
 		var oList = new sap.m.List({
 			id : "idMenuList",
 			mode : sap.m.ListMode.SingleSelectMaster,
@@ -43,8 +60,7 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 		oList.addItem(oItem4);
  		return new sap.m.Page({
 			title: "",
-			content: [ oList
-			]
+			content: [ oBox, oList ]
 		});
 	}
 });

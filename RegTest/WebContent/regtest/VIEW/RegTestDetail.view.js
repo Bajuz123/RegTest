@@ -171,8 +171,15 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			text : "{i18n>RegTestName}"
 		});
 		var regTestNameValue = new sap.m.Input(idFldRegNameValue);
+		
+		var regTestActiveLabel = new sap.m.Label(idRegTestActiveLabel, {
+			text : "{i18n>RegTestActive}",
+		});
+		var regTestActiveValue = new sap.ui.commons.CheckBox(idRegActiveCheck);
+		regTestActiveValue.setWidth("20px");
+		
 		return new sap.m.Panel(idPanelRegDetailName, {
-			content : [ fieldIDReg, regTestNameLabel, regTestNameValue ]
+			content : [ fieldIDReg, regTestNameLabel, regTestNameValue, regTestActiveValue, regTestActiveLabel ]
 		});
 	},
 	createPanelRegDetailXML : function(oController) {

@@ -3,9 +3,9 @@
  */
 
 function escapeText(text) {
-	text = text.replace("<","_");
-	text = text.replace(">","_");
-	
+	text = text.replace("<", "_");
+	text = text.replace(">", "_");
+
 	return text;
 }
 
@@ -49,11 +49,10 @@ function validateUser(oLogin, oPwd) {
 function reloadModel(oUser) {
 	// SAP Data
 	initLanguageLocale();
-	var oModel = new sap.ui.model.odata.ODataModel(this
-			.getUrl(dataServiceName), true, oUser.hd1user,
-			oUser.hd1pwd);
+	var oModel = new sap.ui.model.odata.ODataModel(
+			this.getUrl(dataServiceName), true, oUser.hd1user, oUser.hd1pwd);
 
-	if ((oUser != "null")&&(oUser.hd1user!="null")) {
+	if ((oUser != "null") && (oUser.hd1user != "null")) {
 		var data = oModel.read(entityRegTestSetName, {
 			error : function(oError) {
 				oModel = new sap.ui.model.json.JSONModel();
@@ -65,15 +64,18 @@ function reloadModel(oUser) {
 		sap.ui.getCore().setModel(oModel);
 	} else {
 		throw "user_invalid";
-	}		
+	}
 }
 
 function getUrl(sUrl) {
 	if (sUrl == "")
 		return sUrl;
-	if (window.location.hostname == "localhost") {
+	switch (window.location.hostname) {
+	case "192.168.1.211":
+		return "http://ibssaphd1.ibs.local:8050" + sUrl;
+	case "localhost":
 		return "proxy" + sUrl;
-	} else {
+	default:
 		return sUrl;
 	}
 }

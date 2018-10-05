@@ -5,6 +5,7 @@ var dataServiceName = "/sap/opu/odata/sap/Z_REG_TEST_SRV";
 var jSONDataName = "regtest/JSON/RegTest_DATA.json";
 var bundlePath = "regtest.i18n.i18n";
 var columnDefaultValue = "value";
+var columnDefaultCheckBoxValue = "checked";
 var rowDefaultValue = "rows";
 var xmlType = "xml";
 var filesType = "files";
@@ -36,6 +37,7 @@ var choosenCheckSet = {
 var choosenRegTest_idRegTest = "choosenRegTest_idRegTest";
 var choosenRegTest_name = "choosenRegTest_name";
 var choosenRegTest_XML = "choosenRegTest_XML";
+var choosenRegTest_active = "choosenRegTest_active";
 
 var selectedPlObject_id_reg_test = "selectedPlObject_id_reg_test";
 var selectedPlObject_placeholder = "selectedPlObject_placeholder";
@@ -78,6 +80,7 @@ var routeSplit = "SplitAppControl";
 var routerName = "appRouter";
 
 // Views
+var viewRegTestList = "idregtest.VIEW.RegTest";
 var viewRegTestDetail = "idregtest.VIEW.RegTestDetail";
 var controlUpdateCheckSetFrag = "regtest.CONTROLLER.updCheckSetFrag";
 var controlUpdatePHFrag = "regtest.CONTROLLER.updPHFrag";
@@ -95,6 +98,8 @@ var idBtnAddReg = "idBtnAddReg";
 var idBtnDelReg = "idBtnDelReg";
 var idBtnEditReg = "idBtnEditReg";
 var idMainPanel = "idMainPanel";
+var idRegChoosen = "idRegChoosen";
+var idBtnRunRegs = "idBtnRunRegs";
 
 // CheckSet View
 var idTableCheckSet = "idTableCheckSet";
@@ -126,6 +131,9 @@ var idRegTestNameLabel = "idRegTestNameLabel";
 var idFldRegNameValue = "idFldRegNameValue";
 var idFileReaderComponent = "idFileReaderComponent";
 var idPanelRegDetailName = "idPanelRegDetailName";
+var idRegTestActiveLabel = "idRegTestActiveLabel";
+var idRegActiveCheck = "idRegActiveCheck";
+
 var idRegTestXMLLabel = "idRegTestXMLLabel";
 var idAreaXML = "idAreaXML";
 var idPanelDetailButtons = "idPanelDetailButtons";
@@ -196,6 +204,7 @@ var sapPlaceholder = "placeholder";
 var sapIdPlaceholder = "id_placeholder";
 var sapRegTestName = "Name";
 var sapRegTestXML = "XML";
+var sapRegTestActive = "active";
 var sapCheckSetName = "check_set_name";
 var sapRunningNr = "running_nr";
 var sapReplaceWith = "replace_with";
