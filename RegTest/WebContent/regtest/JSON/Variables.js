@@ -6,6 +6,7 @@ var jSONDataName = "regtest/JSON/RegTest_DATA.json";
 var bundlePath = "regtest.i18n.i18n";
 var columnDefaultValue = "value";
 var columnDefaultCheckBoxValue = "checked";
+var columnDefaultTextView = "text";
 var rowDefaultValue = "rows";
 var xmlType = "xml";
 var filesType = "files";
@@ -210,6 +211,8 @@ var sapRunningNr = "running_nr";
 var sapReplaceWith = "replace_with";
 var sapName = "name";
 var sapSynchron = "flg_synchron"
+var sapRunResult = "run_result";	
+	
 // Operations
 var methodDelete = "DELETE";
 

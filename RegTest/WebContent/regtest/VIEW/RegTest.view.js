@@ -47,7 +47,7 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			),
 			label : new sap.ui.commons.CheckBox({
 				change: oController.changeAll,
-				checked:true //bind sel_row
+				checked:true //bind ->sel
 			})
 		}));
 
@@ -67,10 +67,10 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			template : new sap.ui.commons.CheckBox().bindProperty(columnDefaultCheckBoxValue, sapRegTestActive),
 			visible : true
 		}));
-
+		
 		oRegTable.addColumn(new sap.ui.table.Column({
 			label : new sap.ui.commons.Label({text : "{i18n>LastRun}"}),
-			template : new sap.ui.commons.TextView().bindProperty("text", "last_run", function(cellValue) {
+			template : new sap.ui.commons.TextView().bindProperty(columnDefaultTextView, sapRunResult, function(cellValue) {
                 this.removeStyleClass('green');
                 this.removeStyleClass('yellow');
                 this.removeStyleClass('red');			
