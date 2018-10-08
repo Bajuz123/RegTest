@@ -53,7 +53,6 @@ sap.ui.controller("regtest.CONTROLLER.Log",
 					and : true
 				});
 
-				debugger;
 				oLogTable.getBinding(rowDefaultValue).filter(filtersReg,
 						sap.ui.model.FilterType.Application);
 			},
@@ -65,7 +64,6 @@ sap.ui.controller("regtest.CONTROLLER.Log",
 					oUser.hd1pwd = localStorage.getItem("oUser_hd1pwd");
 					validateUser(oUser);
 					reloadModel(oUser);
-					debugger;
 					this.onRefresh();
 				} catch (err) {
 					var oRouter = sap.ui.core.routing.Router.getRouter(routerName);

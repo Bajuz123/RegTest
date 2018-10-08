@@ -211,7 +211,8 @@ var sapRunningNr = "running_nr";
 var sapReplaceWith = "replace_with";
 var sapName = "name";
 var sapSynchron = "flg_synchron"
-var sapRunResult = "run_result";	
+var sapRunResult = "run_result";
+var sapRegSel = "selected";
 	
 // Operations
 var methodDelete = "DELETE";

@@ -39,16 +39,12 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 		}));
 
 		oRegTable.addColumn(new sap.ui.table.Column({
-		    enableColumnFreeze : true,
 		    width : '50px',
-			visible : true,
-			template : new sap.ui.commons.CheckBox(
-			  {checked:true}
-			),
 			label : new sap.ui.commons.CheckBox({
 				change: oController.changeAll,
-				checked:true //bind ->sel
-			})
+				checked:false}),
+			template : new sap.ui.commons.CheckBox({id: "idCheckSel"}).bindProperty(columnDefaultCheckBoxValue, sapRegSel),
+			visible : true
 		}));
 
 		oRegTable.addColumn(new sap.ui.table.Column({
@@ -64,7 +60,7 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 		    enableColumnFreeze : true,
 		    width : '100px',
 			label : new sap.ui.commons.Label({text : "{i18n>Active}"}),
-			template : new sap.ui.commons.CheckBox().bindProperty(columnDefaultCheckBoxValue, sapRegTestActive),
+			template : new sap.ui.commons.CheckBox({id: "idCheckActive"}).bindProperty(columnDefaultCheckBoxValue, sapRegTestActive),
 			visible : true
 		}));
 		
@@ -75,13 +71,15 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
                 this.removeStyleClass('yellow');
                 this.removeStyleClass('red');			
                 // Set style Conditionally
-                if (cellValue == true) {
+                if (cellValue == 'X') {
                     this.addStyleClass('green');
                 } else {
                     this.addStyleClass('red');
                 }
+//                cellValue = '';
                 return cellValue;
-			}),
+			}
+		),
 			visible : true
 		}));		
 		

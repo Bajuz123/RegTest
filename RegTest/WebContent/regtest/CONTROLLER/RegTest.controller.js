@@ -77,14 +77,17 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	},
 	onRunRegsClick : function(oRegTable) {
 		var oDataModel = sap.ui.getCore().getModel();
-
 		var progressTxt = resourceModel.getProperty("Progress");
 		var progressTitleTxt = resourceModel.getProperty("ProgressTitle");
-
-		var busy = new sap.m.BusyDialog(idBusyDialog, {
-			text : progressTxt,
-			title : progressTitleTxt
-		});
+		
+		var busy = sap.ui.getCore().byId(idBusyDialog)
+		if ( typeof busy == 'undefined' ) {
+			busy = new sap.m.BusyDialog(idBusyDialog, {
+			 text : progressTxt,
+			 title : progressTitleTxt
+			});			
+		}		
+		
 		busy.open();
 		// setTimeout(function() {
 		// busy.close();
@@ -100,13 +103,16 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 		}, null, function(oData, response) {
 			var busyDialog = sap.ui.getCore().byId(idBusyDialog)
 			busyDialog.close();
+			busyDialog.detachClose();
 			sap.m.MessageToast.show(creditStartedOK);
 		}, // callback function for success
 		function(oError) {
 			var busyDialog = sap.ui.getCore().byId(idBusyDialog)
 			busyDialog.close();
+			busyDialog.detachClose();
 			sap.m.MessageToast.show(creditStartedFail);
 		}); // callback function for error
+//	    busy.close();
 	},
 	changeAll: function() {
 		var oTable = sap.ui.getCore().byId(idRegTestTable);
