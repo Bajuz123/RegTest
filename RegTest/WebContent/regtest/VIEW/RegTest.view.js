@@ -38,7 +38,7 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			visible : false
 		}));
 
-		oRegTable.addColumn(new sap.ui.table.Column({
+/*		oRegTable.addColumn(new sap.ui.table.Column({
 		    width : '50px',
 			label : new sap.ui.commons.CheckBox({
 				change: oController.changeAll,
@@ -46,7 +46,7 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			template : new sap.ui.commons.CheckBox({id: "idCheckSel"}).bindProperty(columnDefaultCheckBoxValue, sapRegSel),
 			visible : true
 		}));
-
+*/
 		oRegTable.addColumn(new sap.ui.table.Column({
 			label : new sap.ui.commons.Label({
 				text : "{i18n>Name}"
