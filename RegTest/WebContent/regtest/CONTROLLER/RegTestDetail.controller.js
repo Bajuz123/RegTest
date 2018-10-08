@@ -17,7 +17,7 @@ sap.ui
 									.getItem("oUser_hd1user");
 							oUser.hd1pwd = localStorage.getItem("oUser_hd1pwd");
 							validateUser(oUser);
-							reloadModel(oUser);
+//							reloadModel(oUser);
 						} catch (err) {
 							var oRouter = sap.ui.core.routing.Router
 									.getRouter(routerName);
