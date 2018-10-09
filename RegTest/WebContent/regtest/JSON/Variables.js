@@ -216,9 +216,11 @@ var sapReplaceWith = "replace_with";
 var sapName = "name";
 var sapSynchron = "flg_synchron"
 var sapRunResult = "run_result";
+var sapMsgType = "msg_type";
 var sapRegSel = "selected";
 var sapVariant = "variant";
-	
+var sapRegLogName = "reg_test_name";	
+
 // Operations
 var methodDelete = "DELETE";
 
