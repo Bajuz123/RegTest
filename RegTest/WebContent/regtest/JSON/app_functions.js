@@ -48,7 +48,6 @@ function validateUser(oLogin, oPwd) {
 
 function reloadModel(oUser) {
 	// SAP Data
-	debugger;
 	initLanguageLocale();
 	var oModel = new sap.ui.model.odata.ODataModel(
 			this.getUrl(dataServiceName), true, oUser.hd1user, oUser.hd1pwd);

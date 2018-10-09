@@ -39,6 +39,7 @@ var choosenRegTest_idRegTest = "choosenRegTest_idRegTest";
 var choosenRegTest_name = "choosenRegTest_name";
 var choosenRegTest_XML = "choosenRegTest_XML";
 var choosenRegTest_active = "choosenRegTest_active";
+var choosenRegTest_variant = "choosenRegTest_variant";
 
 var selectedPlObject_id_reg_test = "selectedPlObject_id_reg_test";
 var selectedPlObject_placeholder = "selectedPlObject_placeholder";

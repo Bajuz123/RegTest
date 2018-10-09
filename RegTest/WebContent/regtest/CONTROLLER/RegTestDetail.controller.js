@@ -59,11 +59,12 @@ sap.ui
 
 						oEntry.id_reg_test = escapeText(sap.ui.getCore().byId(
 								idfldIDReg).getValue());
-						oEntry.Name = escapeText(sap.ui.getCore().byId(
+						oEntry.name = escapeText(sap.ui.getCore().byId(
 								idFldRegNameValue).getValue());
-						oEntry.XML = escapeText(sap.ui.getCore()
+						oEntry.xml = escapeText(sap.ui.getCore()
 								.byId(idAreaXML).getValue());
 						oEntry.active = sap.ui.getCore().byId(idRegActiveCheck).getChecked();
+						oEntry.variant = sap.ui.getCore().byId(idRegTestVariantValue).getValue();
 
 						var oModelRegTest = sap.ui.getCore().getModel();
 						var oRouter = sap.ui.core.routing.Router
@@ -452,6 +453,7 @@ sap.ui
 							sap.ui.getCore().byId(idAreaXML).setValue(
 									localStorage.getItem(choosenRegTest_XML));
 							sap.ui.getCore().byId(idRegActiveCheck).setChecked(localStorage.getItem(choosenRegTest_active)=="true");
+							sap.ui.getCore().byId(idRegTestVariantValue).setValue(localStorage.getItem(choosenRegTest_variant));
 							this.refreshRelatedTables();
 						} catch (err) {
 							var oRouter = sap.ui.core.routing.Router

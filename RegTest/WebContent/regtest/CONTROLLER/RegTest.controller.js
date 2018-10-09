@@ -43,11 +43,11 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 		if (selIndex != "-1") {
 			var boundObject = getTableSelectedObject(oRegTable, selIndex);
 
-			localStorage.setItem("choosenRegTest_idRegTest",
-					boundObject.id_reg_test);
-			localStorage.setItem("choosenRegTest_name", boundObject.Name);
-			localStorage.setItem("choosenRegTest_XML", boundObject.XML);
+			localStorage.setItem("choosenRegTest_idRegTest",boundObject.id_reg_test);
+			localStorage.setItem("choosenRegTest_name", boundObject.name);
+			localStorage.setItem("choosenRegTest_XML", boundObject.xml);
 			localStorage.setItem("choosenRegTest_active", boundObject.active);
+			localStorage.setItem("choosenRegTest_variant", boundObject.variant);
 
 			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 			oRouter.navTo(routeRegTestDetail);
