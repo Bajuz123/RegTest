@@ -70,9 +70,9 @@ function reloadModel(oUser) {
 function getUrl(sUrl) {
 	if (sUrl == "")
 		return sUrl;
+	if ( /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(window.location.hostname) == true)
+		return "http://" + window.location.hostname + "/hd1";
 	switch (window.location.hostname) {
-	case "192.168.1.211":
-		return "http://ibssaphd1.ibs.local:8050" + sUrl;
 	case "localhost":
 		return "proxy" + sUrl;
 	default:
