@@ -110,10 +110,13 @@ sap.ui
 							var progressTitleTxt = resourceModel
 									.getProperty("ProgressTitle");
 
-							var busy = new sap.m.BusyDialog(idBusyDialog, {
-								text : progressTxt,
-								title : progressTitleTxt
-							});
+							var busy = sap.ui.getCore().byId(idBusyDialog)
+							if ( typeof busy == 'undefined' ) {
+								busy = new sap.m.BusyDialog(idBusyDialog, {
+								 text : progressTxt,
+								 title : progressTitleTxt
+								});			
+							}		
 							busy.open();
 							// setTimeout(function() {
 							// busy.close();
