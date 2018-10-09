@@ -134,6 +134,9 @@ var idFileReaderComponent = "idFileReaderComponent";
 var idPanelRegDetailName = "idPanelRegDetailName";
 var idRegTestActiveLabel = "idRegTestActiveLabel";
 var idRegActiveCheck = "idRegActiveCheck";
+var idRegTestVariantLabel = "idRegTestVariantLabel";
+var idRegTestVariantValue = "idRegTestVariantValue";
+var idPanelDetailVariant = "idPanelDetailVariant";
 
 var idRegTestXMLLabel = "idRegTestXMLLabel";
 var idAreaXML = "idAreaXML";
@@ -203,8 +206,8 @@ var sapMsgId = "msg_id";
 var sapMsgText = "msg_text";
 var sapPlaceholder = "placeholder";
 var sapIdPlaceholder = "id_placeholder";
-var sapRegTestName = "Name";
-var sapRegTestXML = "XML";
+var sapRegTestName = "name";
+var sapRegTestXML = "xml";
 var sapRegTestActive = "active";
 var sapCheckSetName = "check_set_name";
 var sapRunningNr = "running_nr";
@@ -213,6 +216,7 @@ var sapName = "name";
 var sapSynchron = "flg_synchron"
 var sapRunResult = "run_result";
 var sapRegSel = "selected";
+var sapVariant = "variant";
 	
 // Operations
 var methodDelete = "DELETE";

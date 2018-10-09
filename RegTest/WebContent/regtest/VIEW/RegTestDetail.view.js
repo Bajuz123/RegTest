@@ -22,6 +22,9 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		var panelRegDetailName = this.createPanelRegDetailName(oController);
 		oPage.addContent(panelRegDetailName);
 
+		var panelRegDetailVariant = this.createPanelRegDetailVariant(oController);
+		oPage.addContent(panelRegDetailVariant);
+
 		var panelRegDetailXML = this.createPanelRegDetailXML(oController);
 		oPage.addContent(panelRegDetailXML);
 
@@ -265,6 +268,15 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		oPage.addContent(panelRegRelatedButtons);
 	},
 
+	createPanelRegDetailVariant: function (oController) {
+		var regVariantLabel = new sap.m.Label(idRegTestVariantLabel, {
+			text : "{i18n>Variant}"
+		});
+		var regTestVariantValue = new sap.m.Input(idRegTestVariantValue);
+		return new sap.m.Panel(idPanelDetailVariant, {
+			content : [regVariantLabel, regTestVariantValue]
+		});
+	}
 /*	createPanelRegDetailXMLButton : function(oController) {
 		var btnXMLButton = new sap.m.Button(idBtnXMLUpload, {
 			text : "{i18n>UploadXML}",

@@ -51,8 +51,18 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			label : new sap.ui.commons.Label({
 				text : "{i18n>Name}"
 			}),
+			width: "25%",
 			template : new sap.ui.commons.TextField().bindProperty(
 					columnDefaultValue, sapRegTestName),
+			visible : true
+		}));
+
+		oRegTable.addColumn(new sap.ui.table.Column({
+		    enableColumnFreeze : true,
+		    width : '100px',
+			label : new sap.ui.commons.Label({text : "{i18n>Variant}"}),
+			template : new sap.ui.commons.TextField().bindProperty(
+					columnDefaultValue, sapVariant),
 			visible : true
 		}));
 
