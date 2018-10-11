@@ -39,10 +39,10 @@ sap.ui.jsview("regtest.VIEW.CheckSetDetail", {
 				checkSetClasNameLabel, fieldClasName           
 			          ]
 		});
+		
 		return new sap.m.Page({
 			title: "{i18n>TitleCheckSetDetail}",
-			content: [ btnOKCheck, btnBackCkeck, panelcheckDetailName, panelcheckDetailClasName
-			]
+			content: [ btnOKCheck, btnBackCkeck, panelcheckDetailName, panelcheckDetailClasName ]
 		});
 	}
 });

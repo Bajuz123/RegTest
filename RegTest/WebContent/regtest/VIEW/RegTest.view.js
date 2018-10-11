@@ -79,10 +79,35 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 		var panel = new sap.m.Panel(idMainPanel, {
 			content : [ btnAddReg, btnDelReg, btnEditReg, oRegTable ]
 		});
+		
+		//notification bar
+		var toolbar = new sap.m.Toolbar({
+				id: "toolbar",
+				content: [
+					new sap.m.Button({
+						id: "display_messages_btn",
+						icon: 'sap-icon://message-popup',
+						type: 'Emphasized',
+						//visible: (sap.ui.getCore().getMessageManager().getMessageModel().getData().length !== 0) ? true : false,
+						press: function() {
+							oController.onMessagePopoverPress(this);
+						}
+					}),
+					new sap.m.Button({
+						id: "clear_messages_btn",
+						text: "Clear",
+						visible: false,
+						press: function() {
+							oController.clearMessages();
+						}
+					})
+				]
+		});
 
 		return new sap.m.Page({
 			title : "{i18n>Autotest}",
-			content : [ panel ]
+			content : [ panel ],
+			footer: [ toolbar ]
 		});
 	}
 });

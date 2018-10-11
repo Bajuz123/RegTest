@@ -1,4 +1,10 @@
 sap.ui.controller("regtest.CONTROLLER.RegTest", {
+
+	onInit : function() {
+		var oMessageManager = sap.ui.getCore().getMessageManager();
+		this.getView().setModel(oMessageManager.getMessageModel(), "message");
+	},
+
 	onAddRegClick : function() {
 		localStorage.setItem("choosenRegTest_idRegTest", "");
 		localStorage.setItem("choosenRegTest_name", "");
@@ -43,10 +49,11 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 		if (selIndex != -1) {
 			var boundObject = getTableSelectedObject(oRegTable, selIndex);
 
-			localStorage.setItem("choosenRegTest_idRegTest",boundObject.id_reg_test);
+			localStorage.setItem("choosenRegTest_idRegTest",
+					boundObject.id_reg_test);
 			localStorage.setItem("choosenRegTest_name", boundObject.Name);
 			localStorage.setItem("choosenRegTest_XML", boundObject.XML);
-			
+
 			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 			oRouter.navTo(routeRegTestDetail);
 
@@ -72,5 +79,34 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			var loginFirstText = resourceModel.getProperty("LoginFirst");
 			sap.m.MessageToast.show(loginFirstText);
 		}
+	},
+
+	onMessagePopoverPress : function(oEvent) {
+		if (!this._oMessagePopover || !this._oMessagePopover.isOpen()) {
+			this.getMessagePopover().openBy(oEvent);
+			sap.ui.getCore().byId("clear_messages_btn").setVisible(true)
+		} else {
+			this.closeMessagePopover();
+		}
+	},
+
+	getMessagePopover : function() {
+		// create popover lazily (singleton)
+		if (!this._oMessagePopover) {
+			this._oMessagePopover = sap.ui.xmlfragment(
+					"regtest.fragments.MessagePopover", this);
+			this.getView().addDependent(this._oMessagePopover);
+		}
+		return this._oMessagePopover;
+	},
+	
+	clearMessages : function() {
+		sap.ui.getCore().getMessageManager().removeAllMessages();
+	},
+	
+	closeMessagePopover: function() {
+		this._oMessagePopover.close();
+		sap.ui.getCore().byId("clear_messages_btn").setVisible(false)
 	}
+
 });

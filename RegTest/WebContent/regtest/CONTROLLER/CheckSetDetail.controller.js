@@ -1,4 +1,5 @@
 sap.ui.controller("regtest.CONTROLLER.CheckSetDetail", {
+	
 	onBackCheckClick: function() {
 		var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 		oRouter.navTo(routeCheckSetList);
