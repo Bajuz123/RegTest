@@ -6,6 +6,8 @@ var jSONDataName = "regtest/JSON/RegTest_DATA.json";
 var notificationService = "/sap/opu/odata/sap/z_reg_test_srv/"
 var bundlePath = "regtest.i18n.i18n";
 var columnDefaultValue = "value";
+var columnDefaultCheckBoxValue = "checked";
+var columnDefaultTextView = "text";
 var rowDefaultValue = "rows";
 var xmlType = "xml";
 var filesType = "files";
@@ -34,17 +36,19 @@ var choosenCheckSet = {
 };
 
 // LocalStorage
-var selectedCheckSet_idRegTest  = "selectedCheckSet_idRegTest";
-var selectedCheckSet_idCheckSet = "selectedCheckSet_idCheckSet";
-var selectedCheckSet_runningNr = "selectedCheckSet_runningNr";
+var choosenRegTest_idRegTest = "choosenRegTest_idRegTest";
+var choosenRegTest_name = "choosenRegTest_name";
+var choosenRegTest_XML = "choosenRegTest_XML";
+var choosenRegTest_active = "choosenRegTest_active";
+var choosenRegTest_variant = "choosenRegTest_variant";
 
 var selectedPlObject_id_reg_test = "selectedPlObject_id_reg_test";
 var selectedPlObject_placeholder = "selectedPlObject_placeholder";
 var selectedPlObject_replace_with = "selectedPlObject_replace_with";
 
-var choosenRegTest_idRegTest = "choosenRegTest_idRegTest";
-var choosenRegTest_name = "choosenRegTest_name";
-var choosenRegTest_XML = "choosenRegTest_XML";
+var selectedCheckSet_idRegTest = "selectedCheckSet_idRegTest";
+var selectedCheckSet_idCheckSet = "selectedCheckSet_idCheckSet";
+var selectedCheckSet_runningNr = "selectedCheckSet_runningNr";
 
 // EntityNames
 var entityRegTestSetName = "/REG_TEST_SET";
@@ -64,6 +68,7 @@ var iconProcess = "sap-icon://process";
 var iconPlaceholders = "sap-icon://x-ray";
 var iconCheckSets = "sap-icon://stethoscope";
 var iconUpload = "sap-icon://upload";
+var iconLog = "sap-icon://log";
 
 // Routes
 var routeRegTestList = "RegTest";
@@ -78,7 +83,10 @@ var routeSplit = "SplitAppControl";
 var routerName = "appRouter";
 
 // Views
+var viewRegTestList = "idregtest.VIEW.RegTest";
 var viewRegTestDetail = "idregtest.VIEW.RegTestDetail";
+var controlUpdateCheckSetFrag = "regtest.CONTROLLER.updCheckSetFrag";
+var controlUpdatePHFrag = "regtest.CONTROLLER.updPHFrag";
 
 // Login View
 var idBoxLogin = "idvBoxLogin";
@@ -93,6 +101,8 @@ var idBtnAddReg = "idBtnAddReg";
 var idBtnDelReg = "idBtnDelReg";
 var idBtnEditReg = "idBtnEditReg";
 var idMainPanel = "idMainPanel";
+var idRegChoosen = "idRegChoosen";
+var idBtnRunRegs = "idBtnRunRegs";
 
 // CheckSet View
 var idTableCheckSet = "idTableCheckSet";
@@ -124,6 +134,12 @@ var idRegTestNameLabel = "idRegTestNameLabel";
 var idFldRegNameValue = "idFldRegNameValue";
 var idFileReaderComponent = "idFileReaderComponent";
 var idPanelRegDetailName = "idPanelRegDetailName";
+var idRegTestActiveLabel = "idRegTestActiveLabel";
+var idRegActiveCheck = "idRegActiveCheck";
+var idRegTestVariantLabel = "idRegTestVariantLabel";
+var idRegTestVariantValue = "idRegTestVariantValue";
+var idPanelDetailVariant = "idPanelDetailVariant";
+
 var idRegTestXMLLabel = "idRegTestXMLLabel";
 var idAreaXML = "idAreaXML";
 var idPanelDetailButtons = "idPanelDetailButtons";
@@ -162,8 +178,9 @@ var fragAddCheckSet = "regtest.fragments.addCheckSet";
 var fragDelCheckSet = "regtest.fragments.delCheckSet";
 var fragUpdCheckSet = "regtest.fragments.updCheckSet";
 
-var fragAddDialog = "regtest.fragments.addDialog";
-var fragDelDialog = "regtest.fragments.delDialog";
+var fragAddPHDialog = "regtest.fragments.addPHDialog";
+var fragDelPHDialog = "regtest.fragments.delPHDialog";
+var fragUpdPHDialog = "regtest.fragments.updPHDialog";
 
 var updateCheckset = "updateCheckset";
 var updateRunNumber = "updateRunNumber";
@@ -185,18 +202,25 @@ var sapCheckSetClass = "implementation_class";
 var sapRunId = "run_id";
 var sapRegTestId = "id_reg_test";
 var sapCheckSetId = "id_check_set";
-var sapRegTestName = "reg_test_name";
+var sapLogRegTestName = "reg_test_name";
 var sapPartId = "id_part";
 var sapMsgId = "msg_id";
 var sapMsgText = "msg_text";
 var sapPlaceholder = "placeholder";
 var sapIdPlaceholder = "id_placeholder";
-var sapRegTestName = "Name";
-var sapRegTestXML = "XML";
+var sapRegTestName = "name";
+var sapRegTestXML = "xml";
+var sapRegTestActive = "active";
 var sapCheckSetName = "check_set_name";
 var sapRunningNr = "running_nr";
 var sapReplaceWith = "replace_with";
 var sapName = "name";
+var sapSynchron = "flg_synchron"
+var sapRunResult = "run_result";
+var sapMsgType = "msg_type";
+var sapRegSel = "selected";
+var sapVariant = "variant";
+var sapRegLogName = "reg_test_name";	
 
 // Operations
 var methodDelete = "DELETE";

@@ -13,6 +13,23 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 	* @memberOf regtest.VIEW.Menu
 	*/ 
 	createContent : function(oController) {
+		var oBox = new sap.m.HBox({
+		  items: [
+			new sap.m.Button({
+				icon : "regtest/img/ger.jpg",
+				press : function() {
+					oController.onLangClick("de");
+				}
+			}),
+			new sap.m.Button({
+				icon : "regtest/img/svk.jpg",
+				press : function() {
+					oController.onLangClick("sk");
+				}
+			})			
+		  ]		
+		});
+				
 		var oList = new sap.m.List({
 			id : "idMenuList",
 			mode : sap.m.ListMode.SingleSelectMaster,
@@ -22,20 +39,20 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 		});
 		var oItem1 = new sap.m.StandardListItem({
 			id: "sItem1",
-			title: "Regresionstest"
+			title: "{i18n>MenuRegTest}"
 		});
 		var oItem2 = new sap.m.StandardListItem({
 			id: "sItem2",
-			title: "Prufungsset"
+			title: "{i18n>MenuCheckSet}"
 		});
 		var oItem3 = new sap.m.StandardListItem({
 			id: "sItem3",
-			title: "Logs"
+			title: "{i18n>MenuLog}"
 		});
 		var oItem4 = new sap.m.StandardListItem({
 			id: "sItem4",
-			icon: "sap-icon://log",
-			title: "Logout"
+			icon: iconLog,
+			title: "{i18n>MenuLogout}"
 		});
 		oList.addItem(oItem1);
 		oList.addItem(oItem2);
@@ -43,8 +60,7 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 		oList.addItem(oItem4);
  		return new sap.m.Page({
 			title: "",
-			content: [ oList
-			]
+			content: [ oBox, oList ]
 		});
 	}
 });

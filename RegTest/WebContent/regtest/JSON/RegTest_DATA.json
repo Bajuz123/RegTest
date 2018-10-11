@@ -3,12 +3,14 @@
     {
       "id_reg_test" : "1",
       "Name" : "RegTest1", 
-      "XML"  : "<xml>" 
+      "XML"  : "<xml>", 
+      "active": true
     },
     {
       "id_reg_test" : "2",
       "Name" : "RegTest2", 
-      "XML"  : "<xml>" 
+      "XML"  : "<xml>", 
+      "active": false
     }
   ],
 

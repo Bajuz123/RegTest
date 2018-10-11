@@ -22,6 +22,9 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		var panelRegDetailName = this.createPanelRegDetailName(oController);
 		oPage.addContent(panelRegDetailName);
 
+		var panelRegDetailVariant = this.createPanelRegDetailVariant(oController);
+		oPage.addContent(panelRegDetailVariant);
+
 		var panelRegDetailXML = this.createPanelRegDetailXML(oController);
 		oPage.addContent(panelRegDetailXML);
 
@@ -53,7 +56,8 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			}),
 			template : new sap.ui.commons.TextField().bindProperty(
 					columnDefaultValue, sapPlaceholder),
-			visible : true
+			visible : true,
+			editable: false
 		}));
 
 		oPlaceTable.addColumn(new sap.ui.table.Column({
@@ -170,8 +174,15 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 			text : "{i18n>RegTestName}"
 		});
 		var regTestNameValue = new sap.m.Input(idFldRegNameValue);
+		
+		var regTestActiveLabel = new sap.m.Label(idRegTestActiveLabel, {
+			text : "{i18n>RegTestActive}",
+		});
+		var regTestActiveValue = new sap.ui.commons.CheckBox(idRegActiveCheck);
+		regTestActiveValue.setWidth("20px");
+		
 		return new sap.m.Panel(idPanelRegDetailName, {
-			content : [ fieldIDReg, regTestNameLabel, regTestNameValue ]
+			content : [ fieldIDReg, regTestNameLabel, regTestNameValue, regTestActiveValue, regTestActiveLabel ]
 		});
 	},
 	createPanelRegDetailXML : function(oController) {
@@ -257,6 +268,15 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 		oPage.addContent(panelRegRelatedButtons);
 	},
 
+	createPanelRegDetailVariant: function (oController) {
+		var regVariantLabel = new sap.m.Label(idRegTestVariantLabel, {
+			text : "{i18n>Variant}"
+		});
+		var regTestVariantValue = new sap.m.Input(idRegTestVariantValue);
+		return new sap.m.Panel(idPanelDetailVariant, {
+			content : [regVariantLabel, regTestVariantValue]
+		});
+	}
 /*	createPanelRegDetailXMLButton : function(oController) {
 		var btnXMLButton = new sap.m.Button(idBtnXMLUpload, {
 			text : "{i18n>UploadXML}",

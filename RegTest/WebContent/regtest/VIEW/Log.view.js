@@ -101,7 +101,7 @@ sap.ui.jsview("regtest.VIEW.Log", {
 				text : "{i18n>RegTestName}"
 			}),
 			template : new sap.ui.commons.TextField().bindProperty(
-					columnDefaultValue, sapRegTestName),
+					columnDefaultValue, sapRegLogName),
 			visible : true
 		}))
 
@@ -111,6 +111,15 @@ sap.ui.jsview("regtest.VIEW.Log", {
 			}),
 			template : new sap.ui.commons.TextField().bindProperty(
 					columnDefaultValue, sapPartId),
+			visible : true
+		}))
+
+		oLogTable.addColumn(new sap.ui.table.Column({
+			label : new sap.ui.commons.Label({
+				text : "{i18n>MessageType}"
+			}),
+			template : new sap.ui.commons.TextField().bindProperty(
+					columnDefaultValue, sapMsgType),
 			visible : true
 		}))
 
@@ -128,7 +137,7 @@ sap.ui.jsview("regtest.VIEW.Log", {
 				text : "{i18n>MessageText}"
 			}),
 			template : new sap.ui.commons.TextField().bindProperty(
-					columnDefaultValue, sapMsgId),
+					columnDefaultValue, sapMsgText),
 			visible : true
 		}))
 
