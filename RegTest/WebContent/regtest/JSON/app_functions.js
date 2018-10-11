@@ -60,7 +60,10 @@ function reloadModel(oUser) {
 
 	oModel.refreshSecurityToken();
 
-	if (oUser != "null") {
+	var oModel = new sap.ui.model.odata.ODataModel(
+			this.getUrl(dataServiceName), true, oUser.hd1user, oUser.hd1pwd);
+
+	if ((oUser != "null") && (oUser.hd1user != "null")) {
 		var data = oModel.read(entityRegTestSetName, {
 			error : function(oError) {
 				oModel = new sap.ui.model.json.JSONModel();
@@ -80,21 +83,23 @@ function reloadModel(oUser) {
 function getUrl(sUrl) {
 	if (sUrl == "")
 		return sUrl;
-	if (window.location.hostname == "localhost") {
+	if (/^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(window.location.hostname) == true)
+		return "http://" + window.location.hostname + "/hd1";
+	switch (window.location.hostname) {
+	case "localhost":
 		return "proxy" + sUrl;
-	} else {
+	default:
 		return sUrl;
 	}
 }
 
 function initNotificationService(oModel) {
-	/*var oMessageManager = sap.ui.getCore().getMessageManager();
-	var oMessage =  new sap.ui.core.message.Message({
-		message: 'First message',
-		description: 'Description',
-		type: sap.ui.core.MessageType.Error
-	});
-	oMessageManager.addMessages( [ oMessage ] );*/
+	/*
+	 * var oMessageManager = sap.ui.getCore().getMessageManager(); var oMessage =
+	 * new sap.ui.core.message.Message({ message: 'First message', description:
+	 * 'Description', type: sap.ui.core.MessageType.Error });
+	 * oMessageManager.addMessages( [ oMessage ] );
+	 */
 
 	try {
 		sap.ui.require("sap/ui/core/ws/WebSocket");
@@ -109,7 +114,8 @@ function initNotificationService(oModel) {
 				var message = JSON.parse(dunningRunFeed.data);
 				var oMessage = new sap.ui.core.message.Message(message);
 
-				var oMessageManager = sap.ui.getCore().getMessageManager().addMessages( [ oMessage ] );
+				var oMessageManager = sap.ui.getCore().getMessageManager()
+						.addMessages([ oMessage ]);
 			}
 		};
 
