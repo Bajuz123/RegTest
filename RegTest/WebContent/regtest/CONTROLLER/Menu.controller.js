@@ -1,16 +1,4 @@
 sap.ui.controller("regtest.CONTROLLER.Menu", {
-
-	/**
-	 * Called when a controller is instantiated and its View controls (if
-	 * available) are already created. Can be used to modify the View before it
-	 * is displayed, to bind event handlers and do other one-time
-	 * initialization.
-	 * 
-	 * @memberOf regtest.VIEW.Menu
-	 */
-	// onInit: function() {
-	//
-	// },
 	itemSelected : function(oList) {
 		var name = oList.getSelectedItem().getId();
 		var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
@@ -34,19 +22,21 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 			 * oSplitApp.toMaster("");
 			 */break;
 		default:
-			oSplitApp.toDetail("idRegTest1");
+			oRouter.navTo(routeRegTestList);
 			break;
 		}
 	},
+
 	onLangClick : function(langu) {
 		sap.ui.getCore().getConfiguration().setLanguage(langu);
 		initLanguageLocale();
 		sap.ui.getCore().setModel(i18nModel, "i18n");
 	},
+
 	onMessagePopoverPress : function(oEvent) {
 		if (!this._oMessagePopover || !this._oMessagePopover.isOpen()) {
 			this.getMessagePopover().openBy(oEvent);
-			sap.ui.getCore().byId("clear_messages_btn").setVisible(true)
+			sap.ui.getCore().byId(idBtnClearMessages).setVisible(true)
 		} else {
 			this.closeMessagePopover();
 		}
@@ -55,21 +45,22 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 	getMessagePopover : function() {
 		// create popover lazily (singleton)
 		if (!this._oMessagePopover) {
-			this._oMessagePopover = sap.ui.xmlfragment(
-					"regtest.fragments.MessagePopover", this);
+			this._oMessagePopover = sap.ui
+					.xmlfragment(fragMessagePopover, this);
 			this.getView().addDependent(this._oMessagePopover);
 		}
 		return this._oMessagePopover;
 	},
-	
+
 	clearMessages : function() {
 		sap.ui.getCore().getMessageManager().removeAllMessages();
 	},
-	
-	closeMessagePopover: function() {
+
+	closeMessagePopover : function() {
 		this._oMessagePopover.close();
-		sap.ui.getCore().byId("clear_messages_btn").setVisible(false)
-	}
+		sap.ui.getCore().byId(idBtnClearMessages).setVisible(false)
+	},
+
 });
 /**
  * Similar to onAfterRendering, but this hook is invoked before the controller's

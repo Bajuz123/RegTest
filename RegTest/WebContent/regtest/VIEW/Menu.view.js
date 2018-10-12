@@ -16,22 +16,22 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 		var oBox = new sap.m.HBox({
 		  items: [
 			new sap.m.Button({
-				icon : "regtest/img/ger.jpg",
+				icon : iconLangGer,
 				press : function() {
-					oController.onLangClick("de");
+					oController.onLangClick(gerLangu);
 				}
 			}),
 			new sap.m.Button({
-				icon : "regtest/img/svk.jpg",
+				icon : iconLangSvk,
 				press : function() {
-					oController.onLangClick("sk");
+					oController.onLangClick(svkLangu);
 				}
 			})			
 		  ]		
 		});
 				
 		var oList = new sap.m.List({
-			id : "idMenuList",
+			id : idMenuList,
 			mode : sap.m.ListMode.SingleSelectMaster,
 			select: function(){
 				oController.itemSelected(oList);
@@ -64,17 +64,17 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 				id: idToolbar,
 				content: [
 					new sap.m.Button({
-						id: "display_messages_btn",
-						icon: 'sap-icon://message-popup',
-						type: 'Emphasized',
-						//visible: (sap.ui.getCore().getMessageManager().getMessageModel().getData().length !== 0) ? true : false,
+						id: idBtnDisplayMessages,
+						icon: iconPopup,
+						type: sap.m.ButtonType.Emphasized,
+						visible: (sap.ui.getCore().getMessageManager().getMessageModel().getData().length !== 0) ? true : false,
 						press: function() {
 							oController.onMessagePopoverPress(this);
 						}
 					}),
 					new sap.m.Button({
-						id: "clear_messages_btn",
-						text: "Clear",
+						id: idBtnClearMessages,
+						text: "{i18n>Clear}",
 						visible: false,
 						press: function() {
 							oController.clearMessages();
