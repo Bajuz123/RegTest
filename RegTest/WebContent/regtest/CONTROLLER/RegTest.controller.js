@@ -80,34 +80,6 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			sap.m.MessageToast.show(loginFirstText);
 		}
 	},
-
-	onMessagePopoverPress : function(oEvent) {
-		if (!this._oMessagePopover || !this._oMessagePopover.isOpen()) {
-			this.getMessagePopover().openBy(oEvent);
-			sap.ui.getCore().byId("clear_messages_btn").setVisible(true)
-		} else {
-			this.closeMessagePopover();
-		}
-	},
-
-	getMessagePopover : function() {
-		// create popover lazily (singleton)
-		if (!this._oMessagePopover) {
-			this._oMessagePopover = sap.ui.xmlfragment(
-					"regtest.fragments.MessagePopover", this);
-			this.getView().addDependent(this._oMessagePopover);
-		}
-		return this._oMessagePopover;
-	},
-	
-	clearMessages : function() {
-		sap.ui.getCore().getMessageManager().removeAllMessages();
-	},
-	
-	closeMessagePopover: function() {
-		this._oMessagePopover.close();
-		sap.ui.getCore().byId("clear_messages_btn").setVisible(false)
-	},
 	
 	onRunRegsClick : function(oRegTable) {
 		var oDataModel = sap.ui.getCore().getModel();

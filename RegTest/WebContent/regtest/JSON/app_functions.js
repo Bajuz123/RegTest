@@ -76,8 +76,6 @@ function reloadModel(oUser) {
 	} else {
 		throw "user_invalid";
 	}
-
-	initNotificationService(oModel);
 }
 
 function getUrl(sUrl) {
@@ -93,17 +91,12 @@ function getUrl(sUrl) {
 	}
 }
 
-function initNotificationService(oModel) {
-	/*
-	 * var oMessageManager = sap.ui.getCore().getMessageManager(); var oMessage =
-	 * new sap.ui.core.message.Message({ message: 'First message', description:
-	 * 'Description', type: sap.ui.core.MessageType.Error });
-	 * oMessageManager.addMessages( [ oMessage ] );
-	 */
-
+function initNotificationService() {
 	try {
+		oModel = sap.ui.getCore().getModel();
+
 		sap.ui.require("sap/ui/core/ws/WebSocket");
-		var socket = new WebSocket(
+		socket = new WebSocket(
 				'ws://ibssaphd1.ibs.local:8050/sap/bc/apc/sap/z_reg_test_push_ch');
 
 		socket.onopen = function() {

@@ -13,6 +13,7 @@ var xmlType = "xml";
 var filesType = "files";
 var dblclickEvent = "dblclick";
 var httpGet = "GET";
+var socket = {};
 
 var oUser = {
 	Login : "",
@@ -157,6 +158,8 @@ var idListRelatedPlace = "idListRelatedPlace";
 
 var idCheckTableToReg = "idCheckTableToReg";
 var idBusyDialog = "idBusyDialog";
+
+var idToolbar = "idToolbar";
 
 // Log View
 var idLogPanel = "idLogPanel";

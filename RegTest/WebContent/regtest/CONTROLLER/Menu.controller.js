@@ -42,6 +42,33 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 		sap.ui.getCore().getConfiguration().setLanguage(langu);
 		initLanguageLocale();
 		sap.ui.getCore().setModel(i18nModel, "i18n");
+	},
+	onMessagePopoverPress : function(oEvent) {
+		if (!this._oMessagePopover || !this._oMessagePopover.isOpen()) {
+			this.getMessagePopover().openBy(oEvent);
+			sap.ui.getCore().byId("clear_messages_btn").setVisible(true)
+		} else {
+			this.closeMessagePopover();
+		}
+	},
+
+	getMessagePopover : function() {
+		// create popover lazily (singleton)
+		if (!this._oMessagePopover) {
+			this._oMessagePopover = sap.ui.xmlfragment(
+					"regtest.fragments.MessagePopover", this);
+			this.getView().addDependent(this._oMessagePopover);
+		}
+		return this._oMessagePopover;
+	},
+	
+	clearMessages : function() {
+		sap.ui.getCore().getMessageManager().removeAllMessages();
+	},
+	
+	closeMessagePopover: function() {
+		this._oMessagePopover.close();
+		sap.ui.getCore().byId("clear_messages_btn").setVisible(false)
 	}
 });
 /**

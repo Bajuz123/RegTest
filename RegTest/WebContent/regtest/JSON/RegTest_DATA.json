@@ -2,15 +2,19 @@
   "REG_TEST_SET" : [
     {
       "id_reg_test" : "1",
-      "Name" : "RegTest1", 
-      "XML"  : "<xml>", 
-      "active": true
+      "name" : "RegTest1", 
+      "xml"  : "<xml>", 
+      "variant"  : "C_PR_CPR", 
+      "active": true,
+	  "run_result" : "X"
     },
     {
       "id_reg_test" : "2",
-      "Name" : "RegTest2", 
-      "XML"  : "<xml>", 
-      "active": false
+      "name" : "RegTest2", 
+      "xml"  : "<xml>", 
+      "variant"  : "C_PR_BLANKO", 
+      "active": false,
+	  "run_result" : ""
     }
   ],
 
@@ -59,6 +63,7 @@
       "reg_test_name" : "RegTest1", 
       "run_id" : "1", 
       "id_part"  : "1",
+      "msg_type"  : "E",
       "msg_id"  : "1",
       "msg_text"  : "Test Text",
       "id_placeholder"  : "@test",
@@ -69,6 +74,7 @@
       "reg_test_name" : "RegTest2", 
       "run_id" : "1", 
       "id_part"  : "2",
+      "msg_type"  : "S",
       "msg_id"  : "2",
       "msg_text"  : "Test Text 2",
       "id_placeholder"  : "@BUP_ID_1",

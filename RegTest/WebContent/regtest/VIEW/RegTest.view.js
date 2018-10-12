@@ -136,7 +136,7 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			content : [ btnAddReg, btnDelReg, btnEditReg, btnRunRegs, oRegTable ]
 		});
 		
-		//notification bar
+/*		//notification bar
 		var toolbar = new sap.m.Toolbar({
 				id: "toolbar",
 				content: [
@@ -159,11 +159,11 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 					})
 				]
 		});
-
+*/
 		return new sap.m.Page({
 			title : "{i18n>Autotest}",
 			content : [ panel ],
-			footer: [ toolbar ]
+//			footer: [ toolbar ]
 		});
 	}
 });

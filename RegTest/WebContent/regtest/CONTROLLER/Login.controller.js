@@ -19,9 +19,10 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 
 		var found = validateUser(oLogin, oPwd);
 		if (found) {
+			initNotificationService();
 			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 			oRouter.navTo(routeSplit);
-			oRouter.navTo(routeRegTestList);
+			oRouter.navTo(routeRegTestList);			
 		} else {
 			var text = resourceModel.getProperty("LoginFailed");
 			sap.m.MessageToast.show(text);
