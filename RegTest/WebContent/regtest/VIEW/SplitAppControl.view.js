@@ -13,7 +13,11 @@ sap.ui.jsview("regtest.VIEW.SplitAppControl", {
 	* @memberOf regtest.splittApp
 	*/ 
 	createContent : function(oController) {
-		var oSplitApp = new sap.m.SplitApp(idSplitAppControl, {});
+		var oSplitApp = new sap.m.SplitApp(idSplitAppControl, {
+			showNavButton: "{device>/isPhone}",
+			navButtonPress: [oController.doNav, oController],			
+		});
+		oSplitApp.setMode(sap.m.SplitAppMode.ShowHideMode);
 		return [ oSplitApp];
 	}
 });
