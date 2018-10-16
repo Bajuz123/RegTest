@@ -3,8 +3,10 @@
  */
 
 function escapeText(text) {
-	text = text.replace("<", "_");
-	text = text.replace(">", "_");
+	text = text.replaceAll("<script", "_");
+	text = text.replaceAll("/script>", "_");
+	text = text.replaceAll("<img", "_");
+	text = text.replaceAll("/img>", "_");
 
 	return text;
 }
