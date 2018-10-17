@@ -9,7 +9,6 @@ sap.ui.controller("regtest.CONTROLLER.Logout", {
 	 * @memberOf regtest.Logout
 	 */
 	onInit : function() {
-		debugger;
 		socket.close();
 	},
 

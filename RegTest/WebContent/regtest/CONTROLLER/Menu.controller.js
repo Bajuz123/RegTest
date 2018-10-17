@@ -1,4 +1,9 @@
-sap.ui.controller("regtest.CONTROLLER.Menu", {
+sap.ui.controller("regtest.CONTROLLER.Menu", {	
+	onInit : function() {
+        var oMessageManager = sap.ui.getCore().getMessageManager();
+        this.getView().setModel(oMessageManager.getMessageModel(), "message");
+	},
+
 	itemSelected : function(oList) {
 		var name = oList.getSelectedItem().getId();
 		var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
@@ -54,11 +59,13 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 
 	clearMessages : function() {
 		sap.ui.getCore().getMessageManager().removeAllMessages();
+		sap.ui.getCore().byId(idToolbar).setVisible(false);
+		sap.ui.getCore().byId(idBtnClearMessages).setVisible(false);
 	},
 
 	closeMessagePopover : function() {
 		this._oMessagePopover.close();
-		sap.ui.getCore().byId(idBtnClearMessages).setVisible(false)
+//		sap.ui.getCore().byId(idBtnClearMessages).setVisible(false);
 	},
 
 });

@@ -110,8 +110,9 @@ function initNotificationService() {
 				var message = JSON.parse(dunningRunFeed.data);
 				var oMessage = new sap.ui.core.message.Message(message);
 
-				var oMessageManager = sap.ui.getCore().getMessageManager()
-						.addMessages([ oMessage ]);
+				sap.ui.getCore().byId(idToolbar).setVisible(true);
+				var oMessageManager = sap.ui.getCore().getMessageManager();				
+				oMessageManager.addMessages([ oMessage ]);				
 			}
 		};
 

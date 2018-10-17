@@ -62,12 +62,13 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 		//notification bar
 		var toolbar = new sap.m.Toolbar({
 				id: idToolbar,
+				visible: false,
 				content: [
 					new sap.m.Button({
 						id: idBtnDisplayMessages,
 						icon: iconPopup,
 						type: sap.m.ButtonType.Emphasized,
-						visible: true, //(sap.ui.getCore().getMessageManager().getMessageModel().getData().length !== 0) ? true : false,
+						visible: true,
 						press: function() {
 							oController.onMessagePopoverPress(this);
 						}
