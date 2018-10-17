@@ -100,7 +100,7 @@ function initNotificationService() {
 		oModel = sap.ui.getCore().getModel();
 
 		sap.ui.require("sap/ui/core/ws/WebSocket");
-		var socket = new WebSocket('ws://' + oUser.hd1user + ':' + oUser.hd1pwd + '@' + 'ibssaphd1.ibs.local:8050/sap/bc/apc/sap/z_reg_test_push_ch');
+		socket = new WebSocket('ws://' + oUser.hd1user + ':' + oUser.hd1pwd + '@' + 'ibssaphd1.ibs.local:8050/sap/bc/apc/sap/z_reg_test_push_ch');
 
 		socket.onopen = function() {
 
