@@ -53,7 +53,8 @@ function reloadModel(oUser) {
 	initLanguageLocale();
 
 	var headers = {
-		"X-CSRF-Token" : "fetch"
+		"X-CSRF-Token" : "fetch",
+		"set-cookie": "MYSAPSSO2"
 	};
 
 	var oModel = new sap.ui.model.odata.ODataModel(
@@ -94,12 +95,12 @@ function getUrl(sUrl) {
 }
 
 function initNotificationService() {
+
 	try {
 		oModel = sap.ui.getCore().getModel();
 
 		sap.ui.require("sap/ui/core/ws/WebSocket");
-		socket = new WebSocket(
-				'ws://ibssaphd1.ibs.local:8050/sap/bc/apc/sap/z_reg_test_push_ch');
+		var socket = new WebSocket('ws://' + oUser.hd1user + ':' + oUser.hd1pwd + '@' + 'ibssaphd1.ibs.local:8050/sap/bc/apc/sap/z_reg_test_push_ch');
 
 		socket.onopen = function() {
 
