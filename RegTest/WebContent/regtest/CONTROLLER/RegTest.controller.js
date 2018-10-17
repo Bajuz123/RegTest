@@ -104,7 +104,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 
 		var tabRegTest = this.getTableWithIds();
 		oDataModel.callFunction(fiStartCredit, httpGet, {
-			"flg_synchron" : '',
+			"flg_sync" : '',
 			"tab_reg_test_id" : tabRegTest
 		}, null, function(oData, response) {
 			var busyDialog = sap.ui.getCore().byId(idBusyDialog)

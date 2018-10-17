@@ -67,7 +67,7 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 						id: idBtnDisplayMessages,
 						icon: iconPopup,
 						type: sap.m.ButtonType.Emphasized,
-						visible: (sap.ui.getCore().getMessageManager().getMessageModel().getData().length !== 0) ? true : false,
+						visible: true, //(sap.ui.getCore().getMessageManager().getMessageModel().getData().length !== 0) ? true : false,
 						press: function() {
 							oController.onMessagePopoverPress(this);
 						}

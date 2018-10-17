@@ -190,9 +190,9 @@ var fragAddCheckSet = "regtest.fragments.addCheckSet";
 var fragDelCheckSet = "regtest.fragments.delCheckSet";
 var fragUpdCheckSet = "regtest.fragments.updCheckSet";
 
-var fragAddPHDialog = "regtest.fragments.addPHDialog";
-var fragDelPHDialog = "regtest.fragments.delPHDialog";
-var fragUpdPHDialog = "regtest.fragments.updPHDialog";
+var fragAddPHDialog = "regtest.fragments.addDialog";
+var fragDelPHDialog = "regtest.fragments.delDialog";
+var fragUpdPHDialog = "regtest.fragments.updDialog";
 var fragMessagePopover =  "regtest.fragments.MessagePopover";
 
 var updateCheckset = "updateCheckset";
