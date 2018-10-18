@@ -27,6 +27,10 @@ sap.ui.jsview("regtest.VIEW.Login", {
 			fitContainer : true
 		});
 
+		var fldVersion = new sap.m.Label(idVersion, {
+			text : ""
+		});
+
 		var fldLoginText = new sap.m.Label(idLoginText, {
 			text : "{i18n>LoginInfo}"
 		});
@@ -56,7 +60,7 @@ sap.ui.jsview("regtest.VIEW.Login", {
 				oController.onLoginClick();
 			}
 		});
-
+		vBoxLogin.addItem(fldVersion);		
 		vBoxLogin.addItem(fldLoginText);
 		vBoxLogin.addItem(fldLoginName);
 		vBoxLogin.addItem(fldPwd);

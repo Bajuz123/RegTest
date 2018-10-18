@@ -11,6 +11,7 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 	onInit : function() {
 		initLanguageLocale();
 		sap.ui.getCore().setModel(i18nModel, "i18n");
+		sap.ui.getCore().byId(idVersion).setText("Version " + regTestVersion);
 	},
 
 	onLoginClick : function() {

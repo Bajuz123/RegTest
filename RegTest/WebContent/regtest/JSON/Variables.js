@@ -1,4 +1,5 @@
 //General
+var regTestVersion = "1.0.1"
 var resourceModel = {}
 var i18nModel = {}
 var dataServiceName = "/sap/opu/odata/sap/Z_REG_TEST_SRV";
@@ -107,6 +108,7 @@ var idLoginText = "idLoginText";
 var idLoginName = "idLoginName";
 var idBtnLogin = "idBtnLogin";
 var idPwdField = "idPwdField";
+var idVersion = "idVersion";
 
 // RegTest View
 var idRegTestTable = "idRegTestTable";
