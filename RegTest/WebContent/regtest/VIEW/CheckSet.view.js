@@ -74,7 +74,7 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 			text : "{i18n>MenuButton}",
 			icon : iconMenu,
 			menu : oMenu,
-			visible: ( jQuery.device.is.android_phone == true )
+			visible: ( jQuery.device.is.desktop == false )
 		});
 		
 		oBox.addContent(btnMenuIcon);
