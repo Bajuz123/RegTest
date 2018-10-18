@@ -127,10 +127,9 @@ sap.ui
 							var creditStartedFail = resourceModel
 									.getProperty("creditStartedFail");
 
-							var tabRegTest = [regTestID];
 							oDataModel.callFunction(fiStartCredit, httpGet, {
 								"flg_sync" : '',
-								"tab_reg_test_id" : tabRegTest
+								"tab_reg_test_id" : regTestID
 							}, null, function(oData, response) {
 								var busyDialog = sap.ui.getCore().byId(
 										idBusyDialog)
