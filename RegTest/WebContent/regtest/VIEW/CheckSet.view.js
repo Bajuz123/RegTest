@@ -67,7 +67,17 @@ sap.ui.jsview("regtest.VIEW.CheckSet", {
 			press : function() {
 				oController.onEditSetClick(oTable) }
 		});
-		// press: oController.onEditSetClick
+
+		var oMenu = getBtnMenu(viewCheckSetList);
+
+		var btnMenuIcon = new sap.m.MenuButton(idMenuButtonCheck, {
+			text : "{i18n>MenuButton}",
+			icon : iconMenu,
+			menu : oMenu,
+			visible: ( jQuery.device.is.desktop == false )
+		});
+		
+		oBox.addContent(btnMenuIcon);
 		oBox.addContent(btnAddSet);
 		oBox.addContent(btnDelSet);
 		oBox.addContent(btnEditSet);

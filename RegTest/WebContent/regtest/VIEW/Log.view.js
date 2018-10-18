@@ -32,6 +32,15 @@ sap.ui.jsview("regtest.VIEW.Log", {
 		});
 	},
 	createFilter : function(oController, oPanel) {
+		var oMenu = getBtnMenu(viewLogList);
+
+		var btnMenuIcon = new sap.m.MenuButton(idMenuButtonLog, {
+			text : "{i18n>MenuButton}",
+			icon : iconMenu,
+			menu : oMenu,
+			visible: ( jQuery.device.is.desktop == false )
+		});
+		
 		var runIdText = new sap.m.Label(idRunIdText, {
 			text : "{i18n>RunID}"
 		});
@@ -63,6 +72,7 @@ sap.ui.jsview("regtest.VIEW.Log", {
 				oController.onRefresh();
 			}
 		});
+		oPanel.addContent(btnMenuIcon);
 		oPanel.addContent(panelRunId);
 		oPanel.addContent(panelRegTestID);
 		oPanel.addContent(btnRefresh);

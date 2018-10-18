@@ -71,6 +71,7 @@ var iconCheckSets = "sap-icon://stethoscope";
 var iconUpload = "sap-icon://upload";
 var iconLog = "sap-icon://log";
 var iconPopup = "sap-icon://message-popup";
+var iconMenu ="sap-icon://icon-menu";
 
 //SRC IMG
 var iconLangGer = "regtest/img/ger.jpg";
@@ -94,6 +95,8 @@ var routerName = "appRouter";
 
 // Views
 var viewRegTestList = "idregtest.VIEW.RegTest";
+var viewCheckSetList = "idregtest.VIEW.CheckSet";
+var viewLogList = "idregtest.VIEW.Log";
 var viewRegTestDetail = "idregtest.VIEW.RegTestDetail";
 var controlUpdateCheckSetFrag = "regtest.CONTROLLER.updCheckSetFrag";
 var controlUpdatePHFrag = "regtest.CONTROLLER.updPHFrag";
@@ -212,6 +215,16 @@ var idMenuList = "idMenuList";
 //Notifications
 var idBtnClearMessages = "idBtnClearMessages";
 var idBtnDisplayMessages = "idBtnDisplayMessages";
+
+//Menu
+var idMenuButtonReg = "idMenuButtonReg";
+var idMenuButtonCheck = "idMenuButtonCheck";
+var idMenuButtonLog = "idMenuButtonLog";
+
+var idMenuRegTest = "idMenuRegTest";
+var idMenuCheckSet = "idMenuCheckSet";
+var idMenuLogList = "idMenuLogList";
+var idMenuLogout = "idMenuLogout";
 
 // SAP Entity CheckSet
 var sapCheckSetId = "id_check_set";

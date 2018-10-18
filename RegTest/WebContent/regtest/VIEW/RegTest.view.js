@@ -38,72 +38,77 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 			visible : false
 		}));
 
-/*		oRegTable.addColumn(new sap.ui.table.Column({
-		    width : '50px',
-			label : new sap.ui.commons.CheckBox({
-				change: oController.changeAll,
-				checked:false}),
-			template : new sap.ui.commons.CheckBox({id: "idCheckSel"}).bindProperty(columnDefaultCheckBoxValue, sapRegSel),
-			visible : true
-		}));
-*/
+		/*
+		 * oRegTable.addColumn(new sap.ui.table.Column({ width : '50px', label :
+		 * new sap.ui.commons.CheckBox({ change: oController.changeAll,
+		 * checked:false}), template : new sap.ui.commons.CheckBox({id:
+		 * "idCheckSel"}).bindProperty(columnDefaultCheckBoxValue, sapRegSel),
+		 * visible : true }));
+		 */
 		oRegTable.addColumn(new sap.ui.table.Column({
 			label : new sap.ui.commons.Label({
 				text : "{i18n>Name}"
 			}),
-			width: "25%",
+			width : "25%",
 			template : new sap.ui.commons.TextField().bindProperty(
 					columnDefaultValue, sapRegTestName),
 			visible : true
 		}));
 
 		oRegTable.addColumn(new sap.ui.table.Column({
-		    enableColumnFreeze : true,
-		    width : '100px',
-			label : new sap.ui.commons.Label({text : "{i18n>Variant}"}),
+			enableColumnFreeze : true,
+			width : '100px',
+			label : new sap.ui.commons.Label({
+				text : "{i18n>Variant}"
+			}),
 			template : new sap.ui.commons.TextField().bindProperty(
 					columnDefaultValue, sapVariant),
 			visible : true
 		}));
 
 		oRegTable.addColumn(new sap.ui.table.Column({
-		    enableColumnFreeze : true,
-		    width : '100px',
-			label : new sap.ui.commons.Label({text : "{i18n>Active}"}),
-			template : new sap.ui.commons.CheckBox({id: "idCheckActive"}).bindProperty(columnDefaultCheckBoxValue, sapRegTestActive),
-			visible : true
-		}));
-		
-		oRegTable.addColumn(new sap.ui.table.Column({
-			label : new sap.ui.commons.Label({text : "{i18n>LastRun}"}),
-			template : new sap.ui.commons.TextView().bindProperty(columnDefaultTextView, sapRunResult, function(cellValue) {
-                this.removeStyleClass('green');
-                this.removeStyleClass('yellow');
-                this.removeStyleClass('red');			
-                // Set style Conditionally
-                if (cellValue == 'X') {
-                    this.addStyleClass('green');
-                } else {
-                    this.addStyleClass('red');
-                }
-//                cellValue = '';
-                return cellValue;
-			}
-		),
-			visible : true
-		}));		
-		
-/*		oRegTable.addColumn(new sap.ui.table.Column({
+			enableColumnFreeze : true,
+			width : '100px',
 			label : new sap.ui.commons.Label({
-				text : "{i18n>XML}"
+				text : "{i18n>Active}"
 			}),
-			template : new sap.ui.commons.TextField().bindProperty(
-					columnDefaultValue, sapRegTestXML),
+			template : new sap.ui.commons.CheckBox({
+				id : "idCheckActive"
+			}).bindProperty(columnDefaultCheckBoxValue, sapRegTestActive),
 			visible : true
 		}));
-*/
-//		oRegTable.attachBrowserEvent("dblclick", oController.onEditRegClick(oRegTable));
 
+		oRegTable.addColumn(new sap.ui.table.Column({
+			label : new sap.ui.commons.Label({
+				text : "{i18n>LastRun}"
+			}),
+			template : new sap.ui.commons.TextView().bindProperty(
+					columnDefaultTextView, sapRunResult, function(cellValue) {
+						this.removeStyleClass('green');
+						this.removeStyleClass('yellow');
+						this.removeStyleClass('red');
+						// Set style Conditionally
+						if (cellValue == 'X') {
+							this.addStyleClass('green');
+						} else if (cellValue == 'W') 
+							this.addStyleClass('yellow');						
+						{
+							this.addStyleClass('red');
+						}
+						// cellValue = '';
+						return cellValue;
+					}),
+			visible : true
+		}));
+
+		/*
+		 * oRegTable.addColumn(new sap.ui.table.Column({ label : new
+		 * sap.ui.commons.Label({ text : "{i18n>XML}" }), template : new
+		 * sap.ui.commons.TextField().bindProperty( columnDefaultValue,
+		 * sapRegTestXML), visible : true }));
+		 */
+		// oRegTable.attachBrowserEvent("dblclick",
+		// oController.onEditRegClick(oRegTable));
 		oRegTable.bindRows(entityRegTestSetName);
 		var btnAddReg = new sap.m.Button(idBtnAddReg, {
 			icon : iconAdd,
@@ -131,11 +136,20 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 				oController.onRunRegsClick(oRegTable);
 			}
 		});
-
-		var panel = new sap.m.Panel(idMainPanel, {
-			content : [ btnAddReg, btnDelReg, btnEditReg, btnRunRegs, oRegTable ]
-		});
 		
+		var oMenu = getBtnMenu(viewRegTestList);
+		var btnMenuIcon = new sap.m.MenuButton(idMenuButtonReg, {
+			text : "{i18n>MenuButton}",
+			icon : iconMenu,
+			menu : oMenu,
+			visible: ( jQuery.device.is.desktop == false )
+		});
+		// menu[]
+		var panel = new sap.m.Panel(idMainPanel, {
+			content : [ btnMenuIcon, btnAddReg, btnDelReg, btnEditReg,
+					btnRunRegs, oRegTable ]
+		});
+
 		return new sap.m.Page({
 			title : "{i18n>Autotest}",
 			content : [ panel ],
