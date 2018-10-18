@@ -54,7 +54,7 @@ function reloadModel(oUser) {
 
 	var headers = {
 		"X-CSRF-Token" : "fetch",
-		"set-cookie": "MYSAPSSO2"
+		"set-cookie" : "MYSAPSSO2"
 	};
 
 	var oModel = new sap.ui.model.odata.ODataModel(
@@ -100,7 +100,9 @@ function initNotificationService() {
 		oModel = sap.ui.getCore().getModel();
 
 		sap.ui.require("sap/ui/core/ws/WebSocket");
-		socket = new WebSocket('ws://' + oUser.hd1user + ':' + oUser.hd1pwd + '@' + 'ibssaphd1.ibs.local:8050/sap/bc/apc/sap/z_reg_test_push_ch');
+		socket = new WebSocket('ws://' + oUser.hd1user + ':' + oUser.hd1pwd
+				+ '@'
+				+ 'ibssaphd1.ibs.local:8050/sap/bc/apc/sap/z_reg_test_push_ch');
 
 		socket.onopen = function() {
 
@@ -111,8 +113,8 @@ function initNotificationService() {
 				var oMessage = new sap.ui.core.message.Message(message);
 
 				sap.ui.getCore().byId(idToolbar).setVisible(true);
-				var oMessageManager = sap.ui.getCore().getMessageManager();				
-				oMessageManager.addMessages([ oMessage ]);				
+				var oMessageManager = sap.ui.getCore().getMessageManager();
+				oMessageManager.addMessages([ oMessage ]);
 			}
 		};
 
@@ -121,4 +123,41 @@ function initNotificationService() {
 
 	} catch (exception) {
 	}
+}
+
+function getMenuItem(itemName, itemText) {
+	var item = sap.ui.getCore().byId(itemName);
+	if (item == undefined) {
+		item = new sap.m.MenuItem(itemName, {
+			text : itemText
+		})
+	}
+	;
+	return item;
+}
+
+function getBtnMenu(viewName) {
+	var item1 = getMenuItem(viewName + idMenuRegTest, "{i18n>BtnMenuRegTest}");
+	var item2 = getMenuItem(viewName + idMenuCheckSet, "{i18n>BtnMenuCheckSet}");
+	var item3 = getMenuItem(viewName + idMenuLogList, "{i18n>BtnMenuLog}");
+	var item4 = getMenuItem(viewName + idMenuLogout, "{i18n>BtnMenuLogout}");
+
+	return new sap.m.Menu({
+		title : "idBtnMenu",
+		itemSelected : function(oEvent) {
+			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
+			var oItem = oEvent.getParameter("item"), sItemPath = "";
+			var sId = oItem.sId;
+			if (sId.includes(idMenuRegTest)) {
+				oRouter.navTo(routeRegTestList);
+			} else if (sId.includes(idMenuCheckSet)) {
+				oRouter.navTo(routeCheckSetList);
+			} else if (sId.includes(idMenuLogList)) {
+				oRouter.navTo(routeLogList);
+			} else if (sId.includes(idMenuLogout)) {
+				oRouter.navTo(routeLogout);
+			}
+		},
+		items : [ item1, item2, item3, item4 ]
+	});
 }
