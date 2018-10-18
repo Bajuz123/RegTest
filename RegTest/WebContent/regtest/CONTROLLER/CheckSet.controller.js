@@ -41,7 +41,7 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 					sap.m.MessageToast.show(deleteFailText);
 				}
 			});
-			reloadModel(oUser);
+			oModelCheckSet.refresh();
 		} else {
 			var deleteSelectText = resourceModel.getProperty("DeleteSelect");
 			sap.m.MessageToast.show(deleteSelectText);
@@ -67,14 +67,10 @@ sap.ui.controller("regtest.CONTROLLER.CheckSet", {
 	},
 
 	onBeforeRendering : function() {
-		try {
-			oUser.Login = localStorage.getItem("oUser_Login");
-			oUser.Pwd = localStorage.getItem("oUser_Pwd");
-			oUser.hd1user = localStorage.getItem("oUser_hd1user");
-			oUser.hd1pwd = localStorage.getItem("oUser_hd1pwd");
-			validateUser(oUser);
-			reloadModel(oUser);
-		} catch (err) {
+		oUser.Login = localStorage.getItem("oUser_Login");
+		oUser.Pwd = localStorage.getItem("oUser_Pwd");
+		var found = validateUser(oUser.Login, oUser.Pwd);
+		if (!found) {
 			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 			oRouter.navTo(routeLogin);
 			var loginFirstText = resourceModel.getProperty("LoginFirst");

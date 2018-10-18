@@ -10,22 +10,22 @@ sap.ui
 						var fragDelCH = {};
 						var fragUpdCH = {};
 
-						try {
-							oUser.Login = localStorage.getItem("oUser_Login");
-							oUser.Pwd = localStorage.getItem("oUser_Pwd");
-							oUser.hd1user = localStorage
-									.getItem("oUser_hd1user");
-							oUser.hd1pwd = localStorage.getItem("oUser_hd1pwd");
-							validateUser(oUser);
-//							reloadModel(oUser);
-						} catch (err) {
-							var oRouter = sap.ui.core.routing.Router
-									.getRouter(routerName);
-							oRouter.navTo(routeLogin);
-							var loginFirstText = resourceModel
-									.getProperty("LoginFirst");
-							sap.m.MessageToast.show(loginFirstText);
-						}
+//						try {
+//							oUser.Login = localStorage.getItem("oUser_Login");
+//							oUser.Pwd = localStorage.getItem("oUser_Pwd");
+//							oUser.hd1user = localStorage
+//									.getItem("oUser_hd1user");
+//							oUser.hd1pwd = localStorage.getItem("oUser_hd1pwd");
+//							validateUser(oUser);
+////							reloadModel(oUser);
+//						} catch (err) {
+//							var oRouter = sap.ui.core.routing.Router
+//									.getRouter(routerName);
+//							oRouter.navTo(routeLogin);
+//							var loginFirstText = resourceModel
+//									.getProperty("LoginFirst");
+//							sap.m.MessageToast.show(loginFirstText);
+//						}
 					},
 
 					refreshRelatedTables : function() {
@@ -266,7 +266,7 @@ sap.ui
 									.getProperty("InsertCheckSet");
 							sap.m.MessageToast.show(insertTxt);
 						}
-						reloadModel(oUser);
+						oModelCheckSet.refresh();
 						fragAddCH.close();
 
 					},
@@ -302,7 +302,7 @@ sap.ui
 								sap.m.MessageToast.show(deleteFailText);
 							}
 						});
-						reloadModel(oUser);
+						oModelCheckSet.refresh();
 						fragDelCH.close();
 					},
 					onCloseDialogDelCH : function() {
@@ -399,7 +399,7 @@ sap.ui
 									.getProperty("InsertPlace");
 							sap.m.MessageToast.show(insertPlaceText);
 						}
-						reloadModel(oUser);
+						oModelRegTest.refresh();
 						fragAddPH.close();
 
 					},
@@ -431,7 +431,7 @@ sap.ui
 								sap.m.MessageToast.show(deleteFailText);
 							}
 						});
-						reloadModel(oUser);
+						oModelPlaceSet.refresh();
 						fragDelPH.close();
 					},
 					onCloseDialogDelPH : function() {
@@ -439,32 +439,25 @@ sap.ui
 					},
 
 					onBeforeRendering : function() {
-						try {
-							oUser.Login = localStorage.getItem("oUser_Login");
-							oUser.Pwd = localStorage.getItem("oUser_Pwd");
-							oUser.hd1user = localStorage
-									.getItem("oUser_hd1user");
-							oUser.hd1pwd = localStorage.getItem("oUser_hd1pwd");
-							validateUser(oUser);
-							reloadModel(oUser);
-
-							sap.ui.getCore().byId(idfldIDReg).setValue(
-									localStorage
-											.getItem(choosenRegTest_idRegTest));
-							sap.ui.getCore().byId(idFldRegNameValue).setValue(
-									localStorage.getItem(choosenRegTest_name));
-							sap.ui.getCore().byId(idAreaXML).setValue(
-									localStorage.getItem(choosenRegTest_XML));
-							sap.ui.getCore().byId(idRegActiveCheck).setChecked(localStorage.getItem(choosenRegTest_active)=="true");
-							sap.ui.getCore().byId(idRegTestVariantValue).setValue(localStorage.getItem(choosenRegTest_variant));
-							this.refreshRelatedTables();
-						} catch (err) {
-							var oRouter = sap.ui.core.routing.Router
-									.getRouter(routerName);
+						oUser.Login = localStorage.getItem("oUser_Login");
+						oUser.Pwd = localStorage.getItem("oUser_Pwd");
+						var found = validateUser(oUser.Login, oUser.Pwd);
+						if (!found) {
+							var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 							oRouter.navTo(routeLogin);
-							var loginFirstText = resourceModel
-									.getProperty("LoginFirst");
+							var loginFirstText = resourceModel.getProperty("LoginFirst");
 							sap.m.MessageToast.show(loginFirstText);
 						}
+						sap.ui.getCore().byId(idfldIDReg).setValue(
+								localStorage
+										.getItem(choosenRegTest_idRegTest));
+						sap.ui.getCore().byId(idFldRegNameValue).setValue(
+								localStorage.getItem(choosenRegTest_name));
+						sap.ui.getCore().byId(idAreaXML).setValue(
+								localStorage.getItem(choosenRegTest_XML));
+						sap.ui.getCore().byId(idRegActiveCheck).setChecked(localStorage.getItem(choosenRegTest_active)=="true");
+						sap.ui.getCore().byId(idRegTestVariantValue).setValue(localStorage.getItem(choosenRegTest_variant));
+						this.refreshRelatedTables();
+
 					}
 				});
