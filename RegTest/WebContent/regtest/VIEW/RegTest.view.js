@@ -136,8 +136,6 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 				oController.onRunRegsClick(oRegTable);
 			}
 		});
-		var phone = jQuery.device.is.android_phone;
-		var desktop = jQuery.device.is.desktop;
 		
 		var oMenu = getBtnMenu(viewRegTestList);
 		var btnMenuIcon = new sap.m.MenuButton(idMenuButtonReg, {
