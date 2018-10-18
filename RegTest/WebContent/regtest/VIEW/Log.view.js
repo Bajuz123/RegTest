@@ -37,7 +37,8 @@ sap.ui.jsview("regtest.VIEW.Log", {
 		var btnMenuIcon = new sap.m.MenuButton(idMenuButtonLog, {
 			text : "{i18n>MenuButton}",
 			icon : iconMenu,
-			menu : oMenu
+			menu : oMenu,
+			visible: ( jQuery.device.is.android_phone == true )
 		});
 		
 		var runIdText = new sap.m.Label(idRunIdText, {

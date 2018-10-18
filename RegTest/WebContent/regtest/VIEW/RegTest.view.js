@@ -136,13 +136,15 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 				oController.onRunRegsClick(oRegTable);
 			}
 		});
-
+		var phone = jQuery.device.is.android_phone;
+		var desktop = jQuery.device.is.desktop;
+		
 		var oMenu = getBtnMenu(viewRegTestList);
 		var btnMenuIcon = new sap.m.MenuButton(idMenuButtonReg, {
 			text : "{i18n>MenuButton}",
 			icon : iconMenu,
 			menu : oMenu,
-			visible: ( sap.ui.Device.system.phone == true )
+			visible: ( jQuery.device.is.android_phone == true )
 		});
 		// menu[]
 		var panel = new sap.m.Panel(idMainPanel, {
