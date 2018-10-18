@@ -18,11 +18,10 @@ sap.ui.jsview("regtest.VIEW.Logout", {
 		localStorage.setItem("oUser_Pwd", null);
 		localStorage.setItem("oUser_hd1user", null);
 		localStorage.setItem("oUser_hd1pwd", null);
-		
+				
 		return new sap.m.Page({
 			title: "{i18n>Bye}",
-			content: [
-			
+			content: [			
 			]
 		});
 	}

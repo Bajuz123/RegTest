@@ -161,3 +161,10 @@ function getBtnMenu(viewName) {
 		items : [ item1, item2, item3, item4 ]
 	});
 }
+
+function isPhone() {
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
+			.test(navigator.userAgent)) {
+	  return true;
+	} else return false;
+}
