@@ -20,6 +20,7 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 		var found = validateUser(oLogin, oPwd);
 		if (found) {
 			initNotificationService();
+			loadModel(oUser);
 			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 			oRouter.navTo(routeSplit);
 			oRouter.navTo(routeRegTestList);			

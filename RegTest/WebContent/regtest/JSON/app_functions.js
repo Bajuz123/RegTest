@@ -48,7 +48,7 @@ function validateUser(oLogin, oPwd) {
 	return found;
 }
 
-function reloadModel(oUser) {
+function loadModel(oUser) {
 	// SAP Data
 	initLanguageLocale();
 
