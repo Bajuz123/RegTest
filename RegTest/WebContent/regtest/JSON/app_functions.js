@@ -168,3 +168,19 @@ function isPhone() {
 	  return true;
 	} else return false;
 }
+
+window.onbeforeunload = function(event) {
+	localStorage.setItem("reloading", "true");
+};
+
+window.onload = function() {
+    var reloading = localStorage.getItem("reloading");
+    if (reloading) {
+    	localStorage.removeItem("reloading");
+		oUser.Login = localStorage.getItem("oUser_Login");
+		oUser.Pwd = localStorage.getItem("oUser_Pwd");
+		if (validateUser(oUser.Login, oUser.Pwd)) {
+    		loadModel(oUser);
+    		}
+    }
+}
