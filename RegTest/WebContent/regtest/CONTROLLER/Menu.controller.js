@@ -58,15 +58,31 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 	},
 
 	clearMessages : function() {
-		sap.ui.getCore().getMessageManager().removeAllMessages();
-		sap.ui.getCore().byId(idToolbar).setVisible(false);
-		sap.ui.getCore().byId(idBtnClearMessages).setVisible(false);
+		// sap.ui.getCore().getMessageManager().removeAllMessages();
+		this.removeNotificationFromBackend();
 	},
 
 	closeMessagePopover : function() {
 		this._oMessagePopover.close();
-//		sap.ui.getCore().byId(idBtnClearMessages).setVisible(false);
+// sap.ui.getCore().byId(idBtnClearMessages).setVisible(false);
 	},
+	
+	removeNotificationFromBackend(notificationId) {
+		
+		var oDataModel = sap.ui.getCore().getModel();
+		oDataModel.callFunction(fiRemoveNotification, httpPost, {
+			"notification_id" : notificationId,
+		}, null, function(oData, response) {
+			
+			sap.ui.getCore().getMessageManager().removeAllMessages(); 
+	
+			sap.ui.getCore().byId(idToolbar).setVisible(false);
+			sap.ui.getCore().byId(idBtnClearMessages).setVisible(false);
+			
+		}, // callback function for success
+		function(oError) {
+		}); // callback function for error
+	}
 
 });
 /**

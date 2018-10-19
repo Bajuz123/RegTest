@@ -14,6 +14,7 @@ var xmlType = "xml";
 var filesType = "files";
 var dblclickEvent = "dblclick";
 var httpGet = "GET";
+var httpPost = "POST";
 var socket = {};
 
 var oUser = {
@@ -262,3 +263,4 @@ var methodDelete = "DELETE";
 
 //Function Import
 var fiStartCredit = "START_CREDIT";
+var fiRemoveNotification = "REMOVE_NOTIFICATION";
