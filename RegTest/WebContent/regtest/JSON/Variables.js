@@ -1,5 +1,5 @@
 //General
-var regTestVersion = "1.0.1"
+var regTestVersion = "1.0.2"
 var resourceModel = {}
 var i18nModel = {}
 var dataServiceName = "/sap/opu/odata/sap/Z_REG_TEST_SRV";
