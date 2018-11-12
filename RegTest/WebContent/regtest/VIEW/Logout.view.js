@@ -14,10 +14,31 @@ sap.ui.jsview("regtest.VIEW.Logout", {
 	*/ 
 	createContent : function(oController) {
 		sap.ui.getCore().setModel(null);
-		localStorage.setItem("oUser_Login", null);
-		localStorage.setItem("oUser_Pwd", null);
-		localStorage.setItem("oUser_hd1user", null);
-		localStorage.setItem("oUser_hd1pwd", null);
+		localStorage.removeItem("oUser_Login");
+		localStorage.removeItem("oUser_Pwd");
+
+		
+       $.ajax({
+           type: "GET",
+           url: getUrl( logoffService ),  //Clear SSO cookies: SAP Provided service to do that
+        }).done(function(data){ //Now clear the authentication header stored in the browser
+//                            if (!document.execCommand("ClearAuthenticationCache")) {
+//                                 //"ClearAuthenticationCache" will work only for IE. Below code for other browsers
+//                                 $.ajax({
+//                                               type: "GET",
+//                                               url: getUrl(dataServiceName), //any URL to a Gateway service
+//                                               username: 'dummy', //dummy credentials: when request fails, will clear the authentication header
+//                                               password: 'dummy',
+//                                               statusCode: { 401: function() {
+//                                                         //This empty handler function will prevent authentication pop-up in chrome/firefox
+//                                               } },
+//                                               error: function() {
+//                                                    alert('reached error of wrong username password')
+//                                               }
+//                                });
+//                            }
+        })
+
 				
 		return new sap.m.Page({
 			title: "{i18n>Bye}",

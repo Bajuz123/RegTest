@@ -15,20 +15,21 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 	},
 
 	onLoginClick : function() {
-		oLogin = sap.ui.getCore().byId(idLoginName).getValue();
-		oPwd = sap.ui.getCore().byId(idPwdField).getValue();
-
-		var found = validateUser(oLogin, oPwd);
+		oUser.Login = sap.ui.getCore().byId(idLoginName).getValue();
+		oUser.Pwd = sap.ui.getCore().byId(idPwdField).getValue();
+		localStorage.setItem("oUser_Login", oUser.Login);
+		localStorage.setItem("oUser_Pwd", oUser.Pwd);
+		debugger;
+		var found = validateUser(oUser.Login, oUser.Pwd);
 		if (found) {
 			initNotificationService();
-			loadModel(oUser);
-			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
-			oRouter.navTo(routeSplit);
-			oRouter.navTo(routeRegTestList);			
+			loadModel(oUser);		
 		} else {
-			var text = resourceModel.getProperty("LoginFailed");
-			sap.m.MessageToast.show(text);
+			loadMockup();
 		}
+		var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
+		oRouter.navTo(routeSplit);
+		oRouter.navTo(routeRegTestList);	
 	},
 
 /**

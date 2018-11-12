@@ -438,10 +438,7 @@ sap.ui
 					},
 
 					onBeforeRendering : function() {
-						oUser.Login = localStorage.getItem("oUser_Login");
-						oUser.Pwd = localStorage.getItem("oUser_Pwd");
-						var found = validateUser(oUser.Login, oUser.Pwd);
-						if (!found) {
+						if (!localStorage.getItem("oUser_Login") || !localStorage.getItem("oUser_Pwd")) {
 							var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 							oRouter.navTo(routeLogin);
 							var loginFirstText = resourceModel.getProperty("LoginFirst");

@@ -30,22 +30,15 @@ function registerRouter(oRouter) {
 }
 
 function validateUser(oLogin, oPwd) {
-	var found = false;
-	for (var j = 0; j < Users.length; j++) {
-		if (oLogin == Users[j].Login) {
-			if (oPwd == Users[j].Pwd) {
-				found = true;
-				oUser = Users[j];
-				localStorage.setItem("oUser_Login", oUser.Login);
-				localStorage.setItem("oUser_Pwd", oUser.Pwd);
-				localStorage.setItem("oUser_hd1user", oUser.hd1user);
-				localStorage.setItem("oUser_hd1pwd", oUser.hd1pwd);
-				break;
-			}
-		}
-	}
-
-	return found;
+		
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", getUrl(dataServiceName), false, oLogin, oPwd); // false for synchronous request
+    xmlHttp.send( null );
+    if ( xmlHttp.status == 200 ){ 
+    	return true;
+    }
+    else
+    	return false;
 }
 
 function loadModel(oUser) {
@@ -58,32 +51,43 @@ function loadModel(oUser) {
 	};
 
 	var oModel = new sap.ui.model.odata.ODataModel(
-			this.getUrl(dataServiceName), true, oUser.hd1user, oUser.hd1pwd,
-			headers, true);
+			this.getUrl(dataServiceName), true, headers, true);
 
 	oModel.refreshSecurityToken();
 
 	var oModel = new sap.ui.model.odata.ODataModel(
-			this.getUrl(dataServiceName), true, oUser.hd1user, oUser.hd1pwd);
+			this.getUrl(dataServiceName), true );
 
-	if ((oUser != "null") && (oUser.hd1user != "null")) {
-		var data = oModel.read(entityRegTestSetName, {
-			error : function(oError) {
-				oModel = new sap.ui.model.json.JSONModel();
-				oModel.loadData(jSONDataName);
-				sap.ui.getCore().setModel(oModel);
-				sap.m.MessageToast.show("Working with Mockup");
-			}
-		});
-		sap.ui.getCore().setModel(oModel);
-	} else {
-		throw "user_invalid";
-	}
+	var data = oModel.read(entityRegTestSetName, {
+		error : function(oError) {
+			oModel = new sap.ui.model.json.JSONModel();
+			oModel.loadData(jSONDataName);
+			sap.ui.getCore().setModel(oModel);
+			sap.m.MessageToast.show("Working with Mockup");
+		}
+	});
+	sap.ui.getCore().setModel(oModel);
+
+}
+
+function loadMockup() {
+	// SAP Data
+	initLanguageLocale();
+
+	oModel = new sap.ui.model.json.JSONModel();
+	oModel.loadData(jSONDataName);
+	sap.ui.getCore().setModel(oModel);
+	sap.ui.getCore().setModel(oModel);
+	
+	var text = resourceModel.getProperty("LoginFailed") + ". " + resourceModel.getProperty("OfflineTxt");
+	sap.m.MessageToast.show(text);
 }
 
 function getUrl(sUrl) {
 	if (sUrl == "")
 		return sUrl;
+	if (/^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(window.location.hostname) == true && sUrl == logoffService)
+		return "http://" + window.location.hostname + "/logoff";
 	if (/^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(window.location.hostname) == true)
 		return "http://" + window.location.hostname + "/hd1";
 	switch (window.location.hostname) {
@@ -100,7 +104,7 @@ function initNotificationService() {
 		oModel = sap.ui.getCore().getModel();
 
 		sap.ui.require("sap/ui/core/ws/WebSocket");
-		socket = new WebSocket('ws://' + oUser.hd1user + ':' + oUser.hd1pwd
+		socket = new WebSocket('ws://' + oUser.Login + ':' + oUser.Pwd
 				+ '@'
 				+ 'ibssaphd1.ibs.local:8050/sap/bc/apc/sap/z_reg_test_push_ch');
 
@@ -179,8 +183,14 @@ window.onload = function() {
     	localStorage.removeItem("reloading");
 		oUser.Login = localStorage.getItem("oUser_Login");
 		oUser.Pwd = localStorage.getItem("oUser_Pwd");
-		if (validateUser(oUser.Login, oUser.Pwd)) {
-    		loadModel(oUser);
-    		}
+		if( oUser.Login &&  oUser.Pwd ){
+			var found = validateUser(oUser.Login, oUser.Pwd);
+			if (found) {
+				initNotificationService();
+				loadModel(oUser);		
+			} else {
+				loadMockup();
+			}
+		}
     }
 }

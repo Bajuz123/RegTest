@@ -1,10 +1,11 @@
 //General
-var regTestVersion = "1.0.2"
+var regTestVersion = "1.0.3"
 var resourceModel = {}
 var i18nModel = {}
 var dataServiceName = "/sap/opu/odata/sap/Z_REG_TEST_SRV";
 var jSONDataName = "regtest/JSON/RegTest_DATA.json";
-var notificationService = "/sap/opu/odata/sap/z_reg_test_srv/"
+var notificationService = "/sap/opu/odata/sap/z_reg_test_srv/";
+var logoffService = "/sap/public/bc/icf/logoff";
 var bundlePath = "regtest.i18n.i18n";
 var columnDefaultValue = "value";
 var columnDefaultCheckBoxValue = "checked";
@@ -19,9 +20,7 @@ var socket = {};
 
 var oUser = {
 	Login : "",
-	Pwd : "",
-	hd1user : "",
-	hd1pwd : ""
+	Pwd : ""
 };
 var selectedObject = {
 	id_reg_test : "",

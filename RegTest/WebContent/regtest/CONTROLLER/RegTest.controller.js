@@ -66,15 +66,12 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 	},
 
 	onBeforeRendering : function() {
-			oUser.Login = localStorage.getItem("oUser_Login");
-			oUser.Pwd = localStorage.getItem("oUser_Pwd");
-			var found = validateUser(oUser.Login, oUser.Pwd);
-			if (!found) {
-				var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
-				oRouter.navTo(routeLogin);
-				var loginFirstText = resourceModel.getProperty("LoginFirst");
-				sap.m.MessageToast.show(loginFirstText);
-			}
+		if (!localStorage.getItem("oUser_Login") || !localStorage.getItem("oUser_Pwd")) {
+			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
+			oRouter.navTo(routeLogin);
+			var loginFirstText = resourceModel.getProperty("LoginFirst");
+			sap.m.MessageToast.show(loginFirstText);
+		}
 	},
 	
 	onRunRegsClick : function(oRegTable) {
