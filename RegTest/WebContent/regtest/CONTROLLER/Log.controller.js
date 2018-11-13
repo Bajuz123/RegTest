@@ -16,7 +16,7 @@ sap.ui.controller("regtest.CONTROLLER.Log",
 
 				if (oRegTestName != "") {
 					var oRegIDFilter = new sap.ui.model.Filter({
-						path : sapRegTestName,
+						path : sapLogRegTestName,
 						operator : sap.ui.model.FilterOperator.Contains,
 						value1 : oRegTestName
 					});
