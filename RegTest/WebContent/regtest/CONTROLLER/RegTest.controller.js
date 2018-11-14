@@ -54,6 +54,7 @@ sap.ui.controller("regtest.CONTROLLER.RegTest", {
 			localStorage.setItem("choosenRegTest_XML", boundObject.xml);
 			localStorage.setItem("choosenRegTest_active", boundObject.active);
 			localStorage.setItem("choosenRegTest_variant", boundObject.variant);
+			localStorage.setItem("choosenRegTest_last_run", boundObject.run_result);
 			var oRouter = sap.ui.core.routing.Router.getRouter(routerName);
 			oRouter.navTo(routeRegTestDetail);
 

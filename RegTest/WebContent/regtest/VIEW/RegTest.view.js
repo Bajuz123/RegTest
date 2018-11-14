@@ -88,14 +88,17 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 						this.removeStyleClass('yellow');
 						this.removeStyleClass('red');
 						// Set style Conditionally
-						if (cellValue == 'X') {
+						switch (cellValue) {
+						case runSuccess:
 							this.addStyleClass('green');
-						} else if (cellValue == 'W') 
-							this.addStyleClass('yellow');						
-						{
+							break;
+						case runWait:
+							this.addStyleClass('yellow');
+							break;
+						default:
 							this.addStyleClass('red');
+							break;
 						}
-						// cellValue = '';
 						return cellValue;
 					}),
 			visible : true
@@ -136,13 +139,13 @@ sap.ui.jsview("regtest.VIEW.RegTest", {
 				oController.onRunRegsClick(oRegTable);
 			}
 		});
-	
+
 		var oMenu = getBtnMenu(viewRegTestList);
 		var btnMenuIcon = new sap.m.MenuButton(idMenuButtonReg, {
 			text : "{i18n>MenuButton}",
 			icon : iconMenu,
 			menu : oMenu,
-			visible: isPhone()
+			visible : isPhone()
 		});
 		// menu[]
 		var panel = new sap.m.Panel(idMainPanel, {

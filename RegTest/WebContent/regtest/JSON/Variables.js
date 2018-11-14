@@ -1,5 +1,5 @@
 //General
-var regTestVersion = "1.0.4"
+var regTestVersion = "1.0.5"
 var resourceModel = {}
 var i18nModel = {}
 var dataServiceName = "/sap/opu/odata/sap/Z_REG_TEST_SRV";
@@ -43,6 +43,7 @@ var choosenRegTest_name = "choosenRegTest_name";
 var choosenRegTest_XML = "choosenRegTest_XML";
 var choosenRegTest_active = "choosenRegTest_active";
 var choosenRegTest_variant = "choosenRegTest_variant";
+var choosenRegTest_last_run = "choosenRegTest_last_run";
 
 var selectedPlObject_id_reg_test = "selectedPlObject_id_reg_test";
 var selectedPlObject_placeholder = "selectedPlObject_placeholder";
@@ -154,6 +155,9 @@ var idRegActiveCheck = "idRegActiveCheck";
 var idRegTestVariantLabel = "idRegTestVariantLabel";
 var idRegTestVariantValue = "idRegTestVariantValue";
 var idPanelDetailVariant = "idPanelDetailVariant";
+var idPanelDetailLastRun = "idPanelDetailLastRun";
+var idRegTestLastRun = "idRegTestLastRun";
+var idRegTestLastRunValue = "idRegTestLastRunValue";
 
 var idRegTestXMLLabel = "idRegTestXMLLabel";
 var idAreaXML = "idAreaXML";
@@ -263,3 +267,8 @@ var methodDelete = "DELETE";
 //Function Import
 var fiStartCredit = "START_CREDIT";
 var fiRemoveNotification = "REMOVE_NOTIFICATION";
+
+//Last Run Info
+var runSuccess = 'S';
+var runError = 'E';
+var runWait = 'W';
