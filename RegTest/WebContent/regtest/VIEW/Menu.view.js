@@ -12,7 +12,8 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 	* Since the Controller is given to this method, its event handlers can be attached right away. 
 	* @memberOf regtest.VIEW.Menu
 	*/ 
-	createContent : function(oController) {
+	createContent : function(oController) {		
+		var versionLabel = new sap.m.Label(idVersionLabel, {text: regTestVersion });
 		var oBox = new sap.m.HBox({
 		  items: [
 			new sap.m.Button({
@@ -87,7 +88,7 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 		
 		return new sap.m.Page({
 			title: "",
-			content: [ oBox, oList ],
+			content: [ versionLabel, oBox, oList ], 
 			footer: [ toolbar ]
 		});
 	}

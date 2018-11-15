@@ -1,5 +1,5 @@
 //General
-var regTestVersion = "1.0.5"
+var regTestVersion = "Version: 1.0.6"
 var resourceModel = {}
 var i18nModel = {}
 var dataServiceName = "/sap/opu/odata/sap/Z_REG_TEST_SRV";
@@ -223,6 +223,8 @@ var idBtnClearMessages = "idBtnClearMessages";
 var idBtnDisplayMessages = "idBtnDisplayMessages";
 
 //Menu
+var idVersionLabel = "idVersionLabel";
+
 var idMenuButtonReg = "idMenuButtonReg";
 var idMenuButtonCheck = "idMenuButtonCheck";
 var idMenuButtonLog = "idMenuButtonLog";
