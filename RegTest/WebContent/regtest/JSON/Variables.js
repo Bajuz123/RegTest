@@ -1,5 +1,5 @@
 //General
-var regTestVersion =  "Version: 1.0.6"
+var regTestVersion =  "Version: 1.0.7"
 var resourceModel = {}
 var i18nModel = {}
 var dataServiceName = "/sap/opu/odata/sap/Z_REG_TEST_SRV";
@@ -269,6 +269,7 @@ var methodDelete = "DELETE";
 //Function Import
 var fiStartCredit = "START_CREDIT";
 var fiRemoveNotification = "REMOVE_NOTIFICATION";
+var fiForceJob = "FORCE_JOB";
 
 //Last Run Info
 var runSuccess = 'S';

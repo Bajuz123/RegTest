@@ -283,9 +283,12 @@ sap.ui.jsview("regtest.VIEW.RegTestDetail", {
 	},
 
 	createPanelRegDetailLastRun: function (oController) {
-		var regTestLastRunValue = new sap.m.Input(idRegTestLastRunValue);
+		var regTestLastRunValue = new sap.m.Input(idRegTestLastRunValue, {
+			visible: false
+		});
 		return new sap.m.Panel(idPanelDetailLastRun, {
-			content : [regTestLastRunValue]
+			content : [regTestLastRunValue],
+			visible: false
 		});
 	}
 	

@@ -19,7 +19,6 @@ sap.ui.controller("regtest.CONTROLLER.Login", {
 		oUser.Pwd = sap.ui.getCore().byId(idPwdField).getValue();
 		localStorage.setItem("oUser_Login", oUser.Login);
 		localStorage.setItem("oUser_Pwd", oUser.Pwd);
-		debugger;
 		var found = validateUser(oUser.Login, oUser.Pwd);
 		if (found) {
 			initNotificationService();

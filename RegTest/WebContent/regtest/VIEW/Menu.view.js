@@ -52,6 +52,10 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 		});
 		var oItem4 = new sap.m.StandardListItem({
 			id: "sItem4",
+			title: "{i18n>MenuForceJob}"
+		});
+		var oItem5 = new sap.m.StandardListItem({
+			id: "sItem5",
 			icon: iconLog,
 			title: "{i18n>MenuLogout}"
 		});
@@ -59,6 +63,7 @@ sap.ui.jsview("regtest.VIEW.Menu", {
 		oList.addItem(oItem2);
 		oList.addItem(oItem3);
 		oList.addItem(oItem4);
+		oList.addItem(oItem5);
  
 		//notification bar
 		var toolbar = new sap.m.Toolbar({

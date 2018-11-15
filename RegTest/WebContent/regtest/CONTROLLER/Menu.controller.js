@@ -18,14 +18,28 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 			oRouter.navTo(routeLogList);
 			break;
 		case "sItem4":
-			oRouter.navTo(routeLogout);
+			var oDataModel = sap.ui.getCore().getModel();
 
-			/*
-			 * oSplitApp.toDetail("idLogout");
-			 * oSplitApp.removeMasterPage("idMenu1");
-			 * oSplitApp.setMode(sap.m.SplitAppMode.HideMode);
-			 * oSplitApp.toMaster("");
-			 */break;
+			var forceOK = resourceModel.getProperty("forceOK");
+			var forceFail = resourceModel.getProperty("forceFail");
+			
+			oDataModel.callFunction(fiForceJob, httpPost,null, null, function(oData, response) {
+				var busyDialog = sap.ui.getCore().byId(
+						idBusyDialog)
+				busyDialog.close();
+				sap.m.MessageToast.show(forceOK);
+			}, // callback function for success
+			function(oError) {
+				var busyDialog = sap.ui.getCore().byId(
+						idBusyDialog)
+				busyDialog.close();
+				sap.m.MessageToast.show(forceFail);
+			}); // callback function for error
+			break;
+		case "sItem5":
+			oRouter.navTo(routeLogout);
+			window.setTimeout(oRouter.navTo(routeLogin),3000);					
+			break;
 		default:
 			oRouter.navTo(routeRegTestList);
 			break;
@@ -67,7 +81,7 @@ sap.ui.controller("regtest.CONTROLLER.Menu", {
 // sap.ui.getCore().byId(idBtnClearMessages).setVisible(false);
 	},
 	
-	removeNotificationFromBackend(notificationId) {
+	removeNotificationFromBackend : function(notificationId) {
 		
 		var oDataModel = sap.ui.getCore().getModel();
 		oDataModel.callFunction(fiRemoveNotification, httpPost, {
